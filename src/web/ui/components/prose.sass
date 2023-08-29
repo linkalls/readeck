@@ -209,7 +209,7 @@ $line-height: 1.5
       td, th
         font-style: italic
 
-  @print
+  @media print
     html
       font-size: 12px
 
@@ -226,7 +226,7 @@ $line-height: 1.5
         background: none
         padding-block: 0
 
-      section
+      & > section
         columns: 2
         orphans: 5
         widows: 5
