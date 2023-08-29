@@ -208,3 +208,31 @@ $line-height: 1.5
     tfoot
       td, th
         font-style: italic
+
+  @print
+    html
+      font-size: 12px
+
+    .prose
+      img
+        max-height: 50vh
+        width: auto
+
+      figure
+        display: block
+        text-align: center
+
+      blockquote
+        background: none
+        padding-block: 0
+
+      section
+        columns: 2
+        orphans: 5
+        widows: 5
+        height: 100%
+        column-fill: auto
+
+        & >
+          blockquote, figure, img
+            break-inside: avoid
