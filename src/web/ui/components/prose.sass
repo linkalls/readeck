@@ -213,12 +213,17 @@ $line-height: 1.5
       img
         max-height: 50vh
         width: auto
+        display: inline
 
       figure
         display: block
         text-align: center
 
+      figcaption
+        text-align: left
+
       blockquote
+        text-align: left
         background: none
         padding-block: 0
 
@@ -230,5 +235,7 @@ $line-height: 1.5
         height: 100%
         column-fill: auto
 
-      blockquote, figure, p:has(img)
+      img, blockquote, figure, p:has(img)
         break-inside: avoid
+        break-before: auto
+        break-after: auto
