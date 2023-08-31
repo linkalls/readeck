@@ -50,6 +50,7 @@ require (
 	github.com/gabriel-vasile/mimetype v1.4.2
 	github.com/halorium/env v1.0.0
 	github.com/lithammer/shortuuid/v4 v4.0.0
+	github.com/skip2/go-qrcode v0.0.0-20200617195104-da1b6568686e
 	golang.org/x/term v0.11.0
 	modernc.org/sqlite v1.25.0
 )

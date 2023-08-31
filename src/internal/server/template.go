@@ -5,6 +5,7 @@
 package server
 
 import (
+	"encoding/base64"
 	"fmt"
 	"io"
 	"io/fs"
@@ -15,6 +16,7 @@ import (
 
 	"github.com/CloudyKit/jet/v6"
 	"github.com/gorilla/csrf"
+	"github.com/skip2/go-qrcode"
 
 	"codeberg.org/readeck/readeck/assets"
 	"codeberg.org/readeck/readeck/internal/auth"
@@ -138,7 +140,7 @@ func (s *Server) initTemplates() {
 		return reflect.ValueOf(false)
 	})
 	views.AddGlobalFunc("hasPermission", func(args jet.Arguments) reflect.Value {
-		args.RequireNumOfArguments("urlFor", 2, 2)
+		args.RequireNumOfArguments("hasPermission", 2, 2)
 		obj := libjet.ToString(args.Get(0))
 		act := libjet.ToString(args.Get(1))
 		r, ok := args.Runtime().Resolve("request").Interface().(*http.Request)
@@ -146,6 +148,25 @@ func (s *Server) initTemplates() {
 			return reflect.ValueOf(false)
 		}
 		return reflect.ValueOf(auth.HasPermission(r, obj, act))
+	})
+	views.AddGlobalFunc("qrcode", func(args jet.Arguments) reflect.Value {
+		args.RequireNumOfArguments("qrcode", 1, 2)
+		value := args.Get(0).String()
+		size := 240
+		if args.NumOfArguments() > 1 {
+			size = libjet.ToInt(args.Get(1))
+		}
+
+		qr, err := qrcode.New(value, qrcode.Low)
+		if err != nil {
+			panic(err)
+		}
+		buf, err := qr.PNG(size)
+		if err != nil {
+			panic(err)
+		}
+
+		return reflect.ValueOf(fmt.Sprintf("data:image/png;base64,%s", base64.StdEncoding.EncodeToString(buf)))
 	})
 }
 

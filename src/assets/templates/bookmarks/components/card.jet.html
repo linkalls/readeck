@@ -53,7 +53,7 @@ SPDX-License-Identifier: AGPL-3.0-only
       <h3 class="mb-2 leading-tight font-semibold {{ if .IsDeleted }}opacity-50{{ end }}
        group-hover:text-primary group-fw:text-primary"><a href="{{ _url }}"
         class="inline-block hf:text-primary-dark"
-        data-turbo-frame="_top">{{ default(.Title, "untitled") }}</a></h3>
+        data-turbo-frame="_top">{{ shortText(default(.Title, "untitled"), 90) }}</a></h3>
 
       <span class="flex items-center gap-2 mb-2 text-xs text-gray-600 {{ if .IsDeleted }}opacity-50{{ end }}">
         {{- if isset(.Resources.icon) -}}

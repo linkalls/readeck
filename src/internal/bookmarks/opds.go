@@ -16,7 +16,6 @@ import (
 	"codeberg.org/readeck/readeck/internal/opds/catalog"
 	"codeberg.org/readeck/readeck/internal/server"
 	"codeberg.org/readeck/readeck/pkg/opds"
-	_opds "codeberg.org/readeck/readeck/pkg/opds"
 )
 
 type opdsRouter struct {
@@ -56,7 +55,7 @@ func (h *opdsRouter) bookmarkList(w http.ResponseWriter, r *http.Request) {
 		catalog.WithTitle("Readeck Bookmarks"),
 		catalog.WithURL(h.srv.AbsoluteURL(r).String()),
 		catalog.WithUpdated(lastUpdate),
-		func(feed *_opds.Feed) {
+		func(feed *opds.Feed) {
 			links := h.srv.GetPaginationLinks(r, bl.Pagination)
 			for _, x := range links {
 				catalog.WithLink(opds.OPDSTypeAcquisistion, x.Rel, x.URL)(feed)
@@ -100,7 +99,7 @@ func (h *opdsRouter) collectionList(w http.ResponseWriter, r *http.Request) {
 		catalog.WithTitle("Readeck Bookmark Collections"),
 		catalog.WithURL(h.srv.AbsoluteURL(r).String()),
 		catalog.WithUpdated(lastUpdate),
-		func(feed *_opds.Feed) {
+		func(feed *opds.Feed) {
 			links := h.srv.GetPaginationLinks(r, cl.Pagination)
 			for _, x := range links {
 				catalog.WithLink(opds.OPDSTypeAcquisistion, x.Rel, x.URL)(feed)
@@ -135,7 +134,7 @@ func (h *opdsRouter) collectionInfo(w http.ResponseWriter, r *http.Request) {
 		catalog.WithTitle(fmt.Sprintf("Readeck Collection: %s", item.Name)),
 		catalog.WithURL(h.srv.AbsoluteURL(r).String()),
 		catalog.WithUpdated(lastUpdate),
-		func(feed *_opds.Feed) {
+		func(feed *opds.Feed) {
 			id, _ := shortuuid.DefaultEncoder.Decode(item.UID)
 			catalog.WithBookEntry(
 				id, fmt.Sprintf("Collection ebook - %s", item.Name),
