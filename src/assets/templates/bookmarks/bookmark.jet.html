@@ -42,7 +42,7 @@ SPDX-License-Identifier: AGPL-3.0-only
         </div>
       {{- else -}}
         <div class="hidden print:block">
-          <h1 class="px-6 py-4 text-3xl font-serif">{{ .Item.Title }}</h1>
+          <h1 class="px-6 py-4 text-3xl font-serif print:px-0">{{ .Item.Title }}</h1>
         </div>
 
         <input type="checkbox" id="--panel-toggle" class="peer hidden">
@@ -72,7 +72,7 @@ SPDX-License-Identifier: AGPL-3.0-only
               select-none
             "><span>More information</span>{{- yield icon(name="o-chevron-u", class="inline-block link", svgClass="w-6 h-6") -}}</label>
           </div>
-          <div class="px-6 pt-4 pb-8 max-md:px-4 max-md:overflow-y-auto flex-grow print:pb-0">
+          <div class="px-6 pt-4 pb-8 max-md:px-4 max-md:overflow-y-auto flex-grow print:pb-0 print:px-0">
             {{ include "./components/sidebar" }}
           </div>
         </div>
