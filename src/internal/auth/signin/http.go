@@ -34,7 +34,7 @@ func newAuthHandler(s *server.Server) *authHandler {
 	r := chi.NewRouter()
 	r.Use(
 		s.WithSession(),
-		s.Csrf(),
+		s.Csrf,
 	)
 
 	h := &authHandler{r, s}

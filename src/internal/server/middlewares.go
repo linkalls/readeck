@@ -31,32 +31,27 @@ var acceptOffers = []string{
 }
 
 // Csrf setup the CSRF protection.
-func (s *Server) Csrf() func(next http.Handler) http.Handler {
-	CSRF := csrf.Protect(
-		configs.CsrfKey(),
-		csrf.CookieName(csrfCookieName),
-		csrf.Path(path.Join(s.BasePath)),
-		csrf.HttpOnly(true),
-		csrf.MaxAge(0),
-		csrf.SameSite(csrf.SameSiteLaxMode),
-		csrf.FieldName(csrfFieldName),
-		csrf.RequestHeader(csrfHeaderName),
-	)
-
-	return func(next http.Handler) http.Handler {
-		fn := func(w http.ResponseWriter, r *http.Request) {
-			// Always enable CSRF protection, unless the current auth provider
-			// states otherwise.
-			p, ok := auth.GetRequestProvider(r).(auth.FeatureCsrfProvider)
-			if ok && p.CsrfExempt(r) {
-				next.ServeHTTP(w, r)
-				return
-			}
-			CSRF(next).ServeHTTP(w, r)
+func (s *Server) Csrf(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		// Always enable CSRF protection, unless the current auth provider
+		// states otherwise.
+		if p, ok := auth.GetRequestProvider(r).(auth.FeatureCsrfProvider); ok && p.CsrfExempt(r) {
+			next.ServeHTTP(w, r)
+			return
 		}
 
-		return http.HandlerFunc(fn)
-	}
+		csrf.Protect(
+			configs.CsrfKey(),
+			csrf.CookieName(csrfCookieName),
+			csrf.Path(path.Join(s.BasePath)),
+			csrf.HttpOnly(true),
+			csrf.MaxAge(0),
+			csrf.SameSite(csrf.SameSiteLaxMode),
+			csrf.FieldName(csrfFieldName),
+			csrf.RequestHeader(csrfHeaderName),
+			csrf.Secure(r.URL.Scheme == "https"),
+		)(next).ServeHTTP(w, r)
+	})
 }
 
 // WithPermission enforce a permission check on the request's path for

@@ -5,28 +5,42 @@
 package app
 
 import (
+	"context"
 	"errors"
+	"flag"
 	"os"
 	"os/signal"
 	"syscall"
 
-	log "github.com/sirupsen/logrus"
-	"github.com/spf13/cobra"
-
 	"codeberg.org/readeck/readeck/internal/bus"
+	"github.com/cristalhq/acmd"
+	log "github.com/sirupsen/logrus"
 )
 
 func init() {
-	rootCmd.AddCommand(workerCmd)
+	commands = append(commands, acmd.Command{
+		Name:        "worker",
+		Description: "Start Readeck jobs worker",
+		ExecFunc:    runWorker,
+	})
 }
 
-var workerCmd = &cobra.Command{
-	Use:   "worker",
-	Short: "start jobs worker",
-	RunE:  runWorker,
-}
+func runWorker(_ context.Context, args []string) error {
+	var flags appFlags
+	if err := flags.Flags().Parse(args); err != nil {
+		if errors.Is(err, flag.ErrHelp) {
+			return nil
+		}
+		return err
+	}
 
-func runWorker(_ *cobra.Command, _ []string) error {
+	// Init application
+	if err := appPreRun(&flags); err != nil {
+		return err
+	}
+	defer appPostRun()
+
+	// Start jobs worker
 	if err := bus.Load(); err != nil {
 		return err
 	}
@@ -43,9 +57,7 @@ func runWorker(_ *cobra.Command, _ []string) error {
 
 	// Shutdown
 	<-stop
-
 	log.Info("shutting down...")
-	defer cleanup()
 
 	log.Info("stopping workers...")
 	bus.Tasks().Stop()

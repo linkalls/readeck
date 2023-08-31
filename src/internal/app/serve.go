@@ -6,6 +6,8 @@ package app
 
 import (
 	"context"
+	"errors"
+	"flag"
 	"fmt"
 	"net"
 	"net/http"
@@ -15,8 +17,8 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/cristalhq/acmd"
 	log "github.com/sirupsen/logrus"
-	"github.com/spf13/cobra"
 
 	"codeberg.org/readeck/readeck/configs"
 	"codeberg.org/readeck/readeck/docs"
@@ -33,24 +35,51 @@ import (
 	"codeberg.org/readeck/readeck/internal/server"
 )
 
+type serveFlags struct {
+	appFlags
+	Host string
+	Port uint
+}
+
+func (f *serveFlags) Flags() *flag.FlagSet {
+	fs := f.appFlags.Flags()
+	fs.StringVar(&f.Host, "host", "", "Listen to address")
+	fs.UintVar(&f.Port, "port", 0, "Listen to port")
+
+	return fs
+}
+
 func init() {
-	rootCmd.AddCommand(serveCmd)
-
-	serveCmd.PersistentFlags().StringVarP(
-		&configs.Config.Server.Host, "host", "H",
-		configs.Config.Server.Host, "server host")
-	serveCmd.PersistentFlags().IntVarP(
-		&configs.Config.Server.Port, "port", "p",
-		configs.Config.Server.Port, "server host")
+	commands = append(commands, acmd.Command{
+		Name:        "serve",
+		Description: "Start Readeck HTTP server",
+		ExecFunc:    runServer,
+	})
 }
 
-var serveCmd = &cobra.Command{
-	Use:   "serve",
-	Short: "start HTTP server",
-	RunE:  runServe,
-}
+func runServer(_ context.Context, args []string) error {
+	var flags serveFlags
+	if err := flags.Flags().Parse(args); err != nil {
+		if errors.Is(err, flag.ErrHelp) {
+			return nil
+		}
+		return err
+	}
 
-func runServe(_ *cobra.Command, _ []string) error {
+	// Init application
+	if err := appPreRun(&flags.appFlags); err != nil {
+		return err
+	}
+	defer appPostRun()
+
+	// Command flags are the last override values
+	if flags.Host != "" {
+		configs.Config.Server.Host = flags.Host
+	}
+	if flags.Port > 0 {
+		configs.Config.Server.Port = int(flags.Port)
+	}
+
 	// Prepare HTTP server
 	s := server.New(configs.Config.Server.Prefix)
 	if err := InitServer(s); err != nil {
@@ -117,7 +146,6 @@ func runServe(_ *cobra.Command, _ []string) error {
 	// Server shutdown
 	<-stop
 	log.Info("shutting down...")
-	defer cleanup()
 
 	// Graceful http shutdown
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)

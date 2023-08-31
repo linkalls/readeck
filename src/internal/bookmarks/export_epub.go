@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"os"
 	"path"
+	"slices"
 	"strings"
 
 	"github.com/google/uuid"
@@ -33,7 +34,10 @@ func (api *apiRouter) exportBookmarksEPUB(w http.ResponseWriter, r *http.Request
 	if len(bookmarks) == 1 {
 		title = bookmarks[0].Title
 	} else if collection, ok := r.Context().Value(ctxCollectionKey{}).(*Collection); ok {
+		// In case of a collection, we give the book a title and reverse
+		// the items order.
 		title = collection.Name
+		slices.Reverse(bookmarks)
 	} else {
 		title = "Readec Bookmarks"
 	}

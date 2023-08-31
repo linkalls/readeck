@@ -11,8 +11,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 <form class="mt-2 ml-0.5 mr-1 flex" action="{{ urlFor(`/bookmarks`) }}" method="get">
   <input type="hidden" name="bf" value="1" />
   <div class="flex p-1 form-input rounded-full w-full">
-    <input title="search in bookmarks" size="14" type="text" name="search"
-     value="{{ isset(.Filters) ? .Filters.Get(`search`).String() : `` }}" placeholder="search"
+    <input title="search in bookmarks" size="14" type="text" name="search" placeholder="search"
      class="leading-tight w-full rounded-full px-4 py-2 bg-white ring-0 ring-offset-0"
     />
     <button title="search"

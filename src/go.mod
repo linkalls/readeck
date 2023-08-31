@@ -29,7 +29,6 @@ require (
 	github.com/mattn/go-isatty v0.0.19 // indirect
 	github.com/mattn/go-sqlite3 v1.14.17
 	github.com/sirupsen/logrus v1.9.3
-	github.com/spf13/cobra v1.7.0
 	github.com/spyzhov/ajson v0.9.0
 	github.com/stretchr/testify v1.8.4
 	github.com/tdewolff/parse/v2 v2.6.7
@@ -47,7 +46,9 @@ require (
 require (
 	github.com/JohannesKaufmann/html-to-markdown v1.4.0
 	github.com/antchfx/xmlquery v1.3.17
+	github.com/cristalhq/acmd v0.11.1
 	github.com/gabriel-vasile/mimetype v1.4.2
+	github.com/halorium/env v1.0.0
 	github.com/lithammer/shortuuid/v4 v4.0.0
 	golang.org/x/term v0.11.0
 	modernc.org/sqlite v1.25.0
@@ -67,7 +68,6 @@ require (
 	github.com/go-test/deep v1.1.0 // indirect
 	github.com/gogs/chardet v0.0.0-20211120154057-b7413eaefb8f // indirect
 	github.com/google/pprof v0.0.0-20230808223545-4887780b67fb // indirect
-	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/jackc/chunkreader/v2 v2.0.1 // indirect
 	github.com/jackc/pgconn v1.14.1 // indirect
 	github.com/jackc/pgio v1.0.0 // indirect
@@ -80,7 +80,6 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
-	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/tidwall/gjson v1.16.0 // indirect
 	github.com/tidwall/match v1.1.1 // indirect
 	github.com/tidwall/pretty v1.2.1 // indirect

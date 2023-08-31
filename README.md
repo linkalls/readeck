@@ -36,7 +36,7 @@ Highlight the important content of your bookmarks to easily find it later.
 If you need a dedicated section with all your bookmarks from the past 2 weeks labeled with "cat", Readeck lets you save this search query into a collection so you can access it later.
 
 
-### 📖 Ebook export
+### 📖 E-Book export
 
 What's best than reading your collected articles on your e-reader? You can export any article to an e-book file (EPUB). You can even export a collection to a single book!
 

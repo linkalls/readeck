@@ -15,11 +15,10 @@ import (
 	"net/url"
 	"os"
 	"runtime"
-	"strconv"
-	"strings"
 	"time"
 
 	"github.com/araddon/dateparse"
+	"github.com/halorium/env"
 	"github.com/komkom/toml"
 )
 
@@ -43,68 +42,68 @@ func init() {
 // Because we don't need viper's mess for just storing configuration from
 // a source.
 type config struct {
-	Main      configMain      `json:"main"`
-	Server    configServer    `json:"server"`
-	Database  configDB        `json:"database"`
-	Email     configEmail     `json:"email"`
-	Extractor configExtractor `json:"extractor"`
-	Worker    configWorker    `json:"worker"`
+	Main      configMain      `json:"main" env:"-"`
+	Server    configServer    `json:"server" env:"-"`
+	Database  configDB        `json:"database" env:"-"`
+	Email     configEmail     `json:"email" env:"-"`
+	Extractor configExtractor `json:"extractor" env:"-"`
+	Worker    configWorker    `json:"worker" env:"-"`
 }
 
 type configMain struct {
-	LogLevel      string `json:"log_level"`
-	DevMode       bool   `json:"dev_mode"`
-	SecretKey     string `json:"secret_key"`
-	DataDirectory string `json:"data_directory"`
+	LogLevel      string `json:"log_level" env:"READECK_LOG_LEVEL"`
+	DevMode       bool   `json:"dev_mode" env:"READECK_DEV_MODE"`
+	SecretKey     string `json:"secret_key" env:"-"`
+	DataDirectory string `json:"data_directory" env:"-"`
 }
 
 type configServer struct {
-	Host               string        `json:"host"`
-	Port               int           `json:"port"`
-	Prefix             string        `json:"prefix"`
-	AllowedHosts       []string      `json:"allowed_hosts"`
-	UseXForwardedHost  bool          `json:"use_x_forwarded_host"`
-	UseXForwardedProto bool          `json:"use_x_forwarded_proto"`
-	Session            configSession `json:"session"`
+	Host               string        `json:"host" env:"READECK_SERVER_HOST"`
+	Port               int           `json:"port" env:"READECK_SERVER_PORT"`
+	Prefix             string        `json:"prefix" env:"READECK_SERVER_PREFIX"`
+	AllowedHosts       []string      `json:"allowed_hosts" env:"READECK_ALLOWED_HOSTS"`
+	UseXForwardedHost  bool          `json:"use_x_forwarded_host" env:"-"`
+	UseXForwardedProto bool          `json:"use_x_forwarded_proto" env:"-"`
+	Session            configSession `json:"session" env:"-"`
 }
 
 type configDB struct {
-	Source string `json:"source"`
+	Source string `json:"source" env:"READECK_DATABASE_SOURCE"`
 }
 
 type configSession struct {
-	CookieName string `json:"cookie_name"`
-	MaxAge     int    `json:"max_age"` // in minutes
+	CookieName string `json:"cookie_name" env:"-"`
+	MaxAge     int    `json:"max_age" env:"-"` // in minutes
 }
 
 type configEmail struct {
-	Debug       bool   `json:"debug"`
-	Host        string `json:"host"`
-	Port        int    `json:"port"`
-	Username    string `json:"username"`
-	Password    string `json:"password"`
-	Encryption  string `json:"encryption"`
-	Insecure    bool   `json:"insecure"`
-	From        string `json:"from"`
-	FromNoReply string `json:"from_noreply"`
+	Debug       bool   `json:"debug" env:"-"`
+	Host        string `json:"host" env:"-"`
+	Port        int    `json:"port" env:"-"`
+	Username    string `json:"username" env:"-"`
+	Password    string `json:"password" env:"-"`
+	Encryption  string `json:"encryption" env:"-"`
+	Insecure    bool   `json:"insecure" env:"-"`
+	From        string `json:"from" env:"-"`
+	FromNoReply string `json:"from_noreply" env:"-"`
 }
 
 type configWorker struct {
-	DSN         string `json:"dsn"`
-	NumWorkers  int    `json:"num_workers"`
-	StartWorker bool   `json:"start_worker"`
+	DSN         string `json:"dsn" env:"-"`
+	NumWorkers  int    `json:"num_workers" env:"-"`
+	StartWorker bool   `json:"start_worker" env:"-"`
 }
 
 type configExtractor struct {
-	NumWorkers int                `json:"workers"`
-	SiteConfig []configSiteConfig `json:"site_config"`
-	DeniedIPs  []configIPNet      `json:"denied_ips"`
-	ProxyMatch []configProxyMatch `json:"proxy_match"`
+	NumWorkers int                `json:"workers" env:"-"`
+	SiteConfig []configSiteConfig `json:"site_config" env:"-"`
+	DeniedIPs  []configIPNet      `json:"denied_ips" env:"-"`
+	ProxyMatch []configProxyMatch `json:"proxy_match" env:"-"`
 }
 
 type configSiteConfig struct {
-	Name string `json:"name"`
-	Src  string `json:"src"`
+	Name string `json:"name" env:"-"`
+	Src  string `json:"src" env:"-"`
 }
 
 type configIPNet struct {
@@ -199,7 +198,7 @@ var Config = config{
 		Port: 5000,
 		Session: configSession{
 			CookieName: "sxid",
-			MaxAge:     86400 * 30,
+			MaxAge:     86400 * 30, // 60 days
 		},
 	},
 	Database: configDB{},
@@ -239,6 +238,11 @@ func LoadConfiguration(configPath string) error {
 		return err
 	}
 
+	// Override configuration from environment variables
+	if err = env.Unmarshal(&Config); err != nil {
+		return err
+	}
+
 	InitConfiguration()
 	return nil
 }
@@ -256,23 +260,7 @@ func InitConfiguration() {
 		Config.Email.FromNoReply = Config.Email.From
 	}
 
-	overrideFromEnv()
-
 	loadKeys(Config.Main.SecretKey)
-}
-
-func overrideFromEnv() {
-	for _, e := range os.Environ() {
-		parts := strings.SplitN(e, "=", 2)
-		switch parts[0] {
-		case "READECK_SERVER_HOST":
-			Config.Server.Host = parts[1]
-		case "READECK_SERVER_PORT":
-			if p, err := strconv.Atoi(parts[1]); err != nil && p > 0 {
-				Config.Server.Port = p
-			}
-		}
-	}
 }
 
 // loadKeys prepares all the keys derivated from the configuration's

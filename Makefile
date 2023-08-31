@@ -129,9 +129,10 @@ setup:
 # Release targets
 #
 .PHONY: release-all
-release-all:
+release-all: all
 	${MAKE} release-linux-amd64
 	${MAKE} release-linux-arm
+	${MAKE} release-linux-arm64
 	${MAKE} release-darwin-amd64
 	${MAKE} release-darwin-arm64
 	${MAKE} release-windows-amd64
@@ -154,6 +155,16 @@ release-linux-amd64: export GOOS=linux
 release-linux-amd64: export GOARCH=amd64
 release-linux-amd64: OUTFILE_NAME:=readeck-$(VERSION)-$(GOOS)-$(GOARCH)
 release-linux-amd64: build compress_release checksum_release
+
+.PHONY: release-linux-arm64
+release-linux-arm64: CC:=
+release-linux-arm64: CXX:=
+release-linux-arm64: CGO_ENABLED=0
+release-linux-arm64: LDFLAGS:=-s -w
+release-linux-arm64: export GOOS=linux
+release-linux-arm64: export GOARCH=arm64
+release-linux-arm64: OUTFILE_NAME:=readeck-$(VERSION)-$(GOOS)-$(GOARCH)
+release-linux-arm64: build compress_release checksum_release
 
 .PHONY: release-linux-arm
 release-linux-arm: CC:=

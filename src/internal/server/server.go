@@ -87,7 +87,7 @@ func (s *Server) AuthenticatedRouter(middlewares ...func(http.Handler) http.Hand
 	r.Use(
 		s.WithSession(),
 		auth.Required,
-		s.Csrf(),
+		s.Csrf,
 		// It's already in the main router but this one will be called first and have
 		// the current user information
 		s.ErrorPages,

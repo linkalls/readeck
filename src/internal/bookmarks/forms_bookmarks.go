@@ -409,6 +409,18 @@ func (f *filterForm) Validate() {
 	// Remove any duplicate in the final search string
 	f.st = f.st.dedup()
 
+	// At this point, any searchString field that is not permitted
+	// is considered a quotted value.
+	st := searchString{}
+	for _, s := range f.st {
+		if _, ok := allowedSearchFields[s.Field]; !ok && s.Field != "" {
+			st.addField("", fmt.Sprintf(`"%s:%s"`, s.Field, s.Value))
+		} else {
+			st = append(st, s)
+		}
+	}
+	f.st = st
+
 	// Update the specific search fields
 	for _, field := range f.Fields() {
 		switch n := field.Name(); n {

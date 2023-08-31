@@ -6,13 +6,14 @@ package app
 
 import (
 	"errors"
+	"flag"
 	"fmt"
 	"net/url"
 	"os"
 	"path"
 
+	"github.com/cristalhq/acmd"
 	log "github.com/sirupsen/logrus"
-	"github.com/spf13/cobra"
 
 	"codeberg.org/readeck/readeck/configs"
 	"codeberg.org/readeck/readeck/internal/db"
@@ -20,23 +21,26 @@ import (
 	"codeberg.org/readeck/readeck/pkg/extract/fftr"
 )
 
-var rootCmd = &cobra.Command{
-	Use:                "readeck",
-	PersistentPreRunE:  appPersistentPreRun,
-	PersistentPostRunE: appPersistentPostRunE,
+var commands = []acmd.Command{}
+
+type appFlags struct {
+	ConfigFile string
 }
 
-var configPath string
+func (f *appFlags) Flags() *flag.FlagSet {
+	fs := flag.NewFlagSet("", flag.ContinueOnError)
+	fs.StringVar(&f.ConfigFile, "config", "config.toml", "configuration file path")
 
-func init() {
-	rootCmd.PersistentFlags().StringVarP(
-		&configPath, "config", "c",
-		"", "Configuration file",
-	)
-	rootCmd.PersistentFlags().StringVarP(
-		&configs.Config.Main.LogLevel, "level", "l",
-		configs.Config.Main.LogLevel, "Log level",
-	)
+	return fs
+}
+
+// Run starts the application CLI
+func Run() error {
+	return acmd.RunnerOf(commands, acmd.Config{
+		AppName:        "readeck",
+		AppDescription: "Run Readeck commands",
+		Version:        configs.Version(),
+	}).Run()
 }
 
 // InitApp prepares the app for running the server or the tests.
@@ -93,19 +97,19 @@ func InitApp() {
 	email.InitSender()
 }
 
-func appPersistentPreRun(_ *cobra.Command, _ []string) error {
-	if configPath == "" {
-		configPath = "config.toml"
+func appPreRun(flags *appFlags) error {
+	if flags.ConfigFile == "" {
+		flags.ConfigFile = "config.toml"
 	}
-	if err := createConfigFile(configPath); err != nil {
+	if err := createConfigFile(flags.ConfigFile); err != nil {
 		return err
 	}
 
-	if err := configs.LoadConfiguration(configPath); err != nil {
+	if err := configs.LoadConfiguration(flags.ConfigFile); err != nil {
 		return fmt.Errorf("error loading configuration (%s)", err)
 	}
 
-	if err := initConfig(); err != nil {
+	if err := initConfig(flags.ConfigFile); err != nil {
 		return err
 	}
 
@@ -119,12 +123,12 @@ func appPersistentPreRun(_ *cobra.Command, _ []string) error {
 	return nil
 }
 
-func appPersistentPostRunE(_ *cobra.Command, _ []string) error {
-	return cleanup()
-}
-
-func cleanup() error {
-	return db.Close()
+func appPostRun() {
+	if err := db.Close(); err != nil {
+		log.WithError(err).Error("closing database")
+	} else {
+		log.Debug("database is closed")
+	}
 }
 
 func createConfigFile(filename string) error {
@@ -144,12 +148,12 @@ func createConfigFile(filename string) error {
 	return nil
 }
 
-func initConfig() error {
+func initConfig(filename string) error {
 	// If secret key is empty, we're facing a new configuration file and
 	// must write it to a file.
 	if configs.Config.Main.SecretKey == "" {
 		configs.Config.Main.SecretKey = configs.GenerateKey(64, 96)
-		return configs.WriteConfig(configPath)
+		return configs.WriteConfig(filename)
 	}
 
 	return nil
@@ -190,9 +194,4 @@ func addSiteConfig(name, src string) {
 	}
 
 	fftr.DefaultConfigurationFolders = append(fftr.ConfigFolderList{f}, fftr.DefaultConfigurationFolders...)
-}
-
-// Run starts the application
-func Run() error {
-	return rootCmd.Execute()
 }
