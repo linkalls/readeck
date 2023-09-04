@@ -125,8 +125,11 @@ SPDX-License-Identifier: AGPL-3.0-only
   {{ if hasPermission("api:bookmarks", "export") -}}
   <div class="print:hidden">
     <h3 class="mb-2 title text-lg">Export</h3>
-      <a href="{{ urlFor(`/api/bookmarks`, .Item.ID, `article.epub`) }}"
-      class="btn-outlined-primary leading-none rounded-full h-9 px-3">{{ yield icon(name="o-download") }}&nbsp;download ebook</a>
+      <a
+        href="{{ urlFor(`/api/bookmarks`, .Item.ID, `article.epub`) }}"
+        class="btn-outlined-primary leading-none rounded-full h-9 px-3"
+        download="readeck-{{ default(.Item.SiteName + "-", "") }}{{ .Item.Name }}-{{ date(time.Now(), "2006-01-02") }}.epub"
+      >{{ yield icon(name="o-download") }}&nbsp;download ebook</a>
       {{- end }}
   </div>
   {{- end -}}

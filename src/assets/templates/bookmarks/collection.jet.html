@@ -59,8 +59,11 @@ SPDX-License-Identifier: AGPL-3.0-only
       <p class="mt-4 mb-6">
         <span class="font-semibold">{{ yield icon(name="o-download") }}
         Export this collection</span>:
-        <a href="{{ urlFor(`/api/bookmarks/export.epub`) }}?collection={{ .Item.ID }}"
-         class="link">Epub</a>
+        <a
+          href="{{ urlFor(`/api/bookmarks/export.epub`) }}?collection={{ .Item.ID }}"
+          class="link"
+          download="readeck-collection-{{ .Item.Name }}-{{ date(time.Now(), "2006-01-02") }}.epub"
+        >Epub</a>
       </p>
     {{- end }}
 
