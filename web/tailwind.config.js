@@ -102,6 +102,7 @@ var config = {
       ],
     },
     screens: {
+      "xs": {raw: "only screen and (min-width: 340px)"},
       "sm": {raw: "only screen and (min-width: 640px)"},
       "md": {raw: "only screen and (min-width: 814px)"},
       "lg": {raw: "only screen and (min-width: 1024px)"},
@@ -110,6 +111,7 @@ var config = {
       "max-lg": {raw: "only screen and (max-width: 1024px)"},
       "max-md": {raw: "only screen and (max-width: 814px)"},
       "max-sm": {raw: "only screen and (max-width: 640px)"},
+      "max-xs": {raw: "only screen and (max-width: 340px)"},
     },
     extend: {
       boxShadow: {
