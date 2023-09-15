@@ -6,7 +6,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 {{- import "./_libs/blocks" -}}
 {{- import "./_libs/common" -}}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="overscroll-none">
 <head>
   <meta charset="UTF-8">
   <title>{{ yield title() }} - Readeck</title>
@@ -35,6 +35,7 @@ SPDX-License-Identifier: AGPL-3.0-only
  class="
   no-js bg-gray-50 text-gray-900 font-sans leading-tight tracking-normal
   print:text-black print:bg-white
+  overscroll-none
  ">
 {{- if !isTurbo }}
 <script nonce="{{ cspNonce }}">
