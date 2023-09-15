@@ -22,110 +22,85 @@ SPDX-License-Identifier: AGPL-3.0-only
 {{- end -}}
 
 {{- block body() -}}
-<div class="flex h-screen max-sm:flex-col">
+<div class="layout layout--bookmark">
   {{ include "/menu" }}
 
-  <div class="grow md:overflow-y-auto print:overflow-y-visible">
-    <turbo-frame id="bookmark-{{ .Item.ID }}" data-controller="turbo-refresh"
-    data-turbo-refresh-on-value="[data-deleted]"
-    data-turbo-refresh-interval-value="3"
-    class="
-      flex max-md:flex-col
-      max-md:h-screen
-      max-sm:h-[calc(100vh-4rem)]
-      print:block
-    ">
-      {{- if !.Item.Loaded -}}
-        <div class="text-center mt-8">
-          <span class="text-3xl">{{ yield spinner() }}</span>
-          <p class="text-lg">Bookmark is loading…</p>
-        </div>
-      {{- else -}}
-        <div class="hidden print:block">
-          <h1 class="px-6 py-4 text-3xl font-serif print:px-0">{{ .Item.Title }}</h1>
-        </div>
+  <turbo-frame id="bookmark-{{ .Item.ID }}" data-controller="turbo-refresh"
+  data-turbo-refresh-on-value="[data-deleted]"
+  data-turbo-refresh-interval-value="3"
+  class="bookmark-grid">
+    {{- if !.Item.Loaded -}}
+      <div class="text-center mt-8">
+        <span class="text-3xl">{{ yield spinner() }}</span>
+        <p class="text-lg">Bookmark is loading…</p>
+      </div>
+    {{- else -}}
+      <div class="hidden print:block">
+        <h1 class="px-6 py-4 text-3xl font-serif print:px-0">{{ .Item.Title }}</h1>
+      </div>
 
-        <input type="checkbox" id="--panel-toggle" class="peer hidden">
+      <input type="checkbox" id="--panel-toggle" class="peer hidden">
+      <div class="bookmark-sidebar">
         <div class="
-          order-last w-col-6 h-screen sticky top-0 overflow-y-auto
-          flex-shrink-0
-          border-l border-l-gray-200
-          max-md:w-full
-          max-md:overflow-y-hidden
-          max-md:h-topnav max-md:flex max-md:flex-col
-          max-md:shadow-panel-t
-          max-md:peer-checked:h-[60vh]
-          max-md:transition-all max-md:ease-in-out
-          max-md:peer-checked:[&>div>label>span>svg]:rotate-180
-          print:static print:max-w-none print:w-full print:h-auto print:overflow-visible
-          print:mb-8 print:border-b print:border-l-0
-         ">
-          <div class="
-            h-topnav border-b border-b-gray-200 flex-shrink-0 flex flex-col
-            print:hidden
-          ">
-            <label for="--panel-toggle" class="
-              md:hidden
-              flex-grow flex items-center justify-end gap-2
-              px-4 bg-gray-100
-              cursor-pointer
-              select-none
-            "><span>More information</span>{{- yield icon(name="o-chevron-u", class="inline-block link", svgClass="w-6 h-6") -}}</label>
-          </div>
-          <div class="px-6 pt-4 pb-8 max-md:px-4 max-md:overflow-y-auto flex-grow print:pb-0 print:px-0">
-            {{ include "./components/sidebar" }}
-          </div>
-        </div>
-
-        <div tabindex="-1" autofocus class="
-          ring-0 bg-transparent
-          grow max-w-col-22 px-6 pb-8
-          md:h-screen
-          md:overflow-y-auto
-          max-md:px-4
-          max-md:overflow-auto
-          scroll-pt-topnav
-          print:overflow-visible
-          print:max-w-none
-          print:px-0
+          h-topnav border-b border-b-gray-200 flex-shrink-0 flex flex-col
+          print:hidden
         ">
-          <div class="h-topnav border-b border-b-gray-200 flex items-center sticky top-0 z-20 bg-gray-50
-           text-gray-400 hfw:text-gray-700 print:hidden">
-            <div>
-              <button data-controller="history" data-action="history#back"
-               class="p-2 rounded-full w-8 h-8 border border-bg-100 inline-flex items-center justify-center
-               hf:bg-gray-700 hf:text-white">
-                {{- yield icon(name="o-chevron-l", class="inline-block", svgClass="w-6 h-6") -}}
-              </button>
-            </div>
-            <div class="flex-grow"></div>
-            {{- if .Item.Type == "article" -}}
-              {{- include "./components/reader_control" -}}
-            {{- end -}}
-          </div>
-          <div class="max-w-3xl mx-auto mt-4 print:mt-2 print:max-w-none mb-8">
-            {{ include "./components/title_form" .Item }}
+          <label for="--panel-toggle" class="
+            md:hidden
+            flex-grow flex items-center justify-end gap-2
+            px-4 bg-gray-100
+            cursor-pointer
+            select-none
+          "><span>More information</span>{{- yield icon(name="o-chevron-u", class="inline-block link", svgClass="w-6 h-6") -}}</label>
+        </div>
+        <div class="px-6 pt-4 pb-8 max-md:px-4 max-md:overflow-y-auto flex-grow print:pb-0 print:px-0">
+          {{ include "./components/sidebar" }}
+        </div>
+      </div>
 
-            {{- if !empty(.Item.Description) -}}
-              <p class="mt-2 text-lg leading-tight text-justify font-serif italic">{{ .Item.Description }}</p>
-            {{- end -}}
-            {{- if user.Settings.DebugInfo -}}
-              {{ include "./components/debug" map("log", ._log, "props", ._props) }}
-            {{- end -}}
+      <div class="bookmark-content">
+        <div class="
+          sticky top-0 z-20 h-topnav
+          flex items-center 
+          border-b border-b-gray-200
+          bg-gray-50 text-gray-400 hfw:text-gray-700
+          max-sm:top-topnav
+          print:hidden
+        ">
+          <div>
+            <button data-controller="history" data-action="history#back"
+             class="p-2 rounded-full w-8 h-8 border border-bg-100 inline-flex items-center justify-center
+             hf:bg-gray-700 hf:text-white">
+              {{- yield icon(name="o-chevron-l", class="inline-block", svgClass="w-6 h-6") -}}
+            </button>
           </div>
+          <div class="flex-grow"></div>
+          {{- if .Item.Type == "article" -}}
+            {{- include "./components/reader_control" -}}
+          {{- end -}}
+        </div>
+        <div class="max-w-3xl mx-auto mt-4 print:mt-2 print:max-w-none mb-8">
+          {{ include "./components/title_form" .Item }}
 
-          {{ include "./components/content_block" map(
-            "Item", .Item,
-            "HTML", .HTML
-          ) }}
-
-          <div class="mx-auto mt-6 pt-6 border-t print:hidden">
-          {{- include "./components/bottom_actions" .Item -}}
-          </div>
+          {{- if !empty(.Item.Description) -}}
+            <p class="mt-2 text-lg leading-tight text-justify font-serif italic">{{ .Item.Description }}</p>
+          {{- end -}}
+          {{- if user.Settings.DebugInfo -}}
+            {{ include "./components/debug" map("log", ._log, "props", ._props) }}
+          {{- end -}}
         </div>
 
-      {{- end -}}
-    </turbo-frame>
-  </div>
+        {{ include "./components/content_block" map(
+          "Item", .Item,
+          "HTML", .HTML
+        ) }}
+
+        <div class="mx-auto mt-6 pt-6 border-t print:hidden">
+        {{- include "./components/bottom_actions" .Item -}}
+        </div>
+      </div>
+
+    {{- end -}}
+  </turbo-frame>
 </div>
 {{- end -}}
