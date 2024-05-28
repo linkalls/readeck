@@ -1,5 +1,5 @@
 ---
-Title: Table of Contents
+Title: Spis Treści
 TOC:
     - ""
     - bookmark-list
