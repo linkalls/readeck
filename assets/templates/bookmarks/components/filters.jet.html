@@ -61,4 +61,15 @@ SPDX-License-Identifier: AGPL-3.0-only
       class="mb-0 flex-grow",
     ) }}
   </div>
+
+  <div class="flex flex-wrap gap-x-4 gap-y-2">
+    {{ yield selectField(field=.Get("sort"),
+      label=gettext("Sort"),
+      class="mb-0 flex-grow",
+    ) }}
+    {{ yield selectField(field=.Get("sort_direction"),
+      label=gettext("Sort direction"),
+      class="mb-0 flex-grow",
+    ) }}
+  </div>
 </div>

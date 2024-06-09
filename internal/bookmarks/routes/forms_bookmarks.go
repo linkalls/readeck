@@ -401,6 +401,18 @@ func newFilterForm(tr forms.Translator) (f *filterForm) {
 		{"video", tr.Gettext("Video")},
 	}
 
+	sortTypes := [][2]string{
+		{"", tr.Gettext("None")},
+		{"word", tr.Gettext("Word count")},
+		{"published", tr.Gettext("Published at")},
+		{"created", tr.Gettext("Created at")},
+		{"source", tr.Gettext("Source")},
+	}
+	sortDirections := [][2]string{
+		{"", tr.Gettext("Ascending")},
+		{"desc", tr.Gettext("Descending")},
+	}
+
 	f = &filterForm{
 		Form: forms.Must(
 			forms.NewBooleanField("bf"),
@@ -409,6 +421,8 @@ func newFilterForm(tr forms.Translator) (f *filterForm) {
 			forms.NewTextField("author", forms.Trim),
 			forms.NewTextField("site", forms.Trim),
 			forms.NewChoiceField("type", availableTypes, forms.Trim),
+			forms.NewChoiceField("sort", sortTypes, forms.Trim),
+			forms.NewChoiceField("sort_direction", sortDirections, forms.Trim),
 			forms.NewTextField("labels", forms.Trim),
 			forms.NewBooleanField("is_marked"),
 			forms.NewBooleanField("is_archived"),

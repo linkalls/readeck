@@ -119,6 +119,18 @@ func TestCollectionAPI(t *testing.T) {
 						"is_bound": false,
 						"value": null,
 						"errors": null
+					},
+					"sort": {
+						"is_null": true,
+						"is_bound": false,
+						"value": null,
+						"errors": null
+					},
+					"sort_direction": {
+						"is_null": true,
+						"is_bound": false,
+						"value": null,
+						"errors": null
 					}
 				}
 			}`,
