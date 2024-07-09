@@ -10,6 +10,7 @@ import (
 
 	"github.com/doug-martin/goqu/v9"
 	_ "github.com/doug-martin/goqu/v9/dialect/postgres" // dialect
+	"github.com/jackc/pgx/v5/pgconn"
 	_ "github.com/jackc/pgx/v5/stdlib"
 )
 
@@ -17,7 +18,10 @@ func init() {
 	drivers["postgres"] = &pgConnector{}
 }
 
-type pgConnector struct{}
+type pgConnector struct {
+	dsn    string
+	schema string
+}
 
 func (c *pgConnector) Name() string {
 	return "jackc/pgx"
@@ -28,7 +32,17 @@ func (c *pgConnector) Dialect() string {
 }
 
 func (c *pgConnector) Open(dsn *url.URL) (*sql.DB, error) {
-	db, err := sql.Open("pgx", dsn.String())
+	c.dsn = dsn.String()
+
+	config, err := pgconn.ParseConfig(c.dsn)
+	if err != nil {
+		return nil, err
+	}
+
+	// no reason for user to supply multiple schemas in search path, so this should be enough for now for supporting schema
+	c.schema = config.RuntimeParams["search_path"]
+
+	db, err := sql.Open("pgx", c.dsn)
 	if err != nil {
 		return nil, err
 	}
@@ -41,7 +55,7 @@ func (c *pgConnector) HasTable(name string) (bool, error) {
 	ds := Q().Select(goqu.C("tablename")).
 		From(goqu.T("pg_tables")).
 		Where(
-			goqu.C("schemaname").Eq("public"),
+			goqu.C("schemaname").Eq(c.schema),
 			goqu.C("tablename").Eq(name),
 		)
 	var res string
