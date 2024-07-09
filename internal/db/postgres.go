@@ -40,11 +40,11 @@ func (c *pgConnector) Open(dsn *url.URL) (*sql.DB, error) {
 func (c *pgConnector) HasTable(name string) (bool, error) {
 	ds := Q().Select(goqu.Func("to_regclass", name))
 
-	var res string
+	var res sql.NullString
 
 	if _, err := ds.ScanVal(&res); err != nil {
 		return false, err
 	}
 
-	return res == name, nil
+	return res.Valid, nil
 }
