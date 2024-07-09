@@ -12,6 +12,7 @@ import (
 	_ "github.com/doug-martin/goqu/v9/dialect/postgres" // dialect
 	"github.com/jackc/pgx/v5/pgconn"
 	_ "github.com/jackc/pgx/v5/stdlib"
+	log "github.com/sirupsen/logrus"
 )
 
 func init() {
@@ -41,6 +42,11 @@ func (c *pgConnector) Open(dsn *url.URL) (*sql.DB, error) {
 
 	// no reason for user to supply multiple schemas in search path, so this should be enough for now for supporting schema
 	c.schema = config.RuntimeParams["search_path"]
+
+	if c.schema == "" {
+		log.Debug("no schema defined, falling back to public")
+		c.schema = "public"
+	}
 
 	db, err := sql.Open("pgx", c.dsn)
 	if err != nil {
