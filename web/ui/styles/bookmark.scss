@@ -192,3 +192,10 @@
     @apply font-jetbrains-mono;
   }
 }
+
+/* styling the "Content Missing" span when the bookmark has been removed  */
+.turbo-frame-error {
+  @apply flex items-center justify-center;
+  @apply text-3xl font-bold;
+  /* @apply m-8; */
+}
