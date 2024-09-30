@@ -255,7 +255,7 @@ msgstr "Bitte beachte:"
 #: assets/templates/auth/onboarding.jet.html
 msgid ""
 "\n"
-"  Your email address is optionnal and will never leave this installation."
+"  Your email address is optional and will never leave this installation."
 "\n"
 "  It will never be collected, transferred or sold.\n"
 "  It will <strong>only</strong> be used, should you need it, for password"
