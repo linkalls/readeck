@@ -56,6 +56,15 @@ const fontCatalog = {
     fontFiles: "files",
     css: ["wght.css", "wght-italic.css"],
   },
+  literata: {
+    name: "Literata Variable",
+    family: "serif",
+    path: path.dirname(
+      require.resolve("@fontsource-variable/literata/package.json"),
+    ),
+    fontFiles: "files",
+    css: ["wght.css", "wght-italic.css"],
+  },
   luciole: {
     name: "Luciole",
     family: "sans-serif",

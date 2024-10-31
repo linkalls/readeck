@@ -22,6 +22,7 @@ var (
 		{"merriweather", "bookmark-display--font-merriweather"},
 		{"inter", "bookmark-display--font-inter"},
 		{"plex-serif", "bookmark-display--font-plex-serif"},
+		{"literata", "bookmark-display--font-literata"},
 		{"luciole", "bookmark-display--font-luciole"},
 		{"atkinson-hyperlegible", "bookmark-display--font-atkinson-hyperlegible"},
 		{"jetbrains-mono", "bookmark-display--font-jetbrains-mono"},

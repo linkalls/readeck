@@ -182,6 +182,9 @@
   &--font-plex-serif {
     @apply font-plex-serif underline-offset-[3px];
   }
+  &--font-literata {
+    @apply font-literata underline-offset-[3px];
+  }
   &--font-luciole {
     @apply font-luciole decoration-1;
   }
