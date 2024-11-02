@@ -50,6 +50,10 @@ Want to keep something for later while browsing? No need to copy and paste a lin
 - [For Google Chrome](https://chromewebstore.google.com/detail/readeck/jnmcpmfimecibicbojhopfkcbmkafhee)
 - [More Information and Source Code](https://codeberg.org/readeck/browser-extension)
 
+### iOS Shortcut
+
+On iOS, you cannot install a browser extension, but you can use a shortcut to the same effect. Open [this shortcut template](https://www.icloud.com/shortcuts/9feba4fd35174150946bb07361057df0) on your iOS device, click 'add shortcut', open the shortcuts app and edit the template to fill our your instance and api token. Then you're good to go!
+
 ### 📖 E-Book export
 
 What's best than reading your collected articles on your e-reader? You can export any article to an e-book file (EPUB). You can even export a collection to a single book!
