@@ -266,6 +266,12 @@ func (f *updateForm) update(b *bookmarks.Bookmark) (updated map[string]interface
 		case "is_archived":
 			b.IsArchived = field.Value().(bool)
 			updated[n] = field.Value()
+			// we don't track reading progress yet, so set it based on archival
+			if field.Value() == true {
+				updated["percent_complete"] = 1
+			} else {
+				updated["percent_complete"] = 0
+			}
 		case "is_deleted":
 			deleted = new(bool)
 			*deleted = field.Value().(bool)

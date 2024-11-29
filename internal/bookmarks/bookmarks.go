@@ -70,36 +70,37 @@ func StoragePath() string {
 
 // Bookmark is a bookmark record in database.
 type Bookmark struct {
-	ID            int                 `db:"id" goqu:"skipinsert,skipupdate"`
-	UID           string              `db:"uid"`
-	UserID        *int                `db:"user_id"`
-	Created       time.Time           `db:"created" goqu:"skipupdate"`
-	Updated       time.Time           `db:"updated"`
-	State         BookmarkState       `db:"state"`
-	URL           string              `db:"url"`
-	InitialURL    string              `db:"initial_url"`
-	Title         string              `db:"title"`
-	Domain        string              `db:"domain"`
-	Site          string              `db:"site"`
-	SiteName      string              `db:"site_name"`
-	Published     *time.Time          `db:"published"`
-	Authors       types.Strings       `db:"authors"`
-	Lang          string              `db:"lang"`
-	TextDirection string              `db:"dir"`
-	DocumentType  string              `db:"type"`
-	Description   string              `db:"description"`
-	Text          string              `db:"text"`
-	WordCount     int                 `db:"word_count"`
-	Duration      int                 `db:"duration"`
-	Embed         string              `db:"embed"`
-	FilePath      string              `db:"file_path"`
-	Files         BookmarkFiles       `db:"files"`
-	Errors        types.Strings       `db:"errors"`
-	Labels        types.Strings       `db:"labels"`
-	IsArchived    bool                `db:"is_archived"`
-	IsMarked      bool                `db:"is_marked"`
-	Annotations   BookmarkAnnotations `db:"annotations"`
-	Links         BookmarkLinks       `db:"links"`
+	ID              int                 `db:"id" goqu:"skipinsert,skipupdate"`
+	UID             string              `db:"uid"`
+	UserID          *int                `db:"user_id"`
+	Created         time.Time           `db:"created" goqu:"skipupdate"`
+	Updated         time.Time           `db:"updated"`
+	State           BookmarkState       `db:"state"`
+	URL             string              `db:"url"`
+	InitialURL      string              `db:"initial_url"`
+	Title           string              `db:"title"`
+	Domain          string              `db:"domain"`
+	Site            string              `db:"site"`
+	SiteName        string              `db:"site_name"`
+	Published       *time.Time          `db:"published"`
+	Authors         types.Strings       `db:"authors"`
+	Lang            string              `db:"lang"`
+	TextDirection   string              `db:"dir"`
+	DocumentType    string              `db:"type"`
+	Description     string              `db:"description"`
+	Text            string              `db:"text"`
+	WordCount       int                 `db:"word_count"`
+	Duration        int                 `db:"duration"`
+	Embed           string              `db:"embed"`
+	FilePath        string              `db:"file_path"`
+	Files           BookmarkFiles       `db:"files"`
+	Errors          types.Strings       `db:"errors"`
+	Labels          types.Strings       `db:"labels"`
+	IsArchived      bool                `db:"is_archived"`
+	IsMarked        bool                `db:"is_marked"`
+	Annotations     BookmarkAnnotations `db:"annotations"`
+	Links           BookmarkLinks       `db:"links"`
+	PercentComplete float64             `db:"percent_complete"`
 }
 
 // BookmarkManager is a query helper for bookmark entries.
