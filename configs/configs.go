@@ -54,6 +54,7 @@ type config struct {
 	Bookmarks    configBookmarks `json:"bookmarks" env:"-"`
 	Worker       configWorker    `json:"worker" env:"-"`
 	Metrics      configMetrics   `json:"metrics" env:"-"`
+	Admin        configAdmin     `json:"admin" env:"-"`
 	Commissioned bool            `json:"-" env:"-"`
 	secretKey    []byte
 }
@@ -119,6 +120,12 @@ type configMetrics struct {
 
 type configIPNet struct {
 	*net.IPNet
+}
+
+type configAdmin struct {
+	InitialUsername     string `json:"initial_username" env:"ADMIN_INITIAL_USERNAME"`
+	InitialPasswordHash string `json:"initial_password" env:"ADMIN_INITIAL_PASSWORD_HASH"`
+	InitialEmail        string `json:"initial_email" env:"ADMIN_INITIAL_EMAIL"`
 }
 
 func (c *config) LoadFile(filename string) error {
@@ -272,6 +279,7 @@ var Config = config{
 		Host: "127.0.0.1",
 		Port: 0,
 	},
+	Admin: configAdmin{},
 }
 
 // LoadConfiguration loads the configuration file.

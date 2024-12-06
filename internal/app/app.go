@@ -117,6 +117,11 @@ func InitApp() {
 		panic(err)
 	}
 	configs.Config.Commissioned = nbUser > 0
+
+	// Init the admin user, if necessary
+	if err := initAdminUser(); err != nil {
+		fatal("can't init initial admin user", err)
+	}
 }
 
 func appPreRun(flags *appFlags) error {
@@ -194,6 +199,40 @@ func createFolder(name string) error {
 	} else if !stat.IsDir() {
 		return fmt.Errorf("'%s' is not a directory", name)
 	}
+
+	return nil
+}
+
+func initAdminUser() error {
+	// If already commissioned, return early
+	if configs.Config.Commissioned {
+		return nil
+	}
+
+	configAdmin := configs.Config.Admin
+	// If no InitialUsername is configured, return early
+	if configAdmin.InitialUsername == "" {
+		return nil
+	}
+	// If there's no password hash, return an error
+	if configAdmin.InitialPasswordHash == "" {
+		return fmt.Errorf("initial admin password hash cannot be empty")
+	}
+
+	slog.Info("creating initial admin user", slog.String("initial_username", configAdmin.InitialUsername))
+
+	u := &users.User{
+		Username: configAdmin.InitialUsername,
+		Password: configAdmin.InitialPasswordHash,
+		Email: configAdmin.InitialEmail,
+		Group: "admin",
+	}
+
+	if err := users.Users.CreateWithHashedPassword(u); err != nil {
+		return err
+	}
+
+	configs.Config.Commissioned = true
 
 	return nil
 }

@@ -102,6 +102,16 @@ func (m *Manager) Create(user *User) error {
 	}
 	user.Password = hash
 
+	return m.CreateWithHashedPassword(user)
+}
+
+// CreateWithHashedPasswords inserts a new user in the database. The password
+// must be present, and already hashed.
+func (m *Manager) CreateWithHashedPassword(user *User) error {
+	if strings.TrimSpace(user.Password) == "" {
+		return errors.New("password is empty")
+	}
+
 	user.Created = time.Now()
 	user.Updated = user.Created
 	user.SetSeed()
