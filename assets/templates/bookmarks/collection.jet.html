@@ -31,7 +31,7 @@ SPDX-License-Identifier: AGPL-3.0-only
     <div class="flex flex-wrap items-center gap-2">
       <h1 class="flex-grow title mb-0 text-h2 max-md:w-full">
         <span class="font-normal"><a href="{{ urlFor(`/bookmarks/collections`) }}" class="link">{{ gettext("Collections") }}</a> /</span>
-        {{ .Item.Name }}</h1>
+        {{ .Item.Name }} ({{ .Pagination.TotalCount }})</h1>
       {{- yield list_actions() content -}}
         <form action="{{ urlFor() }}" method="get">
           <input type="hidden" name="edit" value="{{ .Editing ? 0 : 1 }}">
