@@ -26,6 +26,7 @@ func newAnnotationForm(tr forms.Translator) (f *annotationForm) {
 		forms.NewIntegerField("start_offset", forms.Required, forms.Gte(0)),
 		forms.NewTextField("end_selector", forms.Required, forms.Trim),
 		forms.NewIntegerField("end_offset", forms.Required, forms.Gte(0)),
+		forms.NewTextField("color", forms.Required, forms.Trim),
 	)}
 	f.SetLocale(tr)
 	return
@@ -38,6 +39,7 @@ func (f *annotationForm) addToBookmark(bi *bookmarkItem) (*bookmarks.BookmarkAnn
 		StartOffset:   f.Get("start_offset").Value().(int),
 		EndSelector:   f.Get("end_selector").String(),
 		EndOffset:     f.Get("end_offset").Value().(int),
+		Color:		   f.Get("color").String(),
 		Created:       time.Now(),
 	}
 
@@ -57,7 +59,7 @@ func (f *annotationForm) addToBookmark(bi *bookmarkItem) (*bookmarks.BookmarkAnn
 	contents := &strings.Builder{}
 	err = annotation.AddToNode(root, bi.annotationTag, func(n *html.Node, index int) {
 		contents.WriteString(n.FirstChild.Data)
-		bi.annotationCallback(annotation.ID, n, index)
+		bi.annotationCallback(annotation.ID, n, index, annotation.Color)
 	})
 	if err != nil {
 		return nil, err

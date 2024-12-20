@@ -26,6 +26,7 @@ type BookmarkAnnotation struct {
 	StartOffset   int       `json:"start_offset"`
 	EndSelector   string    `json:"end_selector"`
 	EndOffset     int       `json:"end_offset"`
+	Color         string    `json:"color"`
 	Created       time.Time `json:"created"`
 	Text          string    `json:"text"`
 }
@@ -46,6 +47,12 @@ func (a *BookmarkAnnotations) Scan(value interface{}) error {
 
 // Value encodes a BookmarkAnnotations instance for storage.
 func (a BookmarkAnnotations) Value() (driver.Value, error) {
+	for _, x := range a {
+		if x.Color == "" {
+			x.Color = "yellow"
+		}
+	}
+
 	v, err := json.Marshal(a)
 	if err != nil {
 		return "", err
@@ -59,16 +66,17 @@ func (a *BookmarkAnnotation) AddToNode(root *html.Node, tagName string, options 
 		root, tagName,
 		a.StartSelector, a.StartOffset,
 		a.EndSelector, a.EndOffset,
+		a.Color,
 		options...,
 	)
 }
 
 // AddToNode adds all annotations to a DOM node (the designated root).
-func (a BookmarkAnnotations) AddToNode(root *html.Node, tagName string, options ...func(string, *html.Node, int)) error {
+func (a BookmarkAnnotations) AddToNode(root *html.Node, tagName string, options ...func(string, *html.Node, int, string)) error {
 	for _, annotation := range a {
 		err := annotation.AddToNode(root, tagName, func(n *html.Node, index int) {
 			for _, f := range options {
-				f(annotation.ID, n, index)
+				f(annotation.ID, n, index, annotation.Color)
 			}
 		})
 		if err != nil {

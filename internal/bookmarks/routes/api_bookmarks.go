@@ -856,7 +856,7 @@ type bookmarkItem struct {
 	baseURL            *url.URL
 	mediaURL           *url.URL
 	annotationTag      string
-	annotationCallback func(id string, n *html.Node, index int)
+	annotationCallback func(id string, n *html.Node, index int, color string)
 }
 
 // bookmarkFile is a file attached to a bookmark. If the file is
@@ -899,11 +899,12 @@ func newBookmarkItem(s *server.Server, r *http.Request, b *bookmarks.Bookmark, b
 
 		baseURL:       s.AbsoluteURL(r, "/"),
 		annotationTag: "rd-annotation",
-		annotationCallback: func(id string, n *html.Node, index int) {
+		annotationCallback: func(id string, n *html.Node, index int, color string) {
 			if index == 0 {
 				dom.SetAttribute(n, "id", fmt.Sprintf("annotation-%s", id))
 			}
 			dom.SetAttribute(n, "data-annotation-id-value", id)
+			dom.SetAttribute(n, "class", fmt.Sprintf("annotation-%s", color))
 		},
 	}
 
@@ -1129,6 +1130,7 @@ type annotationItem struct {
 	Href             string    `json:"href"`
 	Text             string    `json:"text"`
 	Created          time.Time `json:"created"`
+	Color            string    `json:"color"`
 	BookmarkID       string    `json:"bookmark_id"`
 	BookmarkHref     string    `json:"bookmark_href"`
 	BookmarkURL      string    `json:"bookmark_url"`
@@ -1142,6 +1144,7 @@ func newAnnotationItem(s *server.Server, r *http.Request, a *bookmarks.Annotatio
 		Href:             s.AbsoluteURL(r, "/api/bookmarks", a.Bookmark.UID, "annotations", a.ID).String(),
 		Text:             a.Text,
 		Created:          time.Time(a.Created),
+		Color:            a.Color,
 		BookmarkID:       a.Bookmark.UID,
 		BookmarkHref:     s.AbsoluteURL(r, "/api/bookmarks", a.Bookmark.UID).String(),
 		BookmarkURL:      a.Bookmark.URL,

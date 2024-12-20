@@ -41,10 +41,21 @@ SPDX-License-Identifier: AGPL-3.0-only
 <div class="bookmark-article max-w-3xl mx-auto print:max-w-none relative">
   <div class="hidden absolute z-50"
     data-annotations-target="controlls">
-      <button data-annotations-target="controllCreate" data-action="click->annotations#save"
-      class="p-4 bg-gray-700 text-white hf:text-primary-light rounded-lg shadow-lg
-      dark:bg-gray-300 dark:hf:text-primary-dark"
-      title="highlight selection">{{ yield icon(name="o-highlight") }} {{ gettext("Highlight") }}</button>
+      <div class="flex items-center gap-4 px-6 py-3 bg-gray-700 dark:bg-gray-300 rounded-full shadow-lg"
+        data-annotations-target="controllCreate">
+        <button class="w-4 h-4 bg-yellow-700 rounded-full focus:outline-none hover:opacity-80"
+         data-action="click->annotations#save"
+        data-annotations-color-value="yellow"></button>
+        <button class="w-4 h-4 bg-red-700 rounded-full focus:outline-none hover:opacity-80"
+         data-action="click->annotations#save"
+        data-annotations-color-value="red"></button>
+        <button class="w-4 h-4 bg-blue-700 rounded-full focus:outline-none hover:opacity-80"
+         data-action="click->annotations#save"
+        data-annotations-color-value="blue"></button>
+        <button class="w-4 h-4 bg-green-700 rounded-full focus:outline-none hover:opacity-80"
+        data-annotations-target="controllCreate" data-action="click->annotations#save"
+        data-annotations-color-value="green"></button>
+      </div>
       <button data-annotations-target="controllDelete" data-action="click->annotations#delete"
       class="p-4 bg-red-800 text-red-100 hf:text-white rounded-lg shadow-lg
       dark:bg-red-400 dark:text-gray-900 dark:hf:text-white"

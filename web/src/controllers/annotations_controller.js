@@ -206,7 +206,10 @@ export default class extends Controller {
   /**
    * save creates a new annotation on the document
    */
-  async save() {
+  async save(event) {
+    const color = event.currentTarget.dataset.annotationsColorValue
+    this.annotation.color = color
+
     if (!this.annotation || !this.annotation.isValid()) {
       return
     }
@@ -218,6 +221,7 @@ export default class extends Controller {
         start_offset: this.annotation.startOffset,
         end_selector: this.annotation.endSelector,
         end_offset: this.annotation.endOffset,
+        color: this.annotation.color,
       },
     })
     await this.reload()
@@ -284,6 +288,9 @@ class Annotation {
 
     /** @type {int} */
     this.endOffset = null
+
+    /** @type {string} */
+    this.color = null
 
     this.init()
   }

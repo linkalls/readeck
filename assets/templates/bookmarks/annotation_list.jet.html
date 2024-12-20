@@ -30,8 +30,9 @@ SPDX-License-Identifier: AGPL-3.0-only
   {{- include "/_libs/pagination" .Pagination -}}
 
   {{- range i, x := .Annotations -}}
+  {{- color := x.Color ? x.Color : "yellow" -}}
   <blockquote class="my-2">
-    <a class="block mb-1 pt-2 pb-4 px-4 bg-hl-yellow bg-opacity-30 border border-hl-yellow-dark rounded hf:bg-opacity-80"
+    <a class="block mb-1 pt-2 pb-4 px-4 bg-hl-{{ color }} bg-opacity-30 border border-hl-{{ color }}-dark rounded hf:bg-opacity-80"
     href="{{ urlFor(`/bookmarks`, x.BookmarkID) }}#annotation-{{ x.ID }}">
       <p class="block mb-1 text-sm text-yellow-800">{{ date(x.Created, "%e %B %Y, %H:%M") }}</p>
       <p>{{ x.Text }}</p>

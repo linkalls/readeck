@@ -251,6 +251,7 @@ func (m *BookmarkManager) GetAnnotations() *goqu.SelectDataset {
 			goqu.L(`a->>'id'`).As("annotation_id"),
 			goqu.L(`a->>'text'`).As("annotation_text"),
 			goqu.L(`(a->>'created')::timestamptz`).As("annotation_created"),
+			goqu.L(`COALESCE((a->>'color'), 'yellow')`).As("annotation_color"),
 		).
 			From(
 				goqu.T(TableName).As("b"),
@@ -265,6 +266,7 @@ func (m *BookmarkManager) GetAnnotations() *goqu.SelectDataset {
 			goqu.Func("json_extract", goqu.I("a.value"), "$.id").As("annotation_id"),
 			goqu.Func("json_extract", goqu.I("a.value"), "$.text").As("annotation_text"),
 			goqu.Func("json_extract", goqu.I("a.value"), "$.created").As("annotation_created"),
+			goqu.Func("COALESCE", goqu.Func("json_extract", goqu.I("a.value"), "$.color"), "yellow").As("annotation_color"),
 		).
 			From(
 				goqu.T(TableName).As("b"),
@@ -604,4 +606,5 @@ type AnnotationQueryResult struct {
 	ID       string           `db:"annotation_id"`
 	Text     string           `db:"annotation_text"`
 	Created  types.TimeString `db:"annotation_created"`
+	Color    string			  `db:"annotation_color"`
 }
