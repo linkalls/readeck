@@ -41,28 +41,8 @@
     }
 
     rd-annotation {
-      @apply bg-hl-yellow;
-      @apply border-b border-b-hl-yellow-dark;
-    }
-
-    rd-annotation.annotation-yellow {
-      @apply bg-hl-yellow;
-      @apply border-b border-b-hl-yellow-dark;
-    }
-
-    rd-annotation.annotation-red {
-      @apply bg-hl-red;
-      @apply border-b border-b-hl-red-dark;
-    }
-
-    rd-annotation.annotation-blue {
-      @apply bg-hl-blue;
-      @apply border-b border-b-hl-blue-dark;
-    }
-
-    rd-annotation.annotation-green {
-      @apply bg-hl-green;
-      @apply border-b border-b-hl-green-dark;
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
     }
 
     .bookmark-article {

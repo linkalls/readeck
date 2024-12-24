@@ -143,3 +143,29 @@ body.js {
     overflow-wrap: anywhere;
   }
 }
+
+// Annotation styles
+.rd-annotation {
+  background-color: rgb(var(--annotation-bg) / var(--tw-bg-opacity, 1));
+  border-color: rgb(var(--annotation-border));
+}
+
+.rd-annotation--yellow {
+  --annotation-bg: var(--color-hl-yellow);
+  --annotation-border: var(--color-hl-yellow-dark);
+}
+
+.rd-annotation--red {
+  --annotation-bg: var(--color-hl-red);
+  --annotation-border: var(--color-hl-red-dark);
+}
+
+.rd-annotation--blue {
+  --annotation-bg: var(--color-hl-blue);
+  --annotation-border: var(--color-hl-blue-dark);
+}
+
+.rd-annotation--green {
+  --annotation-bg: var(--color-hl-green);
+  --annotation-border: var(--color-hl-green-dark);
+}
