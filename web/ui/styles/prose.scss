@@ -213,6 +213,13 @@ $line-height: 1.5;
       }
     }
 
+    figure:has(table) {
+      overflow-x: auto;
+      max-width: 100%;
+      margin-left: unset;
+      margin-right: unset;
+    }
+
     ul,
     ol,
     dl {

@@ -23,6 +23,7 @@
 
   .bookmark-content {
     @apply grow order-first;
+    @apply max-w-full;
     @apply px-6 pb-8;
     @apply bg-transparent;
 

@@ -299,6 +299,7 @@ func extractPageHandler(data interface{}) {
 		contentscripts.GoToNextPage,
 		contents.ExtractInlineSVGs,
 		contents.Readability(),
+		contents.WrapTables,
 		CleanDomProcessor,
 		extractLinksProcessor,
 		contents.Text,
