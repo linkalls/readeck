@@ -5,28 +5,21 @@
 package migrations
 
 import (
-	"errors"
 	"fmt"
 	"io/fs"
-	"log/slog"
 	"math/rand"
-	"os"
-	"path/filepath"
 	"strings"
 
 	"github.com/doug-martin/goqu/v9"
 	"github.com/go-shiori/dom"
 	"golang.org/x/net/html"
-
-	"codeberg.org/readeck/readeck/configs"
-	"codeberg.org/readeck/readeck/pkg/zipfs"
 )
 
 // M07migrateBookmarkIDs performs a migration inside bookmark zip files
 // It changes the id and href attributes to conform to what the
 // extractor does from now on.
 func M07migrateBookmarkIDs(_ *goqu.TxDatabase, _ fs.FS) error {
-	setIDs := func(top *html.Node) int {
+	return updateBookmarkZipFiles(updateArchiveHTML(func(top *html.Node) (changed int, err error) {
 		// Set a random prefix for the whole document
 		chars := []byte("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz")
 		rand.Shuffle(len(chars), func(i, j int) {
@@ -60,89 +53,6 @@ func M07migrateBookmarkIDs(_ *goqu.TxDatabase, _ fs.FS) error {
 			}
 		}
 
-		return total
-	}
-
-	bookmarkFileMigrateIDs := func(path string, info fs.FileInfo, e error) (err error) {
-		if e != nil {
-			return e
-		}
-		if info.IsDir() {
-			return nil
-		}
-
-		if filepath.Ext(path) != ".zip" {
-			return nil
-		}
-
-		z := zipfs.NewZipRW(nil, nil, 0)
-		if err = z.AddSourceFile(path); err != nil {
-			return err
-		}
-		defer z.Close() //nolint:errcheck
-
-		fd, err := z.Source().Open("index.html")
-		if err != nil {
-			if errors.Is(err, fs.ErrNotExist) {
-				// no index.html, stop here
-				return nil
-			}
-			return err
-		}
-		defer fd.Close() //nolint:errcheck
-
-		top, err := html.Parse(fd)
-		if err != nil {
-			return err
-		}
-
-		changed := setIDs(top)
-		if changed == 0 {
-			// no need to change the zip file, stop here
-			return nil
-		}
-
-		// Create the new zip file
-		dest := fmt.Sprintf("%s.tmp", path)
-		if err = z.AddDestFile(dest); err != nil {
-			return err
-		}
-
-		for _, x := range z.SrcFiles() {
-			if x.Name == "index.html" {
-				if err = z.Add(&x.FileHeader, strings.NewReader(dom.OuterHTML(top))); err != nil {
-					return err
-				}
-				continue
-			}
-
-			if err = z.Copy(x.Name); err != nil {
-				return err
-			}
-		}
-
-		if err = z.Close(); err != nil {
-			return
-		}
-		return os.Rename(dest, path)
-	}
-
-	// Find all zip files
-	p := filepath.Join(configs.Config.Main.DataDirectory, "bookmarks")
-
-	err := filepath.Walk(p, bookmarkFileMigrateIDs)
-	if err != nil {
-		// Remove all .zip.tmp files
-		files, _ := filepath.Glob(filepath.Join(p, "**/*.zip.tmp"))
-		for _, x := range files {
-			if err := os.Remove(x); err != nil {
-				slog.Error("deleting file",
-					slog.String("file", x),
-					slog.Any("err", err),
-				)
-			}
-		}
-	}
-
-	return err
+		return total, nil
+	}))
 }

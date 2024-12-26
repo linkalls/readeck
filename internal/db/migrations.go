@@ -94,4 +94,5 @@ var migrationList = []migrationEntry{
 	newMigrationEntry(12, "bookmark_initial_url", applyMigrationFile("12_bookmark_initial_url.sql")),
 	newMigrationEntry(13, "bookmark_progress", applyMigrationFile("13_bookmark_progress.sql")),
 	newMigrationEntry(14, "collection_bookmark_type", migrations.M14collectionBookmarkType),
+	newMigrationEntry(15, "bookmark_wrap_tables", migrations.M15wrapTables),
 }
