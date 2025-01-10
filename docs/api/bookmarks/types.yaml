@@ -107,6 +107,10 @@ schemas:
         items:
           type: string
         description: Bookmark's labels
+      word_count:
+        type: integer
+        minimum: 0
+        description: Number of words in the article
       resources:
         type: object
         description: |
