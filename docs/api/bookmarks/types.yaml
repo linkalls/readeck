@@ -110,7 +110,11 @@ schemas:
       word_count:
         type: integer
         minimum: 0
-        description: Number of words in the article
+        description: Number of words in the article, used to compute the reading time.
+      duration:
+        type: integer
+        minimum: 0
+        description: Duration of the article, used to compute the reading time.
       resources:
         type: object
         description: |

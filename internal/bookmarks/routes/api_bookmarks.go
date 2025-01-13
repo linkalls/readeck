@@ -887,6 +887,7 @@ type bookmarkItem struct {
 	Errors        []string                      `json:"errors,omitempty"`
 	Links         bookmarks.BookmarkLinks       `json:"links,omitempty"`
 	WordCount     int                           `json:"word_count,omitempty"`
+	Duration      int                           `json:"duration,omitempty"`
 
 	baseURL            *url.URL
 	mediaURL           *url.URL
@@ -928,6 +929,7 @@ func newBookmarkItem(s *server.Server, r *http.Request, b *bookmarks.Bookmark, b
 		ReadProgress:  b.ReadProgress,
 		ReadAnchor:    b.ReadAnchor,
 		WordCount:     b.WordCount,
+		Duration:      b.Duration,
 		Labels:        make([]string, 0),
 		Annotations:   b.Annotations,
 		Resources:     make(map[string]*bookmarkFile),
