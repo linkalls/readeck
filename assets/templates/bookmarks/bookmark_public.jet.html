@@ -55,9 +55,9 @@ SPDX-License-Identifier: AGPL-3.0-only
           {{- yield line_icon(icon="o-link-ext") content -}}
             <a href="{{ .Item.URL }}" class="link" target="_blank">{{ .Item.Domain }}</a>
           {{- end -}}
-          {{- if .Item.ReadingTime() > 0 -}}
+          {{- if .Item.ReadingTime > 0 -}}
             {{- yield line_icon(icon="o-clock") content -}}
-              {{ gettext("%d min", .Item.ReadingTime()) }}
+              {{ gettext("%d min", .Item.ReadingTime) }}
             {{- end -}}
           {{- end -}}
         </ul>

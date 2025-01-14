@@ -929,7 +929,7 @@ func newBookmarkItem(s *server.Server, r *http.Request, b *bookmarks.Bookmark, b
 		ReadProgress:  b.ReadProgress,
 		ReadAnchor:    b.ReadAnchor,
 		WordCount:     b.WordCount,
-		ReadingTime:   b.ReadingTime(),
+		ReadingTime:   b.ReadingTime,
 		Labels:        make([]string, 0),
 		Annotations:   b.Annotations,
 		Resources:     make(map[string]*bookmarkFile),

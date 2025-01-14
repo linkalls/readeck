@@ -40,8 +40,8 @@ SPDX-License-Identifier: AGPL-3.0-only
     <li>{{ gettext("By %s", join(.Item.Authors, ", ")) }}</li>
   {{- end -}}
     <li><a href="{{ .Item.URL }}">{{ .Item.Domain }}</a></li>
-  {{- if .Item.ReadingTime() > 0 -}}
-    <li>{{ gettext("About %d min read", .Item.ReadingTime()) }}</li>
+  {{- if .Item.ReadingTime > 0 -}}
+    <li>{{ gettext("About %d min read", .Item.ReadingTime) }}</li>
   {{- end -}}
 </ul>
 

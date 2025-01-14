@@ -71,8 +71,8 @@ SPDX-License-Identifier: AGPL-3.0-only
     <div class="bookmark-card--meta">
       <strong title="{{ .SiteName }}"
         dir="{{ default(.TextDirection, `ltr`) }}">{{ shortText(.SiteName, 50) }}</strong>
-      {{- if .ReadingTime() > 0 -}}
-        <span> •&nbsp;{{ gettext("%d min", .ReadingTime()) }}</span>
+      {{- if .ReadingTime > 0 -}}
+        <span> •&nbsp;{{ gettext("%d min", .ReadingTime) }}</span>
       {{- end -}}
     </div>
     {{ if len(.Labels) -}}
