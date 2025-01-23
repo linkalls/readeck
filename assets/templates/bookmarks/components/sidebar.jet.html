@@ -66,7 +66,7 @@ SPDX-License-Identifier: AGPL-3.0-only
       {{- end -}}
       {{- if .Item.ReadingTime > 0 -}}
         {{- yield line_icon(icon="o-clock") content -}}
-          {{ gettext("%d min", .Item.ReadingTime) }}
+          {{ ngettext("%d min", "%d min", .Item.ReadingTime, .Item.ReadingTime) }}
         {{- end -}}
       {{- end -}}
     </ul>

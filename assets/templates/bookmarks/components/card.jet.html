@@ -72,7 +72,7 @@ SPDX-License-Identifier: AGPL-3.0-only
       <strong title="{{ .SiteName }}"
         dir="{{ default(.TextDirection, `ltr`) }}">{{ shortText(.SiteName, 50) }}</strong>
       {{- if .ReadingTime > 0 -}}
-        <span> •&nbsp;{{ gettext("%d min", .ReadingTime) }}</span>
+        <span> •&nbsp; {{ngettext("%d min", "%d min", .ReadingTime, .ReadingTime)}}</span>
       {{- end -}}
     </div>
     {{ if len(.Labels) -}}
