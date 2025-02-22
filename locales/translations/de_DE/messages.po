@@ -6,18 +6,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Readeck 1.0.0\n"
 "Report-Msgid-Bugs-To: translate@readeck.com\n"
-"POT-Creation-Date: 2025-01-23 22:14+0100\n"
+"POT-Creation-Date: 2024-12-30 14:03+0000\n"
 "PO-Revision-Date: 2025-01-08 13:08+0000\n"
-"Last-Translator: altruizine "
-"<altruizine@users.noreply.translate.codeberg.org>\n"
+"Last-Translator: altruizine <altruizine@users.noreply.translate.codeberg.org>"
+"\n"
+"Language-Team: German <https://translate.codeberg.org/projects/readeck/"
+"application/de/>\n"
 "Language: de_DE\n"
-"Language-Team: German "
-"<https://translate.codeberg.org/projects/readeck/application/de/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.14.0\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.9.2\n"
+"Generated-By: Babel 2.12.1\n"
 
 #: assets/templates/_layouts/sidemenu.jet.html
 #: assets/templates/bookmarks/bookmark.jet.html assets/templates/error.jet.html
@@ -357,8 +358,8 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"        Sobald du anfängst, Teile deiner Artikel zu markieren, werden Sie"
-" hier auftauchen, \n"
+"        Sobald du anfängst, Teile deiner Artikel zu markieren, werden Sie "
+"hier auftauchen, \n"
 "        damit du sie leichter finden kannst.\n"
 "      "
 
@@ -368,8 +369,8 @@ msgid ""
 "Read more about highlights in the <a class=\"%s\" "
 "href=\"%s\">documentation</a>."
 msgstr ""
-"Lies mehr über Markierungen in der <a class=\"%s\" "
-"href=\"%s\">Dokumentation</a>."
+"Lies mehr über Markierungen in der <a class=\"%s\" href=\"%s\""
+">Dokumentation</a>."
 
 #: assets/templates/bookmarks/base.jet.html
 #: assets/templates/bookmarks/bookmark.jet.html assets/templates/menu.jet.html
@@ -471,11 +472,9 @@ msgstr "Von %s"
 #: assets/templates/bookmarks/bookmark_public.jet.html
 #: assets/templates/bookmarks/components/card.jet.html
 #: assets/templates/bookmarks/components/sidebar.jet.html
-#, fuzzy, python-format
+#, python-format
 msgid "%d min"
-msgid_plural "%d min"
-msgstr[0] "%d min"
-msgstr[1] "%d min"
+msgstr "%d min"
 
 #: assets/templates/bookmarks/bookmark_public.jet.html
 #, python-format
@@ -916,8 +915,8 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"    Um deine Artikel aus Omnivore zu importieren, musst du zu erst einen "
-"API-Schlüssel\n"
+"    Um deine Artikel aus Omnivore zu importieren, musst du zu erst einen API-"
+"Schlüssel\n"
 "    in den Omnivore Einstellungen erstellen und unten eintragen.\n"
 "  "
 
@@ -1692,10 +1691,6 @@ msgid "Invalid user and/or password"
 msgstr "Ungültiger Benutzername und/oder ungültiges Passwort"
 
 #: internal/auth/users/forms.go
-msgid "password is empty"
-msgstr ""
-
-#: internal/auth/users/forms.go
 msgid "Bookmarks : Read Only"
 msgstr "Lesezeichen: Nur lesen"
 
@@ -1720,7 +1715,9 @@ msgid "Unable to read HTML content"
 msgstr "Der HTML-Inhalt kann nicht gelesen werden"
 
 #: internal/bookmarks/importer/browser.go
-#: internal/bookmarks/importer/importer.go
+#: internal/bookmarks/importer/goodlinks.go
+#: internal/bookmarks/importer/pocket_file.go
+#: internal/bookmarks/importer/text.go
 msgid "Empty or invalid import file"
 msgstr "Leere oder ungültige Importdatei"
 
@@ -1731,6 +1728,14 @@ msgstr "GoodLinks Export Datei"
 #: internal/bookmarks/importer/omnivore.go
 msgid "Invalid API Key"
 msgstr "Falscher API Schlüssel"
+
+#: internal/bookmarks/importer/pocket_file.go
+msgid "Invalid upload format"
+msgstr "Ungültiges Format"
+
+#: internal/bookmarks/importer/pocket_file.go
+msgid "Unable to open zip file"
+msgstr "Die ZIP-Datei kann nicht geöffnet werden"
 
 #: internal/bookmarks/importer/text.go
 msgid "Text File"
@@ -1747,10 +1752,6 @@ msgstr "Ungültige Anmeldeinformationen"
 #: internal/bookmarks/importer/wallabag.go
 msgid "No access token found"
 msgstr "Kein Zugangstoken gefunden"
-
-#: internal/bookmarks/routes/forms_bookmarks.go
-msgid "Unable to process input data"
-msgstr ""
 
 #: internal/bookmarks/routes/forms_bookmarks.go
 msgid "Article"
@@ -1928,40 +1929,9 @@ msgstr "Neues Token erstellt."
 msgid "Token was updated."
 msgstr "Token aktualisiert."
 
-#: pkg/forms/fields_test.go
-#, python-format
-msgid "values %s"
-msgstr ""
-
-#: pkg/forms/fields_test.go
-#, python-format
-msgctxt "ctx"
-msgid "values %s"
-msgstr ""
-
 #: pkg/forms/forms.go
 msgid "an unexpected error has occurred"
 msgstr "Ein unerwarteter Fehler ist aufgetreten"
-
-#: pkg/forms/forms_test.go
-msgid "global error"
-msgstr ""
-
-#: pkg/forms/forms_test.go
-msgid "value contains xx"
-msgstr ""
-
-#: pkg/forms/forms_test.go
-msgid "forbidden"
-msgstr ""
-
-#: pkg/forms/join_test.go
-msgid "context error"
-msgstr ""
-
-#: pkg/forms/join_test.go
-msgid "context error on name"
-msgstr ""
 
 #: pkg/forms/validators.go
 msgid "field is required"
@@ -1984,11 +1954,6 @@ msgstr "muss größer oder gleich %d sein"
 #, python-format
 msgid "must be lower or equal than %d"
 msgstr "muss kleiner oder gleich %d sein"
-
-#: pkg/forms/validators.go
-#, python-format
-msgid "%v is not one of %s"
-msgstr ""
 
 #: pkg/strftime/strftime.go
 msgctxt "datetime_dl"
@@ -2228,10 +2193,3 @@ msgstr "%H:%M:%S"
 
 #~ msgid "Error: you can not create more credentials."
 #~ msgstr "Fehler: Du kannst keine weiteren Anmeldeinformationen erstellen."
-
-#~ msgid "Invalid upload format"
-#~ msgstr "Ungültiges Format"
-
-#~ msgid "Unable to open zip file"
-#~ msgstr "Die ZIP-Datei kann nicht geöffnet werden"
-

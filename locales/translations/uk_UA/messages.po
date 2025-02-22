@@ -6,18 +6,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Readeck 1.0.0\n"
 "Report-Msgid-Bugs-To: translate@readeck.com\n"
-"POT-Creation-Date: 2025-01-23 22:14+0100\n"
+"POT-Creation-Date: 2024-12-30 14:03+0000\n"
 "PO-Revision-Date: 2025-01-14 23:58+0000\n"
 "Last-Translator: jpnsncp <jpnsncp@users.noreply.translate.codeberg.org>\n"
+"Language-Team: Ukrainian <https://translate.codeberg.org/projects/readeck/"
+"application/uk/>\n"
 "Language: uk_UA\n"
-"Language-Team: Ukrainian "
-"<https://translate.codeberg.org/projects/readeck/application/uk/>\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.14.0\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.9.2\n"
+"Generated-By: Babel 2.12.1\n"
 
 #: assets/templates/_layouts/sidemenu.jet.html
 #: assets/templates/bookmarks/bookmark.jet.html assets/templates/error.jet.html
@@ -238,7 +239,8 @@ msgid "Welcome to Readeck!"
 msgstr "Вітаємо в Readeck!"
 
 #: assets/templates/auth/onboarding.jet.html
-msgid "We're delighted to have you on board; one more step and you're good to go."
+msgid ""
+"We're delighted to have you on board; one more step and you're good to go."
 msgstr "Ми раді бачити вас на борту; ще один крок і все готово."
 
 #: assets/templates/auth/onboarding.jet.html
@@ -256,16 +258,16 @@ msgid ""
 "\n"
 "  Your email address is optional and will never leave this installation.\n"
 "  It will never be collected, transferred or sold.\n"
-"  It will <strong>only</strong> be used, should you need it, for password"
-" recovery and internal notifications.\n"
+"  It will <strong>only</strong> be used, should you need it, for password "
+"recovery and internal notifications.\n"
 "  "
 msgstr ""
 "\n"
-"  Ваша електронна адреса не є обов’язковою та залишиться лише в межах "
-"цієї інсталяції.\n"
+"  Ваша електронна адреса не є обов’язковою та залишиться лише в межах цієї "
+"інсталяції.\n"
 "  Вона ніколи не буде зібрана, передана чи продана.\n"
-"  Її буде використано <strong>лише</strong> у разі вашої потреби "
-"відновлення паролю та для внутрішніх сповіщень.\n"
+"  Її буде використано <strong>лише</strong> у разі вашої потреби відновлення "
+"паролю та для внутрішніх сповіщень.\n"
 "  "
 
 #: assets/templates/auth/onboarding.jet.html
@@ -289,8 +291,8 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"        Будь ласка, вкажіть електронну адресу, яку ви використовували під"
-" час створення\n"
+"        Будь ласка, вкажіть електронну адресу, яку ви використовували під "
+"час створення\n"
 "        облікового запису, і ми надішлемо вам повідомлення з посиланням\n"
 "        для відновлення паролю.\n"
 "      "
@@ -350,25 +352,25 @@ msgstr "У вас поки що немає виділень."
 #: assets/templates/bookmarks/annotation_list.jet.html
 msgid ""
 "\n"
-"        Once you start highlighting parts of your saved articles, they "
-"will appear on this page\n"
+"        Once you start highlighting parts of your saved articles, they will "
+"appear on this page\n"
 "        for you to easily find them.\n"
 "      "
 msgstr ""
 "\n"
-"        Як тільки ви почнете виділяти частини ваших збережених статей, "
-"вони з'являться на цій сторінці\n"
+"        Як тільки ви почнете виділяти частини ваших збережених статей, вони "
+"з'являться на цій сторінці\n"
 "        щоб ви легко знайшли їх.\n"
 "      "
 
 #: assets/templates/bookmarks/annotation_list.jet.html
 #, python-format
 msgid ""
-"Read more about highlights in the <a class=\"%s\" "
-"href=\"%s\">documentation</a>."
+"Read more about highlights in the <a class=\"%s\" href=\"%s\">documentation</"
+"a>."
 msgstr ""
-"Прочитайте більше про виділення в <a class=\"%s\" "
-"href=\"%s\">документації</a>."
+"Прочитайте більше про виділення в <a class=\"%s\" href=\"%s\">документації</"
+"a>."
 
 #: assets/templates/bookmarks/base.jet.html
 #: assets/templates/bookmarks/bookmark.jet.html assets/templates/menu.jet.html
@@ -470,12 +472,9 @@ msgstr "Автор %s"
 #: assets/templates/bookmarks/bookmark_public.jet.html
 #: assets/templates/bookmarks/components/card.jet.html
 #: assets/templates/bookmarks/components/sidebar.jet.html
-#, fuzzy, python-format
+#, python-format
 msgid "%d min"
-msgid_plural "%d min"
-msgstr[0] "%d хв"
-msgstr[1] "%d хв"
-msgstr[2] "%d хв"
+msgstr "%d хв"
 
 #: assets/templates/bookmarks/bookmark_public.jet.html
 #, python-format
@@ -556,8 +555,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Колекції дають вам змогу впорядковувати та експортувати "
-"закладки,\n"
+"          Колекції дають вам змогу впорядковувати та експортувати закладки,\n"
 "          зберігаючи вибрані вами пошукові запити.\n"
 "          Коли ви створюєте нову закладку, яка відповідає критеріям\n"
 "          колекції, вона миттєво відображається в ній.\n"
@@ -586,8 +584,8 @@ msgid ""
 "Read more about collections in the <a class=\"%s\" "
 "href=\"%s\">documentation</a>."
 msgstr ""
-"Прочитайте більше про колекції в <a class=\"%s\" "
-"href=\"%s\">документації</a>."
+"Прочитайте більше про колекції в <a class=\"%s\" href=\"%s\">документації</"
+"a>."
 
 #: assets/templates/bookmarks/components/actions.jet.html
 msgid "Export and Share"
@@ -904,14 +902,14 @@ msgstr "Імпортувати ваші статті з Omnivore"
 #: assets/templates/bookmarks/import/form-omnivore.jet.html
 msgid ""
 "\n"
-"    To import your articles from Omnivore, you must first create an API "
-"Key in your\n"
+"    To import your articles from Omnivore, you must first create an API Key "
+"in your\n"
 "    Omnivore's settings and enter it in the the form below.\n"
 "  "
 msgstr ""
 "\n"
-"    Щоб імпортувати свої статті з Omnivore, спершу ви маєте створити ключ"
-" API у\n"
+"    Щоб імпортувати свої статті з Omnivore, спершу ви маєте створити ключ "
+"API у\n"
 "    налаштуваннях Omnivore та ввести його у форму нижче.\n"
 "  "
 
@@ -962,15 +960,14 @@ msgid ""
 "\n"
 "    Please note that Pocket does not allow the article content to be "
 "exported.\n"
-"    This could lead to different results in Readeck than what you "
-"currently\n"
+"    This could lead to different results in Readeck than what you currently\n"
 "    see in Pocket.\n"
 "  "
 msgstr ""
 "\n"
 "    Зверніть увагу, що Pocket не дозволяє експортувати вміст статті.\n"
-"    Це може призвести до того, що результати в Readeck будуть "
-"відрізнятися від тих, які ви зараз\n"
+"    Це може призвести до того, що результати в Readeck будуть відрізнятися "
+"від тих, які ви зараз\n"
 "    бачите в Pocket.\n"
 "  "
 
@@ -988,8 +985,8 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"    Завантажте текстовий файл, який містить по одному посиланню в рядку, "
-"і Readeck витягне\n"
+"    Завантажте текстовий файл, який містить по одному посиланню в рядку, і "
+"Readeck витягне\n"
 "    та збереже їх усі у вашому списку закладок.\n"
 "  "
 
@@ -1003,8 +1000,8 @@ msgid ""
 "\n"
 "    To import your articles from Wallabag, you must first create an API "
 "client\n"
-"    in Wallabag's <strong>API clients management</strong> menu. This will"
-" give you\n"
+"    in Wallabag's <strong>API clients management</strong> menu. This will "
+"give you\n"
 "    a <strong>Client ID</strong> and <strong>Client secret</strong>.\n"
 "  "
 msgstr ""
@@ -1088,7 +1085,8 @@ msgstr "Процес імпорту почався!"
 
 #: assets/templates/bookmarks/import/progress.jet.html
 msgid "You can keep using Readeck while the import is running."
-msgstr "Ви можете продовжувати користуватися Readeck під час виконання імпорту."
+msgstr ""
+"Ви можете продовжувати користуватися Readeck під час виконання імпорту."
 
 #: assets/templates/bookmarks/import/progress.jet.html
 msgid "Import is finished!"
@@ -1119,9 +1117,9 @@ msgstr "Зберегти посилання"
 #: assets/templates/bookmarks/index.jet.html
 #, python-format
 msgid ""
-"\"%s\" is not a valid address. Did you mean to search your bookmarks for "
-"%s?"
-msgstr "\"%s\" не є дійсною адресою. Ви мали на увазі шукати %s у ваших закладках?"
+"\"%s\" is not a valid address. Did you mean to search your bookmarks for %s?"
+msgstr ""
+"\"%s\" не є дійсною адресою. Ви мали на увазі шукати %s у ваших закладках?"
 
 #: assets/templates/bookmarks/index.jet.html
 msgid ""
@@ -1134,23 +1132,23 @@ msgstr ""
 #: assets/templates/bookmarks/index.jet.html
 #, python-format
 msgid ""
-"Read more about bookmarks in the <a class=\"%s\" "
-"href=\"%s\">documentation</a>."
+"Read more about bookmarks in the <a class=\"%s\" href=\"%s\">documentation</"
+"a>."
 msgstr ""
-"Докладніше про закладки читайте в <a class=\"%s\" "
-"href=\"%s\">документації</a>."
+"Докладніше про закладки читайте в <a class=\"%s\" href=\"%s\">документації</"
+"a>."
 
 #: assets/templates/bookmarks/index.jet.html
 msgid ""
 "\n"
-"          Would you like to import from a similar tool or from a file "
-"with existing bookmarks?\n"
+"          Would you like to import from a similar tool or from a file with "
+"existing bookmarks?\n"
 "          Try Readeck's import tool.\n"
 "        "
 msgstr ""
 "\n"
-"          Ви хочете імпортувати зі схожого інструменту або файлу з "
-"існуючими закладками?\n"
+"          Ви хочете імпортувати зі схожого інструменту або файлу з існуючими "
+"закладками?\n"
 "          Спробуйте утиліту імпорту Readeck.\n"
 "        "
 
@@ -1228,11 +1226,11 @@ msgstr "Інформація про систему"
 
 #: assets/templates/docs/about.jet.html
 msgid ""
-"Here are your current system information. Please include them if you "
-"report a bug."
+"Here are your current system information. Please include them if you report "
+"a bug."
 msgstr ""
-"Тут знаходиться поточна інформація про вашу систему. Будь ласка, вкажіть "
-"її, якщо повідомляєте про помилку."
+"Тут знаходиться поточна інформація про вашу систему. Будь ласка, вкажіть її, "
+"якщо повідомляєте про помилку."
 
 #: assets/templates/docs/about.jet.html
 msgid "Project"
@@ -1371,8 +1369,7 @@ msgstr ""
 "Ви (або хтось інший) ввели цю електронну адресу під час спроби\n"
 "змінити пароль облікового запису Readeck (%s).\n"
 "\n"
-"Якщо ви очікуєте на цей лист, перейдіть за цим посиланням, щоб встановити"
-"\n"
+"Якщо ви очікуєте на цей лист, перейдіть за цим посиланням, щоб встановити\n"
 "новий пароль для свого облікового запису Readeck.\n"
 "\n"
 "%s\n"
@@ -1480,14 +1477,14 @@ msgstr "Пароль буде видалено через кілька секу�
 #: assets/templates/profile/credential.jet.html
 msgid ""
 "\n"
-"    Your application password was created. Please copy the password below"
-" and write it down\n"
+"    Your application password was created. Please copy the password below "
+"and write it down\n"
 "    or store it in a password manager.\n"
 "  "
 msgstr ""
 "\n"
-"    Ваш пароль для застосунку створено. Будь ласка, скопіюйте пароль "
-"нижче, запишіть\n"
+"    Ваш пароль для застосунку створено. Будь ласка, скопіюйте пароль нижче, "
+"запишіть\n"
 "    або збережіть його у менеджері паролів.\n"
 "  "
 
@@ -1516,8 +1513,8 @@ msgstr "Увімкнено"
 #: assets/templates/profile/credential.jet.html
 msgid ""
 "\n"
-"    You can limit the permissions granted to this password by choosing "
-"one or more\n"
+"    You can limit the permissions granted to this password by choosing one "
+"or more\n"
 "    group of permissions below.<br>\n"
 "    Leave all the choices blank to grant all your permissions to this "
 "password.\n"
@@ -1527,8 +1524,7 @@ msgstr ""
 "    Ви можете обмежити дозволи, надані цьому паролю, вибравши одну або "
 "кілька\n"
 "    груп дозволів нижче.<br>\n"
-"    Залиште всі опції порожніми, щоб надати усі ваші дозволи цьому "
-"паролю.\n"
+"    Залиште всі опції порожніми, щоб надати усі ваші дозволи цьому паролю.\n"
 "  "
 
 #: assets/templates/profile/credential.jet.html
@@ -1595,8 +1591,8 @@ msgstr "Закінчується"
 #: assets/templates/profile/token.jet.html
 msgid ""
 "\n"
-"    You can limit the permissions granted to this token by choosing one "
-"or more\n"
+"    You can limit the permissions granted to this token by choosing one or "
+"more\n"
 "    group of permissions below.<br>\n"
 "    Leave all the choices blank to grant all your permissions to this "
 "token.\n"
@@ -1606,8 +1602,7 @@ msgstr ""
 "    Ви можете обмежити дозволи, надані цьому токену, вибравши одну або "
 "кілька\n"
 "    груп дозволів нижче.<br>\n"
-"    Залиште всі опції порожніми, щоб надати усі ваші дозволи цьому "
-"токену.\n"
+"    Залиште всі опції порожніми, щоб надати усі ваші дозволи цьому токену.\n"
 "  "
 
 #: assets/templates/profile/token.jet.html
@@ -1624,8 +1619,8 @@ msgstr "Ваш токен API"
 
 #: assets/templates/profile/token.jet.html
 msgid ""
-"You can use this token by passing it as an <strong>Authorization: "
-"Bearer</strong> HTTP header."
+"You can use this token by passing it as an <strong>Authorization: Bearer</"
+"strong> HTTP header."
 msgstr ""
 "Ви можете використовувати цей токен, передаючи його у HTTP-заголовку "
 "<strong>Authorization: Bearer</strong> ."
@@ -1642,18 +1637,17 @@ msgid ""
 "  access to the Readeck API.\n"
 msgstr ""
 "\n"
-"  Токен API — це ключ, який надає вам (або іншому інструменту, наприклад,"
-" розширенню браузера)\n"
+"  Токен API — це ключ, який надає вам (або іншому інструменту, наприклад, "
+"розширенню браузера)\n"
 "  доступ до API Readeck\n"
 
 #: assets/templates/profile/token_list.jet.html
 #, python-format
 msgid ""
-"Please read the <a href=\"%s\">API Documentation</a> if you plan to use "
-"it."
+"Please read the <a href=\"%s\">API Documentation</a> if you plan to use it."
 msgstr ""
-"Будь ласка, прочитайте <a href=\"%s\">Документацію API</a>, якщо ви "
-"плануєте використовувати його."
+"Будь ласка, прочитайте <a href=\"%s\">Документацію API</a>, якщо ви плануєте "
+"використовувати його."
 
 #: assets/templates/profile/token_list.jet.html
 msgid "Create a new API token"
@@ -1681,10 +1675,6 @@ msgid "Invalid user and/or password"
 msgstr "Неправильний користувач і/або пароль"
 
 #: internal/auth/users/forms.go
-msgid "password is empty"
-msgstr ""
-
-#: internal/auth/users/forms.go
 msgid "Bookmarks : Read Only"
 msgstr "Закладки : Лише для читання"
 
@@ -1709,7 +1699,9 @@ msgid "Unable to read HTML content"
 msgstr "Не вдається прочитати вміст HTML"
 
 #: internal/bookmarks/importer/browser.go
-#: internal/bookmarks/importer/importer.go
+#: internal/bookmarks/importer/goodlinks.go
+#: internal/bookmarks/importer/pocket_file.go
+#: internal/bookmarks/importer/text.go
 msgid "Empty or invalid import file"
 msgstr "Порожній або неправильний файл імпорту"
 
@@ -1720,6 +1712,14 @@ msgstr "Файл експорту GoodLinks"
 #: internal/bookmarks/importer/omnivore.go
 msgid "Invalid API Key"
 msgstr "Неправильний ключ API"
+
+#: internal/bookmarks/importer/pocket_file.go
+msgid "Invalid upload format"
+msgstr "Неправильний формат завантаження"
+
+#: internal/bookmarks/importer/pocket_file.go
+msgid "Unable to open zip file"
+msgstr "Не вдається відкрити файл zip"
 
 #: internal/bookmarks/importer/text.go
 msgid "Text File"
@@ -1736,10 +1736,6 @@ msgstr "Неправильні облікові дані"
 #: internal/bookmarks/importer/wallabag.go
 msgid "No access token found"
 msgstr "Не знайдено токен доступу"
-
-#: internal/bookmarks/routes/forms_bookmarks.go
-msgid "Unable to process input data"
-msgstr ""
 
 #: internal/bookmarks/routes/forms_bookmarks.go
 msgid "Article"
@@ -1917,40 +1913,9 @@ msgstr "Новий токен створено."
 msgid "Token was updated."
 msgstr "Токен оновлено."
 
-#: pkg/forms/fields_test.go
-#, python-format
-msgid "values %s"
-msgstr ""
-
-#: pkg/forms/fields_test.go
-#, python-format
-msgctxt "ctx"
-msgid "values %s"
-msgstr ""
-
 #: pkg/forms/forms.go
 msgid "an unexpected error has occurred"
 msgstr "сталася непередбачена помилка"
-
-#: pkg/forms/forms_test.go
-msgid "global error"
-msgstr ""
-
-#: pkg/forms/forms_test.go
-msgid "value contains xx"
-msgstr ""
-
-#: pkg/forms/forms_test.go
-msgid "forbidden"
-msgstr ""
-
-#: pkg/forms/join_test.go
-msgid "context error"
-msgstr ""
-
-#: pkg/forms/join_test.go
-msgid "context error on name"
-msgstr ""
 
 #: pkg/forms/validators.go
 msgid "field is required"
@@ -1973,11 +1938,6 @@ msgstr "має бути більшим або дорівнювати %d"
 #, python-format
 msgid "must be lower or equal than %d"
 msgstr "має бути меншим або дорівнювати %d"
-
-#: pkg/forms/validators.go
-#, python-format
-msgid "%v is not one of %s"
-msgstr ""
 
 #: pkg/strftime/strftime.go
 msgctxt "datetime_dl"
@@ -2195,10 +2155,3 @@ msgstr "%d.%m.%Y"
 msgctxt "datetime"
 msgid "%H:%M:%S"
 msgstr "%H:%M:%S"
-
-#~ msgid "Invalid upload format"
-#~ msgstr "Неправильний формат завантаження"
-
-#~ msgid "Unable to open zip file"
-#~ msgstr "Не вдається відкрити файл zip"
-

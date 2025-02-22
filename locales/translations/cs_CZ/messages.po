@@ -6,17 +6,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Readeck CZ 1.0.0\n"
 "Report-Msgid-Bugs-To: translate@readeck.com\n"
-"POT-Creation-Date: 2025-01-23 22:14+0100\n"
+"POT-Creation-Date: 2024-12-30 14:03+0000\n"
 "PO-Revision-Date: 2025-01-08 13:08+0000\n"
 "Last-Translator: Joedmin <joedmin@joedmin.cz>\n"
+"Language-Team: Czech <https://translate.codeberg.org/projects/readeck/"
+"application/cs/>\n"
 "Language: cs_CZ\n"
-"Language-Team: Czech "
-"<https://translate.codeberg.org/projects/readeck/application/cs/>\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.14.0\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 5.9.2\n"
+"Generated-By: Babel 2.12.1\n"
 
 #: assets/templates/_layouts/sidemenu.jet.html
 #: assets/templates/bookmarks/bookmark.jet.html assets/templates/error.jet.html
@@ -467,12 +468,9 @@ msgstr "Zveřejnil %s"
 #: assets/templates/bookmarks/bookmark_public.jet.html
 #: assets/templates/bookmarks/components/card.jet.html
 #: assets/templates/bookmarks/components/sidebar.jet.html
-#, fuzzy, python-format
+#, python-format
 msgid "%d min"
-msgid_plural "%d min"
-msgstr[0] "%d min"
-msgstr[1] "%d min"
-msgstr[2] "%d min"
+msgstr "%d min"
 
 #: assets/templates/bookmarks/bookmark_public.jet.html
 #, python-format
@@ -1672,10 +1670,6 @@ msgid "Invalid user and/or password"
 msgstr "Neplatný uživatel a/nebo heslo"
 
 #: internal/auth/users/forms.go
-msgid "password is empty"
-msgstr ""
-
-#: internal/auth/users/forms.go
 msgid "Bookmarks : Read Only"
 msgstr "Záložky : Pouze ke čtení"
 
@@ -1700,7 +1694,9 @@ msgid "Unable to read HTML content"
 msgstr "Nelze přečíst obsah HTML"
 
 #: internal/bookmarks/importer/browser.go
-#: internal/bookmarks/importer/importer.go
+#: internal/bookmarks/importer/goodlinks.go
+#: internal/bookmarks/importer/pocket_file.go
+#: internal/bookmarks/importer/text.go
 msgid "Empty or invalid import file"
 msgstr "Prázdný nebo neplatný soubor importu"
 
@@ -1711,6 +1707,14 @@ msgstr "Soubor GoodLinks Export"
 #: internal/bookmarks/importer/omnivore.go
 msgid "Invalid API Key"
 msgstr "Neplatný klíč API"
+
+#: internal/bookmarks/importer/pocket_file.go
+msgid "Invalid upload format"
+msgstr "Neplatný nahraný formát"
+
+#: internal/bookmarks/importer/pocket_file.go
+msgid "Unable to open zip file"
+msgstr "Nelze otevřít zip soubor"
 
 #: internal/bookmarks/importer/text.go
 msgid "Text File"
@@ -1727,10 +1731,6 @@ msgstr "Neplatné přihlašovací údaje"
 #: internal/bookmarks/importer/wallabag.go
 msgid "No access token found"
 msgstr "Nebyl nalezen žádný token pro přístup"
-
-#: internal/bookmarks/routes/forms_bookmarks.go
-msgid "Unable to process input data"
-msgstr ""
 
 #: internal/bookmarks/routes/forms_bookmarks.go
 msgid "Article"
@@ -1908,40 +1908,9 @@ msgstr "Nový token byl vytvořen."
 msgid "Token was updated."
 msgstr "Token byl aktualizován."
 
-#: pkg/forms/fields_test.go
-#, python-format
-msgid "values %s"
-msgstr ""
-
-#: pkg/forms/fields_test.go
-#, python-format
-msgctxt "ctx"
-msgid "values %s"
-msgstr ""
-
 #: pkg/forms/forms.go
 msgid "an unexpected error has occurred"
 msgstr "vyskytla se neočekávaná chyba"
-
-#: pkg/forms/forms_test.go
-msgid "global error"
-msgstr ""
-
-#: pkg/forms/forms_test.go
-msgid "value contains xx"
-msgstr ""
-
-#: pkg/forms/forms_test.go
-msgid "forbidden"
-msgstr ""
-
-#: pkg/forms/join_test.go
-msgid "context error"
-msgstr ""
-
-#: pkg/forms/join_test.go
-msgid "context error on name"
-msgstr ""
 
 #: pkg/forms/validators.go
 msgid "field is required"
@@ -1964,11 +1933,6 @@ msgstr "musí být větší nebo rovno %d"
 #, python-format
 msgid "must be lower or equal than %d"
 msgstr "musí být menší nebo rovno %d"
-
-#: pkg/forms/validators.go
-#, python-format
-msgid "%v is not one of %s"
-msgstr ""
 
 #: pkg/strftime/strftime.go
 msgctxt "datetime_dl"
@@ -2208,10 +2172,3 @@ msgstr "%H:%M:%S"
 
 #~ msgid "Error: you can not create more credentials."
 #~ msgstr "Chyba: nemůžete vytvořit více přihlašovacích údajů."
-
-#~ msgid "Invalid upload format"
-#~ msgstr "Neplatný nahraný formát"
-
-#~ msgid "Unable to open zip file"
-#~ msgstr "Nelze otevřít zip soubor"
-

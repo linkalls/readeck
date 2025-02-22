@@ -6,19 +6,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Readeck 1.0.0\n"
 "Report-Msgid-Bugs-To: translate@readeck.com\n"
-"POT-Creation-Date: 2025-01-23 22:14+0100\n"
+"POT-Creation-Date: 2024-12-30 14:03+0000\n"
 "PO-Revision-Date: 2025-01-10 07:50+0000\n"
-"Last-Translator: liilliil <liilliil@users.noreply.translate.codeberg.org>"
-"\n"
+"Last-Translator: liilliil <liilliil@users.noreply.translate.codeberg.org>\n"
+"Language-Team: Russian <https://translate.codeberg.org/projects/readeck/"
+"application/ru/>\n"
 "Language: ru_RU\n"
-"Language-Team: Russian "
-"<https://translate.codeberg.org/projects/readeck/application/ru/>\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.14.0\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.9.2\n"
+"Generated-By: Babel 2.12.1\n"
 
 #: assets/templates/_layouts/sidemenu.jet.html
 #: assets/templates/bookmarks/bookmark.jet.html assets/templates/error.jet.html
@@ -469,12 +469,9 @@ msgstr "От %s"
 #: assets/templates/bookmarks/bookmark_public.jet.html
 #: assets/templates/bookmarks/components/card.jet.html
 #: assets/templates/bookmarks/components/sidebar.jet.html
-#, fuzzy, python-format
+#, python-format
 msgid "%d min"
-msgid_plural "%d min"
-msgstr[0] "%d мин"
-msgstr[1] "%d мин"
-msgstr[2] "%d мин"
+msgstr "%d мин"
 
 #: assets/templates/bookmarks/bookmark_public.jet.html
 #, python-format
@@ -1664,10 +1661,6 @@ msgid "Invalid user and/or password"
 msgstr "Нет такой пары пользователя/пароля"
 
 #: internal/auth/users/forms.go
-msgid "password is empty"
-msgstr ""
-
-#: internal/auth/users/forms.go
 msgid "Bookmarks : Read Only"
 msgstr "Закладки: только чтение"
 
@@ -1692,7 +1685,9 @@ msgid "Unable to read HTML content"
 msgstr "Не удалось прочитать HTML-содержимое"
 
 #: internal/bookmarks/importer/browser.go
-#: internal/bookmarks/importer/importer.go
+#: internal/bookmarks/importer/goodlinks.go
+#: internal/bookmarks/importer/pocket_file.go
+#: internal/bookmarks/importer/text.go
 msgid "Empty or invalid import file"
 msgstr "Импортируется пустой или битый файл"
 
@@ -1703,6 +1698,14 @@ msgstr "Файл GoodLinks"
 #: internal/bookmarks/importer/omnivore.go
 msgid "Invalid API Key"
 msgstr "Плохой ключ API"
+
+#: internal/bookmarks/importer/pocket_file.go
+msgid "Invalid upload format"
+msgstr "Загружен неверный формат"
+
+#: internal/bookmarks/importer/pocket_file.go
+msgid "Unable to open zip file"
+msgstr "Не удалось открыть zip-архив"
 
 #: internal/bookmarks/importer/text.go
 msgid "Text File"
@@ -1719,10 +1722,6 @@ msgstr "Неверные учетные данные"
 #: internal/bookmarks/importer/wallabag.go
 msgid "No access token found"
 msgstr "Токен не найден"
-
-#: internal/bookmarks/routes/forms_bookmarks.go
-msgid "Unable to process input data"
-msgstr ""
 
 #: internal/bookmarks/routes/forms_bookmarks.go
 msgid "Article"
@@ -1900,40 +1899,9 @@ msgstr "Токен создан."
 msgid "Token was updated."
 msgstr "Токен обновлён."
 
-#: pkg/forms/fields_test.go
-#, python-format
-msgid "values %s"
-msgstr ""
-
-#: pkg/forms/fields_test.go
-#, python-format
-msgctxt "ctx"
-msgid "values %s"
-msgstr ""
-
 #: pkg/forms/forms.go
 msgid "an unexpected error has occurred"
 msgstr "что-то вдруг сломалось"
-
-#: pkg/forms/forms_test.go
-msgid "global error"
-msgstr ""
-
-#: pkg/forms/forms_test.go
-msgid "value contains xx"
-msgstr ""
-
-#: pkg/forms/forms_test.go
-msgid "forbidden"
-msgstr ""
-
-#: pkg/forms/join_test.go
-msgid "context error"
-msgstr ""
-
-#: pkg/forms/join_test.go
-msgid "context error on name"
-msgstr ""
 
 #: pkg/forms/validators.go
 msgid "field is required"
@@ -1956,11 +1924,6 @@ msgstr "должно быть не менее %d"
 #, python-format
 msgid "must be lower or equal than %d"
 msgstr "должно быть не более %d"
-
-#: pkg/forms/validators.go
-#, python-format
-msgid "%v is not one of %s"
-msgstr ""
 
 #: pkg/strftime/strftime.go
 msgctxt "datetime_dl"
@@ -2200,10 +2163,3 @@ msgstr "%H:%M:%S"
 
 #~ msgid "Error: you can not create more credentials."
 #~ msgstr "Ошибка: Вам нельзя создать дополнительные учетные данные."
-
-#~ msgid "Invalid upload format"
-#~ msgstr "Загружен неверный формат"
-
-#~ msgid "Unable to open zip file"
-#~ msgstr "Не удалось открыть zip-архив"
-

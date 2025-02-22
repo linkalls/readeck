@@ -6,18 +6,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Readeck 1.0.0\n"
 "Report-Msgid-Bugs-To: translate@readeck.com\n"
-"POT-Creation-Date: 2025-01-23 22:14+0100\n"
+"POT-Creation-Date: 2024-12-30 14:03+0000\n"
 "PO-Revision-Date: 2024-12-02 15:55+0000\n"
-"Last-Translator: toooobeeee "
-"<toooobeeee@users.noreply.translate.codeberg.org>\n"
+"Last-Translator: toooobeeee <toooobeeee@users.noreply.translate.codeberg."
+"org>\n"
 "Language: da_DK\n"
-"Language-Team: Danish "
-"<https://translate.codeberg.org/projects/readeck/application/da/>\n"
+"Language-Team: Danish <https://translate.codeberg.org/projects/readeck/"
+"application/da/>\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.14.0\n"
+"Generated-By: Babel 2.12.1\n"
 
 #: assets/templates/_layouts/sidemenu.jet.html
 #: assets/templates/bookmarks/bookmark.jet.html assets/templates/error.jet.html
@@ -238,8 +238,10 @@ msgid "Welcome to Readeck!"
 msgstr "Velkommen til Readeck!"
 
 #: assets/templates/auth/onboarding.jet.html
-msgid "We're delighted to have you on board; one more step and you're good to go."
-msgstr "Vi glæder os til at have dig om bord; kun et lille skridt og du er klar."
+msgid ""
+"We're delighted to have you on board; one more step and you're good to go."
+msgstr ""
+"Vi glæder os til at have dig om bord; kun et lille skridt og du er klar."
 
 #: assets/templates/auth/onboarding.jet.html
 #: assets/templates/auth/recover.jet.html
@@ -256,15 +258,15 @@ msgid ""
 "\n"
 "  Your email address is optional and will never leave this installation.\n"
 "  It will never be collected, transferred or sold.\n"
-"  It will <strong>only</strong> be used, should you need it, for password"
-" recovery and internal notifications.\n"
+"  It will <strong>only</strong> be used, should you need it, for password "
+"recovery and internal notifications.\n"
 "  "
 msgstr ""
 "\n"
 "  Din mailadresse er optional og forlader aldrig denne installation.\n"
 "  Den bliver aldrig samlet, overdraget eller solgt.\n"
-"  Den bliver <strong>kun</strong> brugt, hvis du anmoder om nulstilling "
-"af kodeord, eller til interne notifikationer.\n"
+"  Den bliver <strong>kun</strong> brugt, hvis du anmoder om nulstilling af "
+"kodeord, eller til interne notifikationer.\n"
 "  "
 
 #: assets/templates/auth/onboarding.jet.html
@@ -348,23 +350,24 @@ msgstr "Du har ingen highlights endnu."
 #: assets/templates/bookmarks/annotation_list.jet.html
 msgid ""
 "\n"
-"        Once you start highlighting parts of your saved articles, they "
-"will appear on this page\n"
+"        Once you start highlighting parts of your saved articles, they will "
+"appear on this page\n"
 "        for you to easily find them.\n"
 "      "
 msgstr ""
 "\n"
-"        Lige så snart du begynder at highlighte dele af dine gemte "
-"artikler, vil de dukke op på denne side\n"
+"        Lige så snart du begynder at highlighte dele af dine gemte artikler, "
+"vil de dukke op på denne side\n"
 "        så de er nemt at finde igen.\n"
 "      "
 
 #: assets/templates/bookmarks/annotation_list.jet.html
 #, python-format
 msgid ""
-"Read more about highlights in the <a class=\"%s\" "
-"href=\"%s\">documentation</a>."
-msgstr "Læs mere om highlights i <a class=\"%s\" href=\"%s\">dokumentationen</a>."
+"Read more about highlights in the <a class=\"%s\" href=\"%s\">documentation</"
+"a>."
+msgstr ""
+"Læs mere om highlights i <a class=\"%s\" href=\"%s\">dokumentationen</a>."
 
 #: assets/templates/bookmarks/base.jet.html
 #: assets/templates/bookmarks/bookmark.jet.html assets/templates/menu.jet.html
@@ -466,11 +469,9 @@ msgstr "af %s"
 #: assets/templates/bookmarks/bookmark_public.jet.html
 #: assets/templates/bookmarks/components/card.jet.html
 #: assets/templates/bookmarks/components/sidebar.jet.html
-#, fuzzy, python-format
+#, python-format
 msgid "%d min"
-msgid_plural "%d min"
-msgstr[0] "%d min"
-msgstr[1] "%d min"
+msgstr "%d min"
 
 #: assets/templates/bookmarks/bookmark_public.jet.html
 #, python-format
@@ -551,8 +552,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Samlinger gør det let at organisere og eksportere dine "
-"bogmærker\n"
+"          Samlinger gør det let at organisere og eksportere dine bogmærker\n"
 "          ved at gemme søgninger som du selv vælger.\n"
 "          Når du opretter en ny bogmærke som matcher en samlings\n"
 "          kriterier dukker det op med det samme.\n"
@@ -580,7 +580,8 @@ msgstr "Artiklerne som indeholder \"shelter\" i deres titel"
 msgid ""
 "Read more about collections in the <a class=\"%s\" "
 "href=\"%s\">documentation</a>."
-msgstr "Læs mere om samlinger i <a class=\"%s\" href=\"%s\">dokumentationen</a>."
+msgstr ""
+"Læs mere om samlinger i <a class=\"%s\" href=\"%s\">dokumentationen</a>."
 
 #: assets/templates/bookmarks/components/actions.jet.html
 msgid "Export and Share"
@@ -839,8 +840,8 @@ msgid ""
 msgstr ""
 "\n"
 "    Eksportér bogmærkerne fra din browser som en HTML fil.<br>\n"
-"    Upload denne fil ved at bruge nedenstående formular og Readeck "
-"opretter og henter\n"
+"    Upload denne fil ved at bruge nedenstående formular og Readeck opretter "
+"og henter\n"
 "    hver en bogmærke som findes i filen.\n"
 "  "
 
@@ -898,8 +899,8 @@ msgstr "Importér dine Omnivore artikler"
 #: assets/templates/bookmarks/import/form-omnivore.jet.html
 msgid ""
 "\n"
-"    To import your articles from Omnivore, you must first create an API "
-"Key in your\n"
+"    To import your articles from Omnivore, you must first create an API Key "
+"in your\n"
 "    Omnivore's settings and enter it in the the form below.\n"
 "  "
 msgstr ""
@@ -947,8 +948,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"    Upload denne fil i nedenstående formular og Readeck vil hente og "
-"gemme\n"
+"    Upload denne fil i nedenstående formular og Readeck vil hente og gemme\n"
 "    hver et link som findes i filen.\n"
 "  "
 
@@ -957,16 +957,15 @@ msgid ""
 "\n"
 "    Please note that Pocket does not allow the article content to be "
 "exported.\n"
-"    This could lead to different results in Readeck than what you "
-"currently\n"
+"    This could lead to different results in Readeck than what you currently\n"
 "    see in Pocket.\n"
 "  "
 msgstr ""
 "\n"
-"    Venligst vær opmærksom på, at Pocket ikke tillader eksport af "
-"artiklens indhold.  \n"
-"    Dette kunne medføre forskellige resultater i Readeck end hvad du ser "
-"i Pocket\n"
+"    Venligst vær opmærksom på, at Pocket ikke tillader eksport af artiklens "
+"indhold.  \n"
+"    Dette kunne medføre forskellige resultater i Readeck end hvad du ser i "
+"Pocket\n"
 "    i øjeblikket.\n"
 "  "
 
@@ -998,18 +997,17 @@ msgid ""
 "\n"
 "    To import your articles from Wallabag, you must first create an API "
 "client\n"
-"    in Wallabag's <strong>API clients management</strong> menu. This will"
-" give you\n"
+"    in Wallabag's <strong>API clients management</strong> menu. This will "
+"give you\n"
 "    a <strong>Client ID</strong> and <strong>Client secret</strong>.\n"
 "  "
 msgstr ""
 "\n"
-"    For at importere dine artikler fra Wallabag skal du først oprette en "
-"API klient\n"
+"    For at importere dine artikler fra Wallabag skal du først oprette en API "
+"klient\n"
 "    i Wallabags <strong>API clients management</strong> menu. Dette vil "
 "resultere \n"
-"    i en  <strong>Client ID</strong> og en <strong>Client "
-"secret</strong>.\n"
+"    i en  <strong>Client ID</strong> og en <strong>Client secret</strong>.\n"
 "  "
 
 #: assets/templates/bookmarks/import/form-wallabag.jet.html
@@ -1051,8 +1049,8 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"    Her kan du importere din bogmærkesamling fra forskellige kilder ind i"
-" Readeck.\n"
+"    Her kan du importere din bogmærkesamling fra forskellige kilder ind i "
+"Readeck.\n"
 "  "
 
 #: assets/templates/bookmarks/import/index.jet.html
@@ -1100,8 +1098,8 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"      Dine bogmærker findes nu i din <a class=\"%s\" href=\"%s\">bogmærke"
-" liste</a>.\n"
+"      Dine bogmærker findes nu i din <a class=\"%s\" href=\"%s\">bogmærke "
+"liste</a>.\n"
 "      "
 
 #: assets/templates/bookmarks/index.jet.html
@@ -1116,11 +1114,10 @@ msgstr "Gem link"
 #: assets/templates/bookmarks/index.jet.html
 #, python-format
 msgid ""
-"\"%s\" is not a valid address. Did you mean to search your bookmarks for "
-"%s?"
+"\"%s\" is not a valid address. Did you mean to search your bookmarks for %s?"
 msgstr ""
-"\"%s\" er ikke en gyldig adresse. Var det meningen, at du ville søge %s i"
-" dine bogmærker?"
+"\"%s\" er ikke en gyldig adresse. Var det meningen, at du ville søge %s i "
+"dine bogmærker?"
 
 #: assets/templates/bookmarks/index.jet.html
 msgid ""
@@ -1133,21 +1130,22 @@ msgstr ""
 #: assets/templates/bookmarks/index.jet.html
 #, python-format
 msgid ""
-"Read more about bookmarks in the <a class=\"%s\" "
-"href=\"%s\">documentation</a>."
-msgstr "Læs mere om bogmærker i <a class=\"%s\" href=\"%s\">dokumentationen</a>."
+"Read more about bookmarks in the <a class=\"%s\" href=\"%s\">documentation</"
+"a>."
+msgstr ""
+"Læs mere om bogmærker i <a class=\"%s\" href=\"%s\">dokumentationen</a>."
 
 #: assets/templates/bookmarks/index.jet.html
 msgid ""
 "\n"
-"          Would you like to import from a similar tool or from a file "
-"with existing bookmarks?\n"
+"          Would you like to import from a similar tool or from a file with "
+"existing bookmarks?\n"
 "          Try Readeck's import tool.\n"
 "        "
 msgstr ""
 "\n"
-"          Vil du prøve at importere fra en lignende service eller fra en "
-"fil med eksisterende bogmærker?\n"
+"          Vil du prøve at importere fra en lignende service eller fra en fil "
+"med eksisterende bogmærker?\n"
 "          Prøv Readecks import værktøj.\n"
 "        "
 
@@ -1224,8 +1222,8 @@ msgstr ""
 
 #: assets/templates/docs/about.jet.html
 msgid ""
-"Here are your current system information. Please include them if you "
-"report a bug."
+"Here are your current system information. Please include them if you report "
+"a bug."
 msgstr ""
 "Her er din aktuelle system information. Venligst inkludér dem, hvis du "
 "skulle rapportere en programfejl."
@@ -1333,7 +1331,8 @@ msgstr "Tredjepart licenser"
 
 #: assets/templates/docs/about.jet.html
 msgid "Readeck includes and/or uses the following open source assets:"
-msgstr "Readeck indeholder og/eller gør brug af følgende open source elementer:"
+msgstr ""
+"Readeck indeholder og/eller gør brug af følgende open source elementer:"
 
 #: assets/templates/docs/api-docs.jet.html assets/templates/docs/base.jet.html
 msgid "API Documentation"
@@ -1459,8 +1458,8 @@ msgstr ""
 #: assets/templates/profile/credential.jet.html
 msgid ""
 "\n"
-"    Your application password was created. Please copy the password below"
-" and write it down\n"
+"    Your application password was created. Please copy the password below "
+"and write it down\n"
 "    or store it in a password manager.\n"
 "  "
 msgstr ""
@@ -1490,8 +1489,8 @@ msgstr ""
 #: assets/templates/profile/credential.jet.html
 msgid ""
 "\n"
-"    You can limit the permissions granted to this password by choosing "
-"one or more\n"
+"    You can limit the permissions granted to this password by choosing one "
+"or more\n"
 "    group of permissions below.<br>\n"
 "    Leave all the choices blank to grant all your permissions to this "
 "password.\n"
@@ -1562,8 +1561,8 @@ msgstr ""
 #: assets/templates/profile/token.jet.html
 msgid ""
 "\n"
-"    You can limit the permissions granted to this token by choosing one "
-"or more\n"
+"    You can limit the permissions granted to this token by choosing one or "
+"more\n"
 "    group of permissions below.<br>\n"
 "    Leave all the choices blank to grant all your permissions to this "
 "token.\n"
@@ -1584,8 +1583,8 @@ msgstr ""
 
 #: assets/templates/profile/token.jet.html
 msgid ""
-"You can use this token by passing it as an <strong>Authorization: "
-"Bearer</strong> HTTP header."
+"You can use this token by passing it as an <strong>Authorization: Bearer</"
+"strong> HTTP header."
 msgstr ""
 
 #: assets/templates/profile/token_list.jet.html
@@ -1603,8 +1602,7 @@ msgstr ""
 #: assets/templates/profile/token_list.jet.html
 #, python-format
 msgid ""
-"Please read the <a href=\"%s\">API Documentation</a> if you plan to use "
-"it."
+"Please read the <a href=\"%s\">API Documentation</a> if you plan to use it."
 msgstr ""
 
 #: assets/templates/profile/token_list.jet.html
@@ -1633,10 +1631,6 @@ msgid "Invalid user and/or password"
 msgstr ""
 
 #: internal/auth/users/forms.go
-msgid "password is empty"
-msgstr ""
-
-#: internal/auth/users/forms.go
 msgid "Bookmarks : Read Only"
 msgstr ""
 
@@ -1661,7 +1655,9 @@ msgid "Unable to read HTML content"
 msgstr ""
 
 #: internal/bookmarks/importer/browser.go
-#: internal/bookmarks/importer/importer.go
+#: internal/bookmarks/importer/goodlinks.go
+#: internal/bookmarks/importer/pocket_file.go
+#: internal/bookmarks/importer/text.go
 msgid "Empty or invalid import file"
 msgstr ""
 
@@ -1671,6 +1667,14 @@ msgstr ""
 
 #: internal/bookmarks/importer/omnivore.go
 msgid "Invalid API Key"
+msgstr ""
+
+#: internal/bookmarks/importer/pocket_file.go
+msgid "Invalid upload format"
+msgstr ""
+
+#: internal/bookmarks/importer/pocket_file.go
+msgid "Unable to open zip file"
 msgstr ""
 
 #: internal/bookmarks/importer/text.go
@@ -1687,10 +1691,6 @@ msgstr ""
 
 #: internal/bookmarks/importer/wallabag.go
 msgid "No access token found"
-msgstr ""
-
-#: internal/bookmarks/routes/forms_bookmarks.go
-msgid "Unable to process input data"
 msgstr ""
 
 #: internal/bookmarks/routes/forms_bookmarks.go
@@ -1869,39 +1869,8 @@ msgstr ""
 msgid "Token was updated."
 msgstr ""
 
-#: pkg/forms/fields_test.go
-#, python-format
-msgid "values %s"
-msgstr ""
-
-#: pkg/forms/fields_test.go
-#, python-format
-msgctxt "ctx"
-msgid "values %s"
-msgstr ""
-
 #: pkg/forms/forms.go
 msgid "an unexpected error has occurred"
-msgstr ""
-
-#: pkg/forms/forms_test.go
-msgid "global error"
-msgstr ""
-
-#: pkg/forms/forms_test.go
-msgid "value contains xx"
-msgstr ""
-
-#: pkg/forms/forms_test.go
-msgid "forbidden"
-msgstr ""
-
-#: pkg/forms/join_test.go
-msgid "context error"
-msgstr ""
-
-#: pkg/forms/join_test.go
-msgid "context error on name"
 msgstr ""
 
 #: pkg/forms/validators.go
@@ -1924,11 +1893,6 @@ msgstr ""
 #: pkg/forms/validators.go
 #, python-format
 msgid "must be lower or equal than %d"
-msgstr ""
-
-#: pkg/forms/validators.go
-#, python-format
-msgid "%v is not one of %s"
 msgstr ""
 
 #: pkg/strftime/strftime.go
@@ -2147,10 +2111,3 @@ msgstr ""
 msgctxt "datetime"
 msgid "%H:%M:%S"
 msgstr ""
-
-#~ msgid "Invalid upload format"
-#~ msgstr ""
-
-#~ msgid "Unable to open zip file"
-#~ msgstr ""
-

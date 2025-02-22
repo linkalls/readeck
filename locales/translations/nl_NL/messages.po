@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Readeck 1.0.0\n"
 "Report-Msgid-Bugs-To: translate@readeck.com\n"
-"POT-Creation-Date: 2025-01-23 22:14+0100\n"
+"POT-Creation-Date: 2024-12-30 14:03+0000\n"
 "PO-Revision-Date: 2024-12-16 11:09+0000\n"
 "Last-Translator: Vistaus <Vistaus@users.noreply.translate.codeberg.org>\n"
 "Language: nl_NL\n"
@@ -16,7 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.14.0\n"
+"Generated-By: Babel 2.12.1\n"
 
 #: assets/templates/_layouts/sidemenu.jet.html
 #: assets/templates/bookmarks/bookmark.jet.html assets/templates/error.jet.html
@@ -468,11 +468,9 @@ msgstr "Door %s"
 #: assets/templates/bookmarks/bookmark_public.jet.html
 #: assets/templates/bookmarks/components/card.jet.html
 #: assets/templates/bookmarks/components/sidebar.jet.html
-#, fuzzy, python-format
+#, python-format
 msgid "%d min"
-msgid_plural "%d min"
-msgstr[0] "%d min."
-msgstr[1] "%d min."
+msgstr "%d min."
 
 #: assets/templates/bookmarks/bookmark_public.jet.html
 #, python-format
@@ -1674,10 +1672,6 @@ msgid "Invalid user and/or password"
 msgstr "Ongeldige gebruikersnaam en/of wachtwoord"
 
 #: internal/auth/users/forms.go
-msgid "password is empty"
-msgstr ""
-
-#: internal/auth/users/forms.go
 msgid "Bookmarks : Read Only"
 msgstr "Bladwijzers: alleen-lezen"
 
@@ -1702,7 +1696,9 @@ msgid "Unable to read HTML content"
 msgstr "De html-inhoud kan niet worden gelezen"
 
 #: internal/bookmarks/importer/browser.go
-#: internal/bookmarks/importer/importer.go
+#: internal/bookmarks/importer/goodlinks.go
+#: internal/bookmarks/importer/pocket_file.go
+#: internal/bookmarks/importer/text.go
 msgid "Empty or invalid import file"
 msgstr "Het bestand is blanco of ongeldig"
 
@@ -1713,6 +1709,14 @@ msgstr "GoodLink-exportbestand"
 #: internal/bookmarks/importer/omnivore.go
 msgid "Invalid API Key"
 msgstr "De api-sleutel is ongeldig"
+
+#: internal/bookmarks/importer/pocket_file.go
+msgid "Invalid upload format"
+msgstr "Het bestandsformaat is ongeldig"
+
+#: internal/bookmarks/importer/pocket_file.go
+msgid "Unable to open zip file"
+msgstr "Het zipbestand kan niet worden geopend"
 
 #: internal/bookmarks/importer/text.go
 msgid "Text File"
@@ -1729,10 +1733,6 @@ msgstr "De inloggegevens zijn onjuist"
 #: internal/bookmarks/importer/wallabag.go
 msgid "No access token found"
 msgstr "Er is geen toegangssleutel gevonden"
-
-#: internal/bookmarks/routes/forms_bookmarks.go
-msgid "Unable to process input data"
-msgstr ""
 
 #: internal/bookmarks/routes/forms_bookmarks.go
 msgid "Article"
@@ -1910,40 +1910,9 @@ msgstr "Er is een nieuwe sleutel gegenereerd."
 msgid "Token was updated."
 msgstr "De sleutel is bijgewerkt."
 
-#: pkg/forms/fields_test.go
-#, python-format
-msgid "values %s"
-msgstr ""
-
-#: pkg/forms/fields_test.go
-#, python-format
-msgctxt "ctx"
-msgid "values %s"
-msgstr ""
-
 #: pkg/forms/forms.go
 msgid "an unexpected error has occurred"
 msgstr "Er is een onverwachte fout opgetreden"
-
-#: pkg/forms/forms_test.go
-msgid "global error"
-msgstr ""
-
-#: pkg/forms/forms_test.go
-msgid "value contains xx"
-msgstr ""
-
-#: pkg/forms/forms_test.go
-msgid "forbidden"
-msgstr ""
-
-#: pkg/forms/join_test.go
-msgid "context error"
-msgstr ""
-
-#: pkg/forms/join_test.go
-msgid "context error on name"
-msgstr ""
 
 #: pkg/forms/validators.go
 msgid "field is required"
@@ -1966,11 +1935,6 @@ msgstr "Moet meer zijn dan of gelijk aan %d"
 #, python-format
 msgid "must be lower or equal than %d"
 msgstr "Moet minder zijn dan of gelijk aan %d"
-
-#: pkg/forms/validators.go
-#, python-format
-msgid "%v is not one of %s"
-msgstr ""
 
 #: pkg/strftime/strftime.go
 msgctxt "datetime_dl"
@@ -2207,10 +2171,3 @@ msgstr "%H:%M:%S"
 
 #~ msgid "Error: you can not create more credentials."
 #~ msgstr "Foutmelding: je kunt geen inloggegevens meer aanmaken."
-
-#~ msgid "Invalid upload format"
-#~ msgstr "Het bestandsformaat is ongeldig"
-
-#~ msgid "Unable to open zip file"
-#~ msgstr "Het zipbestand kan niet worden geopend"
-

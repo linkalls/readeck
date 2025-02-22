@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Readeck 1.0.0\n"
 "Report-Msgid-Bugs-To: translate@readeck.com\n"
-"POT-Creation-Date: 2025-01-23 22:14+0100\n"
+"POT-Creation-Date: 2024-12-30 14:03+0000\n"
 "PO-Revision-Date: 2024-11-25 08:02+0000\n"
 "Last-Translator: Tommi <tommi@users.noreply.translate.codeberg.org>\n"
 "Language: it\n"
@@ -16,7 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.14.0\n"
+"Generated-By: Babel 2.12.1\n"
 
 #: assets/templates/_layouts/sidemenu.jet.html
 #: assets/templates/bookmarks/bookmark.jet.html assets/templates/error.jet.html
@@ -469,11 +469,9 @@ msgstr "Di %s"
 #: assets/templates/bookmarks/bookmark_public.jet.html
 #: assets/templates/bookmarks/components/card.jet.html
 #: assets/templates/bookmarks/components/sidebar.jet.html
-#, fuzzy, python-format
+#, python-format
 msgid "%d min"
-msgid_plural "%d min"
-msgstr[0] "%d minuto"
-msgstr[1] "%d minuti"
+msgstr "%d minuti"
 
 #: assets/templates/bookmarks/bookmark_public.jet.html
 #, python-format
@@ -1680,10 +1678,6 @@ msgid "Invalid user and/or password"
 msgstr "Utente o password non validi"
 
 #: internal/auth/users/forms.go
-msgid "password is empty"
-msgstr ""
-
-#: internal/auth/users/forms.go
 msgid "Bookmarks : Read Only"
 msgstr "Bookmark: sola lettura"
 
@@ -1708,7 +1702,9 @@ msgid "Unable to read HTML content"
 msgstr ""
 
 #: internal/bookmarks/importer/browser.go
-#: internal/bookmarks/importer/importer.go
+#: internal/bookmarks/importer/goodlinks.go
+#: internal/bookmarks/importer/pocket_file.go
+#: internal/bookmarks/importer/text.go
 msgid "Empty or invalid import file"
 msgstr "File d’importazione vuoto o non valido"
 
@@ -1719,6 +1715,14 @@ msgstr "File d’esportazione GoodLinks"
 #: internal/bookmarks/importer/omnivore.go
 msgid "Invalid API Key"
 msgstr "Chiave API non valida"
+
+#: internal/bookmarks/importer/pocket_file.go
+msgid "Invalid upload format"
+msgstr "Formato di caricamento non valido"
+
+#: internal/bookmarks/importer/pocket_file.go
+msgid "Unable to open zip file"
+msgstr ""
 
 #: internal/bookmarks/importer/text.go
 msgid "Text File"
@@ -1735,10 +1739,6 @@ msgstr "Credenziali non valide"
 #: internal/bookmarks/importer/wallabag.go
 msgid "No access token found"
 msgstr "Nessun gettone d’accesso trovato"
-
-#: internal/bookmarks/routes/forms_bookmarks.go
-msgid "Unable to process input data"
-msgstr ""
 
 #: internal/bookmarks/routes/forms_bookmarks.go
 msgid "Article"
@@ -1916,40 +1916,9 @@ msgstr "Nuovo gettone creato."
 msgid "Token was updated."
 msgstr "Il gettone è stato aggiornato."
 
-#: pkg/forms/fields_test.go
-#, python-format
-msgid "values %s"
-msgstr ""
-
-#: pkg/forms/fields_test.go
-#, python-format
-msgctxt "ctx"
-msgid "values %s"
-msgstr ""
-
 #: pkg/forms/forms.go
 msgid "an unexpected error has occurred"
 msgstr "è avvenuto un errore imprevisto"
-
-#: pkg/forms/forms_test.go
-msgid "global error"
-msgstr ""
-
-#: pkg/forms/forms_test.go
-msgid "value contains xx"
-msgstr ""
-
-#: pkg/forms/forms_test.go
-msgid "forbidden"
-msgstr ""
-
-#: pkg/forms/join_test.go
-msgid "context error"
-msgstr ""
-
-#: pkg/forms/join_test.go
-msgid "context error on name"
-msgstr ""
 
 #: pkg/forms/validators.go
 msgid "field is required"
@@ -1972,11 +1941,6 @@ msgstr "deve essere maggiore o uguale a %d"
 #, python-format
 msgid "must be lower or equal than %d"
 msgstr "deve essere minore o uguale a %d"
-
-#: pkg/forms/validators.go
-#, python-format
-msgid "%v is not one of %s"
-msgstr ""
 
 #: pkg/strftime/strftime.go
 msgctxt "datetime_dl"
@@ -2213,10 +2177,4 @@ msgstr "%H:%M:%S"
 
 #~ msgid "Error: you can not create more credentials."
 #~ msgstr "Errore: non puoi creare più credenziali."
-
-#~ msgid "Invalid upload format"
-#~ msgstr "Formato di caricamento non valido"
-
-#~ msgid "Unable to open zip file"
-#~ msgstr ""
 
