@@ -6,6 +6,9 @@ import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
   static classes = ["down"]
+  static values = {
+    threshold: { type: Number, default: 100 } // Minimum scroll difference to trigger show on upscroll
+  }
 
   connect() {
     let prevScroll = window.scrollY
@@ -17,12 +20,19 @@ export default class extends Controller {
         if (!ticking) {
           window.requestAnimationFrame(() => {
             ticking = false
-            isDown = window.scrollY > prevScroll
-            prevScroll = window.scrollY
-            if (isDown) {
+            const currentScroll = window.scrollY
+            const scrollDiff = currentScroll - prevScroll
+            
+            if (scrollDiff > 0) {
+              // Immediately hide on downscroll
+              isDown = true
               this.element.classList.add(this.downClass)
-            } else {
+              prevScroll = currentScroll
+            } else if (scrollDiff < 0 && Math.abs(scrollDiff) >= this.thresholdValue) {
+              // Show on upscroll only if threshold is met
+              isDown = false
               this.element.classList.remove(this.downClass)
+              prevScroll = currentScroll
             }
           })
 
