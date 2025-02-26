@@ -10,9 +10,10 @@ SPDX-License-Identifier: AGPL-3.0-only
 <turbo-frame id="bookmark-bottom-actions-{{ .ID }}">
 <form action="{{ urlFor(`/bookmarks`, .ID) }}" method="post"
  class="flex flex-row max-sm:flex-col justify-center"
- data-controller="turbo-form"
+ data-controller="turbo-form history"
  data-turbo-form-action-value="{{ urlFor(`/api/bookmarks`, .ID) }}"
- data-turbo-form-method-value="patch">
+ data-turbo-form-method-value="patch"
+ data-action="turbo:submit-end->history#back">
   {{ yield csrfField() }}
   <button class="btn-outlined btn-primary rounded-full whitespace-nowrap mb-0 mr-4 max-sm:mr-0 max-sm:mb-2"
    name="is_marked" value="{{ .IsMarked ? 0 : 1 }}">
