@@ -26,7 +26,7 @@ require (
 	github.com/google/uuid v1.6.0
 	github.com/hlandau/passlib v1.0.11
 	github.com/itchyny/gojq v0.12.14
-	github.com/jackc/pgx/v5 v5.7.2
+	github.com/jackc/pgx/v5 v5.7.3
 	github.com/jarcoal/httpmock v1.3.1
 	github.com/kinbiko/jsonassert v1.1.1
 	github.com/klauspost/compress v1.18.0
