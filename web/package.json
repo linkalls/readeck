@@ -25,7 +25,7 @@
     "del": "^8.0.0",
     "esbuild": "^0.25.1",
     "esbuild-plugin-stimulus": "^0.1.5",
-    "eslint": "^9.22.0",
+    "eslint": "^9.23.0",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-prettier": "^5.2.3",
     "glob": "^11.0.1",
