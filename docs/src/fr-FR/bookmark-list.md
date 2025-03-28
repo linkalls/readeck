@@ -26,7 +26,6 @@ Une photo est une page qui a été reconnue comme un conteneur pour une image (e
 
 Une vidéo est une page qui a été reconnue comme un conteneur pour une vidéo (ex. un lien vers Youtube ou Vimeo). Le bookmark affiche un lecteur de vidéo. Veuillez noter que les vidéos sont jouées depuis le serveur d'origine.
 
-
 ## Liste des bookmarks
 
 La [liste des bookmarks](readeck-instance://bookmarks) contient tous vos bookmarks.

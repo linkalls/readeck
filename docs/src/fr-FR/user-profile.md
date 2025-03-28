@@ -30,4 +30,4 @@ Une fois que le mot de passe d'application est créé, vous pouvez l'utiliser po
 
 Reportez-vous à l'aide du [catalogue e-book](./opds.md) pour un exemple.
 
-**Note**: même si vous pouvez accéder à l'API avec un mot de passe d'application, il est préférable d'utiliser les jetons API quand c'est possible.
+**Note** : même si vous pouvez accéder à l'API avec un mot de passe d'application, il est préférable d'utiliser les jetons API quand c'est possible.

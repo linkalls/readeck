@@ -25,8 +25,6 @@ Une photo est une page qui a été reconnue comme un conteneur pour une image (e
 
 Une vidéo est une page qui a été reconnue comme un conteneur pour une vidéo (ex. un lien vers Youtube ou Vimeo). Le bookmark affiche un lecteur de vidéo. Veuillez noter que les vidéos sont jouées depuis le serveur d'origine.
 
-
-
 ## Navigation et paramètres de présentation
 
 Au dessus de la vue principale, un lien vous permet de retourner à la page précédente.
@@ -39,11 +37,9 @@ Paramètres de présentation.
 Vous pouvez y changer la police de caractères, sa taille ou l'interligne.\
 Ces paramètres sont sauvegardés automatiquement et seront appliqués à n'importe quel article consulté plus tard.
 
-
 ## Modifier le titre
 
 Le titre d'un bookmark est automatiquement récupéré lors de sa création. Si, pour diverses raisons, vous souhaitez le corriger, vous pouvez le modifier en cliquant dessus puis en validant vos changements avec le bouton à côté du titre.
-
 
 ## Actions
 
@@ -63,12 +59,10 @@ Le bouton de partage ouvre un menu depuis lequel vous pouvez créer un lien que 
 
 Dans le même menu, vous pouvez exporter votre bookmark (seulement EPUB pour le moment) pour le lire sur un autre périphérique.
 
-
 ### Supprimer
 
 Ceci marque le bookmark pour suppression.\
 Aucune inquiétude si vous cliquez par erreur ! Cette action peut être annulée avant que la suppression soit effective.
-
 
 ## Labels
 

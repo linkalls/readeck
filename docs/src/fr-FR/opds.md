@@ -9,12 +9,11 @@ Readeck fournit un catalogue d'e-book de tous vos bookmarks, organisés selon la
 - Collections de bookmarks
   - (Nom de la collection)
     - e-book de la collection
-    - navigeur dans la collection
+    - naviguer dans la collection
 
-Each section, except Collections, provides every bookmark as an Ebook.
+Chaque section, à l’exception des Collections, fournit les bookmarks en tant qu’e-book.
 
-On a collection's section, you can download the full collection as a single Ebook.
-
+Dans la section d’une collection, vous pouvez télécharger l’intégralité de celle-ci sous forme d’un seul e-book.
 
 ## Accès au catalogue
 
@@ -24,7 +23,6 @@ Vous pouvez restreindre les permissions de ce mot de passe à "Bookmarks: lectur
 
 L'URL du catalogue OPDS est : \
 [readeck-instance://opds](readeck-instance://opds)
-
 
 ## Example de paramétrage : Koreader
 
