@@ -1,0 +1,36 @@
+{
+  "title_selectors": null,
+  "body_selectors": [
+    "//article[contains(@id, 'post-')]"
+  ],
+  "date_selectors": null,
+  "author_selectors": [
+    "//meta[@name='author']/@content"
+  ],
+  "strip_selectors": null,
+  "strip_id_or_class": [
+    "vc_cta3-container",
+    "edgtf-post-info-bottom",
+    "edgtf-post-info-top",
+    "entry-title",
+    "edgtf-post-info",
+    "m-a-box"
+  ],
+  "strip_image_src": null,
+  "native_ad_selectors": null,
+  "tidy": false,
+  "prune": false,
+  "autodetect_on_failure": true,
+  "single_page_link_selectors": null,
+  "next_page_link_selectors": null,
+  "replace_strings": null,
+  "http_headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:138.0) Gecko/20100101 Firefox/138.0"
+  },
+  "tests": [
+    {
+      "url": "https://economichardship.org/2025/02/christian-right-is-coming-for-public-schools/",
+      "contains": []
+    }
+  ]
+}

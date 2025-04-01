@@ -22,10 +22,8 @@
   "http_headers": null,
   "tests": [
     {
-      "url": "https://www.wired.com/story/tiktok-platforms-cory-doctorow/",
-      "contains": [
-        "they are good to their users"
-      ]
+      "url": "https://interactive.wired.com/www-wired-com__2014__09__coupland-bell-labs/index.html",
+      "contains": []
     }
   ]
 }

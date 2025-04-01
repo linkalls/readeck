@@ -28,6 +28,7 @@
     "//button",
     "//aside[contains(concat(' ',normalize-space(@class),' '),' btn ')]",
     "//div[contains(concat(' ',normalize-space(@class),' '),' meta2 ')]",
+    "//footer",
     "//div[contains(@style, 'background-image')]",
     "//img[@width='1']",
     "//footer[@class='tsr-Base_ContentMeta']"
@@ -55,6 +56,7 @@
     "cbx-Author-is-in-article-container-info",
     "BigBox",
     "upper-toolbar",
+    "print:hidden",
     "LightBoxOverlay",
     "exitLarge",
     "PagerBox",

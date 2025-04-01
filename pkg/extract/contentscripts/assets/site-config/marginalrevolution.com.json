@@ -1,0 +1,31 @@
+{
+  "title_selectors": [
+    "//article[1]/header/h1"
+  ],
+  "body_selectors": [
+    "//article[1]/div[@class='entry-content']"
+  ],
+  "date_selectors": null,
+  "author_selectors": [
+    "//meta[@name='author']/@content"
+  ],
+  "strip_selectors": null,
+  "strip_id_or_class": null,
+  "strip_image_src": null,
+  "native_ad_selectors": null,
+  "tidy": false,
+  "prune": false,
+  "autodetect_on_failure": true,
+  "single_page_link_selectors": null,
+  "next_page_link_selectors": null,
+  "replace_strings": null,
+  "http_headers": {
+    "User-Agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
+  },
+  "tests": [
+    {
+      "url": "https://marginalrevolution.com/marginalrevolution/2025/03/personality-traits-and-gender-gaps.html",
+      "contains": []
+    }
+  ]
+}

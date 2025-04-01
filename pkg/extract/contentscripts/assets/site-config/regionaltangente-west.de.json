@@ -16,7 +16,8 @@
   "strip_id_or_class": [
     "copytxt",
     "imgSrc",
-    "back"
+    "back",
+    "pg_mailshare"
   ],
   "strip_image_src": null,
   "native_ad_selectors": [

@@ -31,7 +31,8 @@
     "//p[contains(., 'This article available online at:')]/following::*",
     "//div[@class='earthbox']",
     "//aside[@role=\"complementary\"]",
-    "//p[contains(@id, 'injected-recirculation-link')]"
+    "//p[contains(@id, 'injected-recirculation-link')]",
+    "//div[contains(@class, 'ArticleAudio_')]"
   ],
   "strip_id_or_class": [
     "share-social",

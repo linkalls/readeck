@@ -1,0 +1,44 @@
+{
+  "title_selectors": null,
+  "body_selectors": [
+    "//main[1]"
+  ],
+  "date_selectors": null,
+  "author_selectors": [
+    "//header/h3/a[contains(@href, 'authors/')]"
+  ],
+  "strip_selectors": [
+    "//header/h1",
+    "//header/h3"
+  ],
+  "strip_id_or_class": [
+    "article-outro",
+    "editors_picks",
+    "field_metafield",
+    "pub_date"
+  ],
+  "strip_image_src": null,
+  "native_ad_selectors": null,
+  "tidy": false,
+  "prune": false,
+  "autodetect_on_failure": true,
+  "single_page_link_selectors": null,
+  "next_page_link_selectors": null,
+  "replace_strings": [
+    [
+      "\u003cnav",
+      "\u003cdiv"
+    ],
+    [
+      "\u003c/nav\u003e",
+      "\u003c/div\u003e"
+    ]
+  ],
+  "http_headers": null,
+  "tests": [
+    {
+      "url": "https://theflaw.org/articles/whos-boring-now/",
+      "contains": []
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "title_selectors": [
+    "//meta[@name=\"search-title\"]/@content"
+  ],
+  "body_selectors": [
+    "//main[@class='article']"
+  ],
+  "date_selectors": null,
+  "author_selectors": [
+    "//div[@class='ts-article-contributor']/strong/a"
+  ],
+  "strip_selectors": null,
+  "strip_id_or_class": [
+    "module-socials",
+    "show-mobile",
+    "ts-article-title",
+    "ts-article-rubric",
+    "ts-article-tags",
+    "search-noindex"
+  ],
+  "strip_image_src": null,
+  "native_ad_selectors": null,
+  "tidy": true,
+  "prune": false,
+  "autodetect_on_failure": true,
+  "single_page_link_selectors": null,
+  "next_page_link_selectors": null,
+  "replace_strings": [
+    [
+      "\u003cdiv class=\"navigation ts-article-toolkit\"\u003e",
+      "\u003chr\u003e\u003cdiv class=\"xx navigation ts-article-toolkit\"\u003e"
+    ]
+  ],
+  "http_headers": null,
+  "tests": [
+    {
+      "url": "https://wordswithoutborders.org/read/article/2023-12/a-childs-smile-jadd-hilal-lara-vergnaud/",
+      "contains": []
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "title_selectors": null,
+  "body_selectors": [
+    "//div[@id='article-container']",
+    "//div[contains(concat(' ',normalize-space(@class),' '),' aon-grid ')]/article[1] | //div[contains(@class, '-image-carousel-')]"
+  ],
+  "date_selectors": null,
+  "author_selectors": null,
+  "strip_selectors": [
+    "//button",
+    "//nav",
+    "//template",
+    "//picture/source",
+    "//a[contains(@href, '/newsletter')]/ancestor::p[1]",
+    "//div[@data-aon--image-carousel-component-target=\"caption\"]",
+    "//a[@class='aon-pill-badge-component']/parent::div | //a[@class='aon-pill-badge-component']/parent::div/preceding-sibling::h3"
+  ],
+  "strip_id_or_class": [
+    "ArticleLeftRail",
+    "ArticleStickyRail",
+    "ArticleStickyRailTrack",
+    "ItemEndRow",
+    "btf-nav",
+    "inline-ad-container"
+  ],
+  "strip_image_src": null,
+  "native_ad_selectors": null,
+  "tidy": false,
+  "prune": false,
+  "autodetect_on_failure": true,
+  "single_page_link_selectors": null,
+  "next_page_link_selectors": null,
+  "replace_strings": null,
+  "http_headers": null,
+  "tests": [
+    {
+      "url": "https://www.atlasobscura.com/feeds/latest",
+      "contains": []
+    },
+    {
+      "url": "https://www.atlasobscura.com/articles/los-angeles-breakfast-club",
+      "contains": []
+    },
+    {
+      "url": "https://www.atlasobscura.com/places/cat-head-delta-blues-folk-art",
+      "contains": []
+    }
+  ]
+}

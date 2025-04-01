@@ -1,8 +1,12 @@
 {
-  "title_selectors": null,
+  "title_selectors": [
+    "//h2[@class='entry-title']"
+  ],
   "body_selectors": null,
   "date_selectors": null,
-  "author_selectors": null,
+  "author_selectors": [
+    "//*[contains(@class, 'byline')]/a[contains(@href, '/authors/')]"
+  ],
   "strip_selectors": null,
   "strip_id_or_class": null,
   "strip_image_src": null,
@@ -14,15 +18,11 @@
   "next_page_link_selectors": null,
   "replace_strings": null,
   "http_headers": {
-    "User-Agent": "Mastodon/4.3.2 (http.rb/5.2.0; +https://mastodon.social/) Bot"
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:137.0) Gecko/20100101 Firefox/137.0"
   },
   "tests": [
     {
-      "url": "https://phys.org/news/2025-03-dark-universe-telescope.html",
-      "contains": []
-    },
-    {
-      "url": "https://phys.org/rss-feed/breaking/space-news/",
+      "url": "https://www.uncannymagazine.com/article/cassandra/",
       "contains": []
     }
   ]

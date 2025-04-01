@@ -4,7 +4,8 @@
   ],
   "body_selectors": [
     "//div[contains(concat(' ',normalize-space(@class),' '),' Box-body ')]",
-    "//article[1]"
+    "//article[1]",
+    "//div[@id='wiki-body']"
   ],
   "date_selectors": [
     "//div[contains(concat(' ',normalize-space(@class),' '),' Details ')]//relative-time"
@@ -26,6 +27,10 @@
   "tests": [
     {
       "url": "https://github.com/wallabag/wallabag",
+      "contains": []
+    },
+    {
+      "url": "https://github.com/wallabag/wallabag/wiki/Auto%E2%80%90Updating-wallabag's-site%E2%80%90depended-config",
       "contains": []
     }
   ]

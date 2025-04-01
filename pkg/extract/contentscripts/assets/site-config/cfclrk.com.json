@@ -1,14 +1,13 @@
 {
   "title_selectors": null,
   "body_selectors": [
-    "//div[contains(concat(' ',normalize-space(@class),' '),' ArticlePageContentBackGround-cNiFNN ')]",
-    "//div[@id='container']"
+    "//body"
   ],
   "date_selectors": null,
   "author_selectors": null,
   "strip_selectors": [
-    "//button",
-    "//div[contains(@class, 'RecircMostPopularWrapper')]"
+    "//header",
+    "//nav"
   ],
   "strip_id_or_class": null,
   "strip_image_src": null,
@@ -22,10 +21,8 @@
   "http_headers": null,
   "tests": [
     {
-      "url": "https://www.wired.com/story/tiktok-platforms-cory-doctorow/",
-      "contains": [
-        "they are good to their users"
-      ]
+      "url": "https://www.cfclrk.com/articles/github_identities.html",
+      "contains": []
     }
   ]
 }

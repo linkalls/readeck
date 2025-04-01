@@ -1,0 +1,38 @@
+{
+  "title_selectors": [
+    "//h1[contains(@class,'post-title')]"
+  ],
+  "body_selectors": [
+    "//article[1]"
+  ],
+  "date_selectors": null,
+  "author_selectors": null,
+  "strip_selectors": [
+    "//div[contains(@class, 'post-author')] | //div[contains(@class, 'post-author')]/following-sibling::*"
+  ],
+  "strip_id_or_class": [
+    "header-standard",
+    "header-classic",
+    "single-header",
+    "tags-share-box",
+    "single-post-share",
+    "post-share"
+  ],
+  "strip_image_src": null,
+  "native_ad_selectors": null,
+  "tidy": false,
+  "prune": false,
+  "autodetect_on_failure": true,
+  "single_page_link_selectors": null,
+  "next_page_link_selectors": null,
+  "replace_strings": null,
+  "http_headers": {
+    "User-Agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
+  },
+  "tests": [
+    {
+      "url": "https://mcconnellsmedchem.com/2023/02/05/how-to-make-a-small-molecule-drug/",
+      "contains": []
+    }
+  ]
+}
