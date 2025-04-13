@@ -699,15 +699,20 @@ func (api *apiRouter) withBookmarkList(next http.Handler) http.Handler {
 			Offset(uint(pf.Offset()))
 
 		// Apply sorting given by a query string
-		if order, ok := r.Context().Value(ctxBookmarkOrderKey{}).(orderExpressionList); ok {
+		order, hasOrder := r.Context().Value(ctxBookmarkOrderKey{}).(orderExpressionList)
+		if hasOrder {
 			ds = ds.Order(order...)
 		}
 
-		// If pagination is disabled, remove all limits and force sorting by "created ASC"
+		// If pagination is disabled, remove all limits, use context ordering, otherwise
+		// sort by "created ASC".
 		// Note: noPagination is only used when exporting bookmarks. We may need to choose
 		// another mechanism if we use it somewhere else.
 		if filterForm.noPagination {
-			ds = ds.ClearLimit().ClearOffset().Order(goqu.T("b").Col("created").Asc())
+			ds = ds.ClearLimit().ClearOffset()
+			if !hasOrder {
+				ds = ds.Order(goqu.T("b").Col("created").Asc())
+			}
 		}
 
 		var count int64
