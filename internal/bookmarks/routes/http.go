@@ -82,6 +82,7 @@ func newAPIRouter(s *server.Server) *apiRouter {
 		r.With(api.srv.WithPermission("api:bookmarks", "export")).Group(func(r chi.Router) {
 			r.With(
 				api.withoutPagination,
+				api.withBookmarkOrdering,
 				api.withCollectionFilters,
 				api.withBookmarkList,
 			).Get("/export.{format}", api.bookmarkExport)

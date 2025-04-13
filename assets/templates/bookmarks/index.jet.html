@@ -106,7 +106,8 @@ SPDX-License-Identifier: AGPL-3.0-only
         </form>
 
         {{- if hasPermission("api:bookmarks", "export") && hasPermission("api:bookmarks:import", "write") -}}
-          {{- yield export_menu(url=urlFor(`/api/bookmarks/export.epub`) + `?` + .Filters.GetQueryString()) content -}}
+          {{ sortParam := isset(.CurrentOrder) ? `&sort=` + .CurrentOrder : "" }}
+          {{- yield export_menu(url=urlFor(`/api/bookmarks/export.epub`) + `?` + .Filters.GetQueryString() + sortParam) content -}}
             <li><a class="link" href="{{ urlFor(`/bookmarks/import`) }}">
               {{- yield icon(name="o-import") }} {{ gettext("Import bookmarks") }}</a></li>
           {{- end -}}

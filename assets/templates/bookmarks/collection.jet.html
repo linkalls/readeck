@@ -44,7 +44,8 @@ SPDX-License-Identifier: AGPL-3.0-only
         </form>
 
         {{- if hasPermission("api:bookmarks", "export") -}}
-          {{- yield export_menu(url=urlFor(`/api/bookmarks/export.epub`) + `?collection=` + .Item.ID) -}}
+          {{ sortParam := isset(.CurrentOrder) ? `&sort=` + .CurrentOrder : "" }}
+          {{- yield export_menu(url=urlFor(`/api/bookmarks/export.epub`) + `?collection=` + .Item.ID + sortParam) -}}
         {{- end -}}
       {{- end -}}
     </div>

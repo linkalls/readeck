@@ -37,7 +37,8 @@ SPDX-License-Identifier: AGPL-3.0-only
       >{{ yield icon(name="o-trash") }} {{ gettext("Delete") }}</button>
 
       {{- if hasPermission("api:bookmarks", "export") -}}
-        {{- yield export_menu(url=urlFor(`/api/bookmarks/export.epub`) + `?labels="` + url(.Label) + `"`) -}}
+        {{ sortParam := isset(.CurrentOrder) ? `&sort=` + .CurrentOrder : "" }}
+        {{- yield export_menu(url=urlFor(`/api/bookmarks/export.epub`) + `?labels="` + url(.Label) + `"` + sortParam) -}}
       {{- end -}}
     {{- end -}}
   {{- end -}}
