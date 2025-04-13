@@ -142,7 +142,7 @@ func (h *opdsRouter) collectionInfo(w http.ResponseWriter, r *http.Request) {
 			id, _ := base58.DecodeUUID(item.UID)
 			catalog.WithBookEntry(
 				id, tr.Gettext("Collection ebook - %s", item.Name),
-				h.srv.AbsoluteURL(r, "/api/bookmarks", "export.epub?collection="+item.UID).String(),
+				h.srv.AbsoluteURL(r, "/api/bookmarks", "export.epub?collection="+item.UID+"&sort=created").String(),
 				item.Created, item.Created, item.Updated,
 				"Readeck", "", "",
 			)(feed)
