@@ -91,7 +91,7 @@ def build_image(version: str, arch: str):
                 "--cmd=/bin/readeck serve -config config.toml",
                 "--port=8000/tcp",
                 "--env=READECK_SERVER_HOST=0.0.0.0",
-                "--env=READECK_SERVER_PORT=8000",
+                "--env=READECK_SERVER_PORT",
                 "--label=org.opencontainers.image.authors=olivier@readeck.com",
                 f"--label=version={version}",
                 container,
