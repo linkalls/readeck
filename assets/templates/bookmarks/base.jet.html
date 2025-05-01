@@ -72,5 +72,18 @@ SPDX-License-Identifier: AGPL-3.0-only
     {{ yield sideMenuItem(name=gettext("Collections"), path="/bookmarks/collections", icon="o-collection",
                           current=pathIs("/bookmarks/collections", "/bookmarks/collections/*")) }}
   </menu>
+
+{{- if len(.Collections) > 0 -}}
+  <hr class="w-[25%] border-gray-200 mx-auto">
+
+  <menu class="mt-4">
+  {{- range .Collections -}}
+    {{- if ! .IsDeleted -}}
+      {{ yield sideMenuItem(name=.Name, path="/bookmarks/collections/" + .ID, icon="o-grid",
+            current=pathIs("/bookmarks/collections/" + .ID)) }}
+    {{- end -}}
+  {{- end -}}
+  </menu>
+{{- end -}}
 </turbo-frame>
 {{- end -}}
