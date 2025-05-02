@@ -100,8 +100,9 @@ href="{{ assetURL(src) }}#{{ name }}"></use></svg></span>
 >{{- yield content -}}</h2>
 {{- end -}}
 
-{{- block sideMenuItem(name, path, icon, current=false, nbItems=nil) -}}
+{{- block sideMenuItem(name, path, icon, current=false, nbItems=nil, indentation=0) -}}
 <li><a href="{{ urlFor(path) }}" data-current="{{ current }}">
+  <span class="ml-{{ 4 * indentation }}"/>
   {{- yield icon(name=icon) }}
   <span class="grow">{{ name }}</span>
   {{- if nbItems -}}

@@ -40,19 +40,18 @@ func (h *viewsRouter) withBaseContext(next http.Handler) http.Handler {
 			return
 		}
 
+		colList := r.Context().Value(ctxCollectionListKey{}).(collectionList)
+		colList.Items = make([]collectionItem, len(colList.items))
+		for i, item := range colList.items {
+			colList.Items[i] = newCollectionItem(h.srv, r, item, ".")
+		}
+
 		c := server.TC{
 			"Count": count,
+			"Collections": colList.Items,
 		}
 
 		ctx := context.WithValue(r.Context(), ctxBaseContextKey{}, c)
-
-		cl := r.Context().Value(ctxCollectionListKey{}).(collectionList)
-		cl.Items = make([]collectionItem, len(cl.items))
-		for i, item := range cl.items {
-			cl.Items[i] = newCollectionItem(h.srv, r, item, ".")
-		}
-
-		c["Collections"] = cl.Items
 
 		next.ServeHTTP(w, r.WithContext(ctx))
 	})
