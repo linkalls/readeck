@@ -47,7 +47,7 @@ func (h *viewsRouter) withBaseContext(next http.Handler) http.Handler {
 		}
 
 		c := server.TC{
-			"Count": count,
+			"Count":       count,
 			"Collections": colList.Items,
 		}
 

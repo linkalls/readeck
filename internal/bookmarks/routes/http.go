@@ -186,7 +186,7 @@ func newViewsRouter(api *apiRouter) *viewsRouter {
 	r.Route("/collections", func(r chi.Router) {
 		r.With(h.srv.WithPermission("bookmarks:collections", "read")).Group(func(r chi.Router) {
 			r.With(api.withColletionList, h.withBaseContext, api.withDefaultLimit(listDefaultLimit)).Group(func(r chi.Router) {
-				r.With(api.withColletionList).Get("/", h.collectionList)
+				r.Get("/", h.collectionList)
 				r.With(
 					api.withCollection,
 					api.withCollectionFilters,
@@ -215,7 +215,7 @@ func newViewsRouter(api *apiRouter) *viewsRouter {
 	// Import views
 	r.Route("/import", func(r chi.Router) {
 		r.With(h.srv.WithPermission("bookmarks:import", "write")).Group(func(r chi.Router) {
-			r.With(h.withBaseContext).Group(func(r chi.Router) {
+			r.With(api.withColletionList, h.withBaseContext).Group(func(r chi.Router) {
 				r.Get("/", h.bookmarksImportMain)
 				r.Get("/{trackID:[a-zA-Z0-9]{18,22}}", h.bookmarksImportMain)
 				r.Get("/{source}", h.bookmarksImport)
