@@ -32,7 +32,7 @@ require (
 	github.com/klauspost/compress v1.18.0
 	github.com/komkom/toml v0.1.2
 	github.com/leonelquinteros/gotext v1.7.1
-	github.com/mangoumbrella/goldmark-figure v1.2.0
+	github.com/mangoumbrella/goldmark-figure v1.3.0
 	github.com/ncruces/go-sqlite3 v0.25.2
 	github.com/phsym/console-slog v0.3.1
 	github.com/prometheus/client_golang v1.22.0
@@ -59,7 +59,7 @@ require (
 	github.com/antchfx/xpath v1.3.4 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/bmatcuk/doublestar/v4 v4.8.1 // indirect
-	github.com/casbin/govaluate v1.3.0 // indirect
+	github.com/casbin/govaluate v1.4.0 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
