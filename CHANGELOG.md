@@ -12,6 +12,9 @@
 ### Changed
 - Reverted the SQLite driver to its CGO version
 
+### Removed
+- Application passwords. API token can now be used in HTTP Basic Authentication when needed
+
 ### Fixed
 - Bug in Wallabag import adapter that would not load entries with empty headers
 

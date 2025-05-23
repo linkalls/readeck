@@ -10,7 +10,6 @@ import (
 
 	"github.com/doug-martin/goqu/v9"
 
-	"codeberg.org/readeck/readeck/internal/auth/credentials"
 	"codeberg.org/readeck/readeck/internal/auth/tokens"
 	"codeberg.org/readeck/readeck/internal/auth/users"
 	"codeberg.org/readeck/readeck/internal/bookmarks"
@@ -27,7 +26,6 @@ type portableData struct {
 	Info                exportInfo
 	Users               []*users.User
 	Tokens              []*tokens.Token
-	Credentials         []*credentials.Credential
 	BookmarkCollections []*bookmarks.Collection
 	Bookmarks           []bookmarkItem
 }

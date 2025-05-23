@@ -80,7 +80,7 @@ SPDX-License-Identifier: AGPL-3.0-only
   </p>
 </form>
 
-<h2 class="title text-h3">{{ gettext("API authentication") }}</h2>
+<h2 class="title text-h3">{{ gettext("Authentication") }}</h2>
 
 <div class="w-full mb-6 field" data-controller="clipboard">
   <label class="font-semibold">{{ gettext("Your API token") }}</label>
@@ -92,6 +92,10 @@ SPDX-License-Identifier: AGPL-3.0-only
     </button>
   </span>
 </div>
+
+<h2 class="title text-h3">{{ gettext("How to use it") }}</h2>
+
+<h3 class="title text-h4">{{ gettext("As a Bearer Token") }}</h3>
 
 <p class="mb-2">{{ gettext("You can use this token by passing it as an <strong>Authorization: Bearer</strong> HTTP header.")|raw }}</p>
 <div class="w-full mb-6 field" data-controller="clipboard">
@@ -105,4 +109,12 @@ SPDX-License-Identifier: AGPL-3.0-only
     </button>
   </span>
 </div>
+
+<h3 class="title text-h4">{{ gettext("As a password") }}</h3>
+
+<p class="mb-2">{{ gettext("Alternatively, you can use this token as a password for HTTP Basic Authentication.") }}</p>
+<p class="mb-2">{{ gettext(
+  `For example, if an application only accepts a username and password, you can provide this token as a password.
+  The username is ignored and can be anything, including an empty value.`
+) }}</p>
 {{ end }}

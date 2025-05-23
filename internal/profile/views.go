@@ -12,7 +12,6 @@ import (
 
 	"codeberg.org/readeck/readeck/configs"
 	"codeberg.org/readeck/readeck/internal/auth"
-	"codeberg.org/readeck/readeck/internal/auth/credentials"
 	"codeberg.org/readeck/readeck/internal/auth/tokens"
 	"codeberg.org/readeck/readeck/internal/server"
 	"codeberg.org/readeck/readeck/pkg/forms"
@@ -23,8 +22,6 @@ type profileViews struct {
 	chi.Router
 	*profileAPI
 }
-
-const maxCredentials = 20
 
 // newProfileViews returns an new instance of ProfileViews.
 func newProfileViews(api *profileAPI) *profileViews {
@@ -40,17 +37,6 @@ func newProfileViews(api *profileAPI) *profileViews {
 		r.Post("/", v.userProfile)
 		r.Post("/password", v.userPassword)
 		r.Post("/session", v.userSession)
-	})
-
-	r.With(api.srv.WithPermission("profile:credentials", "read")).Group(func(r chi.Router) {
-		r.With(api.withCredentialList).Get("/credentials", v.credentialList)
-		r.With(api.withCredential).Get("/credentials/{uid}", v.credentialInfo)
-	})
-
-	r.With(api.srv.WithPermission("profile:credentials", "write")).Group(func(r chi.Router) {
-		r.With(api.withCredentialList).Post("/credentials", v.credentialCreate)
-		r.With(api.withCredential).Post("/credentials/{uid}", v.credentialInfo)
-		r.With(api.withCredential).Post("/credentials/{uid}/delete", v.credentialDelete)
 	})
 
 	r.With(api.srv.WithPermission("profile:tokens", "read")).Group(func(r chi.Router) {
@@ -165,106 +151,6 @@ func (v *profileViews) userSession(w http.ResponseWriter, r *http.Request) {
 
 	sess.Save(w, r)
 	v.srv.Render(w, r, http.StatusOK, updated)
-}
-
-func (v *profileViews) credentialList(w http.ResponseWriter, r *http.Request) {
-	tr := v.srv.Locale(r)
-	cl := r.Context().Value(ctxCredentialListKey{}).(credentialList)
-	ctx := server.TC{
-		"Pagination":     cl.Pagination,
-		"Credentials":    cl.Items,
-		"CanCreate":      cl.Pagination.TotalCount < maxCredentials,
-		"MaxCredentials": maxCredentials,
-	}
-	ctx.SetBreadcrumbs([][2]string{
-		{tr.Gettext("Profile"), v.srv.AbsoluteURL(r, "/profile").String()},
-		{tr.Gettext("Application Passwords")},
-	})
-
-	v.srv.RenderTemplate(w, r, 200, "profile/credential_list", ctx)
-}
-
-func (v *profileViews) credentialCreate(w http.ResponseWriter, r *http.Request) {
-	tr := v.srv.Locale(r)
-	cl := r.Context().Value(ctxCredentialListKey{}).(credentialList)
-	if cl.Pagination.TotalCount >= maxCredentials {
-		v.srv.AddFlash(w, r, "error", tr.Gettext("Error: you cannot create more credentials."))
-		v.srv.Redirect(w, r)
-		return
-	}
-
-	c, passphrase, err := credentials.Credentials.GenerateCredential(auth.GetRequestUser(r))
-	if err != nil {
-		v.srv.Log(r).Error("server error", slog.Any("err", err))
-		v.srv.AddFlash(w, r, "error", tr.Gettext("An error occurred while creating your password."))
-		v.srv.Redirect(w, r, "credentials")
-		return
-	}
-
-	v.srv.AddFlash(w, r, "_passphrase", passphrase)
-	v.srv.Redirect(w, r, ".", c.UID)
-}
-
-func (v *profileViews) credentialInfo(w http.ResponseWriter, r *http.Request) {
-	tr := v.srv.Locale(r)
-	ci := r.Context().Value(ctxCredentialKey{}).(credentialItem)
-	f := newCredentialForm(v.srv.Locale(r), auth.GetRequestUser(r))
-
-	flashes := v.srv.Flashes(r)
-	passphrase := ""
-	for _, f := range flashes {
-		if f.Type == "_passphrase" {
-			passphrase = f.Message
-		}
-	}
-
-	if r.Method == http.MethodGet {
-		f.setCredential(ci.Credential)
-	}
-
-	if r.Method == http.MethodPost {
-		forms.Bind(f, r)
-		if f.IsValid() {
-			if passphrase, err := f.updateCredential(ci.Credential); err != nil {
-				v.srv.Log(r).Error("", slog.Any("err", err))
-			} else {
-				if passphrase != "" {
-					v.srv.AddFlash(w, r, "_passphrase", passphrase)
-				}
-				v.srv.AddFlash(w, r, "success", tr.Gettext("Password was updated."))
-				v.srv.Redirect(w, r, ci.UID)
-				return
-			}
-		}
-		w.WriteHeader(http.StatusUnprocessableEntity)
-	}
-
-	ctx := server.TC{
-		"Passphrase": passphrase,
-		"Credential": ci,
-		"Form":       f,
-	}
-	ctx.SetBreadcrumbs([][2]string{
-		{tr.Gettext("Profile"), v.srv.AbsoluteURL(r, "/profile").String()},
-		{tr.Gettext("Application Passwords"), v.srv.AbsoluteURL(r, "/profile/credentials").String()},
-		{ci.UID},
-	})
-
-	v.srv.RenderTemplate(w, r, 200, "profile/credential", ctx)
-}
-
-func (v *profileViews) credentialDelete(w http.ResponseWriter, r *http.Request) {
-	f := newDeleteCredentialForm(v.srv.Locale(r))
-	f.Get("_to").Set("/profile/credentials")
-	forms.Bind(f, r)
-
-	ti := r.Context().Value(ctxCredentialKey{}).(credentialItem)
-
-	if err := f.trigger(ti.Credential); err != nil {
-		v.srv.Error(w, r, err)
-		return
-	}
-	v.srv.Redirect(w, r, f.Get("_to").String())
 }
 
 func (v *profileViews) tokenList(w http.ResponseWriter, r *http.Request) {

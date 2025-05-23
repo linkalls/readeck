@@ -107,12 +107,19 @@ func (p *TokenAuthProvider) CsrfExempt(_ *http.Request) bool {
 
 // getToken reads the token from the "Authorization" header.
 func (p *TokenAuthProvider) getToken(r *http.Request) (token string, ok bool) {
-	const prefix = "Bearer "
 	auth := r.Header.Get("Authorization")
 	if auth == "" {
 		return
 	}
 
+	// Try basic auth first
+	if _, token, ok = r.BasicAuth(); ok {
+		return
+	}
+
+	// Bearer token otherwise
+	token = ""
+	const prefix = "Bearer "
 	if len(auth) < len(prefix) || !strings.EqualFold(auth[:len(prefix)], prefix) {
 		return
 	}

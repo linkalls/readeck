@@ -14,7 +14,6 @@ import (
 	"github.com/doug-martin/goqu/v9"
 	"github.com/stretchr/testify/require"
 
-	"codeberg.org/readeck/readeck/internal/auth/credentials"
 	"codeberg.org/readeck/readeck/internal/auth/tokens"
 	. "codeberg.org/readeck/readeck/internal/testing" //revive:disable:dot-imports
 )
@@ -205,96 +204,6 @@ func TestViews(t *testing.T) {
 					task := fmt.Sprintf("tasks:token.delete:%d", token.ID)
 					m := Store().Get(task)
 					require.Empty(t, m)
-				},
-			},
-		)
-	})
-
-	t.Run("credentials", func(t *testing.T) {
-		RunRequestSequence(t, client, "user",
-			RequestTest{Target: "/profile/credentials", ExpectStatus: 200},
-			RequestTest{
-				Method:         "POST",
-				Target:         "/profile/credentials",
-				ExpectStatus:   303,
-				ExpectRedirect: "/profile/credentials/.+",
-			},
-			RequestTest{
-				Target:         "{{ (index .History 0).Redirect }}",
-				ExpectStatus:   200,
-				ExpectContains: "Your application password was created",
-			},
-			RequestTest{
-				Method:         "POST",
-				Target:         "{{ (index .History 0).Path }}",
-				Form:           url.Values{"name": []string{"test name"}},
-				ExpectStatus:   303,
-				ExpectRedirect: "/profile/credentials/.+",
-			},
-
-			// Delete credential
-			RequestTest{Target: "{{ (index .History 0).Redirect }}"},
-			RequestTest{
-				Method:         "POST",
-				Target:         "{{ (index .History 0).Path }}/delete",
-				ExpectStatus:   303,
-				ExpectRedirect: "/profile/credentials",
-			},
-			RequestTest{ //nolint:dupl
-				Target:         "{{ (index .History 1).Path }}",
-				ExpectStatus:   200,
-				ExpectContains: "Password will be removed in a few seconds",
-				Assert: func(t *testing.T, r *Response) {
-					assert := require.New(t)
-
-					_, credentialID := path.Split(r.URL.Path)
-					credential, err := credentials.Credentials.GetOne(goqu.C("uid").Eq(credentialID))
-					if err != nil {
-						t.Error(err)
-					}
-
-					// An event was sent
-					assert.Len(Events().Records("task"), 1)
-					evt := map[string]interface{}{}
-					assert.NoError(json.Unmarshal(Events().Records("task")[0], &evt))
-					assert.Equal("credential.delete", evt["name"])
-					assert.InDelta(float64(credential.ID), evt["id"], 0)
-
-					// There's a task in the store
-					task := fmt.Sprintf("tasks:credential.delete:%d", credential.ID)
-					m := Store().Get(task)
-					assert.NotEmpty(m)
-
-					payload := map[string]interface{}{}
-					assert.NoError(json.Unmarshal([]byte(m), &payload))
-					assert.InDelta(float64(20), payload["delay"], 0)
-				},
-			},
-
-			// Cancel deletion
-			RequestTest{
-				Target: "{{ (index .History 0).Path }}",
-			},
-			RequestTest{
-				Method:         "POST",
-				Target:         "{{ (index .History 0).Path }}/delete",
-				Form:           url.Values{"cancel": {"1"}},
-				ExpectStatus:   303,
-				ExpectRedirect: "/profile/credentials",
-			},
-			RequestTest{
-				Target: "{{ (index .History 1).Path }}",
-				Assert: func(t *testing.T, r *Response) {
-					assert := require.New(t)
-
-					_, credentialID := path.Split(r.URL.Path)
-					credential, err := credentials.Credentials.GetOne(goqu.C("uid").Eq(credentialID))
-					assert.NoError(err)
-
-					// The task is not in the store anymore
-					task := fmt.Sprintf("tasks:credential.delete:%d", credential.ID)
-					m := Store().Get(task)
-					assert.Empty(m)
 				},
 			},
 		)

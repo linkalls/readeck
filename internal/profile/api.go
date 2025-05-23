@@ -14,7 +14,6 @@ import (
 	"github.com/go-chi/chi/v5"
 
 	"codeberg.org/readeck/readeck/internal/auth"
-	"codeberg.org/readeck/readeck/internal/auth/credentials"
 	"codeberg.org/readeck/readeck/internal/auth/tokens"
 	"codeberg.org/readeck/readeck/internal/auth/users"
 	"codeberg.org/readeck/readeck/internal/server"
@@ -22,10 +21,8 @@ import (
 )
 
 type (
-	ctxCredentialListKey struct{}
-	ctxCredentialKey     struct{}
-	ctxTokenListKey      struct{}
-	ctxtTokenKey         struct{}
+	ctxTokenListKey struct{}
+	ctxtTokenKey    struct{}
 )
 
 // profileAPI is the base settings API router.
@@ -144,66 +141,6 @@ func (api *profileAPI) passwordUpdate(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 }
 
-func (api *profileAPI) withCredentialList(next http.Handler) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		res := credentialList{}
-
-		pf := api.srv.GetPageParams(r, 30)
-		if pf == nil {
-			api.srv.Status(w, r, http.StatusNotFound)
-			return
-		}
-
-		ds := credentials.Credentials.Query().
-			Where(
-				goqu.C("user_id").Eq(auth.GetRequestUser(r).ID),
-			).
-			Order(goqu.C("last_used").Desc(), goqu.C("created").Desc()).
-			Limit(uint(pf.Limit())).
-			Offset(uint(pf.Offset()))
-
-		count, err := ds.ClearOrder().ClearLimit().ClearOffset().Count()
-		if err != nil {
-			api.srv.Error(w, r, err)
-			return
-		}
-
-		items := []*credentials.Credential{}
-		if err := ds.ScanStructs(&items); err != nil {
-			api.srv.Error(w, r, err)
-			return
-		}
-
-		res.Pagination = api.srv.NewPagination(r, int(count), pf.Limit(), pf.Offset())
-
-		res.Items = make([]credentialItem, len(items))
-		for i, item := range items {
-			res.Items[i] = newCredentialItem(api.srv, r, item, ".")
-		}
-
-		ctx := context.WithValue(r.Context(), ctxCredentialListKey{}, res)
-		next.ServeHTTP(w, r.WithContext(ctx))
-	})
-}
-
-func (api *profileAPI) withCredential(next http.Handler) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		uid := chi.URLParam(r, "uid")
-		c, err := credentials.Credentials.GetOne(
-			goqu.C("uid").Eq(uid),
-			goqu.C("user_id").Eq(auth.GetRequestUser(r).ID),
-		)
-		if err != nil {
-			api.srv.Status(w, r, http.StatusNotFound)
-			return
-		}
-
-		item := newCredentialItem(api.srv, r, c, ".")
-		ctx := context.WithValue(r.Context(), ctxCredentialKey{}, item)
-		next.ServeHTTP(w, r.WithContext(ctx))
-	})
-}
-
 func (api *profileAPI) withTokenList(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		res := tokenList{}
@@ -283,36 +220,6 @@ func (api *profileAPI) tokenDelete(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.WriteHeader(http.StatusNoContent)
-}
-
-type credentialList struct {
-	Pagination server.Pagination
-	Items      []credentialItem
-}
-
-type credentialItem struct {
-	*credentials.Credential `json:"-"`
-
-	ID        string     `json:"id"`
-	Href      string     `json:"href"`
-	Created   time.Time  `json:"created"`
-	LastUsed  *time.Time `json:"last_used"`
-	IsEnabled bool       `json:"is_enabled"`
-	IsDeleted bool       `json:"is_deleted"`
-	Roles     []string   `json:"roles"`
-}
-
-func newCredentialItem(s *server.Server, r *http.Request, c *credentials.Credential, base string) credentialItem {
-	return credentialItem{
-		Credential: c,
-		ID:         c.UID,
-		Href:       s.AbsoluteURL(r, base, c.UID).String(),
-		Created:    c.Created,
-		LastUsed:   c.LastUsed,
-		IsEnabled:  c.IsEnabled,
-		IsDeleted:  deleteCredentialTask.IsRunning(c.ID),
-		Roles:      c.Roles,
-	}
 }
 
 type tokenList struct {

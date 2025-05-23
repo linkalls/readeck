@@ -17,7 +17,6 @@ import (
 	"github.com/doug-martin/goqu/v9"
 
 	"codeberg.org/readeck/readeck/configs"
-	"codeberg.org/readeck/readeck/internal/auth/credentials"
 	"codeberg.org/readeck/readeck/internal/auth/tokens"
 	"codeberg.org/readeck/readeck/internal/auth/users"
 	"codeberg.org/readeck/readeck/internal/bookmarks"
@@ -100,15 +99,6 @@ func (ex *Exporter) ExportAll() error {
 		return err
 	}
 	fmt.Fprintf(ex.output, "\t- %d token(s) exported\n", len(data.Tokens)) // nolint:errcheck
-
-	if data.Credentials, err = marshalItems[*credentials.Credential](
-		credentials.Credentials.Query().
-			Where(goqu.C("user_id").In(ex.userIDs)).
-			Order(goqu.C("created").Asc()),
-	); err != nil {
-		return err
-	}
-	fmt.Fprintf(ex.output, "\t- %d credential(s) exported\n", len(data.Credentials)) // nolint:errcheck
 
 	if data.BookmarkCollections, err = marshalItems[*bookmarks.Collection](
 		bookmarks.Collections.Query().

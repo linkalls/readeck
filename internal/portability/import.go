@@ -18,7 +18,6 @@ import (
 
 	"github.com/doug-martin/goqu/v9"
 
-	"codeberg.org/readeck/readeck/internal/auth/credentials"
 	"codeberg.org/readeck/readeck/internal/auth/tokens"
 	"codeberg.org/readeck/readeck/internal/auth/users"
 	"codeberg.org/readeck/readeck/internal/bookmarks"
@@ -67,7 +66,6 @@ func (imp *Importer) Load() error {
 	fnList := []func(*goqu.TxDatabase, *portableData) error{
 		imp.loadUsers,
 		imp.loadTokens,
-		imp.loadCredentials,
 		imp.loadCollections,
 		imp.loadBookmarks,
 	}
@@ -180,34 +178,6 @@ func (imp *Importer) loadTokens(tx *goqu.TxDatabase, data *portableData) (err er
 	}
 
 	fmt.Fprintf(imp.output, "\t- %d token(s) imported\n", i) // nolint:errcheck
-	return
-}
-
-func (imp *Importer) loadCredentials(tx *goqu.TxDatabase, data *portableData) (err error) {
-	ids := slices.Collect(maps.Keys(imp.users))
-
-	i := 0
-	for _, item := range data.Credentials {
-		if item.UserID == nil {
-			continue
-		}
-		if !slices.Contains(ids, *item.UserID) {
-			continue
-		}
-
-		if item.ID, err = insertInto(tx, credentials.TableName, item, func(x *credentials.Credential) {
-			x.ID = 0
-			x.UserID = ptrTo(imp.users[*x.UserID])
-			if !imp.clearData || x.UID == "" {
-				x.UID = base58.NewUUID()
-			}
-		}); err != nil {
-			return
-		}
-		i++
-	}
-
-	fmt.Fprintf(imp.output, "\t- %d credential(s) imported\n", i) // nolint:errcheck
 	return
 }
 

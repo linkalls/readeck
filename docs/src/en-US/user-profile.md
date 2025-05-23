@@ -16,16 +16,6 @@ An API Token lets you access and use the [Readeck API](readeck-instance://docs/a
 
 You can limit what a given token can access through the API and for how long it's valid.
 
-## Application Passwords
-
 If you need to grant access to your Readeck account to a service or an app, you can't provide you main username and password; it won't work.
 
-What you can do is create an [Application Password](readeck-instance://profile/credentials).
-
-You can limit what a given password can access through the API.
-
-Once you created an application password, you can use it to access the [Readeck API](readeck-instance://docs/api) or export services.
-
-See the [Ebook Catalog](./opds.md) help page for a real life example.
-
-**Note**: although you can use an application password to access the API, it is recommended to use an API Token when possible.
+Instead, you can give your username and a token of your choice as authentication credentials.

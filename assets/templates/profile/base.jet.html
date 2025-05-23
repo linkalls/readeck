@@ -15,11 +15,6 @@ SPDX-License-Identifier: AGPL-3.0-only
     <li><a href="{{ urlFor(`/profile/password`) }}"
     data-current="{{ pathIs(`/profile/password`) }}">{{ yield icon(name="o-lock") }}
       {{ gettext("Password") }}</a></li>
-    {{ if hasPermission("profile:credentials", "read") -}}
-    <li><a href="{{ urlFor(`/profile/credentials`) }}"
-    data-current="{{ pathIs(`/profile/credentials`, `/profile/credentials/*`) }}">{{ yield icon(name="o-key") }}
-      {{ gettext("Application Passwords") }}</a></li>
-    {{- end }}
     {{ if hasPermission("profile:tokens", "read") -}}
       <li><a href="{{ urlFor(`/profile/tokens`) }}"
       data-current="{{ pathIs(`/profile/tokens`, `/profile/tokens/*`) }}">{{ yield icon(name="o-terminal") }}

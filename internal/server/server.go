@@ -57,7 +57,6 @@ func New(basePath string) *Server {
 		s.WithCacheControl,
 		s.CannonicalPaths,
 		auth.Init(
-			&auth.BasicAuthProvider{},
 			&auth.TokenAuthProvider{},
 			&auth.SessionAuthProvider{
 				GetSession:          s.GetSession,
