@@ -7,6 +7,7 @@
   - send the bookmark as an EPUB attachment
 - mosaic view (image wall on bookmark list)
 - browser extension calls to action (onboarding and sidebar)
+- author to the exported EPUB, by [@ruben](https://codeberg.org/ruben)
 
 ### Changed
 - Reverted the SQLite driver to its CGO version

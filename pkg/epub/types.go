@@ -34,6 +34,7 @@ type Metadata struct {
 	Identifier Identifier `xml:"dc:identifier"`
 	Language   string     `xml:"dc:language"`
 	Title      string     `xml:"dc:title"`
+	Creator    string     `xml:"dc:creator"`
 }
 
 // Identifier is the metadata>dc:identifier tag.

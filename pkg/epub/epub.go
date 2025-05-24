@@ -89,6 +89,11 @@ func (c *Writer) SetID(value string) {
 	c.pkg.Metadata.Identifier.Value = value
 }
 
+// SetCreator sets the book's creator.
+func (c *Writer) SetCreator(value string) {
+	c.pkg.Metadata.Creator = value
+}
+
 // AddChapter adds a new chapter to the book.
 func (c *Writer) AddChapter(id, title, name string, r io.Reader) error {
 	c.pkg.Manifest.Items = append(c.pkg.Manifest.Items, ManifestItem{

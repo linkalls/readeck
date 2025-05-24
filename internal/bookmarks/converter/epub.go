@@ -47,14 +47,17 @@ func NewEPUBExporter(baseURL *url.URL, templateVars jet.VarMap) EPUBExporter {
 // Export implements [Exporter].
 // It writes an EPUB file on the provided [io.Writer].
 func (e EPUBExporter) Export(ctx context.Context, w io.Writer, _ *http.Request, bookmarkList []*bookmarks.Bookmark) error {
-	// Define a title, date and filename
+	// Define a title, date, siteName and filename
 	title := "Readeck Bookmarks"
 	date := time.Now()
+	siteName := "Readeck"
 	if e.Collection != nil {
 		title = e.Collection.Name
+		siteName = "Readeck Collection"
 	} else if len(bookmarkList) == 1 {
 		title = bookmarkList[0].Title
 		date = bookmarkList[0].Created
+		siteName = bookmarkList[0].SiteName
 	}
 
 	id := ""
@@ -79,6 +82,7 @@ func (e EPUBExporter) Export(ctx context.Context, w io.Writer, _ *http.Request, 
 	defer func() {
 		if err == nil {
 			m.SetTitle(title)
+			m.SetCreator(siteName)
 			err = m.WritePackage()
 		}
 		m.Close() //nolint:errcheck
