@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Readeck 1.0.0\n"
 "Report-Msgid-Bugs-To: translate@readeck.com\n"
 "POT-Creation-Date: 2025-05-25 07:29+0000\n"
-"PO-Revision-Date: 2025-05-27 12:59+0000\n"
+"PO-Revision-Date: 2025-05-28 13:58+0000\n"
 "Last-Translator: Ninguem <ninguem@noreply.codeberg.org>\n"
 "Language-Team: Portuguese (Portugal) <https://translate.codeberg.org/"
 "projects/readeck/application/pt_PT/>\n"
@@ -466,7 +466,7 @@ msgstr "Marcador não encontrado"
 
 #: assets/templates/bookmarks/bookmark_public.jet.html:17
 msgid "Shared link"
-msgstr "Link partilhado"
+msgstr "Ligação partilhada"
 
 #: assets/templates/bookmarks/bookmark_public.jet.html:54
 msgid "Page not found"
@@ -513,7 +513,7 @@ msgstr "Guardado com Readeck"
 # | msgid "Share by Link"
 #: assets/templates/bookmarks/bookmark_share_email.jet.html:8
 msgid "Share by email"
-msgstr "Partilhar por link"
+msgstr "Partilhar por email"
 
 #: assets/templates/bookmarks/bookmark_share_email.jet.html:18
 #: assets/templates/bookmarks/bookmark_share_link.jet.html:19
@@ -523,7 +523,7 @@ msgstr "Partilhar: %s"
 
 #: assets/templates/bookmarks/bookmark_share_link.jet.html:8
 msgid "Share link"
-msgstr "Partilhar link"
+msgstr "Partilhar ligação"
 
 #: assets/templates/bookmarks/collection.jet.html:16
 #, python-format
@@ -1367,7 +1367,6 @@ msgstr "Importar favoritos"
 # | from a file with existing bookmarks?\n" "          Try Readeck's import
 # | tool.\n" "        "
 #: assets/templates/bookmarks/index.jet.html:103
-#, fuzzy
 msgid ""
 "\n"
 "              Would you like to import from a similar tool or from a file with existing bookmarks?\n"
@@ -1375,9 +1374,10 @@ msgid ""
 "            "
 msgstr ""
 "\n"
-"          Gostaria de importar de uma ferramenta semelhante ou de um ficheiro com marcadores existentes? \n"
+"              Gostaria de importar de uma ferramenta semelhante ou de um "
+"ficheiro com marcadores existentes?\n"
 "Experimente a ferramenta de importação do Readeck.\n"
-"        "
+"            "
 
 #: assets/templates/bookmarks/index.jet.html:110
 msgid "Import links and articles"
@@ -1751,6 +1751,10 @@ msgid ""
 "        following email address within your Kindle Account:\n"
 "        "
 msgstr ""
+"\n"
+"        Se planeia enviar e-books para dispositivos Kindle, deve aprovar\n"
+"        o seguinte endereço de email junto da sua conta Kindle:\n"
+"        "
 
 #: assets/templates/profile/password.jet.html:9
 msgid "Change my password"
@@ -1768,7 +1772,7 @@ msgstr "Token API"
 
 #: assets/templates/profile/token.jet.html:1
 msgid "copy HTTP header"
-msgstr ""
+msgstr "copiar o cabeçalho HTTP"
 
 #: assets/templates/profile/token.jet.html:9
 msgid "API Token"
@@ -1844,7 +1848,7 @@ msgstr "O seu token de API"
 
 #: assets/templates/profile/token.jet.html:96
 msgid "How to use it"
-msgstr ""
+msgstr "Como usar"
 
 #: assets/templates/profile/token.jet.html:98
 #, fuzzy
@@ -1858,7 +1862,7 @@ msgstr "Pode utilizar este token passando-o como um cabeçalho HTTP <strong>Auto
 
 #: assets/templates/profile/token.jet.html:102
 msgid "HTTP Header"
-msgstr ""
+msgstr "Cabeçalho HTTP"
 
 #: assets/templates/profile/token.jet.html:113
 #, fuzzy
@@ -1869,12 +1873,18 @@ msgstr "Palavra-passe"
 #: assets/templates/profile/token.jet.html:115
 msgid "Alternatively, you can use this token as a password for HTTP Basic Authentication."
 msgstr ""
+"Alternativamente, pode usar este código como password para autenticação "
+"básica HTTP."
 
 #: assets/templates/profile/token.jet.html:116
 msgid ""
 "For example, if an application only accepts a username and password, you can provide this token as a password.\n"
 "  The username is ignored and can be anything, including an empty value."
 msgstr ""
+"Por exemplo, se uma aplicação apenas aceita nome de utilizador e palavra "
+"passe, pode usar este código como palavra passe.\n"
+"  O nome de utilizador é ignorado e pode ser qualquer coisa, incluindo um "
+"valor vazio."
 
 #: assets/templates/profile/token_list.jet.html:10
 msgid "My API Tokens"
@@ -1997,7 +2007,7 @@ msgstr "Nenhum token de acesso encontrado"
 
 #: internal/bookmarks/routes/forms_bookmarks.go:139
 msgid "Unable to process input data"
-msgstr ""
+msgstr "Incapaz de processar dados de entrada"
 
 #: internal/bookmarks/routes/forms_bookmarks.go:380
 msgid "Article"
@@ -2194,7 +2204,7 @@ msgstr "deve ser menor ou igual a %d"
 #: pkg/forms/validators.go:398
 #, python-format
 msgid "%v is not one of %s"
-msgstr ""
+msgstr "%v não é um de %s"
 
 #: pkg/strftime/strftime.go:23
 msgctxt "datetime_dl"
