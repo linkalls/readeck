@@ -9,22 +9,25 @@ import (
 	"iter"
 	"net"
 	"net/http"
-	"net/textproto"
 	"strings"
 )
 
 const (
-	xForwardedFor   = "x-forwarded-for"
-	xForwardedHost  = "x-forwarded-host"
-	xForwardedProto = "x-forwarded-proto"
-	xRealIP         = "x-real-ip"
+	xForwardedFor   = "X-Forwarded-For"
+	xForwardedHost  = "X-Forwarded-Host"
+	xForwardedProto = "X-Forwarded-Proto"
 )
+
+// IsForwarded returns true if a request contains any x-forwarded header.
+func IsForwarded(header http.Header) bool {
+	return header.Get(xForwardedFor) != "" || header.Get(xForwardedHost) != "" || header.Get(xForwardedProto) != ""
+}
 
 // ParseXForwardedFor returns an iterator of all valid IP addresses
 // found in X-Forwarded-For header. It yields IP addresses in reverse
-// order so we can easily find the first march from the rightmost value.
+// order so we can easily find the first mach from the rightmost value.
 func ParseXForwardedFor(header http.Header) iter.Seq2[int, net.IP] {
-	values := header[textproto.CanonicalMIMEHeaderKey(xForwardedFor)]
+	values := header[xForwardedFor]
 	return func(yield func(int, net.IP) bool) {
 		idx := 0
 		for i := len(values) - 1; i >= 0; i-- {
@@ -54,14 +57,4 @@ func ParseXForwardedProto(header http.Header) string {
 // ParseXForwardedHost returns the (trimmed) value of X-Forwarded-Host header.
 func ParseXForwardedHost(header http.Header) string {
 	return strings.TrimSpace(header.Get(xForwardedHost))
-}
-
-// ParseXRealIP returns the value of X-Real-IP.
-func ParseXRealIP(header http.Header) net.IP {
-	value := strings.TrimSpace(header.Get(xRealIP))
-	if value == "" {
-		return nil
-	}
-
-	return net.ParseIP(value)
 }

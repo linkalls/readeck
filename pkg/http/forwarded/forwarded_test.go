@@ -15,6 +15,44 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+func TestIsForwarded(t *testing.T) {
+	tests := []struct {
+		header   http.Header
+		expected bool
+	}{
+		{
+			http.Header{textproto.CanonicalMIMEHeaderKey("x-forwarded-host"): []string{"localhost"}},
+			true,
+		},
+		{
+			http.Header{},
+			false,
+		},
+		{
+			http.Header{textproto.CanonicalMIMEHeaderKey("x-forwarded-host"): []string{}},
+			false,
+		},
+		{
+			http.Header{textproto.CanonicalMIMEHeaderKey("x-forwarded-host"): []string{""}},
+			false,
+		},
+		{
+			http.Header{textproto.CanonicalMIMEHeaderKey("x-forwarded-proto"): []string{"http"}},
+			true,
+		},
+		{
+			http.Header{textproto.CanonicalMIMEHeaderKey("x-forwarded-for"): []string{"127.0.0.1"}},
+			true,
+		},
+	}
+
+	for i, test := range tests {
+		t.Run(strconv.Itoa(i+1), func(t *testing.T) {
+			require.Equal(t, test.expected, forwarded.IsForwarded(test.header))
+		})
+	}
+}
+
 func TestParseXForwardedFor(t *testing.T) {
 	tests := []struct {
 		header   []string
@@ -124,45 +162,6 @@ func TestParseXForwardedHost(t *testing.T) {
 			}
 
 			res := forwarded.ParseXForwardedHost(header)
-			require.Equal(t, test.expected, res)
-		})
-	}
-}
-
-func TestParseXRealIP(t *testing.T) {
-	tests := []struct {
-		header   []string
-		expected net.IP
-	}{
-		{
-			[]string{"192.168.1.1"},
-			net.ParseIP("192.168.1.1"),
-		},
-		{
-			[]string{"fd00:ab1::2"},
-			net.ParseIP("fd00:ab1::2"),
-		},
-		{
-			[]string{"  192.168.1.1   "},
-			net.ParseIP("192.168.1.1"),
-		},
-		{
-			[]string{"abc192.168.1.1"},
-			nil,
-		},
-		{
-			nil, nil,
-		},
-	}
-
-	for i, test := range tests {
-		t.Run(strconv.Itoa(i+1), func(t *testing.T) {
-			header := http.Header{}
-			if test.header != nil {
-				header[textproto.CanonicalMIMEHeaderKey("x-real-ip")] = test.header
-			}
-
-			res := forwarded.ParseXRealIP(header)
 			require.Equal(t, test.expected, res)
 		})
 	}
