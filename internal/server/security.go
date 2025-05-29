@@ -13,7 +13,6 @@ import (
 	"net"
 	"net/http"
 	"slices"
-	"strconv"
 	"strings"
 
 	"codeberg.org/readeck/readeck/configs"
@@ -25,7 +24,8 @@ import (
 type (
 	ctxCSPNonceKey     struct{}
 	ctxCSPKey          struct{}
-	unauthorizedCtxKey struct{}
+	ctxUnauthorizedKey struct{}
+	ctxRemoteInfoKey   struct{}
 )
 
 const (
@@ -37,27 +37,36 @@ type cspReport struct {
 	Report map[string]any `json:"csp-report"`
 }
 
-func setHost(r *http.Request) error {
-	xfh := forwarded.ParseXForwardedHost(r.Header)
-	if xfh == "" {
-		return nil
-	}
-	pair := strings.SplitN(xfh, ":", 2)
-	host := pair[0]
+// RemoteInfo contains the host/URL information as built by
+// the configuration and/or proxy sent headers.
+type RemoteInfo struct {
+	IsForced    bool
+	IsTrusted   bool
+	IsForwarded bool
+	ProxyAddr   net.IP
+	Host        string
+	Scheme      string
+}
 
-	if len(pair) > 1 {
-		port, err := strconv.ParseUint(pair[1], 10, 32)
-		if err != nil {
-			return err
-		}
-
-		r.Host = fmt.Sprintf("%s:%d", host, port)
-
-	} else {
-		r.Host = host
+func newRemoteInfo(r *http.Request) *RemoteInfo {
+	pi := &RemoteInfo{
+		IsForwarded: forwarded.IsForwarded(r.Header),
+		Host:        forwarded.ParseXForwardedHost(r.Header),
+		Scheme:      forwarded.ParseXForwardedProto(r.Header),
 	}
 
-	return nil
+	// When we've got forwarded headers and an empty scheme, default to https
+	if pi.IsForwarded && pi.Scheme == "" {
+		pi.Scheme = "https"
+	}
+
+	return pi
+}
+
+func isTrustedIP(ip net.IP) bool {
+	return slices.ContainsFunc(configs.TrustedProxies(), func(network *net.IPNet) bool {
+		return network.Contains(ip)
+	})
 }
 
 func checkHost(r *http.Request) error {
@@ -79,27 +88,12 @@ func checkHost(r *http.Request) error {
 	return fmt.Errorf("host is not allowed: %s", host)
 }
 
-func setProto(r *http.Request) {
-	proto := forwarded.ParseXForwardedProto(r.Header)
-	if proto != "" {
-		r.URL.Scheme = proto
+// GetRemoteInfo returns the [*RemoteInfo] instance stored in the request's context.
+func GetRemoteInfo(r *http.Request) *RemoteInfo {
+	if hi, ok := r.Context().Value(ctxRemoteInfoKey{}).(*RemoteInfo); ok {
+		return hi
 	}
-}
-
-func setIP(r *http.Request, knownProxies []*net.IPNet) {
-	// The IPs or IP ranges of the trusted reverse proxies are configured.
-	// The X-Forwarded-For IP list is searched from the rightmost, skipping all addresses that are
-	// on the trusted proxy list. The first non-matching address is the target address.
-	// https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For
-	for _, ip := range forwarded.ParseXForwardedFor(r.Header) {
-		if slices.ContainsFunc(knownProxies, func(x *net.IPNet) bool {
-			return x.Contains(ip)
-		}) {
-			continue
-		}
-		r.RemoteAddr = ip.String()
-		break
-	}
+	return &RemoteInfo{}
 }
 
 // InitRequest update the scheme and host on the incoming
@@ -114,39 +108,49 @@ func (s *Server) InitRequest(next http.Handler) http.Handler {
 		r.RemoteAddr, _, _ = net.SplitHostPort(r.RemoteAddr)
 		remoteIP := net.ParseIP(r.RemoteAddr)
 
+		// Set default scheme
+		r.URL.Scheme = "http"
+		if r.TLS != nil {
+			r.URL.Scheme = "https"
+		}
+
+		// Load remoteInfo headers
+		remoteInfo := newRemoteInfo(r)
+		if remoteInfo.IsForwarded {
+			remoteInfo.ProxyAddr = remoteIP
+			remoteInfo.IsTrusted = isTrustedIP(remoteIP)
+		}
+
 		if configs.Config.Server.BaseURL != nil && configs.Config.Server.BaseURL.IsHTTP() {
 			// If a baseURL is set, set scheme and host from it.
-			r.URL.Scheme = configs.Config.Server.BaseURL.Scheme
-			r.URL.Host = configs.Config.Server.BaseURL.Host
-		} else {
-			// otherwise, we'll use information sent by the client.
-			trusted := slices.ContainsFunc(configs.TrustedProxies(), func(ip *net.IPNet) bool {
-				return ip.Contains(remoteIP)
-			})
+			remoteInfo.IsForced = true
+			remoteInfo.Host = configs.Config.Server.BaseURL.Host
+			remoteInfo.Scheme = configs.Config.Server.BaseURL.Scheme
+		}
 
-			// Set host
-			if trusted {
-				if err := setHost(r); err != nil {
-					s.Log(r).Error("server error", slog.Any("err", err))
-					s.Status(w, r, http.StatusBadRequest)
-					return
+		// Set host
+		if remoteInfo.IsForced || remoteInfo.IsTrusted && remoteInfo.Host != "" {
+			r.Host = remoteInfo.Host
+		}
+		r.URL.Host = r.Host
+
+		// Set scheme
+		if remoteInfo.IsForced || remoteInfo.IsForwarded && remoteInfo.Scheme != "" {
+			r.URL.Scheme = remoteInfo.Scheme
+		}
+
+		// Set client IP
+		if remoteInfo.IsTrusted {
+			for _, ip := range forwarded.ParseXForwardedFor(r.Header) {
+				if isTrustedIP(ip) {
+					continue
 				}
-			}
-			r.URL.Host = r.Host
-
-			// Set scheme
-			r.URL.Scheme = "http"
-			if trusted {
-				setProto(r)
-			} else if r.TLS != nil {
-				r.URL.Scheme = "https"
-			}
-
-			// Set real IP
-			if trusted {
-				setIP(r, configs.TrustedProxies())
+				r.RemoteAddr = ip.String()
+				break
 			}
 		}
+
+		*r = *r.WithContext(context.WithValue(r.Context(), ctxRemoteInfoKey{}, remoteInfo))
 
 		// Check host
 		if !configs.Config.Main.DevMode {
@@ -240,7 +244,7 @@ func (s *Server) cspReport(w http.ResponseWriter, r *http.Request) {
 // unauthorizedHandler is a handler used by the session authentication provider.
 // It sends different responses based on the context.
 func (s *Server) unauthorizedHandler(w http.ResponseWriter, r *http.Request) {
-	unauthorizedCtx, _ := r.Context().Value(unauthorizedCtxKey{}).(int)
+	unauthorizedCtx, _ := r.Context().Value(ctxUnauthorizedKey{}).(int)
 
 	switch unauthorizedCtx {
 	case unauthorizedDefault:
@@ -271,7 +275,7 @@ func (s *Server) unauthorizedHandler(w http.ResponseWriter, r *http.Request) {
 // WithRedirectLogin sets the unauthorized handler to redirect to the login page.
 func (s *Server) WithRedirectLogin(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		ctx := context.WithValue(r.Context(), unauthorizedCtxKey{}, unauthorizedRedir)
+		ctx := context.WithValue(r.Context(), ctxUnauthorizedKey{}, unauthorizedRedir)
 		next.ServeHTTP(w, r.WithContext(ctx))
 	})
 }

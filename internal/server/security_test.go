@@ -5,6 +5,7 @@
 package server_test
 
 import (
+	"net"
 	"net/http"
 	"net/http/httptest"
 	"strconv"
@@ -27,6 +28,7 @@ func TestInitRequest(t *testing.T) {
 		ExpectedRemoteAddr  string
 		ExpectedRemoteHost  string
 		ExpectedRemoteProto string
+		HostInfo            *server.RemoteInfo
 	}{
 		{
 			"127.0.0.1:1234",
@@ -36,6 +38,31 @@ func TestInitRequest(t *testing.T) {
 			"203.0.113.1",
 			"example.net",
 			"https",
+			&server.RemoteInfo{
+				IsForced:    false,
+				IsTrusted:   true,
+				IsForwarded: true,
+				ProxyAddr:   net.ParseIP("127.0.0.1"),
+				Host:        "example.net",
+				Scheme:      "https",
+			},
+		},
+		{
+			"127.0.0.1:1234",
+			"203.0.113.1, 192.168.2.1, ::1",
+			"example.net",
+			"",
+			"203.0.113.1",
+			"example.net",
+			"https",
+			&server.RemoteInfo{
+				IsForced:    false,
+				IsTrusted:   true,
+				IsForwarded: true,
+				ProxyAddr:   net.ParseIP("127.0.0.1"),
+				Host:        "example.net",
+				Scheme:      "https",
+			},
 		},
 		{
 			"127.0.0.1:1234",
@@ -45,6 +72,14 @@ func TestInitRequest(t *testing.T) {
 			"203.0.113.1",
 			"example.net:8443",
 			"https",
+			&server.RemoteInfo{
+				IsForced:    false,
+				IsTrusted:   true,
+				IsForwarded: true,
+				ProxyAddr:   net.ParseIP("127.0.0.1"),
+				Host:        "example.net:8443",
+				Scheme:      "https",
+			},
 		},
 		{
 			"127.0.0.1:1234",
@@ -54,6 +89,14 @@ func TestInitRequest(t *testing.T) {
 			"203.0.113.1",
 			"example.net",
 			"https",
+			&server.RemoteInfo{
+				IsForced:    false,
+				IsTrusted:   true,
+				IsForwarded: true,
+				ProxyAddr:   net.ParseIP("127.0.0.1"),
+				Host:        "example.net",
+				Scheme:      "https",
+			},
 		},
 		{
 			"[::1]:1234",
@@ -63,6 +106,14 @@ func TestInitRequest(t *testing.T) {
 			"2001:db8:fa::2",
 			"example.net",
 			"https",
+			&server.RemoteInfo{
+				IsForced:    false,
+				IsTrusted:   true,
+				IsForwarded: true,
+				ProxyAddr:   net.ParseIP("::1"),
+				Host:        "example.net",
+				Scheme:      "https",
+			},
 		},
 		{
 			"[fd00::ff01]:1234",
@@ -72,6 +123,14 @@ func TestInitRequest(t *testing.T) {
 			"203.0.113.1",
 			"example.net",
 			"https",
+			&server.RemoteInfo{
+				IsForced:    false,
+				IsTrusted:   true,
+				IsForwarded: true,
+				ProxyAddr:   net.ParseIP("fd00::ff01"),
+				Host:        "example.net",
+				Scheme:      "https",
+			},
 		},
 		{
 			"[2001:db8:ff::1]:1234",
@@ -80,7 +139,15 @@ func TestInitRequest(t *testing.T) {
 			"https",
 			"2001:db8:ff::1",
 			"test.local",
-			"http",
+			"https",
+			&server.RemoteInfo{
+				IsForced:    false,
+				IsTrusted:   false,
+				IsForwarded: true,
+				ProxyAddr:   net.ParseIP("2001:db8:ff::1"),
+				Host:        "example.net",
+				Scheme:      "https",
+			},
 		},
 		{
 			"128.66.1.1:1234",
@@ -89,7 +156,49 @@ func TestInitRequest(t *testing.T) {
 			"https",
 			"128.66.1.1",
 			"test.local",
+			"https",
+			&server.RemoteInfo{
+				IsForced:    false,
+				IsTrusted:   false,
+				IsForwarded: true,
+				ProxyAddr:   net.ParseIP("128.66.1.1"),
+				Host:        "example.net",
+				Scheme:      "https",
+			},
+		},
+		{
+			"128.66.1.1:1234",
+			"203.0.113.1",
+			"",
+			"",
+			"128.66.1.1",
+			"test.local",
+			"https",
+			&server.RemoteInfo{
+				IsForced:    false,
+				IsTrusted:   false,
+				IsForwarded: true,
+				ProxyAddr:   net.ParseIP("128.66.1.1"),
+				Host:        "",
+				Scheme:      "https",
+			},
+		},
+		{
+			"128.66.1.1:1234",
+			"",
+			"",
+			"",
+			"128.66.1.1",
+			"test.local",
 			"http",
+			&server.RemoteInfo{
+				IsForced:    false,
+				IsTrusted:   false,
+				IsForwarded: false,
+				ProxyAddr:   nil,
+				Host:        "",
+				Scheme:      "",
+			},
 		},
 	}
 
@@ -112,6 +221,7 @@ func TestInitRequest(t *testing.T) {
 			assert.Equal(test.ExpectedRemoteHost, r.Host)
 			assert.Equal(test.ExpectedRemoteProto, r.URL.Scheme)
 			assert.Equal(test.ExpectedRemoteProto+"://"+test.ExpectedRemoteHost+"/", r.URL.String())
+			assert.Equal(test.HostInfo, server.GetRemoteInfo(r))
 		})
 	}
 }
