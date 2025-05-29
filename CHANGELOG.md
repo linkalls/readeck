@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.19.2] - 2025-05-29
+### Fixed
+- Default scheme to https when a request comes from a reverse proxy
+- More translation updates
+
 ## [0.19.1] - 2025-05-28
 ### Fixed
 - pt-PT translation is back
