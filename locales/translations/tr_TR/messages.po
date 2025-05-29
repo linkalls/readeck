@@ -7,14 +7,16 @@ msgstr ""
 "Project-Id-Version: Readeck 1.0.0\n"
 "Report-Msgid-Bugs-To: translate@readeck.com\n"
 "POT-Creation-Date: 2025-05-25 07:29+0000\n"
-"PO-Revision-Date: 2025-05-23 18:49+0000\n"
+"PO-Revision-Date: 2025-05-28 13:58+0000\n"
 "Last-Translator: eih <eih@noreply.codeberg.org>\n"
+"Language-Team: Turkish <https://translate.codeberg.org/projects/readeck/"
+"application/tr/>\n"
 "Language: tr_TR\n"
-"Language-Team: Turkish <https://translate.codeberg.org/projects/readeck/application/tr/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.11.4\n"
 "Generated-By: Babel 2.17.0\n"
 
 #: assets/templates/_layouts/sidemenu.jet.html:29
@@ -85,7 +87,7 @@ msgstr "veya"
 
 #: assets/templates/_libs/forms.jet.html:256
 msgid "Select or drop file"
-msgstr "Dosya seç/bırak"
+msgstr "Dosya seç ya da bırak"
 
 #: assets/templates/_libs/forms.jet.html:260
 msgid "remove"
@@ -496,15 +498,15 @@ msgstr "%d dakika"
 
 # | msgid "Shared by %s"
 #: assets/templates/bookmarks/bookmark_public.jet.html:97
-#, fuzzy, python-format
+#, python-format
 msgid "Shared by %s with %s"
-msgstr "%s tarafından paylaşıldı"
+msgstr "%s tarafından %s kullanılarak paylaşıldı"
 
 # | msgid "Saved with"
 #: assets/templates/bookmarks/bookmark_public.jet.html:150
-#, fuzzy, python-format
+#, python-format
 msgid "Saved with %s"
-msgstr "Kaydetmek için kullanılan"
+msgstr "%s kullanılarak kaydedildi"
 
 #: assets/templates/bookmarks/bookmark_share_email.jet.html:8
 msgid "Share by email"
@@ -692,70 +694,70 @@ msgstr[1] "%d dk."
 
 #: assets/templates/bookmarks/components/content_block.jet.html:1
 msgid "Remove Highlight(s)"
-msgstr ""
+msgstr "Vurgulamaları Kaldır"
 
 #: assets/templates/bookmarks/components/content_block.jet.html:47
 msgid "Yellow"
-msgstr ""
+msgstr "Sarı"
 
 #: assets/templates/bookmarks/components/content_block.jet.html:48
 msgid "Red"
-msgstr ""
+msgstr "Kırmızı"
 
 #: assets/templates/bookmarks/components/content_block.jet.html:49
 msgid "Blue"
-msgstr ""
+msgstr "Mavi"
 
 #: assets/templates/bookmarks/components/content_block.jet.html:50
 msgid "Green"
-msgstr ""
+msgstr "Yeşil"
 
 #: assets/templates/bookmarks/components/content_block.jet.html:54
 msgid "Highlight"
-msgstr ""
+msgstr "Vurgula"
 
 #: assets/templates/bookmarks/components/filters.jet.html:9
 msgid "Search"
-msgstr ""
+msgstr "Arama"
 
 #: assets/templates/bookmarks/components/filters.jet.html:14
 msgid "Title"
-msgstr ""
+msgstr "Başlık"
 
 #: assets/templates/bookmarks/components/filters.jet.html:19
 msgid "Author"
-msgstr ""
+msgstr "Yazar"
 
 #: assets/templates/bookmarks/components/filters.jet.html:24
 msgid "Site"
-msgstr ""
+msgstr "Websitesi"
 
 #: assets/templates/bookmarks/components/filters.jet.html:29
 #: assets/templates/bookmarks/import/options.jet.html:10
 #: assets/templates/bookmarks/label.jet.html:10
 msgid "Label"
-msgstr ""
+msgstr "Etiket"
 
 #: assets/templates/bookmarks/components/filters.jet.html:34
 msgid "From date"
-msgstr ""
+msgstr "Başlangıç tarihi"
 
 #: assets/templates/bookmarks/components/filters.jet.html:40
 msgid "To date"
-msgstr ""
+msgstr "Bitiş tarihi"
 
 #: assets/templates/bookmarks/components/filters.jet.html:45
 msgid "Type"
-msgstr ""
+msgstr "Tür"
 
 #: assets/templates/bookmarks/components/filters.jet.html:50
 msgctxt "filter"
 msgid "Progress"
-msgstr ""
+msgstr "Aşama"
 
 #: assets/templates/bookmarks/components/filters.jet.html:55
 msgid "Is Favorite"
-msgstr ""
+msgstr "Beğenilen"
 
 #: assets/templates/bookmarks/components/filters.jet.html:59
 #: assets/templates/bookmarks/components/filters.jet.html:68
@@ -765,7 +767,7 @@ msgstr ""
 #: assets/templates/bookmarks/components/reader_control.jet.html:127
 #: assets/templates/bookmarks/components/reader_control.jet.html:152
 msgid "yes"
-msgstr ""
+msgstr "evet"
 
 #: assets/templates/bookmarks/components/filters.jet.html:60
 #: assets/templates/bookmarks/components/filters.jet.html:69
@@ -775,137 +777,139 @@ msgstr ""
 #: assets/templates/bookmarks/components/reader_control.jet.html:127
 #: assets/templates/bookmarks/components/reader_control.jet.html:152
 msgid "no"
-msgstr ""
+msgstr "hayır"
 
 #: assets/templates/bookmarks/components/filters.jet.html:64
 msgid "Is Archived"
-msgstr ""
+msgstr "Arşivlenmiş"
 
 #: assets/templates/bookmarks/components/filters.jet.html:74
 msgid "Is Loaded"
-msgstr ""
+msgstr "Yüklenmiş"
 
 #: assets/templates/bookmarks/components/filters.jet.html:84
 msgid "With Labels"
-msgstr ""
+msgstr "Etiketlenmiş"
 
 #: assets/templates/bookmarks/components/filters.jet.html:94
 msgid "With Errors"
-msgstr ""
+msgstr "Hatalı"
 
 #: assets/templates/bookmarks/components/labels.jet.html:1
 msgid "Remove label"
-msgstr ""
+msgstr "Etiketi kaldır"
 
 #: assets/templates/bookmarks/components/labels_form.jet.html:1
 msgid "Add a label"
-msgstr ""
+msgstr "Bir etiket ekle"
 
 #: assets/templates/bookmarks/components/labels_form.jet.html:35
 msgid "Add label"
-msgstr ""
+msgstr "Etiket ekle"
 
 #: assets/templates/bookmarks/components/list_actions.jet.html:1
 msgid "Grid view"
-msgstr ""
+msgstr "Kutu görünümü"
 
 #: assets/templates/bookmarks/components/list_actions.jet.html:1
 msgid "Compact view"
-msgstr ""
+msgstr "Sıkışık görünüm"
 
 #: assets/templates/bookmarks/components/list_actions.jet.html:1
 msgid "Mosaic view"
-msgstr ""
+msgstr "Mozaik görünüm"
 
 #: assets/templates/bookmarks/components/list_actions.jet.html:1
 msgid "Sort bookmarks"
-msgstr ""
+msgstr "Yer imlerini sırala"
 
 #: assets/templates/bookmarks/components/list_actions.jet.html:1
 msgid "Sort options"
-msgstr ""
+msgstr "Sıralama seçenekleri"
 
 #: assets/templates/bookmarks/components/list_actions.jet.html:1
 msgid "Import and export"
-msgstr ""
+msgstr "İçeri ve dışarı aktar"
 
 #: assets/templates/bookmarks/components/reader_control.jet.html:24
 msgid "Font"
-msgstr ""
+msgstr "Yazı türü"
 
 #: assets/templates/bookmarks/components/reader_control.jet.html:54
 msgid "Width"
-msgstr ""
+msgstr "Genişlik"
 
 #: assets/templates/bookmarks/components/reader_control.jet.html:75
 msgid "Size"
-msgstr ""
+msgstr "Boyut"
 
 #: assets/templates/bookmarks/components/reader_control.jet.html:96
 msgid "Line height"
-msgstr ""
+msgstr "Satır yüksekliği"
 
 #: assets/templates/bookmarks/components/reader_control.jet.html:116
 msgid "Justify"
-msgstr ""
+msgstr "İki yana hizalı"
 
 #: assets/templates/bookmarks/components/reader_control.jet.html:141
 msgid "Hyphenation"
-msgstr ""
+msgstr "Tireleme"
 
 #: assets/templates/bookmarks/components/share_email.jet.html:16
 msgid "Sends this bookmark's content in the message."
-msgstr ""
+msgstr "Bu yer iminin içeriğini iletiye ekleyerek gönderir."
 
 #: assets/templates/bookmarks/components/share_email.jet.html:18
 msgid "Sends this bookmark as an attached EPUB file."
 msgstr ""
+"Bu yer iminin içeriğini barındıran EPUB biçimli bir dosyayı ekleyerek "
+"gönderir."
 
 #: assets/templates/bookmarks/components/share_email.jet.html:30
 msgid "Format"
-msgstr ""
+msgstr "Biçim"
 
 #: assets/templates/bookmarks/components/share_email.jet.html:40
 msgid "Send To"
-msgstr ""
+msgstr "Alıcı"
 
 #: assets/templates/bookmarks/components/share_email.jet.html:45
 msgid "Send message"
-msgstr ""
+msgstr "İletiyi gönder"
 
 #: assets/templates/bookmarks/components/share_email.jet.html:49
 #, python-format
 msgid "The bookmark was sent to %s"
-msgstr ""
+msgstr "Yer imi %s e-posta adresine gönderildi"
 
 #: assets/templates/bookmarks/components/share_email.jet.html:56
 #: assets/templates/bookmarks/components/share_link.jet.html:25
 msgid "Go back to the bookmark"
-msgstr ""
+msgstr "Yer imine geri dön"
 
 #: assets/templates/bookmarks/components/share_link.jet.html:9
 msgid "You can share the following link with your friends."
-msgstr ""
+msgstr "Aşağıdaki bağlantıyı arkadaşlarınızla paylaşabilirsiniz."
 
 #: assets/templates/bookmarks/components/share_link.jet.html:10
 #, python-format
 msgid "It expires on %s"
-msgstr ""
+msgstr "%s tarihine kadar geçerlidir"
 
 #: assets/templates/bookmarks/components/share_link.jet.html:22
 msgid "Copy the link"
-msgstr ""
+msgstr "Bağlantıyı kopyala"
 
 #: assets/templates/bookmarks/components/sidebar.jet.html:1
 #: assets/templates/bookmarks/components/sidebar.jet.html:49
 #: assets/templates/emails/bookmark.jet.html:16
 #: assets/templates/epub/bookmark.jet.html:34
 msgid "no site name"
-msgstr ""
+msgstr "websitesi adı yok"
 
 #: assets/templates/bookmarks/components/sidebar.jet.html:13
 msgid "Errors occurred during extraction."
-msgstr ""
+msgstr "İçerik alınırken hata meydana geldi."
 
 #: assets/templates/bookmarks/components/sidebar.jet.html:69
 #: assets/templates/emails/bookmark.jet.html:27
@@ -913,20 +917,20 @@ msgstr ""
 #, python-format
 msgid "About %d minute read"
 msgid_plural "About %d minutes read"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Okuma süresi yaklaşık %d dakikadır"
+msgstr[1] "Okuma süresi yaklaşık %d dakikadır"
 
 #: assets/templates/bookmarks/components/sidebar.jet.html:99
 msgid "Start selecting text in the article to create a new highlight."
-msgstr ""
+msgstr "Yeni bir vurgulama oluşturmak için yazıda istediğiniz metni seçin."
 
 #: assets/templates/bookmarks/components/sidebar.jet.html:130
 msgid "Links"
-msgstr ""
+msgstr "Bağlantılar"
 
 #: assets/templates/bookmarks/import/form-browser.jet.html:9
 msgid "Import your Browser's Bookmarks"
-msgstr ""
+msgstr "Tarayıcınızdaki yer imlerini içeri aktarın"
 
 #: assets/templates/bookmarks/import/form-browser.jet.html:15
 msgid ""
@@ -936,14 +940,20 @@ msgid ""
 "    every bookmark found it the file.\n"
 "  "
 msgstr ""
+"\n"
+"    Tarayıcınızdaki yer imlerini HTML dosyası olarak dışarı aktarın.<br>\n"
+"    Bu dosyayı aşağıdaki formu kullanarak yükleyin, Readeck dosyadaki her "
+"bir yer iminin\n"
+"    bilgilerini alarak kayıt oluşturacaktır.\n"
+"  "
 
 #: assets/templates/bookmarks/import/form-browser.jet.html:22
 msgid "Instructions for Firefox"
-msgstr ""
+msgstr "Firefox için yönergeler"
 
 #: assets/templates/bookmarks/import/form-browser.jet.html:23
 msgid "Instructions for Chrome"
-msgstr ""
+msgstr "Chrome için yönergeler"
 
 #: assets/templates/bookmarks/import/form-browser.jet.html:34
 #: assets/templates/bookmarks/import/form-csv.jet.html:27
@@ -951,15 +961,15 @@ msgstr ""
 #: assets/templates/bookmarks/import/form-pocket-file.jet.html:42
 #: assets/templates/bookmarks/import/form-text.jet.html:28
 msgid "File"
-msgstr ""
+msgstr "Dosya"
 
 #: assets/templates/bookmarks/import/form-browser.jet.html:42
 msgid "Convert section titles to labels"
-msgstr ""
+msgstr "Bölüm başlıklarını etikete dönüştür"
 
 #: assets/templates/bookmarks/import/form-browser.jet.html:44
 msgid "Adds a label on links, based on their section title"
-msgstr ""
+msgstr "Bulunduğu bölümün başlığını bağlantıya etiket olarak ekler"
 
 #: assets/templates/bookmarks/import/form-browser.jet.html:48
 #: assets/templates/bookmarks/import/form-csv.jet.html:34
@@ -969,11 +979,11 @@ msgstr ""
 #: assets/templates/bookmarks/import/form-text.jet.html:35
 #: assets/templates/bookmarks/import/form-wallabag.jet.html:69
 msgid "Import Bookmarks"
-msgstr ""
+msgstr "Yer imlerini içeri aktar"
 
 #: assets/templates/bookmarks/import/form-csv.jet.html:9
 msgid "Import Links from a CSV File"
-msgstr ""
+msgstr "CSV dosyasındaki bağlantıları içeri aktar"
 
 #: assets/templates/bookmarks/import/form-csv.jet.html:15
 msgid ""
@@ -981,6 +991,10 @@ msgid ""
 "    Upload a CSV file from Instapaper or any CSV that matches the format specified below.\n"
 "  "
 msgstr ""
+"\n"
+"    Aşağıdaki biçime uyan bir Instapaper CSV dosyası ya da herhangi bir CSV "
+"dosyası yükleyin.\n"
+"  "
 
 #: assets/templates/bookmarks/import/form-csv.jet.html:41
 #, python-format
@@ -990,6 +1004,12 @@ msgid ""
 "    insensitive and, except for <code>%s</code>, every column is optional.\n"
 "  "
 msgstr ""
+"\n"
+"    Yükleyeceğiniz dosyanın ilk satırı sütun başlıklarından oluşmalı. Sütun "
+"başlıkları\n"
+"    büyük/küçük harfe duyarlıdır ve <code>%s</code> dışındaki her sütun "
+"isteğe bağlıdır.\n"
+"  "
 
 #: assets/templates/bookmarks/import/form-csv.jet.html:45
 msgid "Here are the columns you can set:"
@@ -997,46 +1017,48 @@ msgstr ""
 
 #: assets/templates/bookmarks/import/form-csv.jet.html:49
 msgid "Field"
-msgstr ""
+msgstr "Alan"
 
 #: assets/templates/bookmarks/import/form-csv.jet.html:50
 msgid "Alias"
-msgstr ""
+msgstr "Rumuz"
 
 #: assets/templates/bookmarks/import/form-csv.jet.html:51
 msgid "Description"
-msgstr ""
+msgstr "Açıklama"
 
 # | msgid "Email address"
 #: assets/templates/bookmarks/import/form-csv.jet.html:58
-#, fuzzy
 msgid "Link address"
-msgstr "E-posta adresi"
+msgstr "Bağlantı adresi"
 
 #: assets/templates/bookmarks/import/form-csv.jet.html:63
 msgid "Bookmark title"
-msgstr ""
+msgstr "Yer imi başlığı"
 
 #: assets/templates/bookmarks/import/form-csv.jet.html:68
 #, python-format
 msgid "Bookmark's archived state; only valid value is \"%s\""
-msgstr ""
+msgstr "Yer iminin arşivlenme durumu. Tek geçerli değer \"%s\""
 
 #: assets/templates/bookmarks/import/form-csv.jet.html:73
 msgid "Creation date, can be a UNIX timestamp or an RFC-3339 formatted date"
 msgstr ""
+"Oluşturulma tarihi bir UNIX zaman damgası ya da RFC-3339'a göre "
+"biçimlendirilmiş bir tarih olabilir"
 
 #: assets/templates/bookmarks/import/form-csv.jet.html:78
 msgid "A JSON encoded list of labels"
-msgstr ""
+msgstr "JSON olarak kodlanmış bir etiket listesi"
 
 #: assets/templates/bookmarks/import/form-csv.jet.html:83
 msgid "Example"
-msgstr ""
+msgstr "Örnek"
 
 #: assets/templates/bookmarks/import/form-goodlinks.jet.html:9
 msgid "Import Links from a GoodLinks export file"
 msgstr ""
+"Bağlantıları bir GoodLinks dışarı aktarım dosyası kullanarak içeri aktar"
 
 #: assets/templates/bookmarks/import/form-goodlinks.jet.html:15
 msgid ""
@@ -1044,11 +1066,14 @@ msgid ""
 "    Upload a JSON file obtained from your GoodLinks app.\n"
 "  "
 msgstr ""
+"\n"
+"    GoodLinks uygulamanızdan aldığınız bir JSON dosyası yükleyin.\n"
+"  "
 
 #: assets/templates/bookmarks/import/form-omnivore.jet.html:9
 #: assets/templates/bookmarks/import/index.jet.html:47
 msgid "Import your Omnivore Articles"
-msgstr ""
+msgstr "Omnivore yazılarınızı içeri aktarın"
 
 #: assets/templates/bookmarks/import/form-omnivore.jet.html:15
 msgid ""
@@ -1057,23 +1082,28 @@ msgid ""
 "    Omnivore's settings and enter it in the the form below.\n"
 "  "
 msgstr ""
+"\n"
+"    Omnivore yazılarınızı içeri aktarmak için öncelikle Omnivore ayarları "
+"altında\n"
+"    bir API anahtarı oluşturup anahtarı aşağıdaki forma girmelisiniz.\n"
+"  "
 
 #: assets/templates/bookmarks/import/form-omnivore.jet.html:28
 msgid "Omnivore URL"
-msgstr ""
+msgstr "Omnivore adresi"
 
 #: assets/templates/bookmarks/import/form-omnivore.jet.html:30
 msgid "URL of your Omnivore homepage"
-msgstr ""
+msgstr "Omnivore anasayfanızın adresi"
 
 #: assets/templates/bookmarks/import/form-omnivore.jet.html:36
 msgid "API Key"
-msgstr ""
+msgstr "API Anahtarı"
 
 #: assets/templates/bookmarks/import/form-pocket-file.jet.html:9
 #: assets/templates/bookmarks/import/index.jet.html:50
 msgid "Import your Pocket Articles"
-msgstr ""
+msgstr "Pocket yazılarınızı içeri aktarın"
 
 #: assets/templates/bookmarks/import/form-pocket-file.jet.html:15
 #, python-format
@@ -1083,6 +1113,10 @@ msgid ""
 "    <a class=\"%s\" href=\"%s\">%s</a>.\n"
 "  "
 msgstr ""
+"\n"
+"    <a class=\"%s\" href=\"%s\">%s</a> adresini ziyaret ederek <br>\n"
+"    Pocket yazılarınızı içeri aktarabilirsiniz.\n"
+"  "
 
 #: assets/templates/bookmarks/import/form-pocket-file.jet.html:21
 msgid ""
@@ -1091,6 +1125,11 @@ msgid ""
 "    every link found it the file.\n"
 "  "
 msgstr ""
+"\n"
+"    Bu dosyayı aşağıdaki formu kullanarak yükleyin, Readeck dosyada bulduğu "
+"her bağlantıya\n"
+"    erişip kaydedecektir.\n"
+"  "
 
 #: assets/templates/bookmarks/import/form-pocket-file.jet.html:27
 msgid ""
@@ -1100,15 +1139,22 @@ msgid ""
 "    see in Pocket.\n"
 "  "
 msgstr ""
+"\n"
+"    Aklınızda bulunsun, Pocket yazıların içeriğinin dışarı aktarılmasına "
+"izin vermiyor.\n"
+"    Bu Readeck arayüzünde gördükleriniz ile şu anki Pocket içeriği arasında "
+"farklılıklara\n"
+"    neden olabilir.\n"
+"  "
 
 #: assets/templates/bookmarks/import/form-pocket-file.jet.html:44
 msgid "Note: upload the ZIP file directly, not its contents"
-msgstr ""
+msgstr "Not: doğrudan ZIP dosyasını yükleyin, dosyanın içeriklerini değil"
 
 #: assets/templates/bookmarks/import/form-text.jet.html:9
 #: assets/templates/bookmarks/import/index.jet.html:32
 msgid "Import Links from a Text File"
-msgstr ""
+msgstr "Bir metin dosyasından içeri aktar"
 
 #: assets/templates/bookmarks/import/form-text.jet.html:15
 msgid ""
@@ -1117,11 +1163,16 @@ msgid ""
 "    all of them and save them in your bookmark list.\n"
 "  "
 msgstr ""
+"\n"
+"    Her satırında bir bağlantı bulunan bir metin dosyası yükleyin, Readeck "
+"herbirine\n"
+"    erişerek yer imleri listenize kaydedecektir.\n"
+"  "
 
 #: assets/templates/bookmarks/import/form-wallabag.jet.html:9
 #: assets/templates/bookmarks/import/index.jet.html:53
 msgid "Import your Wallabag Articles"
-msgstr ""
+msgstr "Wallabag yazılarınızı içeri aktarın"
 
 #: assets/templates/bookmarks/import/form-wallabag.jet.html:15
 msgid ""
@@ -1131,6 +1182,13 @@ msgid ""
 "    a <strong>Client ID</strong> and <strong>Client secret</strong>.\n"
 "  "
 msgstr ""
+"\n"
+"    Wallabag yazılarınızı içeri aktarmak için önce Wallabag <strong>API "
+"istemcileri yönetimi</strong> menüsünden\n"
+"    bir API istemcisi oluşturmalısınız. Bu işlem sonucunda size "
+"<strong>Client ID</strong> ve\n"
+"    <strong>Client secret</strong> değerleri verilecek.\n"
+"  "
 
 #: assets/templates/bookmarks/import/form-wallabag.jet.html:21
 msgid ""
@@ -1138,26 +1196,29 @@ msgid ""
 "    You can then enter all the necessary information in the form below.\n"
 "  "
 msgstr ""
+"\n"
+"    Daha sonra gerekli bütün bilgileri aşağıdaki forma girebilirsiniz.\n"
+"  "
 
 #: assets/templates/bookmarks/import/form-wallabag.jet.html:33
 msgid "Wallabag URL"
-msgstr ""
+msgstr "Wallabag adresi"
 
 #: assets/templates/bookmarks/import/form-wallabag.jet.html:35
 msgid "URL of your Wallabag homepage"
-msgstr ""
+msgstr "Wallabag anasayfanızın adresi"
 
 #: assets/templates/bookmarks/import/form-wallabag.jet.html:55
 msgid "Client ID"
-msgstr ""
+msgstr "Client ID"
 
 #: assets/templates/bookmarks/import/form-wallabag.jet.html:62
 msgid "Client Secret"
-msgstr ""
+msgstr "Client Secret"
 
 #: assets/templates/bookmarks/import/index.jet.html:9
 msgid "Import your Bookmarks"
-msgstr ""
+msgstr "Yer imlerinizi içeri aktarın"
 
 #: assets/templates/bookmarks/import/index.jet.html:25
 msgid ""
@@ -1165,62 +1226,68 @@ msgid ""
 "    Here you can import your existing bookmark collection from various sources into Readeck.\n"
 "  "
 msgstr ""
+"\n"
+"    Burayı kullanarak farklı kaynaklardaki var olan yer imlerinizi Readeck "
+"içerisine aktarabilirsiniz.\n"
+"  "
 
 #: assets/templates/bookmarks/import/index.jet.html:36
 msgid "Import your Browser's Bookmarks, Pinboard, Instapaper"
-msgstr ""
+msgstr "Pinboard, Instapaper ya da tarayıcınızdaki yer imlerini içeri aktarın"
 
 #: assets/templates/bookmarks/import/index.jet.html:40
 msgid "Import Links from a CSV File and Instapaper"
-msgstr ""
+msgstr "Instapaper ya da bir CSV dosyasından bağlantıları içeri aktarın"
 
 #: assets/templates/bookmarks/import/index.jet.html:44
 msgid "Import your GoodLinks Articles"
-msgstr ""
+msgstr "GoodLinks yazılarınızı içeri aktarın"
 
 #: assets/templates/bookmarks/import/options.jet.html:7
 msgid "Options"
-msgstr ""
+msgstr "Seçenekler"
 
 #: assets/templates/bookmarks/import/options.jet.html:12
 msgid "A label to add to all imported bookmarks"
-msgstr ""
+msgstr "İçeri aktarılan yer imlerine eklenecek etiket"
 
 #: assets/templates/bookmarks/import/options.jet.html:16
 msgid "Ignore links already in your bookmarks"
-msgstr ""
+msgstr "Yer imleriniz arasında yer alan bağlantıları göz ardı edin"
 
 #: assets/templates/bookmarks/import/options.jet.html:21
 msgid "Archive all links"
-msgstr ""
+msgstr "Bütün bağlantıları arşivle"
 
 #: assets/templates/bookmarks/import/options.jet.html:23
 msgid "Moves all links to archive, regardless of their original status"
-msgstr ""
+msgstr "Kaynağındaki durumundan bağımsız olarak bütün bağlantıları arşive taşır"
 
 #: assets/templates/bookmarks/import/options.jet.html:27
 msgid "Mark all links as read"
-msgstr ""
+msgstr "Bütün bağlantıları okundu olarak işaretle"
 
 #: assets/templates/bookmarks/import/options.jet.html:29
 msgid "Marks all links as read, regardless of their original status"
 msgstr ""
+"Kaynağınaki durumundan bağımsız olarak bütün bağlantıları okundu olarak "
+"işaretler"
 
 #: assets/templates/bookmarks/import/progress.jet.html:15
 msgid "Import operation will launch momentarily."
-msgstr ""
+msgstr "İçeri aktarım işlemi kısa süre içerisinde başlayacak."
 
 #: assets/templates/bookmarks/import/progress.jet.html:17
 msgid "Import operation has started!"
-msgstr ""
+msgstr "İçeri aktarım işlemi başladı!"
 
 #: assets/templates/bookmarks/import/progress.jet.html:21
 msgid "You can keep using Readeck while the import is running."
-msgstr ""
+msgstr "İçeri aktarım sürerken Readeck'i kullanabilirsiniz."
 
 #: assets/templates/bookmarks/import/progress.jet.html:24
 msgid "Import is finished!"
-msgstr ""
+msgstr "İçeri aktarım sonlandı!"
 
 #: assets/templates/bookmarks/import/progress.jet.html:25
 #, python-format
@@ -1229,6 +1296,10 @@ msgid ""
 "      Your bookmarks are now available in your <a class=\"%s\" href=\"%s\">bookmark list</a>.\n"
 "      "
 msgstr ""
+"\n"
+"      Yer imlerinize <a class=\"%s\" href=\"%s\">yer imleri listesinden</a> "
+"ulaşabilirsiniz.\n"
+"      "
 
 #: assets/templates/bookmarks/index.jet.html:1
 msgid "Bookmark filters"
@@ -1236,34 +1307,40 @@ msgstr ""
 
 #: assets/templates/bookmarks/index.jet.html:27
 msgid "Save a new link"
-msgstr ""
+msgstr "Yeni bir bağlantı kaydet"
 
 #: assets/templates/bookmarks/index.jet.html:40
 msgctxt "button"
 msgid "Save link"
-msgstr ""
+msgstr "Bağlantıyı kaydet"
 
 #: assets/templates/bookmarks/index.jet.html:49
 #, python-format
 msgid "\"%s\" is not a valid address. Did you mean to search your bookmarks for %s?"
 msgstr ""
+"\"%s\" geçerli bir adres değil. Yer imleriniz arasında %s terimini aramak mı "
+"istediniz?"
 
 #: assets/templates/bookmarks/index.jet.html:73
 msgid "You don't have any bookmarks yet.<br> Copy a link in the field above and start saving."
 msgstr ""
+"Herhangi bir yer iminiz yok.<br> Yukarıdaki alana bir bağlantı adresi "
+"girerek kaydetmeye başlayın."
 
 #: assets/templates/bookmarks/index.jet.html:75
 #, python-format
 msgid "Read more about bookmarks in the <a class=\"%s\" href=\"%s\">documentation</a>."
 msgstr ""
+"Yer imleri hakkında daha fazla bilgi için <a class=\"%s\" href=\"%s\">yardım "
+"belgelerine</a> bakın."
 
 #: assets/templates/bookmarks/index.jet.html:85
 msgid "Readeck Browser Extension"
-msgstr ""
+msgstr "Readeck Tarayıcı Eklentisi"
 
 #: assets/templates/bookmarks/index.jet.html:101
 msgid "Import existing bookmarks"
-msgstr ""
+msgstr "Var olan yer imlerini içeri aktar"
 
 #: assets/templates/bookmarks/index.jet.html:103
 msgid ""
@@ -1272,50 +1349,55 @@ msgid ""
 "              Try Readeck's import tool.\n"
 "            "
 msgstr ""
+"\n"
+"              Benzer bir araç ya da yer imlerini içeren bir dosyayı "
+"kullanarak içeri aktarmak mı istiyorsunuz?\n"
+"              Readeck içeri aktarım aracını kullanın.\n"
+"            "
 
 #: assets/templates/bookmarks/index.jet.html:110
 msgid "Import links and articles"
-msgstr ""
+msgstr "Bağlantı ve yazıları içeri aktar"
 
 #: assets/templates/bookmarks/index.jet.html:137
 msgid "Import bookmarks"
-msgstr ""
+msgstr "Yer imlerini içeri aktar"
 
 #: assets/templates/bookmarks/index.jet.html:146
 msgid "Your search query yielded <strong>no results</strong>."
-msgstr ""
+msgstr "Aramanızda <strong>herhangi bir sonuç bulunamadı</strong>."
 
 #: assets/templates/bookmarks/index.jet.html:148
 #, python-format
 msgid "Your search query yielded <strong>%d result</strong>."
 msgid_plural "Your search query yielded <strong>%d results</strong>."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Aramanızda <strong>%d sonuç</strong> bulundu."
+msgstr[1] "Aramanızda <strong>%d sonuç</strong> bulundu."
 
 #: assets/templates/bookmarks/index.jet.html:179
 msgctxt "action"
 msgid "Search"
-msgstr ""
+msgstr "Ara"
 
 #: assets/templates/bookmarks/index.jet.html:181
 msgid "Reset search"
-msgstr ""
+msgstr "Aramayı sıfırla"
 
 #: assets/templates/bookmarks/index.jet.html:184
 msgid "Create a collection"
-msgstr ""
+msgstr "Koleksiyon oluştur"
 
 #: assets/templates/bookmarks/label.jet.html:37
 msgid "Delete"
-msgstr ""
+msgstr "Sil"
 
 #: assets/templates/bookmarks/label.jet.html:51
 msgid "Label will be removed in a few seconds."
-msgstr ""
+msgstr "Etiket bir kaç saniye içinde silinecek."
 
 #: assets/templates/bookmarks/labels.jet.html:8
 msgid "Bookmark Labels"
-msgstr ""
+msgstr "Yer İmi Etiketleri"
 
 #: assets/templates/bookmarks/labels.jet.html:14
 msgid ""
@@ -1323,145 +1405,150 @@ msgid ""
 "  Labels let your organize your bookmarks the way you want.\n"
 "  You can set anything to a label, including emojis!\n"
 msgstr ""
+"\n"
+"  Etiketler yer imlerinizi istediğiniz biçimde düzenlemenizi sağlar.\n"
+"  Emojiler dahil her şeyi etiket olarak kullanabilirsiniz.\n"
 
 #: assets/templates/docs/about.jet.html:8
 #: assets/templates/docs/base.jet.html:27 docs/http.go:258
 msgid "About Readeck"
-msgstr ""
+msgstr "Readeck Hakkında"
 
 #: assets/templates/docs/about.jet.html:14
 msgid "Version:"
-msgstr ""
+msgstr "Sürüm:"
 
 #: assets/templates/docs/about.jet.html:15
 msgid "Built Date:"
-msgstr ""
+msgstr "Sürüm Oluşturulma Tarihi:"
 
 #: assets/templates/docs/about.jet.html:18
 msgid "System Information"
-msgstr ""
+msgstr "Sistem Bilgisi"
 
 #: assets/templates/docs/about.jet.html:20
 msgid "Here are your current system information. Please include them if you report a bug."
 msgstr ""
+"İşte şu anki sistem bilginiz. Bir hata bildirmek isterseniz lütfen bu "
+"bilgileri de paylaşın."
 
 #: assets/templates/docs/about.jet.html:33
 msgid "Project"
-msgstr ""
+msgstr "Proje"
 
 #: assets/templates/docs/about.jet.html:36
 msgid "Main website"
-msgstr ""
+msgstr "Ana websitesi"
 
 #: assets/templates/docs/about.jet.html:37
 msgid "Sources and issues"
-msgstr ""
+msgstr "Kaynak ve hata bildirimleri"
 
 #: assets/templates/docs/about.jet.html:38
 msgid "How to contribute"
-msgstr ""
+msgstr "Nasıl katkıda bulunulur"
 
 #: assets/templates/docs/about.jet.html:39
 msgid "Community Forum"
-msgstr ""
+msgstr "Topluluk Forumu"
 
 #: assets/templates/docs/about.jet.html:40
 msgid "Matrix Chat"
-msgstr ""
+msgstr "Matrix Sohbet Odası"
 
 #: assets/templates/docs/about.jet.html:43
 msgid "License"
-msgstr ""
+msgstr "Kullanım hakları"
 
 #: assets/templates/docs/about.jet.html:45
 #, python-format
 msgid "Readeck is distributed under the terms of the license \"%s\""
-msgstr ""
+msgstr "Readeck \"%s\" kullanım hakları altında dağıtılmaktadır"
 
 #: assets/templates/docs/about.jet.html:49
 msgid "Here's a short summary of the license conditions:"
-msgstr ""
+msgstr "Kullanım koşullarının bir özeti şöyledir:"
 
 #: assets/templates/docs/about.jet.html:54
 msgid "Permissions"
-msgstr ""
+msgstr "İzinler"
 
 #: assets/templates/docs/about.jet.html:55
 msgid "Conditions"
-msgstr ""
+msgstr "Koşullar"
 
 #: assets/templates/docs/about.jet.html:56
 msgid "Limitations"
-msgstr ""
+msgstr "Sınırlamalar"
 
 #: assets/templates/docs/about.jet.html:64
 msgid "Commercial use"
-msgstr ""
+msgstr "Ticari kullanım"
 
 #: assets/templates/docs/about.jet.html:67
 msgid "Distribution"
-msgstr ""
+msgstr "Dağıtım"
 
 #: assets/templates/docs/about.jet.html:70
 msgid "Modification"
-msgstr ""
+msgstr "Değişiklik yapma"
 
 #: assets/templates/docs/about.jet.html:73
 msgid "Patent use"
-msgstr ""
+msgstr "Patent kullanımı"
 
 #: assets/templates/docs/about.jet.html:76
 msgid "Private use"
-msgstr ""
+msgstr "Özel kullanım"
 
 #: assets/templates/docs/about.jet.html:83
 msgid "Disclose source"
-msgstr ""
+msgstr "Kaynağın kamuya açılması"
 
 #: assets/templates/docs/about.jet.html:86
 msgid "License and copyright notice"
-msgstr ""
+msgstr "Kullanım hakları ve telif hakkı bildirimi"
 
 #: assets/templates/docs/about.jet.html:89
 msgid "Network use is distribution"
-msgstr ""
+msgstr "Ağda kullanım dağıtım anlamına gelir"
 
 #: assets/templates/docs/about.jet.html:92
 msgid "Same license"
-msgstr ""
+msgstr "Aynı kullanım hakları"
 
 #: assets/templates/docs/about.jet.html:95
 msgid "State changes"
-msgstr ""
+msgstr "Değişiklikleri belirt"
 
 #: assets/templates/docs/about.jet.html:102
 msgid "Liability"
-msgstr ""
+msgstr "Yükümlülük"
 
 #: assets/templates/docs/about.jet.html:105
 msgid "Warranty"
-msgstr ""
+msgstr "Güvence"
 
 #: assets/templates/docs/about.jet.html:132
 msgid "Third-Party Licenses"
-msgstr ""
+msgstr "Üçüncü Şahısların Kullanım Hakları"
 
 #: assets/templates/docs/about.jet.html:134
 msgid "Readeck includes and/or uses the following open source assets:"
-msgstr ""
+msgstr "Readeck aşağıdaki açık kaynak varlıkları içerir ya da kullanır:"
 
 #: assets/templates/docs/api-docs.jet.html:8
 #: assets/templates/docs/base.jet.html:21
 msgid "API Documentation"
-msgstr ""
+msgstr "API Yardım Belgeleri"
 
 #: assets/templates/docs/base.jet.html:9
 msgid "Readeck Help"
-msgstr ""
+msgstr "Readeck Yardımı"
 
 #: assets/templates/docs/base.jet.html:28
 msgid "Changelog"
-msgstr ""
+msgstr "Değişiklik kayıtları"
 
 #: assets/templates/emails/bookmark_epub.jet.md:6
 #, python-format
@@ -1471,6 +1558,10 @@ msgid ""
 "\n"
 "Here is your ebook for: **%s**\n"
 msgstr ""
+"\n"
+"Merhaba\n"
+"\n"
+"İşte **%s** e-kitabınız.\n"
 
 #: assets/templates/emails/recover.jet.md:7
 #, python-format
@@ -1486,6 +1577,17 @@ msgid ""
 "\n"
 "%s\n"
 msgstr ""
+"\n"
+"Merhaba,\n"
+"\n"
+"Siz (ya da bir başkası) %s Readeck hesabının şifresini\n"
+"değiştirmek için bu eposta adresini kullandı.\n"
+"\n"
+"Eğer bu postayı almayı bekliyorduysanız, Readeck hesabınıza yeni bir şifre "
+"belirlemek için\n"
+"aşağıdaki bağlantıyı takip edin.\n"
+"\n"
+"%s\n"
 
 #: assets/templates/emails/recover.jet.md:19
 #, python-format
@@ -2364,4 +2466,3 @@ msgstr ""
 
 #~ msgid "Password was updated."
 #~ msgstr ""
-
