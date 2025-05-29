@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Readeck 1.0.0\n"
 "Report-Msgid-Bugs-To: translate@readeck.com\n"
 "POT-Creation-Date: 2025-05-25 07:29+0000\n"
-"PO-Revision-Date: 2025-05-29 14:13+0000\n"
+"PO-Revision-Date: 2025-05-30 14:58+0000\n"
 "Last-Translator: Ninguem <ninguem@noreply.codeberg.org>\n"
 "Language-Team: Portuguese (Portugal) <https://translate.codeberg.org/"
 "projects/readeck/application/pt_PT/>\n"
@@ -439,7 +439,7 @@ msgstr "Saiba mais"
 
 #: assets/templates/bookmarks/base.jet.html:105
 msgid "Don't remind me"
-msgstr "Não me lembre"
+msgstr "Não me relembre"
 
 #: assets/templates/bookmarks/bookmark.jet.html:1
 #: assets/templates/bookmarks/bookmark.jet.html:80
@@ -932,8 +932,8 @@ msgstr "Ocorreram erros durante a extração."
 #, fuzzy, python-format
 msgid "About %d minute read"
 msgid_plural "About %d minutes read"
-msgstr[0] "Cerca de %d min lidos"
-msgstr[1] ""
+msgstr[0] "Cerca de %d minuto lido"
+msgstr[1] "Cerca de %d minutos lidos"
 
 #: assets/templates/bookmarks/components/sidebar.jet.html:99
 msgid "Start selecting text in the article to create a new highlight."
@@ -993,7 +993,7 @@ msgstr "Adiciona um rótulo aos links com base no título da secção"
 #: assets/templates/bookmarks/import/form-text.jet.html:35
 #: assets/templates/bookmarks/import/form-wallabag.jet.html:69
 msgid "Import Bookmarks"
-msgstr "Importar favoritos"
+msgstr "Importar marcadores"
 
 # | msgid "Import Links from a Text File"
 #: assets/templates/bookmarks/import/form-csv.jet.html:9
@@ -1246,9 +1246,8 @@ msgstr "Importe os favoritos, Pinboard e o Instapaper do seu browser"
 
 # | msgid "Import Links from a Text File"
 #: assets/templates/bookmarks/import/index.jet.html:40
-#, fuzzy
 msgid "Import Links from a CSV File and Instapaper"
-msgstr "Importar ligações de um ficheiro de texto"
+msgstr "Importar ligações de um ficheiro CSV ou Instapaper"
 
 #: assets/templates/bookmarks/import/index.jet.html:44
 msgid "Import your GoodLinks Articles"
@@ -1268,9 +1267,8 @@ msgstr "Ignore os links que já estão nos seus favoritos"
 
 # | msgid "Archived Bookmarks"
 #: assets/templates/bookmarks/import/options.jet.html:21
-#, fuzzy
 msgid "Archive all links"
-msgstr "Marcadores arquivados"
+msgstr "Arquivar todas as ligações"
 
 #: assets/templates/bookmarks/import/options.jet.html:23
 msgid "Moves all links to archive, regardless of their original status"
@@ -1279,9 +1277,8 @@ msgstr ""
 
 # | msgid "Mark as read"
 #: assets/templates/bookmarks/import/options.jet.html:27
-#, fuzzy
 msgid "Mark all links as read"
-msgstr "Marcar como lido"
+msgstr "Marcar todas as ligações como lidas"
 
 #: assets/templates/bookmarks/import/options.jet.html:29
 msgid "Marks all links as read, regardless of their original status"
@@ -1317,9 +1314,8 @@ msgstr ""
 
 # | msgid "Bookmark Labels"
 #: assets/templates/bookmarks/index.jet.html:1
-#, fuzzy
 msgid "Bookmark filters"
-msgstr "Etiquetas de favoritos"
+msgstr "Filtros de marcadores"
 
 #: assets/templates/bookmarks/index.jet.html:27
 msgid "Save a new link"
@@ -1346,15 +1342,13 @@ msgstr "Leia mais sobre os marcadores na <a class=\"%s\" href=\"%s\">documentaç
 
 # | msgid "Readeck Bookmark Collections"
 #: assets/templates/bookmarks/index.jet.html:85
-#, fuzzy
 msgid "Readeck Browser Extension"
-msgstr "Coleções de marcadores Readeck"
+msgstr "Extensão Readeck para navegador"
 
 # | msgid "Import bookmarks"
 #: assets/templates/bookmarks/index.jet.html:101
-#, fuzzy
 msgid "Import existing bookmarks"
-msgstr "Importar favoritos"
+msgstr "Importar marcadores existentes"
 
 # | msgid "" "\n" "          Would you like to import from a similar tool or
 # | from a file with existing bookmarks?\n" "          Try Readeck's import
@@ -1378,7 +1372,7 @@ msgstr "Importar links e artigos"
 
 #: assets/templates/bookmarks/index.jet.html:137
 msgid "Import bookmarks"
-msgstr "Importar favoritos"
+msgstr "Importar marcadores"
 
 #: assets/templates/bookmarks/index.jet.html:146
 msgid "Your search query yielded <strong>no results</strong>."
@@ -1689,13 +1683,12 @@ msgstr "O meu perfil"
 
 # | msgid "Settings"
 #: assets/templates/profile/index.jet.html:19
-#, fuzzy
 msgid "Base settings"
-msgstr "Configurações"
+msgstr "Configurações de base"
 
 #: assets/templates/profile/index.jet.html:28
 msgid "Email Address"
-msgstr "Endereço de e-mail"
+msgstr "Endereço de email"
 
 #: assets/templates/profile/index.jet.html:33
 msgid "Language"
@@ -1703,9 +1696,8 @@ msgstr "Idioma"
 
 # | msgid "Settings"
 #: assets/templates/profile/index.jet.html:48
-#, fuzzy
 msgid "Email settings"
-msgstr "Configurações"
+msgstr "Configurações de email"
 
 #: assets/templates/profile/index.jet.html:49
 msgid ""
@@ -1759,9 +1751,8 @@ msgstr "Senha atual"
 
 # | msgid "API Token"
 #: assets/templates/profile/token.jet.html:1
-#, fuzzy
 msgid "copy token"
-msgstr "Token API"
+msgstr "copiar código API"
 
 #: assets/templates/profile/token.jet.html:1
 msgid "copy HTTP header"
@@ -1785,15 +1776,13 @@ msgstr "ID do token"
 
 # | msgid "Patent use"
 #: assets/templates/profile/token.jet.html:37
-#, fuzzy
 msgid "Last used"
-msgstr "Uso de patente"
+msgstr "Usado em último"
 
 # | msgid "New User"
 #: assets/templates/profile/token.jet.html:38
-#, fuzzy
 msgid "never used"
-msgstr "Novo utilizador"
+msgstr "Nunca utilizado"
 
 #: assets/templates/profile/token.jet.html:44
 msgid "Application"
@@ -1830,10 +1819,8 @@ msgid "Delete token"
 msgstr "Apagar token"
 
 #: assets/templates/profile/token.jet.html:83
-#, fuzzy
-#| msgid "API authentication"
 msgid "Authentication"
-msgstr "Autenticação API"
+msgstr "Autenticação"
 
 #: assets/templates/profile/token.jet.html:86
 msgid "Your API token"
@@ -1858,10 +1845,8 @@ msgid "HTTP Header"
 msgstr "Cabeçalho HTTP"
 
 #: assets/templates/profile/token.jet.html:113
-#, fuzzy
-#| msgid "Password"
 msgid "As a password"
-msgstr "Palavra-passe"
+msgstr "Como palavra-passe"
 
 #: assets/templates/profile/token.jet.html:115
 msgid "Alternatively, you can use this token as a password for HTTP Basic Authentication."
@@ -1909,9 +1894,9 @@ msgstr "Expira em: %s"
 
 # | msgid "Created on: %s"
 #: assets/templates/profile/token_list.jet.html:54
-#, fuzzy, python-format
+#, python-format
 msgid "Last used on: %s"
-msgstr "Criado em: %s"
+msgstr "Usado pela última vez em: %s"
 
 #: assets/templates/profile/token_list.jet.html:62
 msgid "This token will be removed in a few seconds."
@@ -1931,9 +1916,8 @@ msgstr "Utilizador e/ou palavra-passe inválidos"
 
 # | msgid "Password ID"
 #: internal/auth/users/forms.go:68
-#, fuzzy
 msgid "password is empty"
-msgstr "ID da palavra-passe"
+msgstr "A palavra-passe está vazia"
 
 #: internal/auth/users/forms.go:205
 msgid "Bookmarks : Read Only"
@@ -1970,9 +1954,8 @@ msgstr "Ficheiro de importação vazio ou inválido"
 
 # | msgid "File"
 #: internal/bookmarks/importer/csv.go:118
-#, fuzzy
 msgid "CSV File"
-msgstr "Ficheiro"
+msgstr "Ficheiro CSV"
 
 #: internal/bookmarks/importer/goodlinks.go:44
 msgid "GoodLinks Export File"
