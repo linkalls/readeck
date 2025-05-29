@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Readeck 1.0.0\n"
 "Report-Msgid-Bugs-To: translate@readeck.com\n"
 "POT-Creation-Date: 2025-05-25 07:29+0000\n"
-"PO-Revision-Date: 2025-05-28 13:58+0000\n"
+"PO-Revision-Date: 2025-05-29 14:13+0000\n"
 "Last-Translator: Ninguem <ninguem@noreply.codeberg.org>\n"
 "Language-Team: Portuguese (Portugal) <https://translate.codeberg.org/"
 "projects/readeck/application/pt_PT/>\n"
@@ -499,16 +499,16 @@ msgstr "%d min"
 
 # | msgid "Shared by %s"
 #: assets/templates/bookmarks/bookmark_public.jet.html:97
-#, fuzzy, python-format
+#, python-format
 msgid "Shared by %s with %s"
-msgstr "Partilhado por %s"
+msgstr "Partilhado por %s com %s"
 
 # | msgid "Saved with Readeck"
 # | msgid "Saved with"
 #: assets/templates/bookmarks/bookmark_public.jet.html:150
-#, fuzzy, python-format
+#, python-format
 msgid "Saved with %s"
-msgstr "Guardado com Readeck"
+msgstr "Guardado com %s"
 
 # | msgid "Share by Link"
 #: assets/templates/bookmarks/bookmark_share_email.jet.html:8
@@ -880,9 +880,8 @@ msgstr "Envia este favorito como um ficheiro EPUB em anexo."
 
 # | msgid "From date"
 #: assets/templates/bookmarks/components/share_email.jet.html:30
-#, fuzzy
 msgid "Format"
-msgstr "A partir da data"
+msgstr "Formato"
 
 #: assets/templates/bookmarks/components/share_email.jet.html:40
 msgid "Send To"
@@ -998,9 +997,8 @@ msgstr "Importar favoritos"
 
 # | msgid "Import Links from a Text File"
 #: assets/templates/bookmarks/import/form-csv.jet.html:9
-#, fuzzy
 msgid "Import Links from a CSV File"
-msgstr "Importar ligações de um ficheiro de texto"
+msgstr "Importar ligações de um ficheiro CSV"
 
 #: assets/templates/bookmarks/import/form-csv.jet.html:15
 msgid ""
@@ -1033,33 +1031,28 @@ msgstr "Aqui estão as colunas que pode definir:"
 
 # | msgid "File"
 #: assets/templates/bookmarks/import/form-csv.jet.html:49
-#, fuzzy
 msgid "Field"
-msgstr "Ficheiro"
+msgstr "Campo"
 
 # | msgid "Links"
 #: assets/templates/bookmarks/import/form-csv.jet.html:50
-#, fuzzy
 msgid "Alias"
-msgstr "Ligações"
+msgstr "Sinónimo"
 
 # | msgid "Distribution"
 #: assets/templates/bookmarks/import/form-csv.jet.html:51
-#, fuzzy
 msgid "Description"
-msgstr "Distribuição"
+msgstr "Descrição"
 
 # | msgid "Email Address"
 #: assets/templates/bookmarks/import/form-csv.jet.html:58
-#, fuzzy
 msgid "Link address"
-msgstr "Endereço de e-mail"
+msgstr "Endereço da ligação"
 
 # | msgid "Bookmark Labels"
 #: assets/templates/bookmarks/import/form-csv.jet.html:63
-#, fuzzy
 msgid "Bookmark title"
-msgstr "Etiquetas de favoritos"
+msgstr "Título do favorito"
 
 #: assets/templates/bookmarks/import/form-csv.jet.html:68
 #, python-format
