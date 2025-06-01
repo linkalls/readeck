@@ -2,20 +2,21 @@
 # SPDX-FileCopyrightText: © 2025 Readeck <translate@readeck.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-only
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Readeck User Documentation 1.0.0\n"
 "Report-Msgid-Bugs-To: translate@readeck.com\n"
 "POT-Creation-Date: 2025-06-01 09:47+0000\n"
-"PO-Revision-Date: 2025-06-01 11:55+0200\n"
-"Last-Translator: Readeck <translate@readeck.com>\n"
+"PO-Revision-Date: 2025-06-01 11:23+0000\n"
+"Last-Translator: olivier <olivier@noreply.codeberg.org>\n"
+"Language-Team: French <https://translate.codeberg.org/projects/readeck/"
+"documentation/fr/>\n"
 "Language: fr_FR\n"
-"Language-Team: Readeck <translate@readeck.com>\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.11.4\n"
 "Generated-By: Babel 2.17.0\n"
 
 #: en-US/bookmark-list.md:1
@@ -92,7 +93,7 @@ msgstr "Dans la barre latérale, se trouvent un champ de recherche et des liens 
 
 #: en-US/bookmark-list.md:38
 msgid "![Bookmark list sidebar](./img/bookmark-sidebar.webp)"
-msgstr "![Bookmark list sidebar](./img/bookmark-sidebar.webp)"
+msgstr "![Menu de la liste des bookmarks](./img/bookmark-sidebar.webp)"
 
 #: en-US/bookmark-list.md:40
 msgid ""
@@ -176,7 +177,7 @@ msgstr ""
 
 #: en-US/bookmark-list.md:77
 msgid "A card shows:"
-msgstr "Une carte contient:"
+msgstr "Une carte contient :"
 
 #: en-US/bookmark-list.md:79
 msgid ""
@@ -194,7 +195,7 @@ msgstr ""
 
 #: en-US/bookmark-list.md:85
 msgid "The action buttons perform the following:"
-msgstr "Les buttons permettent d'effectuer les actions suivantes:"
+msgstr "Les buttons permettent d'effectuer les actions suivantes :"
 
 #: en-US/bookmark-list.md:87
 msgid ""
@@ -225,7 +226,7 @@ msgid ""
 "![Bookmark Compact List](./img/bookmark-list-compact.webp)\n"
 "Compact Bookmark List"
 msgstr ""
-"![Bookmark Compact List](./img/bookmark-list-compact.webp)\n"
+"![Liste compacte des bookmarks](./img/bookmark-list-compact.webp)\n"
 "Liste compacte de bookmarks"
 
 #: en-US/bookmark-list.md:101
@@ -722,7 +723,8 @@ msgid ""
 "You can restrict the permission of this token to \"Bookmarks : Read Only\".\n"
 "Write the token value down and setup your app."
 msgstr ""
-"Vous pouvez restreindre les permissions de ce jeton à \"Bookmarks: lecture seule\".\n"
+"Vous pouvez restreindre les permissions de ce jeton à "
+"\"Bookmarks : lecture seule\".\n"
 "Notez le mot de passe généré et passez au paramétrage de l'application."
 
 #: en-US/opds.md:27
@@ -767,8 +769,8 @@ msgid ""
 "- alice: your username\n"
 "- your API Token in the last field"
 msgstr ""
-"- https://readeck.example.com : `readeck-instance://opds`\n"
-"- alice: votre nom d'utilisateur\n"
+"- https://readeck.example.com : `readeck-instance://opds`\n"
+"- alice : votre nom d'utilisateur\n"
 "- votre jeton API dans le dernier champ"
 
 #: en-US/opds.md:49
@@ -844,4 +846,3 @@ msgstr "À la place, vous pouvez donner votre nom d'utilisateur et un jeton de v
 
 #~ msgid "**Note**: although you can use an application password to access the API, it is recommended to use an API Token when possible."
 #~ msgstr "**Note** : même si vous pouvez accéder à l'API avec un mot de passe d'application, il est préférable d'utiliser les jetons API quand c'est possible."
-
