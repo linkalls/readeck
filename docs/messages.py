@@ -11,6 +11,7 @@
 
 import os
 import shutil
+import sys
 from argparse import ArgumentParser
 from operator import itemgetter
 from pathlib import Path
@@ -147,7 +148,7 @@ def update(_):
                 width=None,
                 sort_by_file=True,
                 include_lineno=True,
-                include_previous=True,
+                include_previous=False,
             )
             print(f"{po_file} written")
 
@@ -182,6 +183,33 @@ def generate(_):
                 print(f"{x} -> {destdir / 'img' / x.name}")
 
 
+def check(_):
+    translations = HERE / "translations"
+    po_files = translations.glob("*/messages.po")
+
+    has_errors = False
+    for filename in po_files:
+        code = filename.parent.name
+        if code == "en_US":
+            continue
+
+        with filename.open("rb") as fp:
+            catalog = read_po(fp)
+
+        errors = list(catalog.check())
+        if len(errors) == 0:
+            print(f"[OK] {code}")
+        else:
+            has_errors = True
+            print(f"[ERRORS] {code}")
+            for [m, e] in errors:
+                print(f"  - #{m.lineno} - {m.id}")
+                for x in e:
+                    print(f"    - {str(x)}")
+
+    sys.exit(has_errors and 1 or 0)
+
+
 def main():
     parser = ArgumentParser()
     subparsers = parser.add_subparsers(required=True)
@@ -194,6 +222,9 @@ def main():
 
     p_generate = subparsers.add_parser("generate", help="generate markdown files")
     p_generate.set_defaults(func=generate)
+
+    p_check = subparsers.add_parser("check", help="Check translation files")
+    p_check.set_defaults(func=check)
 
     args = parser.parse_args()
     args.func(args)

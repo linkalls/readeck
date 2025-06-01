@@ -35,6 +35,13 @@ else
 	@echo "WARNING: uv not found, not compiling locales"
 endif
 
+check:
+ifneq ($(UV),)
+	$(UV) run messages.py check
+else
+	@echo "WARNING: uv not found, not compiling locales"
+endif
+
 build: generate
 	$(GO) run $(FILE_COMPOSE_PKG) -format json api/api.yaml assets/api.json
 	$(GO) run ../tools/docs src assets

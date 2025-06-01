@@ -711,9 +711,6 @@ msgstr "## Přístup ke katalogu"
 
 #: en-US/opds.md:21
 #, fuzzy
-#| msgid "" "The catalog can be accessed by any app or e-reader supporting the
-#| OPDS format.\n" "To give access to the catalog, you must first create an
-#| [Application Password](readeck-instance://profile/credentials)."
 msgid ""
 "The catalog can be accessed by any app or e-reader supporting the OPDS format.\n"
 "To give access to the catalog, you must first create an [API Token](readeck-instance://profile/tokens)."
@@ -723,8 +720,6 @@ msgstr ""
 
 #: en-US/opds.md:24
 #, fuzzy
-#| msgid "" "You can restrict the permission of this password to \"Bookmarks :
-#| Read Only\".\n" "Write your password down and setup your app."
 msgid ""
 "You can restrict the permission of this token to \"Bookmarks : Read Only\".\n"
 "Write the token value down and setup your app."
@@ -750,8 +745,6 @@ msgstr "[KOReader](https://koreader.rocks/) je prohlížeč dokumentů pro zař�
 
 #: en-US/opds.md:35
 #, fuzzy
-#| msgid "Once you have an Application Password, you can access the OPDS
-#| section in Koreader's lookup menu:"
 msgid "Once you have an API Token, you can access the OPDS section in Koreader's lookup menu:"
 msgstr "Po zadání Hesla aplikace můžete přistupovat k sekci OPDS v nabídce vyhledávání KOReaderu:"
 
@@ -773,8 +766,6 @@ msgstr "V tomto dialogovém okně nahraďte níže uvedená pole následujícím
 
 #: en-US/opds.md:45
 #, fuzzy
-#| msgid "" "- https://readeck.example.com : `readeck-instance://opds`\n" "-
-#| alice: your username\n" "- your application password in the last field"
 msgid ""
 "- https://readeck.example.com : `readeck-instance://opds`\n"
 "- alice: your username\n"

@@ -10,14 +10,13 @@ msgstr ""
 "POT-Creation-Date: 2025-06-01 09:47+0000\n"
 "PO-Revision-Date: 2025-06-01 11:55+0200\n"
 "Last-Translator: Readeck <translate@readeck.com>\n"
-"Language-Team: Readeck <translate@readeck.com>\n"
 "Language: fr_FR\n"
+"Language-Team: Readeck <translate@readeck.com>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "Generated-By: Babel 2.17.0\n"
-"X-Generator: Poedit 3.6\n"
 
 #: en-US/bookmark-list.md:1
 msgid "# Bookmarks"
@@ -845,3 +844,4 @@ msgstr "À la place, vous pouvez donner votre nom d'utilisateur et un jeton de v
 
 #~ msgid "**Note**: although you can use an application password to access the API, it is recommended to use an API Token when possible."
 #~ msgstr "**Note** : même si vous pouvez accéder à l'API avec un mot de passe d'application, il est préférable d'utiliser les jetons API quand c'est possible."
+
