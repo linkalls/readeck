@@ -32,7 +32,6 @@ export GOARCH?=
 SITECONFIG_SRC=./ftr-site-config
 SITECONFIG_DEST=pkg/extract/contentscripts/assets/site-config
 
-FILE_COMPOSE_PKG ?= codeberg.org/readeck/file-compose@latest
 GOLANGCI_PKG ?= github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.1.6
 AIR_PKG ?= github.com/air-verse/air@v1.61.7
 SLOC_PKG ?= github.com/boyter/scc/v3@v3.4.0
@@ -88,8 +87,7 @@ build:
 # Build the documentation
 .PHONY: docs-build
 docs-build:
-	$(GO) run $(FILE_COMPOSE_PKG) -format json docs/api/api.yaml docs/assets/api.json
-	$(GO) run ./tools/docs docs/src docs/assets
+	${MAKE} -C docs build
 
 # Build the frontend assets
 .PHONY: web-build
@@ -110,9 +108,9 @@ test: docs-build
 clean:
 	rm -rf $(DIST)
 	rm -rf assets/www/*
-	rm -rf docs/assets/*
-	make -C web clean
+	make -C docs clean
 	make -C locales clean
+	make -C web clean
 
 # List all the modules included by the build
 list:
