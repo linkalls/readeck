@@ -12,13 +12,17 @@
     "//button",
     "//form",
     "//svg",
-    "//aside",
     "//nav",
     "//aside[contains(@class, 'dontPrint')]",
     "//blockquote[contains(@class, 'dontPrint')]",
     "//div[contains(@x-data, 'socialSharing')]",
+    "//picture/source[contains(@media, '47.')]",
+    "//picture/img[contains(@media, '47.')]",
     "//a[@href='https://whatsapp.com/channel/0029VaDcqVJAu3aJgJtKhX25']/parent::aside",
-    "//a[@href='https://whatsapp.com/channel/0029VaDcqVJAu3aJgJtKhX25']/parent::blockquote"
+    "//a[@href='https://whatsapp.com/channel/0029VaDcqVJAu3aJgJtKhX25']/parent::blockquote",
+    "//div[@id='formWrapper']/parent::div",
+    "//main/div/article[1]//article",
+    "//div[@class='self-center']/parent::div"
   ],
   "strip_id_or_class": [
     "c-contentHeader__author",
@@ -41,6 +45,34 @@
   "single_page_link_selectors": null,
   "next_page_link_selectors": null,
   "replace_strings": [
+    [
+      "\u003csource",
+      "\u003cimg"
+    ],
+    [
+      "src=\"data:image/gif",
+      "foo1=\"data:image/gif"
+    ],
+    [
+      "480w, http",
+      "480w, \"src=\"http"
+    ],
+    [
+      "640w, http",
+      "\"foo2=\"http"
+    ],
+    [
+      "720w, http",
+      "\"foo3=\"http"
+    ],
+    [
+      "960w, http",
+      "\"foo4=\"http"
+    ],
+    [
+      ".jpg \"",
+      ".jpg\""
+    ],
     [
       "\u003cspan aria-label=\"zum Video\"\u003e\u003c",
       "\u003cspan aria-label=\"zum Video\"\u003ezum Video: \u003c"

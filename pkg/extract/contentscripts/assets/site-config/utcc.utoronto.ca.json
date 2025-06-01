@@ -1,6 +1,6 @@
 {
   "title_selectors": [
-    "//div[@class='wikitext titlehack']"
+    "//div[@class='wikitext titlehack']/h2"
   ],
   "body_selectors": null,
   "date_selectors": null,
@@ -16,7 +16,8 @@
   "next_page_link_selectors": null,
   "replace_strings": null,
   "http_headers": {
-    "referer": "https://utcc.utoronto.ca/~cks/space/blog/"
+    "referer": "https://utcc.utoronto.ca/~cks/space/blog/",
+    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:133.0) Gecko/20100101 Firefox/133.0"
   },
   "tests": [
     {

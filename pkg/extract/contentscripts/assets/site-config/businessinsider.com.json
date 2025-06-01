@@ -1,24 +1,15 @@
 {
-  "title_selectors": [
-    "//div[@class=\"sl-layout-post\"]/h1"
-  ],
+  "title_selectors": null,
   "body_selectors": [
+    "//section[contains(concat(' ',normalize-space(@class),' '),' post-page-container ')]",
     "//div[@id='content' or contains(@class, 'post-content') or contains(@class, 'slide-module') or contains(@class, 'KonaBody')]",
     "//article"
   ],
-  "date_selectors": [
-    "//div[@class=\"byline\"]/span[@class=\"date\"]"
-  ],
-  "author_selectors": [
-    "//div[@class=\"byline\"]/a"
-  ],
+  "date_selectors": null,
+  "author_selectors": null,
   "strip_selectors": [
-    "//div[contains(@class, \"post-sidebar\")]",
-    "//div[@id='related-links']",
-    "//div[@class='related-links-container']",
-    "//p[@class='source']",
-    "//*[contains(@class,'sponsored-text')]",
-    "//div[@id='post_footer']"
+    "//time",
+    "//p[@class='source']"
   ],
   "strip_id_or_class": [
     "post-content-more",
@@ -29,7 +20,22 @@
     "post-content-more",
     "post-content-bottom",
     "the-refresh-player-wrapper",
-    "ad-close-icon"
+    "ad-close-icon",
+    "in-slide-sticky",
+    "inline-backup-paywall",
+    "related-links",
+    "related-links-container",
+    "sponsored-text",
+    "post_footer",
+    "in-post-sticky",
+    "post-top",
+    "caption-drawer-input",
+    "caption-drawer-label",
+    "share-bar",
+    "post-bottom-more",
+    "category-tagline",
+    "back-to-home-container",
+    "post-sidebar"
   ],
   "strip_image_src": null,
   "native_ad_selectors": null,
@@ -40,11 +46,28 @@
     "//a[contains(text(), 'View as one page')]"
   ],
   "next_page_link_selectors": null,
-  "replace_strings": null,
+  "replace_strings": [
+    [
+      "src=\"data:image/",
+      "foo-src-bar=\"data:image/"
+    ],
+    [
+      "data-srcs=\"{\u0026quot;https://i.insider.com",
+      "src=\"https://i.insider.com"
+    ],
+    [
+      "\u0026quot;:{\u0026quot;contentType\u0026quot;:\u0026quot;image/",
+      "\" ignore=\"image/"
+    ]
+  ],
   "http_headers": null,
   "tests": [
     {
       "url": "http://www.businessinsider.com/microsoft-just-put-one-of-its-hardcore-technical-geniuses-on-xbox-2012-1",
+      "contains": []
+    },
+    {
+      "url": "https://www.businessinsider.com/chef-tips-recipes-everyone-should-know-how-to-make#let-your-rice-rest-for-at-least-10-minutes-after-its-done-cooking-15",
       "contains": []
     }
   ]

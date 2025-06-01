@@ -1,19 +1,13 @@
 {
   "title_selectors": null,
   "body_selectors": [
-    "//header[@data-element-id=\"article-element-header\"] | //section[contains(@class, 'artstyle__main--container')]",
-    "//article[@class='artstyle fu--type-default artstyle--type-default']"
+    "//main[@id='main']/article[1]/section[1]/div[1] | //header/figure | //header/p"
   ],
-  "date_selectors": [
-    "//time[@class='artstyle__byline__datetime']"
-  ],
-  "author_selectors": [
-    "//a[@class='artstyle__byline__author']"
-  ],
+  "date_selectors": null,
+  "author_selectors": null,
   "strip_selectors": [
-    "//h1[@data-element-id=\"article-element-headertitle\"]",
-    "//h4[@class='artstyle__labels']",
-    "//section[@data-element-id='article-element-authors']",
+    "//iframe",
+    "//svg",
     "//aside"
   ],
   "strip_id_or_class": null,
@@ -26,7 +20,7 @@
   "next_page_link_selectors": null,
   "replace_strings": null,
   "http_headers": {
-    "cookie": "authId=1; pws=functional|analytics|content_recommendation|targeted_advertising|social_media; pwv=1"
+    "User-Agent": "PHP/8.4"
   },
   "tests": [
     {

@@ -1,0 +1,31 @@
+{
+  "title_selectors": null,
+  "body_selectors": [
+    "//div[contains(@class, 'jeg_featured')] | //div[contains(@class, 'content-inner')]"
+  ],
+  "date_selectors": null,
+  "author_selectors": null,
+  "strip_selectors": [
+    "//div[contains(@class, 'psypo-before-content')]",
+    "//div[contains(@class, 'psypo-within-content')]",
+    "//div[contains(@class, 'psypo-after-content')]"
+  ],
+  "strip_id_or_class": null,
+  "strip_image_src": null,
+  "native_ad_selectors": null,
+  "tidy": false,
+  "prune": false,
+  "autodetect_on_failure": true,
+  "single_page_link_selectors": null,
+  "next_page_link_selectors": null,
+  "replace_strings": null,
+  "http_headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:140.0) Gecko/20100101 Firefox/140.0"
+  },
+  "tests": [
+    {
+      "url": "https://www.psypost.org/too-much-chatgpt-study-ties-ai-reliance-to-lower-grades-and-motivation/",
+      "contains": []
+    }
+  ]
+}

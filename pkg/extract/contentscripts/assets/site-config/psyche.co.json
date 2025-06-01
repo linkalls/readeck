@@ -1,20 +1,22 @@
 {
   "title_selectors": [
+    "substring-before(//meta[@property=\"og:title\"]/@content , ' | Psyche')",
     "//meta[@property=\"og:title\"]/@content"
   ],
   "body_selectors": [
-    "//div[contains(@class, 'guides__SectionsContainer')]"
+    "//main[1]"
   ],
-  "date_selectors": [
-    "//div[contains(@class, 'guides__PublishedDate')]"
-  ],
+  "date_selectors": null,
   "author_selectors": null,
   "strip_selectors": [
-    "//*[contains(@class, 'styled__Sidebar)]",
-    "//*[contains(@class, 'styled__GuideNav)]",
-    "//*[contains(@class, 'SocialMetaWrapper')]",
+    "//aside",
     "//button",
-    "//div[contains(@class, 'styled__GuideNav')]"
+    "//header//h1",
+    "//div[@id='authorBio']/parent::div",
+    "//div[@aria-label=\"Topics\"]/self::div | //div[@aria-label=\"Topics\"]/following-sibling::*",
+    "//main[1]/div[1]/div[last()]",
+    "//div[contains(concat(' ',normalize-space(@class),' '),' hidden ')]",
+    "//a[contains(@href, '/syndication')]"
   ],
   "strip_id_or_class": null,
   "strip_image_src": null,
@@ -25,13 +27,19 @@
   "single_page_link_selectors": null,
   "next_page_link_selectors": null,
   "replace_strings": null,
-  "http_headers": null,
+  "http_headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:140.0) Gecko/20100101 Firefox/140.0"
+  },
   "tests": [
     {
       "url": "https://psyche.co/guides/use-mediation-techniques-to-overcome-the-muck-of-blame-and-anger",
       "contains": [
         "I have helped people have difficult conversations for more than 20 years"
       ]
+    },
+    {
+      "url": "https://psyche.co/ideas/how-do-good-conversations-work-philosophy-has-something-to-say",
+      "contains": []
     }
   ]
 }

@@ -1,0 +1,59 @@
+{
+  "title_selectors": [
+    "//div[@id='topic-title']/@title"
+  ],
+  "body_selectors": [
+    "//div[@class='forums-thread']/ul/li/div"
+  ],
+  "date_selectors": null,
+  "author_selectors": null,
+  "strip_selectors": [
+    "//div[contains(@class, 'honor-text-wrap')]/img/following-sibling::text()"
+  ],
+  "strip_id_or_class": [
+    "topic-title",
+    "info",
+    "stats",
+    "level",
+    "posts",
+    "karma",
+    "last-act",
+    "empty-prop",
+    "report",
+    "tooltip",
+    "confirm-wrap",
+    "copy-post-link"
+  ],
+  "strip_image_src": null,
+  "native_ad_selectors": null,
+  "tidy": false,
+  "prune": false,
+  "autodetect_on_failure": true,
+  "single_page_link_selectors": null,
+  "next_page_link_selectors": [
+    "(//div[contains(@class, 'pagination')]/a[not(contains(@class, 'page-number'))])[2]"
+  ],
+  "replace_strings": [
+    [
+      "class=\"thread-list cont-gray bottom-round\"",
+      "class=\"foobar-cntnt\""
+    ],
+    [
+      "left\"",
+      "foobar-l\""
+    ],
+    [
+      "class=\"poster white-grad\"\u003e",
+      "class=\"poster white-grad hr\"\u003e\u003chr\u003e"
+    ]
+  ],
+  "http_headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:138.0) Gecko/20100101 Firefox/138.0"
+  },
+  "tests": [
+    {
+      "url": "https://www.torn.com/forums.php?p=threads\u0026f=61\u0026t=16348846\u0026b=0\u0026a=0",
+      "contains": []
+    }
+  ]
+}
