@@ -2,20 +2,21 @@
 # SPDX-FileCopyrightText: © 2025 Readeck <translate@readeck.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-only
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Readeck User Documentation 1.0.0\n"
 "Report-Msgid-Bugs-To: translate@readeck.com\n"
 "POT-Creation-Date: 2025-06-01 09:47+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Readeck <translate@readeck.com>\n"
+"PO-Revision-Date: 2025-06-02 06:20+0000\n"
+"Last-Translator: SomeTr <sometr@noreply.codeberg.org>\n"
+"Language-Team: German <https://translate.codeberg.org/projects/readeck/"
+"documentation/de/>\n"
 "Language: de_DE\n"
-"Language-Team: Readeck <translate@readeck.com>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.11.4\n"
 "Generated-By: Babel 2.17.0\n"
 
 #: en-US/bookmark-list.md:1
@@ -304,10 +305,14 @@ msgid ""
 "- `cat*` will find the content with the words starting with **cat** (cat, catnip and caterpillar would be a match).\n"
 "- `-startled cat` will find the content with the word **cat** but NOT the word **startled**."
 msgstr ""
-"- `erschrockene Katze` findet den Inhalt mit den Wörtern **erschrocken** und **Katze**\n"
-"- `\"erschrockene Katze“` findet den Inhalt mit den genauen Wörtern **erschrockene Katze** zusammen.\n"
-"- `Katze*` findet den Inhalt mit Wörtern, die mit **Katze** beginnen (Katze, Katzenminze und Raupe würden übereinstimmen).\n"
-"- `-erschrockene Katze` findet den Inhalt mit dem Wort **Katze**, aber NICHT mit dem Wort **erschrocke**."
+"- `erschrockene Katze` findet den Inhalt mit den Wörtern **erschrocken** und "
+"**Katze**\n"
+"- `\"erschrockene Katze\"` findet den Inhalt mit den genauen Wörtern **"
+"erschrockene Katze** zusammen.\n"
+"- `Katze*` findet den Inhalt mit Wörtern, die mit **Katze** beginnen (Katze, "
+"Katzenminze und Raupe würden übereinstimmen).\n"
+"- `-erschrockene Katze` findet den Inhalt mit dem Wort **Katze**, aber NICHT "
+"mit dem Wort **erschrocke**."
 
 #: en-US/bookmark-list.md:139
 msgid "After you performed a search, you can save it into a new [collection](./collections.md) to make it permanent."
@@ -850,4 +855,3 @@ msgstr ""
 
 #~ msgid "**Note**: although you can use an application password to access the API, it is recommended to use an API Token when possible."
 #~ msgstr "**Hinweis**: Obwohl Sie für den Zugriff auf die API ein Anwendungskennwort verwenden können, wird empfohlen, nach Möglichkeit ein API-Token zu verwenden."
-
