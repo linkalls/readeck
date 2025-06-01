@@ -131,13 +131,15 @@ type FilterTest struct {
 
 func converTextConfig(filename string, dest string) error {
 	fp, err := os.Open(filename)
+	log := slog.With(slog.String("src", path.Base(filename)))
+
 	if err != nil {
-		slog.Error(err.Error())
+		log.Error(err.Error())
 		return err
 	}
 	defer fp.Close() //nolint:errcheck
 
-	cfg, err := newConfig(fp)
+	cfg, err := newConfig(fp, log)
 	if err != nil {
 		return err
 	}
@@ -160,11 +162,11 @@ func converTextConfig(filename string, dest string) error {
 	if _, err = fd.Write(buf.Bytes()); err != nil {
 		return err
 	}
-	slog.Debug("ok", slog.String("file", destFile))
+	log.Debug("ok", slog.String("dest", path.Base(destFile)))
 	return nil
 }
 
-func newConfig(file io.Reader) (*Config, error) {
+func newConfig(file io.Reader, log *slog.Logger) (*Config, error) {
 	res := &Config{
 		AutoDetectOnFailure: true,
 	}
@@ -178,7 +180,7 @@ func newConfig(file io.Reader) (*Config, error) {
 		}
 		entry, err := parseLine(t)
 		if err != nil {
-			slog.Warn("can't parse config line",
+			log.Warn("can't parse config line",
 				slog.Any("err", err),
 				slog.String("line", t),
 			)
