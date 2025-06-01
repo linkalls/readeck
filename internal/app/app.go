@@ -7,6 +7,7 @@ package app
 
 import (
 	"bufio"
+	"errors"
 	"flag"
 	"fmt"
 	"log/slog"
@@ -145,6 +146,30 @@ func InitApp() {
 	configs.Config.Commissioned = nbUser > 0
 }
 
+func enforceChecks(flags *appFlags) error {
+	if flags.ConfigFile == "" {
+		flags.ConfigFile = "config.toml"
+	}
+
+	if err := configs.LoadConfiguration(flags.ConfigFile); err != nil {
+		return fmt.Errorf("error loading configuration: %w", err)
+	}
+
+	if configs.Config.Main.SecretKey == "" {
+		return errors.New("invalid configuration file")
+	}
+
+	s, err := os.Stat(configs.Config.Main.DataDirectory)
+	if err != nil {
+		return err
+	}
+	if !s.IsDir() {
+		return fmt.Errorf("%s is not a directory", configs.Config.Main.DataDirectory)
+	}
+
+	return nil
+}
+
 func appPreRun(flags *appFlags) error {
 	if flags.ConfigFile == "" {
 		flags.ConfigFile = "config.toml"
@@ -154,7 +179,7 @@ func appPreRun(flags *appFlags) error {
 	}
 
 	if err := configs.LoadConfiguration(flags.ConfigFile); err != nil {
-		return fmt.Errorf("error loading configuration (%s)", err)
+		return fmt.Errorf("error loading configuration: %w", err)
 	}
 
 	if err := initConfig(flags.ConfigFile); err != nil {

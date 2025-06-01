@@ -71,7 +71,10 @@ func runImport(_ context.Context, args []string) error {
 		}
 	}
 
-	// Init application
+	// Checks and application init
+	if err := enforceChecks(&flags); err != nil {
+		return fmt.Errorf("Checks failed: %w", err)
+	}
 	if err := appPreRun(&flags); err != nil {
 		return err
 	}

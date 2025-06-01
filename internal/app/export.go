@@ -54,7 +54,10 @@ func runExport(_ context.Context, args []string) error {
 		return errors.New("output file is required")
 	}
 
-	// Init application
+	// Checks and application init
+	if err := enforceChecks(&flags); err != nil {
+		return fmt.Errorf("Checks failed: %w", err)
+	}
 	if err := appPreRun(&flags); err != nil {
 		return err
 	}
