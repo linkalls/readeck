@@ -8,30 +8,36 @@ msgstr ""
 "Project-Id-Version: Readeck User Documentation 1.0.0\n"
 "Report-Msgid-Bugs-To: translate@readeck.com\n"
 "POT-Creation-Date: 2025-06-01 09:47+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
-"Language: uk\n"
+"PO-Revision-Date: 2025-06-01 12:52+0000\n"
+"Last-Translator: SomeTr <sometr@noreply.codeberg.org>\n"
+"Language-Team: Ukrainian <https://translate.codeberg.org/projects/readeck/"
+"documentation/uk/>\n"
+"Language: uk_UA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.11.4\n"
 "Generated-By: Babel 2.17.0\n"
 
 #: en-US/bookmark-list.md:1
 msgid "# Bookmarks"
-msgstr ""
+msgstr "# Закладки"
 
 #: en-US/bookmark-list.md:3
 msgid "Bookmarks are where you save the web content you like."
-msgstr ""
+msgstr "Закладки — це місце, де ви зберігаєте веб-вміст, який вам подобається."
 
 #: en-US/bookmark-list.md:5
 msgid "## Create a new Bookmark"
-msgstr ""
+msgstr "## Створення закладки"
 
 #: en-US/bookmark-list.md:7
 msgid "Found a web page you like? Great! Copy its link into the text field named **new bookmark** on the [Bookmark List](readeck-instance://bookmarks)."
 msgstr ""
+"Натрапили на цікаву веб-сторінку? Чудово! Скопіюйте її посилання в текстове "
+"поле **нова закладка** у [Списку закладок](readeck-instance://bookmarks)."
 
 #: en-US/bookmark-list.md:9
 msgid "![New Bookmark form](./img/bookmark-new.webp)"
@@ -40,46 +46,59 @@ msgstr ""
 #: en-US/bookmark-list.md:11
 msgid "After a few seconds, your bookmark will be ready. You can then open it to read or watch its content, add labels, highlight text or export an ebook. For more information, please read the [Bookmark View](./bookmark.md) section."
 msgstr ""
+"Через кілька секунд ваша закладка буде готова. Ви можете відкрити її, щоб "
+"прочитати або переглянути вміст, додати мітки, виділити текст або "
+"експортувати електронну книгу. Докладніше про це читайте у розділі «"
+"[Перегляд закладок](./bookmark.md)»."
 
 #: en-US/bookmark-list.md:13
 msgid "## Bookmark type"
-msgstr ""
+msgstr "## Типи закладок"
 
 #: en-US/bookmark-list.md:15
 msgid "Readeck recognizes 3 different types of web content:"
-msgstr ""
+msgstr "Readeck розрізняє 3 типи веб-вмісту:"
 
 #: en-US/bookmark-list.md:17 en-US/bookmark.md:17
 msgid "### Article"
-msgstr ""
+msgstr "### Стаття"
 
 #: en-US/bookmark-list.md:19 en-US/bookmark.md:19
 msgid "An article is a page from which the text content was extracted. It renders as a readable version of its content."
 msgstr ""
+"Стаття — це сторінка, з якої було витягнуто текстовий вміст. Вона "
+"відображається у зручному для читання вигляді."
 
 #: en-US/bookmark-list.md:21 en-US/bookmark.md:21
 msgid "### Picture"
-msgstr ""
+msgstr "### Зображення"
 
 #: en-US/bookmark-list.md:23 en-US/bookmark.md:23
 msgid "A picture is a page that was recognized as a picture container (ie. a link to Unsplash). It renders the stored picture."
 msgstr ""
+"Зображення — це сторінка, яку було розпізнано як контейнер для зображень ("
+"наприклад, посилання на Unsplash). Відображає збережене зображення."
 
 #: en-US/bookmark-list.md:25 en-US/bookmark.md:25
 msgid "### Video"
-msgstr ""
+msgstr "### Відео"
 
 #: en-US/bookmark-list.md:27 en-US/bookmark.md:27
 msgid "A video is a page that was identified as a video container (ie. a link to Youtube or Vimeo). It renders a video player. Please note that videos are played from their respective remote servers."
 msgstr ""
+"Відео — це сторінка, яку було розпізнано як контейнер для відео (наприклад, "
+"посилання на Youtube або Vimeo). Вона відкриває відеоплеєр. Зверніть увагу, "
+"що відео відтворюються з відповідних віддалених серверів."
 
 #: en-US/bookmark-list.md:30
 msgid "## Bookmark List"
-msgstr ""
+msgstr "## Список закладок"
 
 #: en-US/bookmark-list.md:32
 msgid "The [bookmark list](readeck-instance://bookmarks) is where you'll find all your saved bookmarks."
 msgstr ""
+"Усі ваші збережені закладки потрапляють у [список закладок](readeck-"
+"instance://bookmarks)."
 
 #: en-US/bookmark-list.md:34
 msgid "### Navigation"
@@ -655,7 +674,7 @@ msgstr ""
 
 #: en-US/opds.md:51
 msgid "You can now access your bookmarks from Koreader!"
-msgstr ""
+msgstr "Тепер ви можете отримати доступ до своїх закладок з Koreader!"
 
 #: en-US/opds.md:53
 msgid "![Koreader readeck catalog](../img/koreader-4.webp)"
@@ -663,44 +682,61 @@ msgstr ""
 
 #: en-US/user-profile.md:1
 msgid "# User Profile"
-msgstr ""
+msgstr "# Профіль користувача"
 
 #: en-US/user-profile.md:3
 msgid "The [Profile section](readeck-instance://profile) of Readeck lets you change your personal information, you password and some other settings."
 msgstr ""
+"У розділі Readeck «[Профіль](readeck-instance://profile)» ви можете змінити "
+"свою особисту інформацію, пароль та деякі інші налаштування."
 
 #: en-US/user-profile.md:5
 msgid "## Edit your profile"
-msgstr ""
+msgstr "## Редагування профілю"
 
 #: en-US/user-profile.md:7
 msgid "On the main profile page, you can change your username, your email address and choose the app's language."
 msgstr ""
+"На головній сторінці профілю ви можете змінити ім’я користувача, адресу "
+"електронної пошти та вибрати мову застосунку."
 
 #: en-US/user-profile.md:9
 msgid "## Change your password"
-msgstr ""
+msgstr "## Зміна пароля"
 
 #: en-US/user-profile.md:11
 msgid "On the [Password](readeck-instance://profile/password) page, you can change the password you use to connect to Readeck."
 msgstr ""
+"На сторінці «[Пароль](readeck-instance://profile/password)» ви можете "
+"змінити пароль, який використовується для підключення до Readeck."
 
 #: en-US/user-profile.md:13
 msgid "## API Tokens"
-msgstr ""
+msgstr "## Токени API"
 
 #: en-US/user-profile.md:15
 msgid "An API Token lets you access and use the [Readeck API](readeck-instance://docs/api) for anything you'd like to build. You can create and manage tokens on the [API Tokens](readeck-instance://profile/tokens) section of your user profile."
 msgstr ""
+"Токен API дозволяє вам отримати доступ до [API Readeck](readeck-instance://"
+"docs/api) і використовувати його для ваших потреб. Створювати токени і "
+"керувати ними можна у розділі «[Токени API](readeck-instance://profile/"
+"tokens)» вашого профілю користувача."
 
 #: en-US/user-profile.md:17
 msgid "You can limit what a given token can access through the API and for how long it's valid."
 msgstr ""
+"Ви можете обмежити, до чого той чи інший токен може отримати доступ через "
+"API і як довго він буде дійсний."
 
 #: en-US/user-profile.md:19
 msgid "If you need to grant access to your Readeck account to a service or an app, you can't provide you main username and password; it won't work."
 msgstr ""
+"Якщо вам потрібно надати якому-небудь сервісу або додатку доступ до вашого "
+"облікового запису Readeck, ви не можете вказати своє основне ім’я "
+"користувача та пароль; це не спрацює."
 
 #: en-US/user-profile.md:21
 msgid "Instead, you can give your username and a token of your choice as authentication credentials."
 msgstr ""
+"Натомість у якості облікових даних для автентифікації ви можете вказати своє "
+"ім’я користувача і токен на ваш вибір."
