@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Readeck 1.0.0\n"
 "Report-Msgid-Bugs-To: translate@readeck.com\n"
 "POT-Creation-Date: 2025-05-25 07:29+0000\n"
-"PO-Revision-Date: 2025-06-01 14:13+0000\n"
+"PO-Revision-Date: 2025-06-01 15:00+0000\n"
 "Last-Translator: SomeTr <sometr@noreply.codeberg.org>\n"
 "Language-Team: Ukrainian <https://translate.codeberg.org/projects/readeck/"
 "application/uk/>\n"
@@ -818,11 +818,11 @@ msgstr "Додати мітку"
 
 #: assets/templates/bookmarks/components/list_actions.jet.html:1
 msgid "Grid view"
-msgstr "Cітка"
+msgstr "Вигляд сітки"
 
 #: assets/templates/bookmarks/components/list_actions.jet.html:1
 msgid "Compact view"
-msgstr "Компактний"
+msgstr "Компактний вигляд"
 
 # | msgid "Grid view"
 #: assets/templates/bookmarks/components/list_actions.jet.html:1
