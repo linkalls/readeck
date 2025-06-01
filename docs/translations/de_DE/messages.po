@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Readeck User Documentation 1.0.0\n"
 "Report-Msgid-Bugs-To: translate@readeck.com\n"
-"POT-Creation-Date: 2025-06-01 08:56+0000\n"
+"POT-Creation-Date: 2025-06-01 09:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Readeck <translate@readeck.com>\n"
 "Language: de_DE\n"
@@ -712,17 +712,24 @@ msgid "## Catalog access"
 msgstr "## Katalogzugriff"
 
 #: en-US/opds.md:21
+#, fuzzy
+#| msgid "" "The catalog can be accessed by any app or e-reader supporting the
+#| OPDS format.\n" "To give access to the catalog, you must first create an
+#| [Application Password](readeck-instance://profile/credentials)."
 msgid ""
 "The catalog can be accessed by any app or e-reader supporting the OPDS format.\n"
-"To give access to the catalog, you must first create an [Application Password](readeck-instance://profile/credentials)."
+"To give access to the catalog, you must first create an [API Token](readeck-instance://profile/tokens)."
 msgstr ""
 "Auf den Katalog kann mit jeder App oder jedem E-Reader zugegriffen werden, der das OPDS-Format unterstützt.\n"
 "Um Zugriff auf den Katalog zu gewähren, müssen Sie zunächst ein [Anwendungskennwort](readeck-instance://profile/credentials) erstellen."
 
 #: en-US/opds.md:24
+#, fuzzy
+#| msgid "" "You can restrict the permission of this password to \"Bookmarks :
+#| Read Only\".\n" "Write your password down and setup your app."
 msgid ""
-"You can restrict the permission of this password to \"Bookmarks : Read Only\".\n"
-"Write your password down and setup your app."
+"You can restrict the permission of this token to \"Bookmarks : Read Only\".\n"
+"Write the token value down and setup your app."
 msgstr ""
 "Sie können die Berechtigung dieses Passworts auf „Lesezeichen: Nur Lesen“ beschränken.\n"
 "Notieren Sie sich Ihr Passwort und richten Sie Ihre App ein."
@@ -744,7 +751,10 @@ msgid "[Koreader](https://koreader.rocks/) is a document viewer for E Ink device
 msgstr "[Koreader](https://koreader.rocks/) ist ein Dokumentenbetrachter für E-Ink-Geräte. Es ist für Kindle, Kobo, PocketBook, Android und Desktop-Linux verfügbar. Es verfügt über eine sehr gute OPDS-Unterstützung."
 
 #: en-US/opds.md:35
-msgid "Once you have an Application Password, you can access the OPDS section in Koreader's lookup menu:"
+#, fuzzy
+#| msgid "Once you have an Application Password, you can access the OPDS
+#| section in Koreader's lookup menu:"
+msgid "Once you have an API Token, you can access the OPDS section in Koreader's lookup menu:"
 msgstr "Sobald Sie ein Anwendungspasswort haben, können Sie im Suchmenü von Koreader auf den OPDS-Bereich zugreifen:"
 
 #: en-US/opds.md:37
@@ -764,10 +774,13 @@ msgid "In this dialog replace the fields below with:"
 msgstr "Ersetzen Sie in diesem Dialog die folgenden Felder durch:"
 
 #: en-US/opds.md:45
+#, fuzzy
+#| msgid "" "- https://readeck.example.com : `readeck-instance://opds`\n" "-
+#| alice: your username\n" "- your application password in the last field"
 msgid ""
 "- https://readeck.example.com : `readeck-instance://opds`\n"
 "- alice: your username\n"
-"- your application password in the last field"
+"- your API Token in the last field"
 msgstr ""
 "- https://readeck.example.com : `readeck-instance://opds`\n"
 "- alice: Ihr Benutzername\n"
@@ -822,30 +835,28 @@ msgid "You can limit what a given token can access through the API and for how l
 msgstr "Sie können einschränken, auf was ein bestimmtes Token über die API zugreifen kann und wie lange es gültig ist."
 
 #: en-US/user-profile.md:19
-msgid "## Application Passwords"
-msgstr "## Anwendungskennwörter"
-
-#: en-US/user-profile.md:21
 msgid "If you need to grant access to your Readeck account to a service or an app, you can't provide you main username and password; it won't work."
 msgstr "Wenn Sie einem Dienst oder einer App Zugriff auf Ihr Readeck-Konto gewähren müssen, können Sie Ihren Hauptbenutzernamen und Ihr Passwort nicht angeben; es wird nicht funktionieren."
 
-#: en-US/user-profile.md:23
-msgid "What you can do is create an [Application Password](readeck-instance://profile/credentials)."
-msgstr "Sie können ein [Anwendungskennwort] erstellen (readeck-instance://profile/credentials)."
+#: en-US/user-profile.md:21
+msgid "Instead, you can give your username and a token of your choice as authentication credentials."
+msgstr ""
 
-#: en-US/user-profile.md:25
-msgid "You can limit what a given password can access through the API."
-msgstr "Sie können über die API einschränken, auf welchen Zugriff ein bestimmtes Passwort zugreifen kann."
+#~ msgid "## Application Passwords"
+#~ msgstr "## Anwendungskennwörter"
 
-#: en-US/user-profile.md:27
-msgid "Once you created an application password, you can use it to access the [Readeck API](readeck-instance://docs/api) or export services."
-msgstr "Sobald Sie ein Anwendungskennwort erstellt haben, können Sie damit auf die [Readeck-API](readeck-instance://docs/api) oder Exportdienste zugreifen."
+#~ msgid "What you can do is create an [Application Password](readeck-instance://profile/credentials)."
+#~ msgstr "Sie können ein [Anwendungskennwort] erstellen (readeck-instance://profile/credentials)."
 
-#: en-US/user-profile.md:29
-msgid "See the [Ebook Catalog](./opds.md) help page for a real life example."
-msgstr "Ein Beispiel aus der Praxis finden Sie auf der Hilfeseite zum [E-Book-Katalog](./opds.md)."
+#~ msgid "You can limit what a given password can access through the API."
+#~ msgstr "Sie können über die API einschränken, auf welchen Zugriff ein bestimmtes Passwort zugreifen kann."
 
-#: en-US/user-profile.md:31
-msgid "**Note**: although you can use an application password to access the API, it is recommended to use an API Token when possible."
-msgstr "**Hinweis**: Obwohl Sie für den Zugriff auf die API ein Anwendungskennwort verwenden können, wird empfohlen, nach Möglichkeit ein API-Token zu verwenden."
+#~ msgid "Once you created an application password, you can use it to access the [Readeck API](readeck-instance://docs/api) or export services."
+#~ msgstr "Sobald Sie ein Anwendungskennwort erstellt haben, können Sie damit auf die [Readeck-API](readeck-instance://docs/api) oder Exportdienste zugreifen."
+
+#~ msgid "See the [Ebook Catalog](./opds.md) help page for a real life example."
+#~ msgstr "Ein Beispiel aus der Praxis finden Sie auf der Hilfeseite zum [E-Book-Katalog](./opds.md)."
+
+#~ msgid "**Note**: although you can use an application password to access the API, it is recommended to use an API Token when possible."
+#~ msgstr "**Hinweis**: Obwohl Sie für den Zugriff auf die API ein Anwendungskennwort verwenden können, wird empfohlen, nach Möglichkeit ein API-Token zu verwenden."
 
