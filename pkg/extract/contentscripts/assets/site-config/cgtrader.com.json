@@ -1,0 +1,48 @@
+{
+  "title_selectors": null,
+  "body_selectors": [
+    "//div[@id='product-main']"
+  ],
+  "date_selectors": null,
+  "author_selectors": [
+    "//div[@class='author-info']/a"
+  ],
+  "strip_selectors": [
+    "//svg",
+    "//form",
+    "//div[@id='comments-container']//a[contains(@href, '#new-comment')]"
+  ],
+  "strip_id_or_class": [
+    "product-sidebar",
+    "gallery-progress",
+    "overflow-gallery__nav-info",
+    "product-stats-info",
+    "product-tabs",
+    "tags-list",
+    "avatar"
+  ],
+  "strip_image_src": null,
+  "native_ad_selectors": null,
+  "tidy": false,
+  "prune": false,
+  "autodetect_on_failure": true,
+  "single_page_link_selectors": null,
+  "next_page_link_selectors": null,
+  "replace_strings": [
+    [
+      "src=\"https://assets.cgtrader.com/assets/no_image",
+      "foo-src=\"https://assets.cgtrader.com/assets/no_image"
+    ],
+    [
+      "data-src=\"https://img",
+      "src=\"https://img"
+    ]
+  ],
+  "http_headers": null,
+  "tests": [
+    {
+      "url": "https://www.cgtrader.com/free-3d-models/industrial/tool/work-light-8b1b8ea9-f742-4f38-8c8e-12a2953f8ac2",
+      "contains": []
+    }
+  ]
+}

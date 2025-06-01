@@ -1,0 +1,36 @@
+{
+  "title_selectors": null,
+  "body_selectors": [
+    "//main[@id='main']"
+  ],
+  "date_selectors": null,
+  "author_selectors": null,
+  "strip_selectors": [
+    "//button"
+  ],
+  "strip_id_or_class": [
+    "breadcrumbs",
+    "box-teaser",
+    "title-left"
+  ],
+  "strip_image_src": null,
+  "native_ad_selectors": null,
+  "tidy": false,
+  "prune": false,
+  "autodetect_on_failure": true,
+  "single_page_link_selectors": null,
+  "next_page_link_selectors": null,
+  "replace_strings": [
+    [
+      "class=\"container",
+      "class=\"foo-cntnr"
+    ]
+  ],
+  "http_headers": null,
+  "tests": [
+    {
+      "url": "https://www.onb.ac.at/mehr/blogs/detail/die-drucke-der-bibliotheca-eugeniana-im-prunksaal-eine-spurensuche",
+      "contains": []
+    }
+  ]
+}

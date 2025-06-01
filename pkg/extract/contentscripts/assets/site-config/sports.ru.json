@@ -1,9 +1,11 @@
 {
   "title_selectors": [
-    "//div[@class='wikitext titlehack']/h2"
+    "//meta[@property=\"twitter:title\"]/@content"
   ],
   "body_selectors": null,
-  "date_selectors": null,
+  "date_selectors": [
+    "//time/@datetime"
+  ],
   "author_selectors": null,
   "strip_selectors": null,
   "strip_id_or_class": null,
@@ -15,13 +17,10 @@
   "single_page_link_selectors": null,
   "next_page_link_selectors": null,
   "replace_strings": null,
-  "http_headers": {
-    "referer": "https://utcc.utoronto.ca/~cks/space/blog/",
-    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:133.0) Gecko/20100101 Firefox/133.0"
-  },
+  "http_headers": null,
   "tests": [
     {
-      "url": "https://utcc.utoronto.ca/~cks/space/blog/web/BasicAuthAndURLHierarchy",
+      "url": "https://www.sports.ru/football/blogs/3326825.html",
       "contains": []
     }
   ]

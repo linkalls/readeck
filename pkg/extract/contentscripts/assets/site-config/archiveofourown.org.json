@@ -31,7 +31,9 @@
   ],
   "next_page_link_selectors": null,
   "replace_strings": null,
-  "http_headers": null,
+  "http_headers": {
+    "User-Agent": "PHP/8.4"
+  },
   "tests": [
     {
       "url": "https://archiveofourown.org/works/229402?view_full_work=true",

@@ -1,16 +1,20 @@
 {
   "title_selectors": null,
   "body_selectors": [
-    "//div[contains(concat(' ',normalize-space(@class),' '),' content-block-regular ')]"
+    "//div[contains(concat(' ',normalize-space(@class),' '),' content-block-regular ')] | //header/div[contains(concat(' ',normalize-space(@class),' '),' heading_image ')]"
   ],
   "date_selectors": null,
   "author_selectors": null,
   "strip_selectors": [
-    "//div[contains(@class, 'article-card') and ./div/span[@data-field=\"label\"]/text() = \"Related\"]"
+    "//button"
   ],
   "strip_id_or_class": [
     "adsninja-ad-zone",
-    "ad-zone-size-container"
+    "ad-zone-size-container",
+    "article-card",
+    "gallery-lightbox",
+    "gallery-thumbnails",
+    "w-gallery-carousel-fullscreen"
   ],
   "strip_image_src": null,
   "native_ad_selectors": null,

@@ -25,12 +25,13 @@
     "//button[contains(@class,'image-toggle')]",
     "//div[@class='clear']",
     "//a[@title='Zur Homepage FAZ.NET']",
-    "//button",
     "//aside[contains(concat(' ',normalize-space(@class),' '),' btn ')]",
     "//div[contains(concat(' ',normalize-space(@class),' '),' meta2 ')]",
     "//footer",
+    "//aside[@data-external-selector='related-articles']",
     "//div[contains(@style, 'background-image')]",
     "//img[@width='1']",
+    "//div[@data-module=\"teaser\"]",
     "//footer[@class='tsr-Base_ContentMeta']"
   ],
   "strip_id_or_class": [
