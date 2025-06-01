@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Readeck User Documentation 1.0.0\n"
 "Report-Msgid-Bugs-To: translate@readeck.com\n"
 "POT-Creation-Date: 2025-06-01 09:47+0000\n"
-"PO-Revision-Date: 2025-06-01 14:13+0000\n"
+"PO-Revision-Date: 2025-06-01 15:00+0000\n"
 "Last-Translator: SomeTr <sometr@noreply.codeberg.org>\n"
 "Language-Team: Ukrainian <https://translate.codeberg.org/projects/readeck/"
 "documentation/uk/>\n"
@@ -229,6 +229,12 @@ msgid ""
 "- **Delete** \\\n"
 "  This marks the bookmark for deletion (it can be canceled during a few seconds)."
 msgstr ""
+"- **Обране** \\\n"
+"  Перемикає стан «Обране» для закладки.\n"
+"- **Архів** \\\n"
+"  Переміщує закладку в архів (або видаляє її з архіву).\n"
+"- **Видалити** \\\n"
+"  Позначає закладку для видалення (можна скасувати протягом кількох секунд)."
 
 #: en-US/bookmark-list.md:94
 msgid "### Compact List"
@@ -252,11 +258,14 @@ msgstr ""
 #: en-US/bookmark-list.md:101
 #, python-brace-format
 msgid "## Filter Bookmarks {#filters}"
-msgstr ""
+msgstr "## Фільтри закладок {#filters}"
 
 #: en-US/bookmark-list.md:103
 msgid "On the bookmark list, you can filter your results based on one or several criteria. Click on the button \"Filter list\" next to the page title to open the filtering form."
 msgstr ""
+"Результати у списку закладок можна відфільтрувати за одним або кількома "
+"критеріями. Натисніть кнопку «Фільтри» поруч із заголовком сторінки, щоб "
+"відкрити форму фільтрації."
 
 #: en-US/bookmark-list.md:105
 msgid ""
@@ -264,19 +273,19 @@ msgid ""
 "The filter form"
 msgstr ""
 "![Фільтри списку закладок](./img/bookmark-filters.webp)\n"
-"Форма фільтра"
+"Форма фільтрації"
 
 #: en-US/bookmark-list.md:108
 msgid "Enter any criteria and click on **Search**."
-msgstr ""
+msgstr "Уведіть критерії та натисніть **Пошук**."
 
 #: en-US/bookmark-list.md:110
 msgid "### Available filters"
-msgstr ""
+msgstr "### Доступні фільтри"
 
 #: en-US/bookmark-list.md:112
 msgid "You can combine the following filters:"
-msgstr ""
+msgstr "Фільтри можна комбінувати:"
 
 #: en-US/bookmark-list.md:114
 msgid ""
@@ -298,7 +307,7 @@ msgstr ""
 
 #: en-US/bookmark-list.md:129
 msgid "### Search query"
-msgstr ""
+msgstr "### Пошуковий запит"
 
 #: en-US/bookmark-list.md:131
 msgid "The **Search**, **Title**, **Author**, **Site** and **Label** fields understand search criteria the same way:"
@@ -318,7 +327,7 @@ msgstr ""
 
 #: en-US/bookmark-list.md:141
 msgid "## Export and Import Bookmarks"
-msgstr ""
+msgstr "## Експорт та імпорт закладок"
 
 #: en-US/bookmark-list.md:143
 msgid ""
@@ -330,19 +339,25 @@ msgstr ""
 
 #: en-US/bookmark-list.md:146
 msgid "### Export bookmarks"
-msgstr ""
+msgstr "### Експорт закладок"
 
 #: en-US/bookmark-list.md:148
 msgid "The menu button next to the filters button let you download an EPUB file of the current list of bookmarks. It exports one e-book containing all the articles organized in chapters."
 msgstr ""
+"Кнопка меню поруч із кнопкою «Фільтри» дозволяє завантажити файл EPUB із "
+"поточним списком закладок. Усі статті, згруповані за розділами, "
+"експортуються в одну електронну книгу."
 
 #: en-US/bookmark-list.md:150
 msgid "### Import bookmarks"
-msgstr ""
+msgstr "### Імпорт закладок"
 
 #: en-US/bookmark-list.md:152
 msgid "In the same menu, you'll find a [Import bookmarks](readeck-instance://bookmarks/import) link. It will take you to an import wizard that lets you import your existing bookmarks from various sources."
 msgstr ""
+"У цьому ж меню є пункт «[Імпортувати закладки](readeck-instance://bookmarks/"
+"import)». За цим посиланням ви потрапите до майстра імпорту, який допоможе "
+"вам імпортувати наявні закладки з різних ресурсів."
 
 #: en-US/bookmark.md:1
 msgid "# Bookmark View"
@@ -585,7 +600,7 @@ msgstr ""
 
 #: en-US/index.md:17
 msgid "## Contents"
-msgstr ""
+msgstr "## Зміст"
 
 #: en-US/index.md:19
 msgid ""
@@ -599,13 +614,17 @@ msgstr ""
 
 #: en-US/labels.md:1
 msgid "# Labels"
-msgstr ""
+msgstr "# Мітки"
 
 #: en-US/labels.md:3
 msgid ""
 "You can [add as many labels as you want to a bookmark](./bookmark.md#labels).\\\n"
 "There is no limit as to what can be a label. You can even add emojis if you like them."
 msgstr ""
+"До закладки можна [додавати скільки завгодно міток](./bookmark.md#labels).\\"
+"\n"
+"Немає жодних обмежень щодо того, що може бути міткою. Можете навіть додавати "
+"емодзі, якщо вони вам подобаються."
 
 #: en-US/labels.md:6
 msgid "## Label List"
