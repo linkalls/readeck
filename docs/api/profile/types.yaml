@@ -78,6 +78,7 @@ schemas:
             description: Username
           email:
             type: string
+            format: email
             description: User email
           created:
             type: string

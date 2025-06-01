@@ -78,6 +78,7 @@ tags:
   - name: user profile
   - name: bookmarks
   - name: bookmark export
+  - name: bookmark sharing
   - name: bookmark labels
   - name: bookmark highlights
   - name: bookmark collections
@@ -157,6 +158,26 @@ paths:
       $merge:
         - "traits.yaml#.authenticated"
         - "bookmarks/routes.yaml#.export"
+
+  /bookmarks/{id}/share/link:
+    $merge:
+      - "bookmarks/routes.yaml#.withBookmark"
+
+    get:
+      tags: [bookmark sharing]
+      $merge:
+        - "traits.yaml#.authenticated"
+        - "bookmarks/routes.yaml#.shareLink"
+
+  /bookmarks/{id}/share/email:
+    $merge:
+      - "bookmarks/routes.yaml#.withBookmark"
+
+    post:
+      tags: [bookmark sharing]
+      $merge:
+        - "traits.yaml#.authenticated"
+        - "bookmarks/routes.yaml#.shareEmail"
 
   /bookmarks/labels:
     get:

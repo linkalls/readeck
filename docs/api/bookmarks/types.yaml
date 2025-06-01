@@ -290,6 +290,34 @@ schemas:
         type: string
         description: New label list
 
+  bookmarkShareLink:
+    properties:
+      url:
+        type: string
+        description: Public URL
+      expires:
+        type: string
+        format: date-time
+        description: Expiration date
+      title:
+        type: string
+        description: Bookmark title
+      id:
+        type: string
+        description: Bookmark ID
+
+  bookmarkShareEmail:
+    properties:
+      email:
+        type: string
+        format: email
+      format:
+        type: string
+        enum: ["html", "epub"]
+    example:
+      email: alice@localhost
+      format: html
+
   labelInfo:
     properties:
       name:

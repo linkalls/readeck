@@ -253,6 +253,38 @@ export:
           schema:
             type: string
 
+# GET /bookmarks/{id}/share/link
+shareLink:
+  summary: Share by link
+  description: This route produces a publicly accessible link to share a bookmark.
+
+  responses:
+    "200":
+      description: Public link information
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/bookmarkShareLink"
+
+# POST /bookmarks/{id}/share/email
+shareEmail:
+  summary: Share by email
+  description: This route sends a bookmark to an email address.
+
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: "#/components/schemas/bookmarkShareEmail"
+
+  responses:
+    "200":
+      description: Message sent
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/message"
+
 # GET /bookmarks/labels
 labels:
   summary: Label List
