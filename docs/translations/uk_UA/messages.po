@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Readeck User Documentation 1.0.0\n"
 "Report-Msgid-Bugs-To: translate@readeck.com\n"
 "POT-Creation-Date: 2025-06-01 09:47+0000\n"
-"PO-Revision-Date: 2025-06-01 12:52+0000\n"
+"PO-Revision-Date: 2025-06-01 14:13+0000\n"
 "Last-Translator: SomeTr <sometr@noreply.codeberg.org>\n"
 "Language-Team: Ukrainian <https://translate.codeberg.org/projects/readeck/"
 "documentation/uk/>\n"
@@ -41,7 +41,7 @@ msgstr ""
 
 #: en-US/bookmark-list.md:9
 msgid "![New Bookmark form](./img/bookmark-new.webp)"
-msgstr ""
+msgstr "![Форма «Нова закладка»](./img/bookmark-new.webp)"
 
 #: en-US/bookmark-list.md:11
 msgid "After a few seconds, your bookmark will be ready. You can then open it to read or watch its content, add labels, highlight text or export an ebook. For more information, please read the [Bookmark View](./bookmark.md) section."
@@ -102,15 +102,17 @@ msgstr ""
 
 #: en-US/bookmark-list.md:34
 msgid "### Navigation"
-msgstr ""
+msgstr "### Навігація"
 
 #: en-US/bookmark-list.md:36
 msgid "On the sidebar, you'll find a search field and links that will take you to filtered bookmark lists."
 msgstr ""
+"Бічна панель містить поле пошуку та посилання, які ведуть до відфільтрованих "
+"списків закладок."
 
 #: en-US/bookmark-list.md:38
 msgid "![Bookmark list sidebar](./img/bookmark-sidebar.webp)"
-msgstr ""
+msgstr "![Бічна панель списку закладок](./img/bookmark-sidebar.webp)"
 
 #: en-US/bookmark-list.md:40
 msgid ""
@@ -125,10 +127,21 @@ msgid ""
 "- **Favorites** \\\n"
 "  The bookmarks you marked as favorite."
 msgstr ""
+"- **Пошук** \\\n"
+"  Уведіть пошуковий запит (назву, вміст, веб-сайт…)\n"
+"- **Усе** \\\n"
+"  Усі ваші закладки.\n"
+"- **Непрочитані** \\\n"
+"  Закладки, яких немає в архіві.\n"
+"- **Архів** \\\n"
+"  Закладки, які ви позначили як архівовані.\n"
+"- **Обране** \\\n"
+"  Закладки, які ви додали в обране."
 
 #: en-US/bookmark-list.md:52
 msgid "Once you start saving pages, you'll see the following additional links:"
 msgstr ""
+"Як тільки ви почнете зберігати сторінки, з’являться додаткові посилання:"
 
 #: en-US/bookmark-list.md:54
 msgid ""
@@ -139,10 +152,18 @@ msgid ""
 "- **Pictures** \\\n"
 "  Your picture bookmarks"
 msgstr ""
+"- **Статті** \\\n"
+"  Ваші закладки на статті\n"
+"- **Відео** \\\n"
+"  Ваші закладки на відео\n"
+"- **Зображення** \\\n"
+"  Ваші закладки на зображення"
 
 #: en-US/bookmark-list.md:61
 msgid "Finally, you'll see 3 more sections that take you to bookmark related pages:"
 msgstr ""
+"Нарешті, ви побачите ще 3 посилання, за допомогою яких можна перейти до "
+"сторінок, пов’язаних із закладками:"
 
 #: en-US/bookmark-list.md:63
 msgid ""
@@ -153,24 +174,32 @@ msgid ""
 "- **[Collections](./collections.md)** \\\n"
 "  The list of all your collections"
 msgstr ""
+"- **[Мітки](./labels.md)** \\\n"
+"  Усі ваші мітки закладок\n"
+"- **Виділення** \\\n"
+"  Усі виділення, створені на ваших закладках\n"
+"- **[Колекції](./collections.md)** \\\n"
+"  Список усіх ваших колекцій"
 
 #: en-US/bookmark-list.md:70
 msgid "### Bookmark Cards"
-msgstr ""
+msgstr "### Картки закладок"
 
 #: en-US/bookmark-list.md:72
 msgid "Each item on a list is called a Bookmark Card."
-msgstr ""
+msgstr "Кожен елемент у списку називається карткою закладки."
 
 #: en-US/bookmark-list.md:74
 msgid ""
 "![Bookmark List](./img/bookmark-list.webp)\n"
 "Grid Bookmark List"
 msgstr ""
+"![Список закладок](./img/bookmark-list.webp)\n"
+"Список закладок — вигляд сітки"
 
 #: en-US/bookmark-list.md:77
 msgid "A card shows:"
-msgstr ""
+msgstr "Картка містить:"
 
 #: en-US/bookmark-list.md:79
 msgid ""
@@ -180,10 +209,16 @@ msgid ""
 "- the **label list**,\n"
 "- **action buttons**"
 msgstr ""
+"- **назву**, на яку можна натиснути, щоб переглянути або прочитати закладку;"
+"\n"
+"- **назву сайту**;\n"
+"- приблизний **час читання**;\n"
+"- **список міток**;\n"
+"- **кнопки дій**"
 
 #: en-US/bookmark-list.md:85
 msgid "The action buttons perform the following:"
-msgstr ""
+msgstr "Кнопки дій мають такі функції:"
 
 #: en-US/bookmark-list.md:87
 msgid ""
@@ -197,17 +232,22 @@ msgstr ""
 
 #: en-US/bookmark-list.md:94
 msgid "### Compact List"
-msgstr ""
+msgstr "### Компактний вигляд"
 
 #: en-US/bookmark-list.md:96
 msgid "If you find the bookmark grid view too busy, you can switch to a more compact list with less images. Click on the button next to the title to switch from the grid view to the compact view."
 msgstr ""
+"Якщо вигляд сітки здається вам надто захаращеним, ви можете перемкнутися на "
+"компактніший список із меншою кількістю зображень. Натисніть на кнопку поруч "
+"із заголовком, щоб перемкнутися з вигляду сітки на компактний вигляд."
 
 #: en-US/bookmark-list.md:98
 msgid ""
 "![Bookmark Compact List](./img/bookmark-list-compact.webp)\n"
 "Compact Bookmark List"
 msgstr ""
+"![Компактний список закладок](./img/bookmark-list-compact.webp)\n"
+"Список закладок — компактний вигляд"
 
 #: en-US/bookmark-list.md:101
 #, python-brace-format
@@ -223,6 +263,8 @@ msgid ""
 "![Bookmark list filters](./img/bookmark-filters.webp)\n"
 "The filter form"
 msgstr ""
+"![Фільтри списку закладок](./img/bookmark-filters.webp)\n"
+"Форма фільтра"
 
 #: en-US/bookmark-list.md:108
 msgid "Enter any criteria and click on **Search**."
@@ -283,6 +325,8 @@ msgid ""
 "![Menu](./img/bookmark-list-menu.webp)\n"
 "Bookmark list menu"
 msgstr ""
+"![Меню](./img/bookmark-list-menu.webp)\n"
+"Меню списку закладок"
 
 #: en-US/bookmark-list.md:146
 msgid "### Export bookmarks"
