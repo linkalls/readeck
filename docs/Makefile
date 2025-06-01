@@ -4,6 +4,9 @@
 
 UV=$(shell command -pv uv)
 
+GO ?= go
+FILE_COMPOSE_PKG ?= codeberg.org/readeck/file-compose@latest
+
 all: compile
 
 # Extract all the messages
@@ -31,3 +34,11 @@ ifneq ($(UV),)
 else
 	@echo "WARNING: uv not found, not compiling locales"
 endif
+
+build: generate
+	$(GO) run $(FILE_COMPOSE_PKG) -format json api/api.yaml assets/api.json
+	$(GO) run ../tools/docs src assets
+
+clean:
+	rm -rf assets/*
+	find src -name '*.md' -not -regex "src/en-US/.*" -delete

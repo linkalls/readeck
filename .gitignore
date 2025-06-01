@@ -13,6 +13,8 @@
 /docs/assets/*
 !/docs/assets/.keep
 /docs/src/.obsidian
+/docs/src/*/*.md
+!/docs/src/en-US/*
 
 /locales/translations/*/messages.mo
 
