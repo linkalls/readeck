@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: Readeck User Documentation 1.0.0\n"
 "Report-Msgid-Bugs-To: translate@readeck.com\n"
 "POT-Creation-Date: 2025-06-01 09:47+0000\n"
-"PO-Revision-Date: 2025-06-02 06:20+0000\n"
-"Last-Translator: SomeTr <sometr@noreply.codeberg.org>\n"
+"PO-Revision-Date: 2025-06-03 03:13+0000\n"
+"Last-Translator: altruizine <altruizine@noreply.codeberg.org>\n"
 "Language-Team: German <https://translate.codeberg.org/projects/readeck/"
 "documentation/de/>\n"
 "Language: de_DE\n"
@@ -57,7 +57,9 @@ msgstr "### Artikel"
 
 #: en-US/bookmark-list.md:19 en-US/bookmark.md:19
 msgid "An article is a page from which the text content was extracted. It renders as a readable version of its content."
-msgstr "Ein Artikel ist eine Seite, aus der der Textinhalt extrahiert wurde. Es wird als lesbare Version seines Inhalts gerendert."
+msgstr ""
+"Ein Artikel ist eine Seite, aus der der Textinhalt extrahiert wurde. Er wird "
+"als lesbare Version seines Inhalts gerendert."
 
 #: en-US/bookmark-list.md:21 en-US/bookmark.md:21
 msgid "### Picture"
@@ -717,22 +719,23 @@ msgid "## Catalog access"
 msgstr "## Katalogzugriff"
 
 #: en-US/opds.md:21
-#, fuzzy
 msgid ""
 "The catalog can be accessed by any app or e-reader supporting the OPDS format.\n"
 "To give access to the catalog, you must first create an [API Token](readeck-instance://profile/tokens)."
 msgstr ""
-"Auf den Katalog kann mit jeder App oder jedem E-Reader zugegriffen werden, der das OPDS-Format unterstützt.\n"
-"Um Zugriff auf den Katalog zu gewähren, müssen Sie zunächst ein [Anwendungskennwort](readeck-instance://profile/credentials) erstellen."
+"Auf den Katalog kann mit jeder App oder jedem E-Reader zugegriffen werden, "
+"der das OPDS-Format unterstützt.\n"
+"Um Zugriff auf den Katalog zu gewähren, müssen Sie zunächst ein [API-Token]"
+"(readeck-instance://profile/tokens) erstellen."
 
 #: en-US/opds.md:24
-#, fuzzy
 msgid ""
 "You can restrict the permission of this token to \"Bookmarks : Read Only\".\n"
 "Write the token value down and setup your app."
 msgstr ""
-"Sie können die Berechtigung dieses Passworts auf „Lesezeichen: Nur Lesen“ beschränken.\n"
-"Notieren Sie sich Ihr Passwort und richten Sie Ihre App ein."
+"Sie können die Berechtigung dieses Tokens auf „Lesezeichen: Nur Lesen“ "
+"beschränken.\n"
+"Notieren Sie sich den Token-Wert und richten Sie Ihre App ein."
 
 #: en-US/opds.md:27
 msgid ""
@@ -751,9 +754,10 @@ msgid "[Koreader](https://koreader.rocks/) is a document viewer for E Ink device
 msgstr "[Koreader](https://koreader.rocks/) ist ein Dokumentenbetrachter für E-Ink-Geräte. Es ist für Kindle, Kobo, PocketBook, Android und Desktop-Linux verfügbar. Es verfügt über eine sehr gute OPDS-Unterstützung."
 
 #: en-US/opds.md:35
-#, fuzzy
 msgid "Once you have an API Token, you can access the OPDS section in Koreader's lookup menu:"
-msgstr "Sobald Sie ein Anwendungspasswort haben, können Sie im Suchmenü von Koreader auf den OPDS-Bereich zugreifen:"
+msgstr ""
+"Sobald Sie ein API-Token haben, können Sie im Suchmenü von Koreader auf den "
+"OPDS-Bereich zugreifen:"
 
 #: en-US/opds.md:37
 msgid "![Koreader's lookup menu](../img/koreader-1.webp)"
@@ -772,7 +776,6 @@ msgid "In this dialog replace the fields below with:"
 msgstr "Ersetzen Sie in diesem Dialog die folgenden Felder durch:"
 
 #: en-US/opds.md:45
-#, fuzzy
 msgid ""
 "- https://readeck.example.com : `readeck-instance://opds`\n"
 "- alice: your username\n"
@@ -780,7 +783,7 @@ msgid ""
 msgstr ""
 "- https://readeck.example.com : `readeck-instance://opds`\n"
 "- alice: Ihr Benutzername\n"
-"- Geben Sie im letzten Feld Ihr Bewerbungspasswort ein"
+"- Geben Sie im letzten Feld Ihr API-Token ein"
 
 #: en-US/opds.md:49
 msgid "![Koreader add catalog](../img/koreader-3.webp)"
@@ -820,7 +823,7 @@ msgstr "Auf der Seite [Passwort](readeck-instance://profile/password) können Si
 
 #: en-US/user-profile.md:13
 msgid "## API Tokens"
-msgstr "## API Tokens"
+msgstr "## API-Token"
 
 #: en-US/user-profile.md:15
 msgid "An API Token lets you access and use the [Readeck API](readeck-instance://docs/api) for anything you'd like to build. You can create and manage tokens on the [API Tokens](readeck-instance://profile/tokens) section of your user profile."
@@ -837,6 +840,8 @@ msgstr "Wenn Sie einem Dienst oder einer App Zugriff auf Ihr Readeck-Konto gewä
 #: en-US/user-profile.md:21
 msgid "Instead, you can give your username and a token of your choice as authentication credentials."
 msgstr ""
+"Stattdessen können Sie Ihren Benutzernamen und ein API-Token Ihrer Wahl zur "
+"Legitimation verwenden."
 
 #~ msgid "## Application Passwords"
 #~ msgstr "## Anwendungskennwörter"
