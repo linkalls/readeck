@@ -75,6 +75,7 @@ func TestNativeImageEncode(t *testing.T) {
 		{"jpeg", "jpeg"},
 		{"gif", "gif"},
 		{"bmp", "jpeg"},
+		{"webp", "webp"},
 	}
 
 	data := newImage(200, 100)

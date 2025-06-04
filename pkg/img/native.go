@@ -16,9 +16,9 @@ import (
 	"image/png"  // PNG decoder and encoder
 
 	_ "codeberg.org/readeck/readeck/pkg/img/ico" // ICO decoder
+	"github.com/gen2brain/webp"                  // WEBP decoder and encoder
 	_ "golang.org/x/image/bmp"                   // BMP decoder
 	_ "golang.org/x/image/tiff"                  // TIFF decoder
-	_ "golang.org/x/image/webp"                  // WEBP decoder
 
 	"github.com/anthonynsimon/bild/effect"
 	"github.com/anthonynsimon/bild/transform"
@@ -180,6 +180,14 @@ func (im *NativeImage) Encode(w io.Writer) error {
 		encoder := &png.Encoder{CompressionLevel: c}
 		im.format = "png"
 		return encoder.Encode(w, im.m)
+	case "webp":
+		// TODO:
+		// - consider ImageCompression mode
+		// - preserve lossless-ness of original image
+		return webp.Encode(w, im.m, webp.Options{
+			Lossless: true,
+			Quality:  int(im.quality),
+		})
 	}
 
 	// Default to jpeg encoding
