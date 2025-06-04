@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Readeck 1.0.0\n"
 "Report-Msgid-Bugs-To: translate@readeck.com\n"
 "POT-Creation-Date: 2025-05-25 07:29+0000\n"
-"PO-Revision-Date: 2025-06-04 11:50+0000\n"
+"PO-Revision-Date: 2025-06-04 12:02+0000\n"
 "Last-Translator: 0alai <0alai@noreply.codeberg.org>\n"
 "Language-Team: Catalan <https://translate.codeberg.org/projects/readeck/"
 "application/ca/>\n"
@@ -1511,7 +1511,7 @@ msgstr ""
 
 #: assets/templates/docs/about.jet.html:134
 msgid "Readeck includes and/or uses the following open source assets:"
-msgstr ""
+msgstr "El Readeck inclou i/o utilitza els següents recursos de codi obert:"
 
 #: assets/templates/docs/api-docs.jet.html:8
 #: assets/templates/docs/base.jet.html:21
