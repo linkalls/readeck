@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Readeck 1.0.0\n"
 "Report-Msgid-Bugs-To: translate@readeck.com\n"
 "POT-Creation-Date: 2025-05-25 07:29+0000\n"
-"PO-Revision-Date: 2025-06-04 12:02+0000\n"
+"PO-Revision-Date: 2025-06-04 20:02+0000\n"
 "Last-Translator: 0alai <0alai@noreply.codeberg.org>\n"
 "Language-Team: Catalan <https://translate.codeberg.org/projects/readeck/"
 "application/ca/>\n"
@@ -1019,10 +1019,9 @@ msgid ""
 msgstr ""
 "\n"
 "    El fitxer carregat ha de contenir una primera fila amb els noms de les "
-"columnes.\n"
-"    Els noms de les columnes no distingeixen entre majúscules i minúscules i,"
-"\n"
-"    excepte <code>%s</code>, totes les columnes són opcionals.\n"
+"columnes. Els noms de les columnes no distingeixen\n"
+"entre majúscules i minúscules i, excepte <code>%s</code>, totes les columnes "
+"són opcionals.\n"
 "  "
 
 #: assets/templates/bookmarks/import/form-csv.jet.html:45
@@ -1096,6 +1095,11 @@ msgid ""
 "    Omnivore's settings and enter it in the the form below.\n"
 "  "
 msgstr ""
+"\n"
+"    Per importar els vostres articles des d'Omnivore, primer heu de crear "
+"una clau API\n"
+"    a la configuració de l'Omnivore i introduir-la al formulari següent.\n"
+"  "
 
 #: assets/templates/bookmarks/import/form-omnivore.jet.html:28
 msgid "Omnivore URL"
@@ -1134,6 +1138,10 @@ msgid ""
 "    every link found it the file.\n"
 "  "
 msgstr ""
+"\n"
+"    Puja aquest fitxer al formulari següent i el Readeck buscarà i desarà\n"
+"     tots els enllaços que hi hagi trobat.\n"
+"  "
 
 #: assets/templates/bookmarks/import/form-pocket-file.jet.html:27
 msgid ""
@@ -1146,7 +1154,7 @@ msgstr ""
 
 #: assets/templates/bookmarks/import/form-pocket-file.jet.html:44
 msgid "Note: upload the ZIP file directly, not its contents"
-msgstr ""
+msgstr "Nota: pengeu l'arxiu ZIP directament, no el seu contingut"
 
 #: assets/templates/bookmarks/import/form-text.jet.html:9
 #: assets/templates/bookmarks/import/index.jet.html:32
@@ -1186,22 +1194,26 @@ msgid ""
 "    You can then enter all the necessary information in the form below.\n"
 "  "
 msgstr ""
+"\n"
+"    Llavors podeu introduir tota la informació necessària al formulari "
+"següent.\n"
+"  "
 
 #: assets/templates/bookmarks/import/form-wallabag.jet.html:33
 msgid "Wallabag URL"
-msgstr ""
+msgstr "URL de Wallabag"
 
 #: assets/templates/bookmarks/import/form-wallabag.jet.html:35
 msgid "URL of your Wallabag homepage"
-msgstr ""
+msgstr "URL de la pàgina d'inici del teu Wallabag"
 
 #: assets/templates/bookmarks/import/form-wallabag.jet.html:55
 msgid "Client ID"
-msgstr ""
+msgstr "ID del client"
 
 #: assets/templates/bookmarks/import/form-wallabag.jet.html:62
 msgid "Client Secret"
-msgstr ""
+msgstr "Secret del client"
 
 #: assets/templates/bookmarks/import/index.jet.html:9
 msgid "Import your Bookmarks"
@@ -1262,7 +1274,7 @@ msgstr ""
 
 #: assets/templates/bookmarks/import/progress.jet.html:15
 msgid "Import operation will launch momentarily."
-msgstr ""
+msgstr "L'operació d'importació s'iniciarà momentàniament."
 
 #: assets/templates/bookmarks/import/progress.jet.html:17
 msgid "Import operation has started!"
@@ -1275,7 +1287,7 @@ msgstr ""
 
 #: assets/templates/bookmarks/import/progress.jet.html:24
 msgid "Import is finished!"
-msgstr ""
+msgstr "L'importació ha acabat!"
 
 #: assets/templates/bookmarks/import/progress.jet.html:25
 #, python-format
@@ -1284,12 +1296,15 @@ msgid ""
 "      Your bookmarks are now available in your <a class=\"%s\" href=\"%s\">bookmark list</a>.\n"
 "      "
 msgstr ""
+"\n"
+"      Els vostres marcadors ja estan disponibles a la vostra <a class=\"%s\" "
+"href=\"%s\">llista de marcadors</a>.\n"
+"      "
 
 # | msgid "Bookmark Highlights"
 #: assets/templates/bookmarks/index.jet.html:1
-#, fuzzy
 msgid "Bookmark filters"
-msgstr "Destacats dels marcadors"
+msgstr "Filtres dels marcadors"
 
 #: assets/templates/bookmarks/index.jet.html:27
 msgid "Save a new link"
@@ -1303,11 +1318,13 @@ msgstr "Guardar l'enllaç"
 #: assets/templates/bookmarks/index.jet.html:49
 #, python-format
 msgid "\"%s\" is not a valid address. Did you mean to search your bookmarks for %s?"
-msgstr ""
+msgstr "\"%s\" no és una adreça vàlida. Volies cercar %s als teus marcadors?"
 
 #: assets/templates/bookmarks/index.jet.html:73
 msgid "You don't have any bookmarks yet.<br> Copy a link in the field above and start saving."
 msgstr ""
+"Encara no tens cap marcador.<br> Copia un enllaç al camp superior i comença "
+"a desar-ne."
 
 #: assets/templates/bookmarks/index.jet.html:75
 #, python-format
@@ -1394,47 +1411,49 @@ msgstr "Sobre el Readeck"
 
 #: assets/templates/docs/about.jet.html:14
 msgid "Version:"
-msgstr ""
+msgstr "Versió:"
 
 #: assets/templates/docs/about.jet.html:15
 msgid "Built Date:"
-msgstr ""
+msgstr "Data de compilació:"
 
 #: assets/templates/docs/about.jet.html:18
 msgid "System Information"
-msgstr ""
+msgstr "Informació del sistema"
 
 #: assets/templates/docs/about.jet.html:20
 msgid "Here are your current system information. Please include them if you report a bug."
 msgstr ""
+"Aquí teniu la informació actual del vostre sistema. Si us plau, incloeu-la "
+"si informeu d'un error."
 
 #: assets/templates/docs/about.jet.html:33
 msgid "Project"
-msgstr ""
+msgstr "Projecte"
 
 #: assets/templates/docs/about.jet.html:36
 msgid "Main website"
-msgstr ""
+msgstr "Lloc web principal"
 
 #: assets/templates/docs/about.jet.html:37
 msgid "Sources and issues"
-msgstr ""
+msgstr "Codi i incidències"
 
 #: assets/templates/docs/about.jet.html:38
 msgid "How to contribute"
-msgstr ""
+msgstr "Com contribuir"
 
 #: assets/templates/docs/about.jet.html:39
 msgid "Community Forum"
-msgstr ""
+msgstr "Fòrum de la comunitat"
 
 #: assets/templates/docs/about.jet.html:40
 msgid "Matrix Chat"
-msgstr ""
+msgstr "Xat de Matrix"
 
 #: assets/templates/docs/about.jet.html:43
 msgid "License"
-msgstr ""
+msgstr "Llicència"
 
 #: assets/templates/docs/about.jet.html:45
 #, python-format
@@ -1443,71 +1462,71 @@ msgstr "El Readeck es distribueix sota els termes de la llicència \"%s\""
 
 #: assets/templates/docs/about.jet.html:49
 msgid "Here's a short summary of the license conditions:"
-msgstr ""
+msgstr "Aquí teniu un breu resum de les condicions de la llicència:"
 
 #: assets/templates/docs/about.jet.html:54
 msgid "Permissions"
-msgstr ""
+msgstr "Permisos"
 
 #: assets/templates/docs/about.jet.html:55
 msgid "Conditions"
-msgstr ""
+msgstr "Condicions"
 
 #: assets/templates/docs/about.jet.html:56
 msgid "Limitations"
-msgstr ""
+msgstr "Limitacions"
 
 #: assets/templates/docs/about.jet.html:64
 msgid "Commercial use"
-msgstr ""
+msgstr "Ús comercial"
 
 #: assets/templates/docs/about.jet.html:67
 msgid "Distribution"
-msgstr ""
+msgstr "Distribució"
 
 #: assets/templates/docs/about.jet.html:70
 msgid "Modification"
-msgstr ""
+msgstr "Modificació"
 
 #: assets/templates/docs/about.jet.html:73
 msgid "Patent use"
-msgstr ""
+msgstr "Ús de patents"
 
 #: assets/templates/docs/about.jet.html:76
 msgid "Private use"
-msgstr ""
+msgstr "Ús privat"
 
 #: assets/templates/docs/about.jet.html:83
 msgid "Disclose source"
-msgstr ""
+msgstr "Divulgar la font"
 
 #: assets/templates/docs/about.jet.html:86
 msgid "License and copyright notice"
-msgstr ""
+msgstr "Avís de llicència i drets d'autor"
 
 #: assets/templates/docs/about.jet.html:89
 msgid "Network use is distribution"
-msgstr ""
+msgstr "L'ús de la xarxa és de distribució"
 
 #: assets/templates/docs/about.jet.html:92
 msgid "Same license"
-msgstr ""
+msgstr "Mateixa llicència"
 
 #: assets/templates/docs/about.jet.html:95
 msgid "State changes"
-msgstr ""
+msgstr "Canvis d'estat"
 
 #: assets/templates/docs/about.jet.html:102
 msgid "Liability"
-msgstr ""
+msgstr "Responsabilitat"
 
 #: assets/templates/docs/about.jet.html:105
 msgid "Warranty"
-msgstr ""
+msgstr "Garantia"
 
 #: assets/templates/docs/about.jet.html:132
 msgid "Third-Party Licenses"
-msgstr ""
+msgstr "Llicències de tercers"
 
 #: assets/templates/docs/about.jet.html:134
 msgid "Readeck includes and/or uses the following open source assets:"
@@ -1516,15 +1535,15 @@ msgstr "El Readeck inclou i/o utilitza els següents recursos de codi obert:"
 #: assets/templates/docs/api-docs.jet.html:8
 #: assets/templates/docs/base.jet.html:21
 msgid "API Documentation"
-msgstr ""
+msgstr "Documentació de l'API"
 
 #: assets/templates/docs/base.jet.html:9
 msgid "Readeck Help"
-msgstr ""
+msgstr "Ajuda del Readeck"
 
 #: assets/templates/docs/base.jet.html:28
 msgid "Changelog"
-msgstr ""
+msgstr "Registre de canvis"
 
 #: assets/templates/emails/bookmark_epub.jet.md:6
 #, python-format
@@ -1534,6 +1553,10 @@ msgid ""
 "\n"
 "Here is your ebook for: **%s**\n"
 msgstr ""
+"\n"
+"Hola!\n"
+"\n"
+"Aquí teniu el vostre llibre electrònic per a: **%s**\n"
 
 #: assets/templates/emails/recover.jet.md:7
 #, python-format
@@ -1571,45 +1594,45 @@ msgstr ""
 
 #: assets/templates/error.jet.html:8
 msgid "Error"
-msgstr ""
+msgstr "Error"
 
 #: assets/templates/error.jet.html:22
 msgid "Permission denied."
-msgstr ""
+msgstr "Permís denegat."
 
 #: assets/templates/error.jet.html:24
 msgid "Page not found."
-msgstr ""
+msgstr "No s'ha trobat la pàgina."
 
 #: assets/templates/error.jet.html:26
 msgid "An error occurred."
-msgstr ""
+msgstr "Hi ha hagut un error."
 
 #: assets/templates/menu.jet.html:1
 msgid "Change theme"
-msgstr ""
+msgstr "Canviar el tema"
 
 #: assets/templates/menu.jet.html:1 assets/templates/menu.jet.html:48
 msgid "Sign out"
-msgstr ""
+msgstr "Tancar la sessió"
 
 #: assets/templates/menu.jet.html:10
 msgid "Open menu"
-msgstr ""
+msgstr "Obrir el menú"
 
 #: assets/templates/menu.jet.html:33
 msgid "Change color theme"
-msgstr ""
+msgstr "Canviar el color del tema"
 
 #: assets/templates/menu.jet.html:40 assets/templates/profile/base.jet.html:9
 msgid "Settings"
-msgstr ""
+msgstr "Ajustos"
 
 #: assets/templates/profile/base.jet.html:14 internal/profile/views.go:86
 #: internal/profile/views.go:121 internal/profile/views.go:165
 #: internal/profile/views.go:225
 msgid "Profile"
-msgstr ""
+msgstr "Perfil"
 
 #: assets/templates/profile/base.jet.html:21 internal/profile/views.go:166
 #: internal/profile/views.go:226
@@ -1618,23 +1641,23 @@ msgstr "Tokens d'API"
 
 #: assets/templates/profile/index.jet.html:9
 msgid "My profile"
-msgstr ""
+msgstr "El meu perfil"
 
 #: assets/templates/profile/index.jet.html:19
 msgid "Base settings"
-msgstr ""
+msgstr "Ajustos bàsics"
 
 #: assets/templates/profile/index.jet.html:28
 msgid "Email Address"
-msgstr ""
+msgstr "Correu electrònic"
 
 #: assets/templates/profile/index.jet.html:33
 msgid "Language"
-msgstr ""
+msgstr "Idioma"
 
 #: assets/templates/profile/index.jet.html:48
 msgid "Email settings"
-msgstr ""
+msgstr "Ajustos del correu"
 
 #: assets/templates/profile/index.jet.html:49
 msgid ""
@@ -1642,22 +1665,30 @@ msgid ""
 "    These, optional, parameters are used when Readeck sends emails.\n"
 "    "
 msgstr ""
+"\n"
+"    Aquests paràmetres opcionals s'utilitzen quan el Readeck envia correus "
+"electrònics.\n"
+"    "
 
 #: assets/templates/profile/index.jet.html:55
 msgid "Reply To"
-msgstr ""
+msgstr "Respon a"
 
 #: assets/templates/profile/index.jet.html:56
 msgid "Add this email address in your outgoing emails so recipients can reply."
 msgstr ""
+"Afegeix aquesta adreça de correu electrònic als teus correus sortints perquè "
+"els destinataris puguin respondre."
 
 #: assets/templates/profile/index.jet.html:61
 msgid "Send EPUB to"
-msgstr ""
+msgstr "Enviar ePub a"
 
 #: assets/templates/profile/index.jet.html:62
 msgid "This address is used to prefill the recipient when you send an e-book by email."
 msgstr ""
+"Aquesta adreça s'utilitza per omplir prèviament el destinatari quan envieu "
+"un llibre electrònic per correu."
 
 #: assets/templates/profile/index.jet.html:69
 msgid ""
@@ -1669,19 +1700,19 @@ msgstr ""
 
 #: assets/templates/profile/password.jet.html:9
 msgid "Change my password"
-msgstr ""
+msgstr "Canviar la meva contrasenya"
 
 #: assets/templates/profile/password.jet.html:21
 msgid "Current password"
-msgstr ""
+msgstr "Contrasenya actual"
 
 #: assets/templates/profile/token.jet.html:1
 msgid "copy token"
-msgstr ""
+msgstr "copiar el token"
 
 #: assets/templates/profile/token.jet.html:1
 msgid "copy HTTP header"
-msgstr ""
+msgstr "copiar la capçalera HTTP"
 
 #: assets/templates/profile/token.jet.html:9
 msgid "API Token"
@@ -1693,7 +1724,7 @@ msgstr "El token s'esborrarà en uns segons."
 
 #: assets/templates/profile/token.jet.html:25
 msgid "Properties"
-msgstr ""
+msgstr "Propietats"
 
 #: assets/templates/profile/token.jet.html:32
 msgid "Token ID"
@@ -1701,27 +1732,25 @@ msgstr "ID del token"
 
 # | msgid "Create user"
 #: assets/templates/profile/token.jet.html:37
-#, fuzzy
 msgid "Last used"
-msgstr "Crear usuari"
+msgstr "Últim ús"
 
 # | msgid "New User"
 #: assets/templates/profile/token.jet.html:38
-#, fuzzy
 msgid "never used"
-msgstr "Nou usuari"
+msgstr "mai usat"
 
 #: assets/templates/profile/token.jet.html:44
 msgid "Application"
-msgstr ""
+msgstr "Aplicació"
 
 #: assets/templates/profile/token.jet.html:50
 msgid "Enabled"
-msgstr ""
+msgstr "Activat"
 
 #: assets/templates/profile/token.jet.html:56
 msgid "Expires on"
-msgstr ""
+msgstr "Caduca el"
 
 #: assets/templates/profile/token.jet.html:62
 msgid ""
@@ -1741,17 +1770,15 @@ msgstr ""
 
 #: assets/templates/profile/token.jet.html:70
 msgid "Roles"
-msgstr ""
+msgstr "Rols"
 
 #: assets/templates/profile/token.jet.html:78
 msgid "Delete token"
 msgstr "Esborrar el token"
 
 #: assets/templates/profile/token.jet.html:83
-#, fuzzy
-#| msgid "Documentation"
 msgid "Authentication"
-msgstr "Documentació"
+msgstr "Autenticació"
 
 #: assets/templates/profile/token.jet.html:86
 msgid "Your API token"
@@ -1759,7 +1786,7 @@ msgstr "El teu token d'API"
 
 #: assets/templates/profile/token.jet.html:96
 msgid "How to use it"
-msgstr ""
+msgstr "Com utilitzar-lo"
 
 #: assets/templates/profile/token.jet.html:98
 msgid "As a Bearer Token"
@@ -1773,17 +1800,17 @@ msgstr ""
 
 #: assets/templates/profile/token.jet.html:102
 msgid "HTTP Header"
-msgstr ""
+msgstr "Capçalera HTTP"
 
 #: assets/templates/profile/token.jet.html:113
-#, fuzzy
-#| msgid "Password"
 msgid "As a password"
-msgstr "Contrasenya"
+msgstr "Com a contrasenya"
 
 #: assets/templates/profile/token.jet.html:115
 msgid "Alternatively, you can use this token as a password for HTTP Basic Authentication."
 msgstr ""
+"Alternativament, podeu utilitzar aquest token com a contrasenya per a "
+"l'autenticació bàsica HTTP."
 
 #: assets/templates/profile/token.jet.html:116
 msgid ""
@@ -1810,6 +1837,8 @@ msgstr ""
 #, python-format
 msgid "Please read the <a href=\"%s\">API Documentation</a> if you plan to use it."
 msgstr ""
+"Si teniu previst utilitzar-la, llegiu la <a href=\"%s\">documentació de "
+"l'API</a>."
 
 #: assets/templates/profile/token_list.jet.html:26
 msgid "Create a new API token"
@@ -1818,13 +1847,13 @@ msgstr "Crea un token d'API nou"
 #: assets/templates/profile/token_list.jet.html:50
 #, python-format
 msgid "Expires on: %s"
-msgstr ""
+msgstr "Caduca el: %s"
 
 # | msgid "Created on: %s"
 #: assets/templates/profile/token_list.jet.html:54
-#, fuzzy, python-format
+#, python-format
 msgid "Last used on: %s"
-msgstr "Creat el: %s"
+msgstr "Últim ús: %s"
 
 #: assets/templates/profile/token_list.jet.html:62
 msgid "This token will be removed in a few seconds."
@@ -1832,45 +1861,44 @@ msgstr "Aquest token s'esborrarà en uns segons."
 
 #: internal/admin/views.go:80
 msgid "User created."
-msgstr ""
+msgstr "Usuari creat."
 
 #: internal/admin/views.go:119
 msgid "User updated."
-msgstr ""
+msgstr "Usuari actualitzat."
 
 #: internal/auth/signin/forms.go:17
 msgid "Invalid user and/or password"
-msgstr ""
+msgstr "Usuari i/o contrasenya no vàlids"
 
 # | msgid "Password recovery"
 #: internal/auth/users/forms.go:68
-#, fuzzy
 msgid "password is empty"
-msgstr "Recuperar la contrasenya"
+msgstr "La contrasenya està buida"
 
 #: internal/auth/users/forms.go:205
 msgid "Bookmarks : Read Only"
-msgstr ""
+msgstr "Marcadors: només lectura"
 
 #: internal/auth/users/forms.go:206
 msgid "Bookmarks : Write Only"
-msgstr ""
+msgstr "Marcadors: només escriptura"
 
 #: internal/auth/users/forms.go:207
 msgid "Admin : Read Only"
-msgstr ""
+msgstr "Administració: només lectura"
 
 #: internal/auth/users/forms.go:208
 msgid "Admin : Write Only"
-msgstr ""
+msgstr "Administració: només escriptura"
 
 #: internal/bookmarks/importer/browser.go:51
 msgid "Browser Bookmarks"
-msgstr ""
+msgstr "Marcadors del navegador"
 
 #: internal/bookmarks/importer/browser.go:75
 msgid "Unable to read HTML content"
-msgstr ""
+msgstr "No s'ha pogut llegir el contingut HTML"
 
 #: internal/bookmarks/importer/browser.go:129
 #: internal/bookmarks/importer/csv.go:142
@@ -1879,7 +1907,7 @@ msgstr ""
 #: internal/bookmarks/importer/csv.go:167
 #: internal/bookmarks/importer/importer.go:45
 msgid "Empty or invalid import file"
-msgstr ""
+msgstr "Arxiu d'importació buit o no vàlid"
 
 #: internal/bookmarks/importer/csv.go:118
 msgid "CSV File"
@@ -1887,11 +1915,11 @@ msgstr "Arxiu CSV"
 
 #: internal/bookmarks/importer/goodlinks.go:44
 msgid "GoodLinks Export File"
-msgstr ""
+msgstr "Arxiu d'exportació de GoodLinks"
 
 #: internal/bookmarks/importer/omnivore.go:247
 msgid "Invalid API Key"
-msgstr ""
+msgstr "Clau d'API no vàlida"
 
 #: internal/bookmarks/importer/text.go:24
 msgid "Text File"
@@ -1899,11 +1927,11 @@ msgstr "Arxiu de text"
 
 #: internal/bookmarks/importer/wallabag.go:242
 msgid "Invalid URL"
-msgstr ""
+msgstr "URL no vàlida"
 
 #: internal/bookmarks/importer/wallabag.go:247
 msgid "Invalid credentials"
-msgstr ""
+msgstr "Credencials no vàlides"
 
 #: internal/bookmarks/importer/wallabag.go:258
 msgid "No access token found"
@@ -1911,7 +1939,7 @@ msgstr "No s'ha trobat cap token d'accés"
 
 #: internal/bookmarks/routes/forms_bookmarks.go:139
 msgid "Unable to process input data"
-msgstr ""
+msgstr "No es poden processar les dades d'entrada"
 
 #: internal/bookmarks/routes/forms_bookmarks.go:380
 msgid "Article"
@@ -1992,16 +2020,16 @@ msgstr "Temps de lectura, més llarg primer"
 
 #: internal/bookmarks/routes/opds.go:56
 msgid "Readeck Bookmarks"
-msgstr ""
+msgstr "Marcadors del Readeck"
 
 #: internal/bookmarks/routes/opds.go:101
 msgid "Readeck Bookmark Collections"
-msgstr ""
+msgstr "Col·leccions de marcadors del Readeck"
 
 #: internal/bookmarks/routes/opds.go:138
 #, python-format
 msgid "Readeck Collection: %s"
-msgstr ""
+msgstr "Col·lecció del Readeck: %s"
 
 #: internal/bookmarks/routes/opds.go:144
 #, python-format
@@ -2011,7 +2039,7 @@ msgstr ""
 #: internal/bookmarks/routes/opds.go:151
 #, python-format
 msgid "Browse collection: %s"
-msgstr ""
+msgstr "Explorar la col·lecció: %s"
 
 #: internal/bookmarks/routes/views_bookmarks.go:100
 msgid "All your Bookmarks"
@@ -2019,15 +2047,15 @@ msgstr "Tots els teus marcadors"
 
 #: internal/bookmarks/routes/views_bookmarks.go:105
 msgid "Bookmark Search"
-msgstr ""
+msgstr "Cerca de marcadors"
 
 #: internal/bookmarks/routes/views_bookmarks.go:109 internal/opds/http.go:58
 msgid "Unread Bookmarks"
-msgstr ""
+msgstr "Marcadors sense llegir"
 
 #: internal/bookmarks/routes/views_bookmarks.go:111 internal/opds/http.go:62
 msgid "Archived Bookmarks"
-msgstr ""
+msgstr "Marcadors arxivats"
 
 #: internal/bookmarks/routes/views_bookmarks.go:113 internal/opds/http.go:66
 msgid "Favorite Bookmarks"
@@ -2035,13 +2063,13 @@ msgstr "Marcadors favorits"
 
 #: internal/bookmarks/routes/views_collections.go:79
 msgid "Collection updated."
-msgstr ""
+msgstr "Col·lecció actualitzada."
 
 #: internal/bookmarks/routes/views_import.go:28
 #: internal/bookmarks/routes/views_import.go:37
 #: internal/bookmarks/routes/views_import.go:68
 msgid "Import"
-msgstr ""
+msgstr "Importar"
 
 #: internal/bookmarks/routes/views_import.go:29
 msgid "Progress"
@@ -2049,23 +2077,23 @@ msgstr "Progrés"
 
 #: internal/opds/http.go:70
 msgid "All Bookmarks"
-msgstr ""
+msgstr "Tots els marcadors"
 
 #: internal/profile/forms.go:32
 msgid "invalid username and/or email"
-msgstr ""
+msgstr "nom d'usuari i/o contrasenya no vàlids"
 
 #: internal/profile/forms.go:33
 msgid "invalid password"
-msgstr ""
+msgstr "contrasenya no vàlida"
 
 #: internal/profile/views.go:73
 msgid "Profile updated."
-msgstr ""
+msgstr "Perfil actualitzat."
 
 #: internal/profile/views.go:109
 msgid "Your password was changed."
-msgstr ""
+msgstr "S'ha canviat la contrasenya."
 
 #: internal/profile/views.go:181
 msgid "An error occurred while creating your token."
@@ -2081,29 +2109,29 @@ msgstr "S'ha actualitzat el token."
 
 #: pkg/forms/forms.go:28
 msgid "an unexpected error has occurred"
-msgstr ""
+msgstr "s'ha produït un error inesperat"
 
 #: pkg/forms/validators.go:18
 msgid "field is required"
-msgstr ""
+msgstr "camp obligatori"
 
 #: pkg/forms/validators.go:20
 msgid "not a valid email address"
-msgstr ""
+msgstr "adreça de correu electrònic no vàlida"
 
 #: pkg/forms/validators.go:22
 msgid "invalid URL"
-msgstr ""
+msgstr "URL no vàlida"
 
 #: pkg/forms/validators.go:331
 #, python-format
 msgid "must be greater or equal than %d"
-msgstr ""
+msgstr "ha de ser major o igual a %d"
 
 #: pkg/forms/validators.go:339
 #, python-format
 msgid "must be lower or equal than %d"
-msgstr ""
+msgstr "ha de ser menor o igual a %d"
 
 #: pkg/forms/validators.go:398
 #, python-format
@@ -2113,72 +2141,72 @@ msgstr ""
 #: pkg/strftime/strftime.go:23
 msgctxt "datetime_dl"
 msgid "Sunday"
-msgstr ""
+msgstr "Diumenge"
 
 #: pkg/strftime/strftime.go:24
 msgctxt "datetime_dl"
 msgid "Monday"
-msgstr ""
+msgstr "Dilluns"
 
 #: pkg/strftime/strftime.go:25
 msgctxt "datetime_dl"
 msgid "Tuesday"
-msgstr ""
+msgstr "Dimarts"
 
 #: pkg/strftime/strftime.go:26
 msgctxt "datetime_dl"
 msgid "Wednesday"
-msgstr ""
+msgstr "Dimecres"
 
 #: pkg/strftime/strftime.go:27
 msgctxt "datetime_dl"
 msgid "Thursday"
-msgstr ""
+msgstr "Dijous"
 
 #: pkg/strftime/strftime.go:28
 msgctxt "datetime_dl"
 msgid "Friday"
-msgstr ""
+msgstr "Divendres"
 
 #: pkg/strftime/strftime.go:29
 msgctxt "datetime_dl"
 msgid "Saturday"
-msgstr ""
+msgstr "Dissabte"
 
 #: pkg/strftime/strftime.go:33
 msgctxt "datetime_ds"
 msgid "Sun"
-msgstr ""
+msgstr "dg."
 
 #: pkg/strftime/strftime.go:34
 msgctxt "datetime_ds"
 msgid "Mon"
-msgstr ""
+msgstr "dl."
 
 #: pkg/strftime/strftime.go:35
 msgctxt "datetime_ds"
 msgid "Tue"
-msgstr ""
+msgstr "dt."
 
 #: pkg/strftime/strftime.go:36
 msgctxt "datetime_ds"
 msgid "Wed"
-msgstr ""
+msgstr "dc."
 
 #: pkg/strftime/strftime.go:37
 msgctxt "datetime_ds"
 msgid "Thu"
-msgstr ""
+msgstr "dj."
 
 #: pkg/strftime/strftime.go:38
 msgctxt "datetime_ds"
 msgid "Fri"
-msgstr ""
+msgstr "dv."
 
 #: pkg/strftime/strftime.go:39
 msgctxt "datetime_ds"
 msgid "Sat"
-msgstr ""
+msgstr "ds."
 
 #: pkg/strftime/strftime.go:43
 msgctxt "datetime_ml"
@@ -2303,29 +2331,29 @@ msgstr "des."
 #: pkg/strftime/strftime.go:73
 msgctxt "datetime"
 msgid "a.m."
-msgstr ""
+msgstr "a.m."
 
 #: pkg/strftime/strftime.go:74
 msgctxt "datetime"
 msgid "p.m."
-msgstr ""
+msgstr "p.m."
 
 #: pkg/strftime/strftime.go:75
 #, python-format
 msgctxt "datetime"
 msgid "%a %b %e %H:%M:%S %y"
-msgstr ""
+msgstr "%a %b %e %H:%M:%S %y"
 
 #: pkg/strftime/strftime.go:76
 #, python-format
 msgctxt "datetime"
 msgid "%m/%d/%Y"
-msgstr ""
+msgstr "%m/%d/%Y"
 
 #: pkg/strftime/strftime.go:77
 msgctxt "datetime"
 msgid "%H:%M:%S"
-msgstr ""
+msgstr "%H:%M:%S"
 
 #~ msgid "Unabled to read HTML content"
 #~ msgstr ""
