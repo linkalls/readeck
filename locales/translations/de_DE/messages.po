@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Readeck 1.0.0\n"
 "Report-Msgid-Bugs-To: translate@readeck.com\n"
 "POT-Creation-Date: 2025-05-25 07:29+0000\n"
-"PO-Revision-Date: 2025-05-27 12:59+0000\n"
+"PO-Revision-Date: 2025-06-04 11:50+0000\n"
 "Last-Translator: altruizine <altruizine@noreply.codeberg.org>\n"
 "Language-Team: German <https://translate.codeberg.org/projects/readeck/"
 "application/de/>\n"
@@ -1888,7 +1888,7 @@ msgstr "Ungültiger Benutzername und/oder ungültiges Passwort"
 
 #: internal/auth/users/forms.go:68
 msgid "password is empty"
-msgstr "Kennwort ist leer"
+msgstr "Passwort ist leer"
 
 #: internal/auth/users/forms.go:205
 msgid "Bookmarks : Read Only"
