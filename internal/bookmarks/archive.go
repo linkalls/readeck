@@ -28,6 +28,12 @@ import (
 
 const (
 	resourceDirName = "_resources"
+
+	// Fit large images to a maximum width that still looks crisp in bookmark
+	// view. Since the current default article width is 48rem, the base font
+	// size in web browsers is typically 16px, and a common scaling factor for
+	// high-density displays is 2x, this is calculated as: 48 × 16px × 2.
+	maxImageWidth = 1536
 )
 
 var (
@@ -192,7 +198,7 @@ func imageProcessor(ctx context.Context, arc *archiver.Archiver, input io.Reader
 		func(im img.Image) error { return im.Clean() },
 		func(im img.Image) error { return im.SetQuality(75) },
 		func(im img.Image) error { return im.SetCompression(img.CompressionBest) },
-		func(im img.Image) error { return img.Fit(im, 1280, 0) },
+		func(im img.Image) error { return img.Fit(im, maxImageWidth, 0) },
 	)
 	if err != nil {
 		arc.SendEvent(ctx, &archiver.EventError{Err: err, URI: uri.String()})
