@@ -36,9 +36,11 @@ SPDX-License-Identifier: AGPL-3.0-only
     <div class="field-h">
       <span class="field-spacer"></span>
       {{- yield message(class="my-0") content -}}
-        <h4 class="title text-lg mb-2">Translate Readeck</h4>
-        <p>You couldn't find your own language or you'd like to improve an existing translation?</p>
-        <p>You can help with <a class="link" target="_blank" href="https://readeck.org/en/contribute#translations">translating Readeck.</a></p>
+        <details>
+          <summary class="title my-0 hf:text-app-fg">Translate Readeck</summary>
+          <p class="mt-2">You couldn't find your own language or you'd like to improve an existing translation?</p>
+          <p>You can help with <a class="link" target="_blank" href="https://readeck.org/en/contribute#translations">translating Readeck.</a></p>
+        </details>
       {{- end -}}
     </div>
   </fieldset>
@@ -65,12 +67,14 @@ SPDX-License-Identifier: AGPL-3.0-only
     <div class="field-h">
       <span class="field-spacer"></span>
       {{- yield message(class="my-0") content -}}
-        <h4 class="title text-lg mb-2">Sending e-books to an Amazon Kindle</h4>
-        <p>{{ gettext(`
-        If you plan to send e-books to a Kindle device, you must approve the
-        following email address within your Kindle Account:
-        `) }}<p>
-        <p class="mt-2"><code>{{ .MailFrom }}</code></p>
+        <details>
+          <summary class="title my-0 hf:text-app-fg">Sending e-books to an Amazon Kindle</summary>
+          <p class="mt-2">{{ gettext(`
+          If you plan to send e-books to a Kindle device, you must approve the
+          following email address within your Kindle Account:
+          `) }}<p>
+          <p class="mt-2"><code>{{ .MailFrom }}</code></p>
+        </details>
       {{- end -}}
     </div>
   </fieldset>

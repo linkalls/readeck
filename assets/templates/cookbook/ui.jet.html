@@ -115,6 +115,13 @@ Removable message
 </p>
 {{- end -}}
 
+{{- yield message() content -}}
+<details>
+  <summary>Message with details element</summary>
+  <p>Revealed content</p>
+</details>
+{{- end -}}
+
 <hr class="my-8">
 <h2 class="title text-h3">Form Fields</h2>
 

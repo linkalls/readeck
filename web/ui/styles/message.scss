@@ -19,5 +19,29 @@
         @apply text-red-700;
       }
     }
+
+    & > div > details {
+      > summary {
+        display: flex;
+        align-items: center;
+
+        &::after {
+          content: "";
+          display: block;
+          width: 1.5em;
+          height: 1.5em;
+          margin-left: auto;
+          background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20"><path stroke="#999" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 8l4 4 4-4"/></svg>');
+          background-position: right 0 center;
+          background-repeat: no-repeat;
+          background-size: 1.5em 1.5em;
+          transform: rotate(-90deg);
+        }
+      }
+
+      &[open] > summary::after {
+        transform: rotate(0);
+      }
+    }
   }
 }
