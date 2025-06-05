@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Readeck 1.0.0\n"
 "Report-Msgid-Bugs-To: translate@readeck.com\n"
 "POT-Creation-Date: 2025-05-25 07:29+0000\n"
-"PO-Revision-Date: 2025-06-05 08:13+0000\n"
+"PO-Revision-Date: 2025-06-05 16:11+0000\n"
 "Last-Translator: 0alai <0alai@noreply.codeberg.org>\n"
 "Language-Team: Catalan <https://translate.codeberg.org/projects/readeck/"
 "application/ca/>\n"
@@ -1620,6 +1620,21 @@ msgid ""
 "\n"
 "If you are not a Readeck user, please ignore this message.\n"
 msgstr ""
+"\n"
+"Hola!\n"
+"\n"
+"Has introduït aquesta adreça electrònica (o algú altre ho ha fet)\n"
+"en intentar canviar la contrasenya d'un compte de Readeck (%s).\n"
+"\n"
+"Tanmateix, aquesta adreça de correu electrònic no està associada a cap "
+"compte i, per tant,\n"
+"l'intent de canvi de contrasenya ha fallat.\n"
+"\n"
+"Si ets usuari del Readeck a %s i espereves aquest correu electrònic,\n"
+"torneu-ho a intentar amb l'adreça electrònica\n"
+"que vas utilitzar en crear el compte.\n"
+"\n"
+"Si no ets usuari del Readeck, pots ignorar aquest missatge.\n"
 
 #: assets/templates/error.jet.html:8
 msgid "Error"
@@ -2072,7 +2087,7 @@ msgstr "Col·lecció del Readeck: %s"
 #: internal/bookmarks/routes/opds.go:144
 #, python-format
 msgid "Collection ebook - %s"
-msgstr ""
+msgstr "Col·lecció eLlibre - %s"
 
 #: internal/bookmarks/routes/opds.go:151
 #, python-format
@@ -2174,7 +2189,7 @@ msgstr "ha de ser menor o igual a %d"
 #: pkg/forms/validators.go:398
 #, python-format
 msgid "%v is not one of %s"
-msgstr ""
+msgstr "%v no és un de %s"
 
 #: pkg/strftime/strftime.go:23
 msgctxt "datetime_dl"
