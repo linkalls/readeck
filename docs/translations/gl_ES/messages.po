@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Readeck User Documentation 1.0.0\n"
 "Report-Msgid-Bugs-To: translate@readeck.com\n"
 "POT-Creation-Date: 2025-06-01 09:47+0000\n"
-"PO-Revision-Date: 2025-06-03 03:13+0000\n"
+"PO-Revision-Date: 2025-06-05 16:11+0000\n"
 "Last-Translator: ghose <ghose@noreply.codeberg.org>\n"
 "Language-Team: Galician <https://translate.codeberg.org/projects/readeck/"
 "documentation/gl/>\n"
@@ -361,40 +361,50 @@ msgid ""
 "![Menu](./img/bookmark-list-menu.webp)\n"
 "Bookmark list menu"
 msgstr ""
+"![Menu](./img/bookmark-list-menu.webp)\n"
+"Menú da lista de marcadores"
 
 #: en-US/bookmark-list.md:146
 msgid "### Export bookmarks"
-msgstr ""
+msgstr "### Exportar marcadores"
 
 #: en-US/bookmark-list.md:148
 msgid "The menu button next to the filters button let you download an EPUB file of the current list of bookmarks. It exports one e-book containing all the articles organized in chapters."
 msgstr ""
+"O botón de menú xunto ao botón dos filtros permíteche descargar un ficheiro "
+"EPUB da lista actual de marcadores. Exporta un único libro que contén todos "
+"os artigos organizados en capítulos."
 
 #: en-US/bookmark-list.md:150
 msgid "### Import bookmarks"
-msgstr ""
+msgstr "### Importar marcadores"
 
 #: en-US/bookmark-list.md:152
 msgid "In the same menu, you'll find a [Import bookmarks](readeck-instance://bookmarks/import) link. It will take you to an import wizard that lets you import your existing bookmarks from various sources."
 msgstr ""
+"No mesmo menú, tes unha ligazón a [Importar marcadores](readeck-instance://"
+"bookmarks/import). Verás o asistente para importar os teus marcadores "
+"existentes desde varias orixes."
 
 #: en-US/bookmark.md:1
 msgid "# Bookmark View"
-msgstr ""
+msgstr "# Vista de marcadores"
 
 #: en-US/bookmark.md:3
 msgid "## The view"
-msgstr ""
+msgstr "## Visualización"
 
 #: en-US/bookmark.md:5
 msgid ""
 "![The bookmark view](./img/bookmark-view.webp)\n"
 "The bookmark view of an article."
 msgstr ""
+"![Vista do marcador](./img/bookmark-view.webp)\n"
+"Vista do artigo do marcador."
 
 #: en-US/bookmark.md:8
 msgid "The bookmark view is divided in 3 sections:"
-msgstr ""
+msgstr "A vista do marcador está dividida en 3 seccións:"
 
 #: en-US/bookmark.md:10
 msgid ""
@@ -402,92 +412,113 @@ msgid ""
 "- The content,\n"
 "- A sidebar with information, labels, highlights and actions."
 msgstr ""
+"- Arriba, a navegación e axustes da presentación,\n"
+"- O contido,\n"
+"- O panel lateral con información, etiquetas, destacados e accións."
 
 #: en-US/bookmark.md:15
 msgid "A bookmark renders its content based on its type. There are 3 types:"
-msgstr ""
+msgstr "Móstrase o contido do marcador en función do seu tipo. Hai tres tipos:"
 
 #: en-US/bookmark.md:30
 msgid "## Navigation and presentation settings"
-msgstr ""
+msgstr "## Axustes da navegación e presentación"
 
 #: en-US/bookmark.md:32
 msgid "On top of the bookmark view, a link takes you back to the previous page."
-msgstr ""
+msgstr "Arriba na vista do marcador, unha ligazón lévate á páxina anterior."
 
 #: en-US/bookmark.md:34
 msgid "If the bookmark contains an article, a button on the other side lets you change some typography settings."
 msgstr ""
+"Se o marcador contén un artigo, un botón no outro lado permíte cambiar "
+"algúns axustes no tipo de letra."
 
 #: en-US/bookmark.md:36
 msgid ""
 "![Bookmark typography settings](./img/bookmark-typography.webp)\n"
 "Typography settings."
 msgstr ""
+"![axustes da tipografía do marcador](./img/bookmark-typography.webp)\n"
+"Axustes do tipo de letra."
 
 #: en-US/bookmark.md:39
 msgid ""
 "There you can set the font used for the text, the font size and the line height.\\\n"
 "This settings are automatically saved for you and will apply to any article you read later."
 msgstr ""
+"Aí podes cambiar a tipografía que se usa no texto, o tamaño da letra e a "
+"distancia entre liñas.\\\n"
+"Este axuste gárdase automáticamente e aplícase aos artigos que leas a partir "
+"dese momento."
 
 #: en-US/bookmark.md:43
 msgid "## Change the title"
-msgstr ""
+msgstr "## Cambiar o título"
 
 #: en-US/bookmark.md:45
 msgid "The bookmark's title is automatically grabbed when you create it. If, for some reason, you need something else, you can change it by clicking on it and then click the button on the title side."
 msgstr ""
+"O título do marcador obténse automaticamente ao crealo. Se, por calquera "
+"motivo, precisas cambialo podes facelo premendo nel e despois no botón que "
+"ten ao lado."
 
 #: en-US/bookmark.md:48
 msgid "## Actions"
-msgstr ""
+msgstr "## Accións"
 
 #: en-US/bookmark.md:50
 msgid "On the bookmark sidebar, you can perform actions."
-msgstr ""
+msgstr "Desde o panel lateral do marcador podes realizar varias accións."
 
 #: en-US/bookmark.md:52
 msgid "### Favorite"
-msgstr ""
+msgstr "### Favorito"
 
 #: en-US/bookmark.md:54
 msgid "This toggles the favorite status of the bookmark."
-msgstr ""
+msgstr "Cambia o estado de favorito do marcador."
 
 #: en-US/bookmark.md:56
 msgid "### Archive"
-msgstr ""
+msgstr "### Arquivo"
 
 #: en-US/bookmark.md:58
 msgid "This moves the bookmark to the archives (or removes it from there)."
-msgstr ""
+msgstr "Move o marcador ao arquivo (ou retírao de alí)."
 
 #: en-US/bookmark.md:60
 msgid "### Share"
-msgstr ""
+msgstr "### Compartir"
 
 #: en-US/bookmark.md:62
 msgid "The share button opens a menu from which you can create a link if you want to share an article with someone."
 msgstr ""
+"O botón de compartir abre un menú desde o que podes crear unha ligazón se "
+"queres compartir o artigo con alguén."
 
 #: en-US/bookmark.md:64
 msgid "On the same menu, you can export your bookmark (only EPUB for now) to read it on a different device."
 msgstr ""
+"No mesmo menú, podes exportar o marcador para lelo noutro dispositivo (por "
+"agora só como EPUB)."
 
 #: en-US/bookmark.md:67
 msgid "### Delete"
-msgstr ""
+msgstr "### Eliminar"
 
 #: en-US/bookmark.md:69
 msgid ""
 "This marks the bookmark for deletion.\\\n"
 "No worries if you click on this by mistake! This action can be canceled before actual deletion."
 msgstr ""
+"Isto marca o marcador para ser eliminado.\\\n"
+"Non te preocupes se premes este botón sen querer! Esta acción pode "
+"cancelarse antes de facerse efectiva a eliminación."
 
 #: en-US/bookmark.md:73
 msgid "## Labels"
-msgstr ""
+msgstr "## Etiquetas"
 
 #: en-US/bookmark.md:75
 msgid "You can add as many labels as you want to a bookmark. To do so, enter some text in the label field and click on **Add label**. There is no limit as to what can be a label. You can even add emojis if you like them."
