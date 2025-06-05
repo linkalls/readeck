@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Readeck 1.0.0\n"
 "Report-Msgid-Bugs-To: translate@readeck.com\n"
 "POT-Creation-Date: 2025-05-25 07:29+0000\n"
-"PO-Revision-Date: 2025-05-27 06:01+0000\n"
+"PO-Revision-Date: 2025-06-04 03:29+0000\n"
 "Last-Translator: radixm46 <radixm46@noreply.codeberg.org>\n"
 "Language-Team: Japanese <https://translate.codeberg.org/projects/readeck/"
 "application/ja/>\n"
@@ -473,7 +473,7 @@ msgstr ""
 
 #: assets/templates/bookmarks/bookmark_share_link.jet.html:8
 msgid "Share link"
-msgstr ""
+msgstr "リンクを共有"
 
 #: assets/templates/bookmarks/base.jet.html:72
 #: assets/templates/bookmarks/collection.jet.html:11
@@ -484,7 +484,7 @@ msgstr "コレクション"
 #: assets/templates/bookmarks/collection.jet.html:16
 #, python-format
 msgid "Collection %s"
-msgstr ""
+msgstr "コレクション %s"
 
 #: assets/templates/bookmarks/collection.jet.html:21
 msgid "Collection will be removed in a few seconds."
@@ -509,11 +509,11 @@ msgstr ""
 
 #: assets/templates/bookmarks/collection.jet.html:80
 msgid "Delete collection"
-msgstr ""
+msgstr "コレクションを削除"
 
 #: assets/templates/bookmarks/collection_create.jet.html:9
 msgid "New Collection"
-msgstr ""
+msgstr "新しいコレクション"
 
 #: assets/templates/bookmarks/collection_list.jet.html:9
 #: internal/opds/http.go:74
@@ -522,7 +522,7 @@ msgstr ""
 
 #: assets/templates/bookmarks/collection_list.jet.html:15
 msgid "Create a new collection"
-msgstr ""
+msgstr "新規コレクションを作成"
 
 #: assets/templates/bookmarks/collection_list.jet.html:24
 msgid ""
