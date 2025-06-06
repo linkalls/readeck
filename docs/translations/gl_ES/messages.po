@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Readeck User Documentation 1.0.0\n"
 "Report-Msgid-Bugs-To: translate@readeck.com\n"
 "POT-Creation-Date: 2025-06-01 09:47+0000\n"
-"PO-Revision-Date: 2025-06-06 09:19+0000\n"
+"PO-Revision-Date: 2025-06-06 13:34+0000\n"
 "Last-Translator: ghose <ghose@noreply.codeberg.org>\n"
 "Language-Team: Galician <https://translate.codeberg.org/projects/readeck/"
 "documentation/gl/>\n"
@@ -671,6 +671,17 @@ msgid ""
 "    - user-profile\n"
 "---"
 msgstr ""
+"---\n"
+"Title: Índice de contidos\n"
+"TOC:\n"
+"    - \"\"\n"
+"    - bookmark-list\n"
+"    - bookmark\n"
+"    - labels\n"
+"    - collections\n"
+"    - opds\n"
+"    - user-profile\n"
+"---"
 
 #: en-US/index.md:13
 msgid "# Readeck Help"
@@ -879,39 +890,56 @@ msgstr "# Perfil da usuaria"
 #: en-US/user-profile.md:3
 msgid "The [Profile section](readeck-instance://profile) of Readeck lets you change your personal information, you password and some other settings."
 msgstr ""
+"A [sección do Perfil](readeck-instance://profile) en Readeck permite cambiar "
+"a túa información persoal, o contrasinal e algún outro axuste."
 
 #: en-US/user-profile.md:5
 msgid "## Edit your profile"
-msgstr ""
+msgstr "## Editar o teu perfil"
 
 #: en-US/user-profile.md:7
 msgid "On the main profile page, you can change your username, your email address and choose the app's language."
 msgstr ""
+"Na páxina principal do perfil podes cambiar o identificador, o enderezo de "
+"correo e elixir o idioma da aplicación."
 
 #: en-US/user-profile.md:9
 msgid "## Change your password"
-msgstr ""
+msgstr "## Cambiar o contrasinal"
 
 #: en-US/user-profile.md:11
 msgid "On the [Password](readeck-instance://profile/password) page, you can change the password you use to connect to Readeck."
 msgstr ""
+"Na páxina do [Contrasinal](readeck-instance://profile/password) podes "
+"cambiar o contrasinal que usas para acceder a Readeck."
 
 #: en-US/user-profile.md:13
 msgid "## API Tokens"
-msgstr ""
+msgstr "## Tokens da API"
 
 #: en-US/user-profile.md:15
 msgid "An API Token lets you access and use the [Readeck API](readeck-instance://docs/api) for anything you'd like to build. You can create and manage tokens on the [API Tokens](readeck-instance://profile/tokens) section of your user profile."
 msgstr ""
+"Un Token da API permite que accedas e uses a [API de Readeck](readeck-"
+"instance://docs/api) para todo o que precises. Podes crear e xestionar os "
+"tokens na sección [Tokens da API](readeck-instance://profile/tokens) da túa "
+"configuración."
 
 #: en-US/user-profile.md:17
 msgid "You can limit what a given token can access through the API and for how long it's valid."
 msgstr ""
+"Podes limitar os ámbitos aos que ten acceso o token a través da API e "
+"durante canto tempo será válido."
 
 #: en-US/user-profile.md:19
 msgid "If you need to grant access to your Readeck account to a service or an app, you can't provide you main username and password; it won't work."
 msgstr ""
+"Se precisas conceder acceso á túa conta Readeck a un servizo ou a unha "
+"aplicación, non podes utilizar o teu identificador e contrasinal xa que non "
+"funcionará."
 
 #: en-US/user-profile.md:21
 msgid "Instead, you can give your username and a token of your choice as authentication credentials."
 msgstr ""
+"No seu lugar podes utilizar o identificador e un token da túa elección como "
+"credenciais para a autenticación."
