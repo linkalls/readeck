@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Readeck User Documentation 1.0.0\n"
 "Report-Msgid-Bugs-To: translate@readeck.com\n"
 "POT-Creation-Date: 2025-06-01 09:47+0000\n"
-"PO-Revision-Date: 2025-06-06 05:24+0000\n"
+"PO-Revision-Date: 2025-06-06 05:39+0000\n"
 "Last-Translator: ghose <ghose@noreply.codeberg.org>\n"
 "Language-Team: Galician <https://translate.codeberg.org/projects/readeck/"
 "documentation/gl/>\n"
@@ -565,7 +565,7 @@ msgstr ""
 
 #: en-US/collections.md:1
 msgid "# Collections"
-msgstr ""
+msgstr "# Coleccións"
 
 #: en-US/collections.md:3
 msgid ""
