@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Readeck User Documentation 1.0.0\n"
 "Report-Msgid-Bugs-To: translate@readeck.com\n"
 "POT-Creation-Date: 2025-06-01 09:47+0000\n"
-"PO-Revision-Date: 2025-06-05 16:11+0000\n"
+"PO-Revision-Date: 2025-06-06 05:24+0000\n"
 "Last-Translator: ghose <ghose@noreply.codeberg.org>\n"
 "Language-Team: Galician <https://translate.codeberg.org/projects/readeck/"
 "documentation/gl/>\n"
@@ -523,20 +523,25 @@ msgstr "## Etiquetas"
 #: en-US/bookmark.md:75
 msgid "You can add as many labels as you want to a bookmark. To do so, enter some text in the label field and click on **Add label**. There is no limit as to what can be a label. You can even add emojis if you like them."
 msgstr ""
+"Podes engadir ao marcador cantas etiquetas queiras. Simplemente escribe o "
+"texto no campo da etiqueta e preme en **Engadir etiqueta**. Non hai "
+"límitacións no que pode ser unha etiqueta, incluso podes engadir emojis."
 
 #: en-US/bookmark.md:77
 msgid ""
 "![Bookmark labels form](./img/bookmark-labels.webp)\n"
 "Add a new label."
 msgstr ""
+"![formulario para engadir etiquetas](./img/bookmark-labels.webp)\n"
+"Engadir unha nova etiqueta."
 
 #: en-US/bookmark.md:80
 msgid "Please read the [Labels](./labels.md) section for more information."
-msgstr ""
+msgstr "Le a sección [Etiquetas](./labels.md) para ter máis información."
 
 #: en-US/bookmark.md:82
 msgid "## Highlights"
-msgstr ""
+msgstr "## Destacados"
 
 #: en-US/bookmark.md:84
 msgid ""
