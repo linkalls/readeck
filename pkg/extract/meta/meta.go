@@ -60,6 +60,7 @@ func ExtractMeta(m *extract.ProcessMessage, next extract.Processor) extract.Proc
 		"dc.creator",
 		"html.author",
 		"html.byl",
+		"fediverse.creator",
 	)...)
 
 	if site := d.Meta.LookupGet(
@@ -219,6 +220,12 @@ var specList = []rawSpec{
 		func(n *html.Node) (string, string) {
 			return "author", dom.TextContent(n)
 		},
+	},
+
+	// Fediverse meta tags
+	{
+		"fediverse", "//meta[@content][starts-with(@name, 'fediverse:')]",
+		extMeta("name", "content", 10),
 	},
 
 	// Header links (excluding icons and stylesheets)
