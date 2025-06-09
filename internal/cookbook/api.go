@@ -146,6 +146,7 @@ func (api *cookbookAPI) extract(w http.ResponseWriter, r *http.Request) {
 		contentscripts.StripTags,
 		contentscripts.GoToNextPage,
 		contents.ExtractInlineSVGs,
+		contents.ConvertVideoEmbeds,
 		contents.Readability(),
 		bookmark_tasks.CleanDomProcessor,
 		contents.Text,

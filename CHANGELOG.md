@@ -8,6 +8,7 @@
 ### Fixed
 - scoped_admin_r scope was missing the system:read permission
 - consider the `<base>` element when present for page's URL resolution
+- YouTube video embeds are now preserved as a thumbnail that links to the original video, by [@mislav](https://codeberg.org/mislav)
 
 ### Improved
 - documentation extracted to gettext
