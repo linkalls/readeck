@@ -334,7 +334,6 @@ func (d *Drop) fixRelativeURIs(m *ProcessMessage) {
 			*tmp = *baseURL
 			tmp.Fragment = ""
 			if uri.String() == tmp.String() {
-				fmt.Println(">>>>>>>>> #" + fragment)
 				dom.SetAttribute(n, "href", "#"+fragment)
 			}
 		}
