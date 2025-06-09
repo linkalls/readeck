@@ -165,6 +165,26 @@ schemas:
             type: integer
             description: Image width
 
+  bookmarkSync:
+    type: object
+    properties:
+      id:
+        type: string
+        format: short-uid
+        description: Bookmark's ID
+      href:
+        type: string
+        format: uri
+        description: Link to the bookmark info
+      created:
+        type: string
+        format: date-time
+        description: Creation date
+      updated:
+        type: string
+        format: date-time
+        description: Last update
+
   bookmarkInfo:
     allOf:
       - $ref: "#/components/schemas/bookmarkSummary"

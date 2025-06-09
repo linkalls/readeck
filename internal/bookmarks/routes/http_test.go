@@ -38,6 +38,19 @@ func TestPermissions(t *testing.T) {
 				},
 			},
 			RequestTest{
+				Target: "/api/bookmarks/sync",
+				Assert: func(t *testing.T, r *Response) {
+					switch user {
+					case "admin", "staff", "user":
+						r.AssertStatus(t, 200)
+					case "disabled":
+						r.AssertStatus(t, 403)
+					case "":
+						r.AssertStatus(t, 401)
+					}
+				},
+			},
+			RequestTest{
 				Method: "POST",
 				Target: "/api/bookmarks",
 				JSON:   map[string]string{},
