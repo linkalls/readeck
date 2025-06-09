@@ -22,10 +22,11 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/go-shiori/dom"
+
 	"golang.org/x/net/html"
 
 	"codeberg.org/readeck/readeck/pkg/glob"
-	"github.com/go-shiori/dom"
 )
 
 type (
@@ -407,6 +408,8 @@ func (e *Extractor) Run() {
 				m.Log().Debug("step DOM")
 				m.Dom = doc
 				m.step = StepDom
+
+				d.fixRelativeURIs(m) // Fix relative URIs before any processor
 				e.runProcessors(m)
 				if m.canceled {
 					return
