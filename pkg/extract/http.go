@@ -76,10 +76,14 @@ var defaultTransport = &http.Transport{
 // while using the associated client.
 var defaultHeaders = http.Header{
 	"User-Agent":                []string{uaString},
-	"Accept":                    []string{"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"},
+	"Accept":                    []string{"text/html,application/xhtml+xml,application/xml;q=0.9,image/jpeg,image/png,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"},
 	"Accept-Language":           []string{"en-US,en;q=0.8"},
 	"Cache-Control":             []string{"max-age=0"},
 	"Upgrade-Insecure-Requests": []string{"1"},
+	"Sec-CH-UA":                 []string{`"Google Chrome";v="137", "Chromium";v="137"`},
+	"Sec-CH-UA-mobile":          []string{"?0"},
+	"Sec-CH-UA-platform":        []string{`"Windows"`},
+	"Sec-Fetch-Site":            []string{"none"},
 }
 
 // Transport is a wrapper around http.RoundTripper that
