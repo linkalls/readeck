@@ -9,6 +9,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"log/slog"
 	"mime"
 	"net/http"
 	"net/url"
@@ -19,19 +20,23 @@ import (
 	"strings"
 	"time"
 
-	"codeberg.org/readeck/readeck/pkg/bleach"
+	"github.com/go-shiori/dom"
+
 	"golang.org/x/net/html"
 	"golang.org/x/net/html/charset"
 	"golang.org/x/net/idna"
 	"golang.org/x/net/publicsuffix"
 	"golang.org/x/text/encoding"
 	"golang.org/x/text/transform"
+
+	"codeberg.org/readeck/readeck/pkg/bleach"
 )
 
 var (
 	rxAuthor      = regexp.MustCompile(`^(?i)by(\s*:)?\s+`)
 	rxSpaces      = regexp.MustCompile(`\s+`)
 	rxTitleSpaces = regexp.MustCompile(`[_-]+`)
+	rxSrcsetURL   = regexp.MustCompile(`(?i)(\S+)(\s+[\d.]+[xw])?(\s*(?:,|$))`)
 
 	mediaTypes = []string{"photo", "video", "audio", "music"}
 )
@@ -261,6 +266,98 @@ func (d *Drop) loadImage(_ *http.Response) error {
 	d.DocumentType = "photo"
 
 	return nil
+}
+
+// fixRelativeURIs normalizes every href, src, srcset and poster
+// URI values.
+// It uses <base href> when present.
+func (d *Drop) fixRelativeURIs(m *ProcessMessage) {
+	top := m.Dom
+	if top == nil {
+		return
+	}
+
+	attrs := []string{"href", "src", "poster"}
+	baseURL := &url.URL{}
+	*baseURL = *d.URL
+
+	m.Log().Debug("fix relative links", slog.String("base", baseURL.String()))
+
+	// <base href> exists, we resolve its URL and set the new baseURL.
+	if baseMeta := dom.QuerySelector(top, "base[href]"); baseMeta != nil {
+		b := dom.GetAttribute(baseMeta, "href")
+		if b != "" {
+			if buri, err := url.Parse(b); err == nil {
+				baseURL = baseURL.ResolveReference(buri)
+				m.Log().Debug("found base tag", slog.String("url", baseURL.String()))
+			}
+		}
+	}
+
+	// walk through anything with href, src, poster attribute.
+	for _, attr := range attrs {
+		dom.ForEachNode(dom.QuerySelectorAll(top, "["+attr+"]"), func(n *html.Node, _ int) {
+			newURI := toAbsoluteURI(dom.GetAttribute(n, attr), baseURL)
+			dom.SetAttribute(n, attr, newURI)
+		})
+	}
+
+	// srcset handler
+	dom.ForEachNode(dom.QuerySelectorAll(top, "[srcset]"), func(n *html.Node, _ int) {
+		srcset := dom.GetAttribute(n, "srcset")
+		if srcset == "" {
+			return
+		}
+		newSrcSet := rxSrcsetURL.ReplaceAllStringFunc(srcset, func(s string) string {
+			p := rxSrcsetURL.FindStringSubmatch(s)
+			return toAbsoluteURI(p[1], baseURL) + p[2] + p[3]
+		})
+		dom.SetAttribute(n, "srcset", newSrcSet)
+	})
+
+	// make fragments to the same document relative
+	dom.ForEachNode(dom.QuerySelectorAll(top, "a[href]"), func(n *html.Node, _ int) {
+		attr := dom.GetAttribute(n, "href")
+		if attr == "" {
+			return
+		}
+		if strings.HasPrefix(attr, "#") {
+			return
+		}
+		uri, err := url.Parse(dom.GetAttribute(n, "href"))
+		if err != nil {
+			return
+		}
+		if fragment := uri.Fragment; fragment != "" {
+			uri.Fragment = ""
+			tmp := new(url.URL)
+			*tmp = *baseURL
+			tmp.Fragment = ""
+			if uri.String() == tmp.String() {
+				fmt.Println(">>>>>>>>> #" + fragment)
+				dom.SetAttribute(n, "href", "#"+fragment)
+			}
+		}
+	})
+}
+
+func toAbsoluteURI(uri string, base *url.URL) string {
+	if uri == "" {
+		return uri
+	}
+	if strings.HasPrefix(uri, "data:") {
+		return uri
+	}
+
+	tmp, err := url.Parse(uri)
+	if err != nil {
+		return uri
+	}
+
+	if tmp.Scheme != "" {
+		return uri
+	}
+	return base.ResolveReference(tmp).String()
 }
 
 func scanForCharset(r io.Reader) string {

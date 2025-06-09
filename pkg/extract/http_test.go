@@ -23,7 +23,7 @@ func TestClient(t *testing.T) {
 
 		tr := client.Transport.(*Transport)
 		assert.Equal("en-US,en;q=0.8", tr.header.Get("Accept-Language"))
-		assert.Equal("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", tr.header.Get("Accept"))
+		assert.Equal("text/html,application/xhtml+xml,application/xml;q=0.9,image/jpeg,image/png,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7", tr.header.Get("Accept"))
 
 		htr := tr.tr.(*http.Transport)
 		assert.False(htr.DisableKeepAlives)
