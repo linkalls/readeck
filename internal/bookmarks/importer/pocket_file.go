@@ -194,7 +194,7 @@ func (adapter *pocketFileAdapter) loadBookmarkRows(f *zip.File) error {
 
 		ts, err := strconv.Atoi(record[idxTime])
 		if err == nil {
-			item.Created = time.Unix(int64(ts), 0)
+			item.Created = time.Unix(int64(ts), 0).UTC()
 		}
 
 		adapter.Items = append(adapter.Items, item)
