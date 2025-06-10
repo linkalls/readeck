@@ -62,7 +62,9 @@ func TestStrftime(t *testing.T) {
 
 	for i, test := range tests {
 		t.Run(strconv.Itoa(i), func(t *testing.T) {
-			date, err := time.Parse(time.RFC3339, test.date)
+			location, err := time.LoadLocation("CET")
+			require.NoError(t, err)
+			date, err := time.ParseInLocation(time.RFC3339, test.date, location)
 			require.NoError(t, err)
 			t.Log(date, test.format, strftime.Strftime(test.format, date))
 
@@ -94,7 +96,9 @@ func TestTranslator(t *testing.T) {
 	f := strftime.New(translation)
 	for i, test := range tests {
 		t.Run(strconv.Itoa(i), func(t *testing.T) {
-			date, err := time.Parse(time.RFC3339, test.date)
+			location, err := time.LoadLocation("CET")
+			require.NoError(t, err)
+			date, err := time.ParseInLocation(time.RFC3339, test.date, location)
 			require.NoError(t, err)
 			t.Log(date, test.format, f.Strftime(test.format, date))
 
