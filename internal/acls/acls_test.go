@@ -72,7 +72,7 @@ func TestGetPermissions(t *testing.T) {
 	}{
 		{
 			[]string{"scoped_admin_r"},
-			[]string{"api:admin:users:read", "api:profile:read", "api:profile:tokens:delete"},
+			[]string{"api:admin:users:read", "api:profile:read", "api:profile:tokens:delete", "system:read"},
 		},
 		{
 			[]string{"scoped_admin_w"},
@@ -80,7 +80,7 @@ func TestGetPermissions(t *testing.T) {
 		},
 		{
 			[]string{"scoped_admin_r", "scoped_admin_w"},
-			[]string{"api:admin:users:read", "api:admin:users:write", "api:profile:read", "api:profile:tokens:delete"},
+			[]string{"api:admin:users:read", "api:admin:users:write", "api:profile:read", "api:profile:tokens:delete", "system:read"},
 		},
 		{
 			[]string{"scoped_bookmarks_r"},
