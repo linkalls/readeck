@@ -303,6 +303,7 @@ func extractPageHandler(data interface{}) {
 		conditionnalProcessor(params.FindMain, contentscripts.StripTags),
 		conditionnalProcessor(params.FindMain, contentscripts.GoToNextPage),
 		contents.ExtractInlineSVGs,
+		contents.ConvertVideoEmbeds,
 		contents.Readability(),
 		CleanDomProcessor,
 		extractLinksProcessor,
