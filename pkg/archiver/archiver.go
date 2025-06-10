@@ -40,6 +40,9 @@ const (
 
 	// EnableImages enables extraction of images.
 	EnableImages
+
+	// EnableDataAttributes enables data attributes in HTML elements.
+	EnableDataAttributes
 )
 
 // Request is data of archival request.

@@ -57,7 +57,7 @@ func NewArchive(_ context.Context, ex *extract.Extractor) (*archiver.Archiver, e
 	}
 
 	arc.MaxConcurrentDownload = 4
-	arc.Flags = archiver.EnableImages
+	arc.Flags = archiver.EnableImages | archiver.EnableDataAttributes
 	arc.RequestTimeout = 45 * time.Second
 
 	arc.EventHandler = eventHandler(ex)

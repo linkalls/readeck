@@ -118,7 +118,9 @@ func (arc *Archiver) processHTML(ctx context.Context, input io.Reader, baseURL *
 	arc.revertConvertedNoScript(doc)
 
 	// Remove data attributes
-	arc.removeDataAttributes(doc)
+	if arc.Flags&EnableDataAttributes == 0 {
+		arc.removeDataAttributes(doc)
+	}
 
 	// Set all image to be lazy
 	arc.setLazyImages(doc)
