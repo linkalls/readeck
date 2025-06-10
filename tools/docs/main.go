@@ -88,6 +88,34 @@ func (t *linkTransform) Transform(doc *ast.Document, _ text.Reader, _ parser.Con
 	}
 }
 
+type imgTransform struct {
+	src string
+}
+
+func (t *imgTransform) Transform(doc *ast.Document, _ text.Reader, _ parser.Context) {
+	err := ast.Walk(doc, func(node ast.Node, entering bool) (ast.WalkStatus, error) {
+		if entering {
+			if n, ok := node.(*ast.Image); ok {
+				// Check for image source. If the file does not exist,
+				// change the source to the en-US one.
+				d := string(n.Destination)
+				p := filepath.Join(filepath.Dir(t.src), d)
+				if _, err := os.Stat(p); err != nil && os.IsNotExist(err) {
+					d, _ = filepath.Rel(filepath.Dir(t.src), p)
+					if strings.HasPrefix(d, "img/") {
+						n.Destination = []byte("../en-US/" + d)
+					}
+
+				}
+			}
+		}
+		return ast.WalkContinue, nil
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+}
+
 type titleExtract struct{}
 
 func (t *titleExtract) Transform(doc *ast.Document, reader text.Reader, ctx parser.Context) {
@@ -133,7 +161,8 @@ func mdToHTML(source, dest string) (*File, error) {
 			parser.WithAutoHeadingID(),
 			parser.WithASTTransformers(
 				util.Prioritized(&linkTransform{}, 900),
-				util.Prioritized(&titleExtract{}, 901),
+				util.Prioritized(&imgTransform{src: source}, 901),
+				util.Prioritized(&titleExtract{}, 902),
 			),
 		),
 	)

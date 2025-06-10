@@ -42,7 +42,7 @@ func archiveProcessor(m *extract.ProcessMessage, next extract.Processor) extract
 	}
 
 	arc.MaxConcurrentDownload = 5
-	arc.Flags = archiver.EnableImages
+	arc.Flags = archiver.EnableImages | archiver.EnableDataAttributes
 	arc.RequestTimeout = 45 * time.Second
 	arc.EventHandler = eventHandler
 

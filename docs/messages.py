@@ -10,7 +10,6 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 
 import os
-import shutil
 import sys
 from argparse import ArgumentParser
 from operator import itemgetter
@@ -171,16 +170,6 @@ def generate(_):
             print(f"{po_file} -> {destdir}")
             for x in po2text(catalog, destdir):
                 print(f"  - {x} written")
-
-        # Copy missing images
-        os.makedirs(destdir / "img", exist_ok=True)
-        for x in ((destdir.parent) / "en-US/img").iterdir():
-            if not x.is_file:
-                continue
-
-            if not (destdir / "img" / x.name).exists():
-                shutil.copy2(x, destdir / "img" / x.name)
-                print(f"{x} -> {destdir / 'img' / x.name}")
 
 
 def check(_):

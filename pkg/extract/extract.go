@@ -12,6 +12,8 @@ package extract
 import (
 	"bytes"
 	"context"
+	"crypto/rand"
+	"encoding/hex"
 	"errors"
 	"fmt"
 	"io"
@@ -22,10 +24,11 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/go-shiori/dom"
+
 	"golang.org/x/net/html"
 
 	"codeberg.org/readeck/readeck/pkg/glob"
-	"github.com/go-shiori/dom"
 )
 
 type (
@@ -139,6 +142,30 @@ func (m *ProcessMessage) Log() *slog.Logger {
 	))
 }
 
+// SetDataAttribute adds a data attribute to a given node.
+// The attribute follows a pattern that's "x-data-{random-string}-{name}"
+// The random value is there to avoid attribute injection from a page.
+func (m *ProcessMessage) SetDataAttribute(node *html.Node, name, value string) {
+	dom.SetAttribute(node, "x-data-"+m.Extractor.uniqueID+"-"+name, value)
+}
+
+// transformDataAttributes converts all existing x-data-{random-string}-* to
+// regular data attributes.
+// The resulting attribute looks like "data-readeck-{name}".
+func (m *ProcessMessage) transformDataAttributes() {
+	if m.Dom == nil {
+		return
+	}
+
+	dom.ForEachNode(dom.QuerySelectorAll(m.Dom, "*"), func(n *html.Node, _ int) {
+		for i, a := range n.Attr {
+			if strings.HasPrefix(a.Key, "x-data-"+m.Extractor.uniqueID+"-") {
+				n.Attr[i].Key = "data-readeck-" + a.Key[len("x-data-"+m.Extractor.uniqueID+"-"):]
+			}
+		}
+	})
+}
+
 // Error holds all the non-fatal errors that were
 // caught during extraction.
 type Error []error
@@ -182,6 +209,7 @@ type Extractor struct {
 	processors      ProcessList
 	errors          Error
 	drops           []*Drop
+	uniqueID        string
 	cachedResources map[string]*cachedResource
 }
 
@@ -194,6 +222,9 @@ func New(src string, options ...func(e *Extractor)) (*Extractor, error) {
 	}
 	URL.Fragment = ""
 
+	id := make([]byte, 4)
+	rand.Read(id) //nolint:errcheck
+
 	res := &Extractor{
 		URL:             URL,
 		Visited:         URLList{},
@@ -202,6 +233,7 @@ func New(src string, options ...func(e *Extractor)) (*Extractor, error) {
 		cachedResources: make(map[string]*cachedResource),
 		processors:      ProcessList{},
 		drops:           []*Drop{NewDrop(URL)},
+		uniqueID:        hex.EncodeToString(id),
 	}
 
 	t := res.client.Transport.(*Transport)
@@ -407,10 +439,14 @@ func (e *Extractor) Run() {
 				m.Log().Debug("step DOM")
 				m.Dom = doc
 				m.step = StepDom
+
+				d.fixRelativeURIs(m) // Fix relative URIs before any processor
 				e.runProcessors(m)
 				if m.canceled {
 					return
 				}
+
+				m.transformDataAttributes()
 
 				// Render the final document body
 				if m.Dom != nil {
