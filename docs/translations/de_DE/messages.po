@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Readeck User Documentation 1.0.0\n"
 "Report-Msgid-Bugs-To: translate@readeck.com\n"
 "POT-Creation-Date: 2025-06-01 09:47+0000\n"
-"PO-Revision-Date: 2025-06-03 03:13+0000\n"
+"PO-Revision-Date: 2025-06-11 19:40+0000\n"
 "Last-Translator: altruizine <altruizine@noreply.codeberg.org>\n"
 "Language-Team: German <https://translate.codeberg.org/projects/readeck/"
 "documentation/de/>\n"
@@ -83,7 +83,9 @@ msgstr "## Lesezeichen-Liste"
 
 #: en-US/bookmark-list.md:32
 msgid "The [bookmark list](readeck-instance://bookmarks) is where you'll find all your saved bookmarks."
-msgstr "Die [Lesezeichen Liste](readeck-instance://bookmarks) ist wo du all deine gespeicherten Lesezeichen findest."
+msgstr ""
+"Die [Lesezeichen-Liste](readeck-instance://bookmarks) ist, wo du all deine "
+"gespeicherten Lesezeichen findest."
 
 #: en-US/bookmark-list.md:34
 msgid "### Navigation"
@@ -526,10 +528,12 @@ msgid ""
 "it will appear immediately.\n"
 "Here are some examples:"
 msgstr ""
-"Mit Sammlungen können Sie Ihre Lesezeichen einfach organisieren und exportieren\n"
+"Mit Sammlungen können Sie Ihre Lesezeichen einfach organisieren und "
+"exportieren\n"
 "indem Sie die Suchanfragen Ihrer Wahl speichern.\n"
-"Wenn Sie ein neues Lesezeichen erstellen, das den Kriterien einer Sammlung entspricht,\n"
-"es wird sofort angezeigt.\n"
+"Wenn Sie ein neues Lesezeichen erstellen, das den Kriterien einer Sammlung "
+"entspricht,\n"
+"wird es sofort angezeigt.\n"
 "Hier einige Beispiele:"
 
 #: en-US/collections.md:9
@@ -550,7 +554,10 @@ msgstr "## Erstellen Sie eine neue Sammlung"
 
 #: en-US/collections.md:16
 msgid "To create a new collection, go to the [Collection List](readeck-instance://bookmarks/collections) and click on **Create a new collection**."
-msgstr "Um eine neue Sammlung zu erstellen, gehen Sie zur [Sammlungsliste] (readeck-instance://bookmarks/collections) und klicken Sie auf **Neue Sammlung erstellen**."
+msgstr ""
+"Um eine neue Sammlung zu erstellen, gehen Sie zur [Sammlungsliste](readeck-"
+"instance://bookmarks/collections) und klicken Sie auf **Neue Sammlung "
+"erstellen**."
 
 #: en-US/collections.md:18
 msgid ""
