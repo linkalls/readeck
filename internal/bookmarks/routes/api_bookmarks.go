@@ -30,6 +30,7 @@ import (
 	"codeberg.org/readeck/readeck/internal/server"
 	"codeberg.org/readeck/readeck/pkg/annotate"
 	"codeberg.org/readeck/readeck/pkg/forms"
+	"codeberg.org/readeck/readeck/pkg/utils"
 	"codeberg.org/readeck/readeck/pkg/zipfs"
 )
 
@@ -902,38 +903,39 @@ func (bl bookmarkList) GetSumStrings() []string {
 type bookmarkItem struct {
 	*bookmarks.Bookmark `json:"-"`
 
-	ID            string                        `json:"id"`
-	Href          string                        `json:"href"`
-	Created       time.Time                     `json:"created"`
-	Updated       time.Time                     `json:"updated"`
-	State         bookmarks.BookmarkState       `json:"state"`
-	Loaded        bool                          `json:"loaded"`
-	URL           string                        `json:"url"`
-	Title         string                        `json:"title"`
-	SiteName      string                        `json:"site_name"`
-	Site          string                        `json:"site"`
-	Published     *time.Time                    `json:"published,omitempty"`
-	Authors       []string                      `json:"authors"`
-	Lang          string                        `json:"lang"`
-	TextDirection string                        `json:"text_direction"`
-	DocumentType  string                        `json:"document_type"`
-	Type          string                        `json:"type"`
-	HasArticle    bool                          `json:"has_article"`
-	Description   string                        `json:"description"`
-	IsDeleted     bool                          `json:"is_deleted"`
-	IsMarked      bool                          `json:"is_marked"`
-	IsArchived    bool                          `json:"is_archived"`
-	Labels        []string                      `json:"labels"`
-	ReadProgress  int                           `json:"read_progress"`
-	ReadAnchor    string                        `json:"read_anchor,omitempty"`
-	Annotations   bookmarks.BookmarkAnnotations `json:"-"`
-	Resources     map[string]*bookmarkFile      `json:"resources"`
-	Embed         string                        `json:"embed,omitempty"`
-	EmbedHostname string                        `json:"embed_domain,omitempty"`
-	Errors        []string                      `json:"errors,omitempty"`
-	Links         bookmarks.BookmarkLinks       `json:"links,omitempty"`
-	WordCount     int                           `json:"word_count,omitempty"`
-	ReadingTime   int                           `json:"reading_time,omitempty"`
+	ID              string                        `json:"id"`
+	Href            string                        `json:"href"`
+	Created         time.Time                     `json:"created"`
+	Updated         time.Time                     `json:"updated"`
+	State           bookmarks.BookmarkState       `json:"state"`
+	Loaded          bool                          `json:"loaded"`
+	URL             string                        `json:"url"`
+	Title           string                        `json:"title"`
+	SiteName        string                        `json:"site_name"`
+	Site            string                        `json:"site"`
+	Published       *time.Time                    `json:"published,omitempty"`
+	Authors         []string                      `json:"authors"`
+	Lang            string                        `json:"lang"`
+	TextDirection   string                        `json:"text_direction"`
+	DocumentType    string                        `json:"document_type"`
+	Type            string                        `json:"type"`
+	HasArticle      bool                          `json:"has_article"`
+	Description     string                        `json:"description"`
+	OmitDescription *bool                         `json:"omit_description,omitempty"`
+	IsDeleted       bool                          `json:"is_deleted"`
+	IsMarked        bool                          `json:"is_marked"`
+	IsArchived      bool                          `json:"is_archived"`
+	Labels          []string                      `json:"labels"`
+	ReadProgress    int                           `json:"read_progress"`
+	ReadAnchor      string                        `json:"read_anchor,omitempty"`
+	Annotations     bookmarks.BookmarkAnnotations `json:"-"`
+	Resources       map[string]*bookmarkFile      `json:"resources"`
+	Embed           string                        `json:"embed,omitempty"`
+	EmbedHostname   string                        `json:"embed_domain,omitempty"`
+	Errors          []string                      `json:"errors,omitempty"`
+	Links           bookmarks.BookmarkLinks       `json:"links,omitempty"`
+	WordCount       int                           `json:"word_count,omitempty"`
+	ReadingTime     int                           `json:"reading_time,omitempty"`
 
 	baseURL            *url.URL
 	mediaURL           *url.URL
@@ -1016,6 +1018,17 @@ func newBookmarkItem(s *server.Server, r *http.Request, b *bookmarks.Bookmark, b
 		res.Type = "article"
 	}
 
+	// Check if description is somewhere at the beginning of the content.
+	// Only when we have a text content (full bookmark info)
+	if b.Text != "" && b.Description != "" {
+		omitDescription := strings.Contains(
+			utils.ToLowerTextOnly(b.Text[:min(len(b.Text), int(len(b.Description)*3))]),
+			utils.ToLowerTextOnly(b.Description),
+		)
+		res.OmitDescription = &omitDescription
+	}
+
+	// Files and resources
 	for k, v := range b.Files {
 		if path.Dir(v.Name) != "img" {
 			continue

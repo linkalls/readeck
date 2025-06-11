@@ -170,6 +170,11 @@ schemas:
       - $ref: "#/components/schemas/bookmarkSummary"
       - type: object
         properties:
+          omit_description:
+            type: boolean
+            description: |
+              `true` when the description was found at the content's beginning
+              and can be hidden.
           read_anchor:
             type: string
             description: CSS selector of the last seen element.

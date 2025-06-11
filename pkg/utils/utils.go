@@ -137,3 +137,15 @@ func NormalizeSpaces(text string) string {
 
 	return strings.TrimSpace(b.String())
 }
+
+// ToLowerTextOnly returns a lowercased string with all spaces, punctuation and control
+// characters removed.
+func ToLowerTextOnly(text string) string {
+	return strings.Map(func(r rune) rune {
+		if unicode.IsSpace(r) || unicode.IsPunct(r) || unicode.IsSymbol(r) || unicode.IsControl(r) {
+			return -1
+		}
+		r = unicode.To(unicode.LowerCase, r)
+		return r
+	}, text)
+}
