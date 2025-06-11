@@ -395,7 +395,6 @@ func newFilterForm(tr forms.Translator) *filterForm {
 			forms.NewBooleanField("is_archived"),
 			forms.NewTextField("range_start", forms.Trim, validateTimeToken),
 			forms.NewTextField("range_end", forms.Trim, validateTimeToken),
-			forms.NewDatetimeField("updated_since"),
 			forms.NewTextListField("id", forms.Trim),
 		),
 		title: filtersTitleUnset,

@@ -40,6 +40,7 @@ type (
 	ctxBookmarkListKey      struct{}
 	ctxBookmarkListTagerKey struct{}
 	ctxBookmarkOrderKey     struct{}
+	ctxBookmarkSyncListKey  struct{}
 	ctxLabelKey             struct{}
 	ctxLabelListKey         struct{}
 	ctxSharedInfoKey        struct{}
@@ -59,6 +60,16 @@ func (api *apiRouter) bookmarkList(w http.ResponseWriter, r *http.Request) {
 
 	api.srv.SendPaginationHeaders(w, r, bl.Pagination)
 	api.srv.Render(w, r, http.StatusOK, bl.Items)
+}
+
+func (api *apiRouter) bookmarkSyncList(w http.ResponseWriter, r *http.Request) {
+	bl := r.Context().Value(ctxBookmarkSyncListKey{}).(bookmarkSyncList)
+
+	urlPrefix := api.srv.AbsoluteURL(r, "./..").String()
+	for _, item := range bl {
+		item.Href = urlPrefix + item.ID
+	}
+	api.srv.Render(w, r, http.StatusOK, bl)
 }
 
 // bookmarkInfo renders a given bookmark items in JSON.
@@ -668,10 +679,6 @@ func (api *apiRouter) withBookmarkList(next http.Handler) http.Handler {
 			ds = filters.ToSelectDataSet(ds)
 		}
 
-		if !filterForm.Get("updated_since").IsNil() {
-			ds = ds.Where(goqu.C("updated").Gt(filterForm.Get("updated_since").Value()))
-		}
-
 		// Filtering by ids. In this case we include all the given IDs and we sort the
 		// result according to the IDs order.
 		if !filterForm.Get("id").IsNil() {
@@ -731,6 +738,31 @@ func (api *apiRouter) withBookmarkList(next http.Handler) http.Handler {
 		if r.Method == http.MethodGet {
 			api.srv.WriteEtag(w, r, tagers...)
 		}
+		api.srv.WithCaching(next).ServeHTTP(w, r.WithContext(ctx))
+	})
+}
+
+func (api *apiRouter) withBookmarkSyncList(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		ds := bookmarks.Bookmarks.Query().
+			Select("b.uid", "b.created", "b.updated").
+			Where(goqu.C("user_id").Table("b").Eq(auth.GetRequestUser(r).ID)).
+			Order(
+				goqu.I("updated").Desc(),
+				goqu.I("created").Desc(),
+			)
+
+		res := bookmarkSyncList{}
+
+		if err := ds.ScanStructs(&res); err != nil {
+			api.srv.Error(w, r, err)
+			return
+		}
+
+		ctx := context.WithValue(r.Context(), ctxBookmarkSyncListKey{}, res)
+		tagers := []server.Etager{res}
+		api.srv.WriteEtag(w, r, tagers...)
+
 		api.srv.WithCaching(next).ServeHTTP(w, r.WithContext(ctx))
 	})
 }
@@ -1155,6 +1187,24 @@ func (bi *bookmarkItem) setEmbed() error {
 	}
 
 	return nil
+}
+
+type bookmarkSyncList []*bookmarkSyncItem
+
+func (bl bookmarkSyncList) GetSumStrings() []string {
+	r := []string{}
+	for i := range bl {
+		r = append(r, bl[i].Updated.String(), bl[i].ID)
+	}
+
+	return r
+}
+
+type bookmarkSyncItem struct {
+	ID      string    `json:"id" db:"uid"`
+	Href    string    `json:"href" db:"-"`
+	Created time.Time `json:"created" db:"created"`
+	Updated time.Time `json:"updated" db:"updated"`
 }
 
 type labelItem struct {
