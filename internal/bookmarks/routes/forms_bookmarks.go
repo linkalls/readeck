@@ -33,6 +33,7 @@ import (
 	"codeberg.org/readeck/readeck/locales"
 	"codeberg.org/readeck/readeck/pkg/forms"
 	"codeberg.org/readeck/readeck/pkg/timetoken"
+	"codeberg.org/readeck/readeck/pkg/utils"
 )
 
 var validSchemes = []string{"http", "https"}
@@ -218,7 +219,7 @@ func (f *updateForm) update(b *bookmarks.Bookmark) (updated map[string]interface
 		switch n := field.Name(); n {
 		case "title":
 			if field.String() != "" {
-				b.Title = field.String()
+				b.Title = utils.NormalizeSpaces(field.String())
 				updated[n] = field.String()
 			}
 		case "is_marked":

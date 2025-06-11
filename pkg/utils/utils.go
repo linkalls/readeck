@@ -114,3 +114,26 @@ func FormatBytes(s uint64) string {
 
 	return fmt.Sprintf(f, math.Floor(float64(s)/math.Pow(1024, e)*10+0.5)/10, suffix)
 }
+
+// NormalizeSpaces transforms all consecutive unicode space character
+// to a single space in the input string.
+// It then returns a space trimed string.
+func NormalizeSpaces(text string) string {
+	wasSpace := false
+	var b strings.Builder
+	b.Grow(len(text))
+
+	for _, r := range text {
+		if unicode.IsSpace(r) || unicode.IsControl(r) {
+			if !wasSpace {
+				b.WriteRune(' ')
+				wasSpace = true
+			}
+			continue
+		}
+		b.WriteRune(r)
+		wasSpace = false
+	}
+
+	return strings.TrimSpace(b.String())
+}
