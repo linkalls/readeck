@@ -96,3 +96,41 @@ func TestFormatBytes(t *testing.T) {
 		})
 	}
 }
+
+func TestNormalize(t *testing.T) {
+	tests := []struct {
+		text     string
+		expected string
+	}{
+		{" abc ", "abc"},
+		{"   abc  \n ", "abc"},
+		{"ab\t c\t\n🙂 勤", "ab c 🙂 勤"},
+		{"ab\t c\t\n🙂 勤", "ab c 🙂 勤"},
+		{"\n국교는 인정되지 \n\t 아니하며.   대법원장과  대법관이\n\n", "국교는 인정되지 아니하며. 대법원장과 대법관이"},
+	}
+
+	for i, test := range tests {
+		t.Run(strconv.Itoa(i+1), func(t *testing.T) {
+			res := utils.NormalizeSpaces(test.text)
+			require.Equal(t, test.expected, res)
+		})
+	}
+}
+
+func TestToLowerTextOnly(t *testing.T) {
+	tests := []struct {
+		text     string
+		expected string
+	}{
+		{"Geto emfazado ien ve. Vice trans vivui gv aŭ, eksa faka hura mis ig.", "getoemfazadoienvevicetransvivuigvaŭeksafakahuramisig"},
+		{"끝에 피고. 고행을 내려온 봄바람을 밝은 꽃 이성은 같지 위하여서. ", "끝에피고고행을내려온봄바람을밝은꽃이성은같지위하여서"},
+		{".أي ووصف مليارات قبل, كانت العناد استبدال عدد أم. للحكومة والعتاد ذات ما. ومن هو مقاطعة عسكرياً", "أيووصفملياراتقبلكانتالعناداستبدالعددأمللحكومةوالعتادذاتماومنهومقاطعةعسكرياً"},
+	}
+
+	for i, test := range tests {
+		t.Run(strconv.Itoa(i+1), func(t *testing.T) {
+			res := utils.ToLowerTextOnly(test.text)
+			require.Equal(t, test.expected, res)
+		})
+	}
+}
