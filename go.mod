@@ -2,7 +2,7 @@ module codeberg.org/readeck/readeck
 
 go 1.24
 
-toolchain go1.24.3
+toolchain go1.24.4
 
 require (
 	github.com/CloudyKit/jet/v6 v6.3.1
