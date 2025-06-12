@@ -7,6 +7,7 @@ package img_test
 import (
 	"bytes"
 	"image"
+	"os"
 	"strconv"
 	"testing"
 
@@ -85,6 +86,33 @@ func TestNativeImageEncode(t *testing.T) {
 			assert.NoError(err)
 
 			assert.NoError(im.SetFormat(test.format))
+
+			buf := new(bytes.Buffer)
+			assert.NoError(im.Encode(buf))
+
+			im, err = img.NewNativeImage(buf)
+			assert.NoError(err)
+			assert.Equal(test.expected, im.Format())
+		})
+	}
+}
+
+func TestWebpLossless(t *testing.T) {
+	tests := []struct {
+		file     string
+		expected string
+	}{
+		{"fixtures/lossless.webp", "png"},
+		{"fixtures/lossy.webp", "jpeg"},
+	}
+
+	for i, test := range tests {
+		t.Run(strconv.Itoa(i), func(t *testing.T) {
+			assert := require.New(t)
+			r, err := os.Open(test.file)
+			assert.NoError(err)
+			im, err := img.NewNativeImage(r)
+			assert.NoError(err)
 
 			buf := new(bytes.Buffer)
 			assert.NoError(im.Encode(buf))
