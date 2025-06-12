@@ -165,11 +165,36 @@ schemas:
             type: integer
             description: Image width
 
+  bookmarkSync:
+    type: object
+    properties:
+      id:
+        type: string
+        format: short-uid
+        description: Bookmark's ID
+      href:
+        type: string
+        format: uri
+        description: Link to the bookmark info
+      created:
+        type: string
+        format: date-time
+        description: Creation date
+      updated:
+        type: string
+        format: date-time
+        description: Last update
+
   bookmarkInfo:
     allOf:
       - $ref: "#/components/schemas/bookmarkSummary"
       - type: object
         properties:
+          omit_description:
+            type: boolean
+            description: |
+              `true` when the description was found at the content's beginning
+              and can be hidden.
           read_anchor:
             type: string
             description: CSS selector of the last seen element.

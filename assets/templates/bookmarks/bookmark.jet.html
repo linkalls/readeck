@@ -108,7 +108,7 @@ SPDX-License-Identifier: AGPL-3.0-only
              class="no-js:hidden hf:text-gray-700"
             >
               {{- yield icon(name="o-sidebar", class="inline-block", svgClass="w-6 h-6") -}}
-              <span class="sr-only">{{ gettext("Bookmark information") }}</span></button>
+              <span class="sr-only">{{ gettext("Bookmark information") }}</span>
             </button>
           </div>
           {{- if .Item.HasArticle -}}
@@ -121,7 +121,7 @@ SPDX-License-Identifier: AGPL-3.0-only
          data-controller="styler">
           {{ include "./components/title_form" .Item }}
 
-          {{- if !empty(.Item.Description) -}}
+          {{- if !empty(.Item.Description) && !.Item.OmitDescription -}}
             <p class="mt-2 text-lg leading-tight text-justify italic"
                dir="{{ default(.Item.TextDirection, `ltr`) }}">{{ .Item.Description }}</p>
           {{- end -}}

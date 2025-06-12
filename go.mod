@@ -2,7 +2,7 @@ module codeberg.org/readeck/readeck
 
 go 1.24
 
-toolchain go1.24.3
+toolchain go1.24.4
 
 require (
 	github.com/CloudyKit/jet/v6 v6.3.1
@@ -49,7 +49,7 @@ require (
 	golang.org/x/term v0.32.0
 	golang.org/x/text v0.26.0
 	gopkg.in/yaml.v3 v3.0.1
-	modernc.org/sqlite v1.37.1
+	modernc.org/sqlite v1.38.0
 )
 
 require (

@@ -33,6 +33,7 @@ import (
 	"codeberg.org/readeck/readeck/locales"
 	"codeberg.org/readeck/readeck/pkg/forms"
 	"codeberg.org/readeck/readeck/pkg/timetoken"
+	"codeberg.org/readeck/readeck/pkg/utils"
 )
 
 var validSchemes = []string{"http", "https"}
@@ -218,7 +219,7 @@ func (f *updateForm) update(b *bookmarks.Bookmark) (updated map[string]interface
 		switch n := field.Name(); n {
 		case "title":
 			if field.String() != "" {
-				b.Title = field.String()
+				b.Title = utils.NormalizeSpaces(field.String())
 				updated[n] = field.String()
 			}
 		case "is_marked":
@@ -394,7 +395,6 @@ func newFilterForm(tr forms.Translator) *filterForm {
 			forms.NewBooleanField("is_archived"),
 			forms.NewTextField("range_start", forms.Trim, validateTimeToken),
 			forms.NewTextField("range_end", forms.Trim, validateTimeToken),
-			forms.NewDatetimeField("updated_since"),
 			forms.NewTextListField("id", forms.Trim),
 		),
 		title: filtersTitleUnset,

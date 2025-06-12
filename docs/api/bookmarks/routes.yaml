@@ -123,12 +123,6 @@ list:
         items:
           type: string
           enum: [unread, reading, read]
-    - name: updated_since
-      in: query
-      description: Retrieve bookmarks created after this date
-      schema:
-        type: string
-        format: date-time
     - name: id
       in: query
       description: One or more bookmark ID
@@ -149,6 +143,26 @@ list:
             type: array
             items:
               $ref: "#/components/schemas/bookmarkSummary"
+
+# GET /bookmarks/sync
+sync:
+  summary: Bookmark Sync List
+  description: |
+    This route returns a non-paginated list of all bookmarks. It contains
+    a minimal set of information that can serve to synchronize new, updated
+    or removed items on an offline list.
+
+    The list is ordered by `updated` and `created` dates.
+
+  responses:
+    '200':
+      description: Item list
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "#/components/schemas/bookmarkSync"
 
 # POST /bookmarks
 create:

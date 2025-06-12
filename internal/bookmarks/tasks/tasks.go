@@ -38,6 +38,7 @@ import (
 	"codeberg.org/readeck/readeck/pkg/extract/contentscripts"
 	"codeberg.org/readeck/readeck/pkg/extract/meta"
 	"codeberg.org/readeck/readeck/pkg/superbus"
+	"codeberg.org/readeck/readeck/pkg/utils"
 	"codeberg.org/readeck/readeck/pkg/zipfs"
 )
 
@@ -303,6 +304,7 @@ func extractPageHandler(data interface{}) {
 		conditionnalProcessor(params.FindMain, contentscripts.StripTags),
 		conditionnalProcessor(params.FindMain, contentscripts.GoToNextPage),
 		contents.ExtractInlineSVGs,
+		contents.ConvertVideoEmbeds,
 		contents.Readability(),
 		CleanDomProcessor,
 		extractLinksProcessor,
@@ -356,13 +358,14 @@ func saveBookmark(b *bookmarks.Bookmark, saved *bool, resourceCount *int) extrac
 		b.Lang = drop.Lang
 		b.TextDirection = drop.TextDirection
 		b.DocumentType = drop.DocumentType
-		b.Description = drop.Description
-		b.Text = ex.Text
+		b.Description = utils.NormalizeSpaces(drop.Description)
+		b.Text = utils.NormalizeSpaces(ex.Text)
 		b.WordCount = len(strings.Fields(b.Text))
 
 		if b.Title == "" {
 			b.Title = drop.Title
 		}
+		b.Title = utils.NormalizeSpaces(b.Title)
 
 		for _, x := range drop.Authors {
 			b.Authors = append(b.Authors, x)

@@ -44,6 +44,7 @@ func init() {
 type NativeImage struct {
 	m           image.Image
 	format      string
+	lossless    bool
 	encFormat   string
 	compression ImageCompression
 	quality     uint8
@@ -62,6 +63,14 @@ func NewNativeImage(r io.Reader) (*NativeImage, error) {
 		return nil, errors.New("image is too big")
 	}
 
+	// Check for lossless webp
+	lossless := false
+	if format == "webp" {
+		// DecodeConfig already read 4096 bytes, so we can read
+		// the 16th directly from it.
+		lossless = buf.Bytes()[15] == 'L'
+	}
+
 	m, _, err := image.Decode(io.MultiReader(buf, r))
 	if err != nil {
 		return nil, err
@@ -70,6 +79,7 @@ func NewNativeImage(r io.Reader) (*NativeImage, error) {
 	return &NativeImage{
 		m:           m,
 		format:      format,
+		lossless:    lossless,
 		compression: CompressionFast,
 		quality:     80,
 	}, nil
@@ -161,8 +171,8 @@ func (im *NativeImage) Encode(w io.Writer) error {
 		im.encFormat = im.format
 	}
 
-	switch im.encFormat {
-	case "gif":
+	switch {
+	case im.encFormat == "gif":
 		m, ok := im.m.(*image.Paletted)
 		numColors := 256
 		if ok {
@@ -172,7 +182,7 @@ func (im *NativeImage) Encode(w io.Writer) error {
 		return gif.Encode(w, im.m, &gif.Options{
 			NumColors: numColors,
 		})
-	case "png":
+	case im.encFormat == "png" || im.lossless:
 		c := png.BestSpeed
 		if im.compression == CompressionBest {
 			c = png.BestCompression

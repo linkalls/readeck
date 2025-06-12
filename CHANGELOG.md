@@ -1,5 +1,23 @@
 # Changelog
 
+## [unrelease]
+### Added
+- share by link and email API documentation
+- extract fediverse:creator metadata as author
+
+### Fixed
+- scoped_admin_r scope was missing the system:read permission
+- consider the `<base>` element when present for page's URL resolution
+- YouTube video embeds are now preserved as a thumbnail that links to the original video, by [@mislav](https://codeberg.org/mislav)
+
+### Improved
+- documentation extracted to gettext
+- check that folders and configuration exist before import or export
+- improved settings UI
+- removed autocapitalization on label form
+- headers sent when fetching
+- send a `referer` header when fetching favicon or a page's image
+
 ## [0.19.2] - 2025-05-29
 ### Fixed
 - Default scheme to https when a request comes from a reverse proxy

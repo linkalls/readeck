@@ -30,6 +30,7 @@ import (
 	"codeberg.org/readeck/readeck/internal/server"
 	"codeberg.org/readeck/readeck/pkg/annotate"
 	"codeberg.org/readeck/readeck/pkg/forms"
+	"codeberg.org/readeck/readeck/pkg/utils"
 	"codeberg.org/readeck/readeck/pkg/zipfs"
 )
 
@@ -39,6 +40,7 @@ type (
 	ctxBookmarkListKey      struct{}
 	ctxBookmarkListTagerKey struct{}
 	ctxBookmarkOrderKey     struct{}
+	ctxBookmarkSyncListKey  struct{}
 	ctxLabelKey             struct{}
 	ctxLabelListKey         struct{}
 	ctxSharedInfoKey        struct{}
@@ -58,6 +60,16 @@ func (api *apiRouter) bookmarkList(w http.ResponseWriter, r *http.Request) {
 
 	api.srv.SendPaginationHeaders(w, r, bl.Pagination)
 	api.srv.Render(w, r, http.StatusOK, bl.Items)
+}
+
+func (api *apiRouter) bookmarkSyncList(w http.ResponseWriter, r *http.Request) {
+	bl := r.Context().Value(ctxBookmarkSyncListKey{}).(bookmarkSyncList)
+
+	urlPrefix := api.srv.AbsoluteURL(r, "./..").String()
+	for _, item := range bl {
+		item.Href = urlPrefix + item.ID
+	}
+	api.srv.Render(w, r, http.StatusOK, bl)
 }
 
 // bookmarkInfo renders a given bookmark items in JSON.
@@ -667,10 +679,6 @@ func (api *apiRouter) withBookmarkList(next http.Handler) http.Handler {
 			ds = filters.ToSelectDataSet(ds)
 		}
 
-		if !filterForm.Get("updated_since").IsNil() {
-			ds = ds.Where(goqu.C("updated").Gt(filterForm.Get("updated_since").Value()))
-		}
-
 		// Filtering by ids. In this case we include all the given IDs and we sort the
 		// result according to the IDs order.
 		if !filterForm.Get("id").IsNil() {
@@ -730,6 +738,31 @@ func (api *apiRouter) withBookmarkList(next http.Handler) http.Handler {
 		if r.Method == http.MethodGet {
 			api.srv.WriteEtag(w, r, tagers...)
 		}
+		api.srv.WithCaching(next).ServeHTTP(w, r.WithContext(ctx))
+	})
+}
+
+func (api *apiRouter) withBookmarkSyncList(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		ds := bookmarks.Bookmarks.Query().
+			Select("b.uid", "b.created", "b.updated").
+			Where(goqu.C("user_id").Table("b").Eq(auth.GetRequestUser(r).ID)).
+			Order(
+				goqu.I("updated").Desc(),
+				goqu.I("created").Desc(),
+			)
+
+		res := bookmarkSyncList{}
+
+		if err := ds.ScanStructs(&res); err != nil {
+			api.srv.Error(w, r, err)
+			return
+		}
+
+		ctx := context.WithValue(r.Context(), ctxBookmarkSyncListKey{}, res)
+		tagers := []server.Etager{res}
+		api.srv.WriteEtag(w, r, tagers...)
+
 		api.srv.WithCaching(next).ServeHTTP(w, r.WithContext(ctx))
 	})
 }
@@ -902,38 +935,39 @@ func (bl bookmarkList) GetSumStrings() []string {
 type bookmarkItem struct {
 	*bookmarks.Bookmark `json:"-"`
 
-	ID            string                        `json:"id"`
-	Href          string                        `json:"href"`
-	Created       time.Time                     `json:"created"`
-	Updated       time.Time                     `json:"updated"`
-	State         bookmarks.BookmarkState       `json:"state"`
-	Loaded        bool                          `json:"loaded"`
-	URL           string                        `json:"url"`
-	Title         string                        `json:"title"`
-	SiteName      string                        `json:"site_name"`
-	Site          string                        `json:"site"`
-	Published     *time.Time                    `json:"published,omitempty"`
-	Authors       []string                      `json:"authors"`
-	Lang          string                        `json:"lang"`
-	TextDirection string                        `json:"text_direction"`
-	DocumentType  string                        `json:"document_type"`
-	Type          string                        `json:"type"`
-	HasArticle    bool                          `json:"has_article"`
-	Description   string                        `json:"description"`
-	IsDeleted     bool                          `json:"is_deleted"`
-	IsMarked      bool                          `json:"is_marked"`
-	IsArchived    bool                          `json:"is_archived"`
-	Labels        []string                      `json:"labels"`
-	ReadProgress  int                           `json:"read_progress"`
-	ReadAnchor    string                        `json:"read_anchor,omitempty"`
-	Annotations   bookmarks.BookmarkAnnotations `json:"-"`
-	Resources     map[string]*bookmarkFile      `json:"resources"`
-	Embed         string                        `json:"embed,omitempty"`
-	EmbedHostname string                        `json:"embed_domain,omitempty"`
-	Errors        []string                      `json:"errors,omitempty"`
-	Links         bookmarks.BookmarkLinks       `json:"links,omitempty"`
-	WordCount     int                           `json:"word_count,omitempty"`
-	ReadingTime   int                           `json:"reading_time,omitempty"`
+	ID              string                        `json:"id"`
+	Href            string                        `json:"href"`
+	Created         time.Time                     `json:"created"`
+	Updated         time.Time                     `json:"updated"`
+	State           bookmarks.BookmarkState       `json:"state"`
+	Loaded          bool                          `json:"loaded"`
+	URL             string                        `json:"url"`
+	Title           string                        `json:"title"`
+	SiteName        string                        `json:"site_name"`
+	Site            string                        `json:"site"`
+	Published       *time.Time                    `json:"published,omitempty"`
+	Authors         []string                      `json:"authors"`
+	Lang            string                        `json:"lang"`
+	TextDirection   string                        `json:"text_direction"`
+	DocumentType    string                        `json:"document_type"`
+	Type            string                        `json:"type"`
+	HasArticle      bool                          `json:"has_article"`
+	Description     string                        `json:"description"`
+	OmitDescription *bool                         `json:"omit_description,omitempty"`
+	IsDeleted       bool                          `json:"is_deleted"`
+	IsMarked        bool                          `json:"is_marked"`
+	IsArchived      bool                          `json:"is_archived"`
+	Labels          []string                      `json:"labels"`
+	ReadProgress    int                           `json:"read_progress"`
+	ReadAnchor      string                        `json:"read_anchor,omitempty"`
+	Annotations     bookmarks.BookmarkAnnotations `json:"-"`
+	Resources       map[string]*bookmarkFile      `json:"resources"`
+	Embed           string                        `json:"embed,omitempty"`
+	EmbedHostname   string                        `json:"embed_domain,omitempty"`
+	Errors          []string                      `json:"errors,omitempty"`
+	Links           bookmarks.BookmarkLinks       `json:"links,omitempty"`
+	WordCount       int                           `json:"word_count,omitempty"`
+	ReadingTime     int                           `json:"reading_time,omitempty"`
 
 	baseURL            *url.URL
 	mediaURL           *url.URL
@@ -1016,6 +1050,17 @@ func newBookmarkItem(s *server.Server, r *http.Request, b *bookmarks.Bookmark, b
 		res.Type = "article"
 	}
 
+	// Check if description is somewhere at the beginning of the content.
+	// Only when we have a text content (full bookmark info)
+	if b.Text != "" && b.Description != "" {
+		omitDescription := strings.Contains(
+			utils.ToLowerTextOnly(b.Text[:min(len(b.Text), int(len(b.Description)*3))]),
+			utils.ToLowerTextOnly(b.Description),
+		)
+		res.OmitDescription = &omitDescription
+	}
+
+	// Files and resources
 	for k, v := range b.Files {
 		if path.Dir(v.Name) != "img" {
 			continue
@@ -1142,6 +1187,24 @@ func (bi *bookmarkItem) setEmbed() error {
 	}
 
 	return nil
+}
+
+type bookmarkSyncList []*bookmarkSyncItem
+
+func (bl bookmarkSyncList) GetSumStrings() []string {
+	r := []string{}
+	for i := range bl {
+		r = append(r, bl[i].Updated.String(), bl[i].ID)
+	}
+
+	return r
+}
+
+type bookmarkSyncItem struct {
+	ID      string    `json:"id" db:"uid"`
+	Href    string    `json:"href" db:"-"`
+	Created time.Time `json:"created" db:"created"`
+	Updated time.Time `json:"updated" db:"updated"`
 }
 
 type labelItem struct {

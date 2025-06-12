@@ -17,6 +17,16 @@ import (
 	"github.com/gabriel-vasile/mimetype"
 )
 
+const (
+	// ImageSizeThumbnail is the width of a regular thumbnail image.
+	ImageSizeThumbnail = 800
+
+	// ImageSizeWide is the width of a bigger image.
+	// Its dimension matches 48rem (on a 16px basis)
+	// on an HDPI screen: 48 × 16px × 2.
+	ImageSizeWide = 1536
+)
+
 // NewRemoteImage loads an image and returns a new img.Image instance.
 func NewRemoteImage(src string, client *http.Client) (img.Image, error) {
 	if client == nil {
