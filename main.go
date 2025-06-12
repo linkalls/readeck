@@ -8,6 +8,7 @@ package main
 import (
 	"fmt"
 	"os"
+	_ "time/tzdata" // load embedded tzdata
 
 	"codeberg.org/readeck/readeck/internal/app"
 )

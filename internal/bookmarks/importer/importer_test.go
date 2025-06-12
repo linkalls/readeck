@@ -35,6 +35,8 @@ type adapterTest struct {
 }
 
 func TestFileAdapters(t *testing.T) {
+	t.Setenv("TZ", "Europe/Paris")
+
 	tests := []adapterTest{
 		{
 			importer.LoadAdapter("text"),
@@ -412,6 +414,8 @@ func TestFileAdapters(t *testing.T) {
 }
 
 func TestWallabagImporter(t *testing.T) {
+	t.Setenv("TZ", "Europe/Paris")
+
 	adapter := importer.LoadAdapter("wallabag")
 	f := importer.NewImportForm(context.Background(), adapter)
 	_ = f.Get("url").UnmarshalValues([]string{"https://wallabag/"})
@@ -520,6 +524,8 @@ func TestWallabagImporter(t *testing.T) {
 }
 
 func TestOmnivoreImporter(t *testing.T) {
+	t.Setenv("TZ", "Europe/Paris")
+
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
 

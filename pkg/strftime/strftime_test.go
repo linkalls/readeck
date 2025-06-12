@@ -15,6 +15,8 @@ import (
 )
 
 func TestStrftime(t *testing.T) {
+	t.Setenv("TZ", "Europe/Amsterdam")
+
 	tests := []struct {
 		date     string
 		format   string
@@ -52,7 +54,7 @@ func TestStrftime(t *testing.T) {
 		{"2006-01-02T15:04:05Z", "%X", "15:04:05"},
 		{"2006-01-02T15:04:05Z", "%x", "01/02/2006"},
 		{"2006-01-02T15:04:05Z", "%Z", "UTC"},
-		{"2006-01-02T15:04:05+01:00", "%Z", "+0100"},
+		{"2006-01-02T15:04:05+01:00", "%Z", "CET"},
 		{"2006-01-02T15:04:05Z", "%z", "+0000"},
 		{"2006-01-02T15:04:05+01:00", "%z", "+0100"},
 		{"2006-01-02T15:04:05+01:00", "%-", "%-"},
@@ -72,6 +74,8 @@ func TestStrftime(t *testing.T) {
 }
 
 func TestTranslator(t *testing.T) {
+	t.Setenv("TZ", "Europe/Amsterdam")
+
 	tests := []struct {
 		date     string
 		format   string

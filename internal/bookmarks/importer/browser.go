@@ -101,7 +101,7 @@ func (adapter *browserAdapter) Params(form forms.Binder) ([]byte, error) {
 
 		if dom.HasAttribute(n, "add_date") {
 			if ts, err := strconv.Atoi(dom.GetAttribute(n, "add_date")); err == nil {
-				item.Created = time.Unix(int64(ts), 0)
+				item.Created = time.Unix(int64(ts), 0).UTC()
 			}
 		}
 
