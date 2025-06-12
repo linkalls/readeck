@@ -23,7 +23,7 @@ const (
 
 	// ImageSizeWide is the width of a bigger image.
 	// Its dimension matches 48rem (on a 16px basis)
-	// on an HDPI screen: 48 × 16px × 2
+	// on an HDPI screen: 48 × 16px × 2.
 	ImageSizeWide = 1536
 )
 
