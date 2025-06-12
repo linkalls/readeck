@@ -15,6 +15,8 @@ import (
 )
 
 func TestStrftime(t *testing.T) {
+	t.Setenv("TZ", "Europe/Amsterdam")
+
 	tests := []struct {
 		date     string
 		format   string
@@ -62,9 +64,7 @@ func TestStrftime(t *testing.T) {
 
 	for i, test := range tests {
 		t.Run(strconv.Itoa(i), func(t *testing.T) {
-			location, err := time.LoadLocation("CET")
-			require.NoError(t, err)
-			date, err := time.ParseInLocation(time.RFC3339, test.date, location)
+			date, err := time.Parse(time.RFC3339, test.date)
 			require.NoError(t, err)
 			t.Log(date, test.format, strftime.Strftime(test.format, date))
 
@@ -74,6 +74,8 @@ func TestStrftime(t *testing.T) {
 }
 
 func TestTranslator(t *testing.T) {
+	t.Setenv("TZ", "Europe/Amsterdam")
+
 	tests := []struct {
 		date     string
 		format   string
@@ -96,9 +98,7 @@ func TestTranslator(t *testing.T) {
 	f := strftime.New(translation)
 	for i, test := range tests {
 		t.Run(strconv.Itoa(i), func(t *testing.T) {
-			location, err := time.LoadLocation("CET")
-			require.NoError(t, err)
-			date, err := time.ParseInLocation(time.RFC3339, test.date, location)
+			date, err := time.Parse(time.RFC3339, test.date)
 			require.NoError(t, err)
 			t.Log(date, test.format, f.Strftime(test.format, date))
 
