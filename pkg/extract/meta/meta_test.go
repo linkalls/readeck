@@ -447,7 +447,7 @@ func TestMeta(t *testing.T) {
 			}
 
 			ExtractPicture(pm, nil)
-			assert.Equal(1280, d.Pictures["image"].Size[0])
+			assert.Equal(1452, d.Pictures["image"].Size[0])
 			assert.Equal(380, d.Pictures["thumbnail"].Size[0])
 		})
 	})

@@ -33,9 +33,9 @@ func ExtractPicture(m *extract.ProcessMessage, next extract.Processor) extract.P
 		return next
 	}
 
-	size := uint(800)
+	size := uint(extract.ImageSizeThumbnail)
 	if d.DocumentType == "photo" {
-		size = 1280
+		size = extract.ImageSizeWide
 	}
 
 	m.Log().Debug("loading picture", slog.String("href", href))
