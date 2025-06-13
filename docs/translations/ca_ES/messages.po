@@ -8,30 +8,36 @@ msgstr ""
 "Project-Id-Version: Readeck User Documentation 1.0.0\n"
 "Report-Msgid-Bugs-To: translate@readeck.com\n"
 "POT-Creation-Date: 2025-06-01 09:47+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
-"Language: ca\n"
+"PO-Revision-Date: 2025-06-13 21:26+0000\n"
+"Last-Translator: 0alai <0alai@noreply.codeberg.org>\n"
+"Language-Team: Catalan <https://translate.codeberg.org/projects/readeck/"
+"documentation/ca/>\n"
+"Language: ca_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.11.4\n"
 "Generated-By: Babel 2.17.0\n"
 
 #: en-US/bookmark-list.md:1
 msgid "# Bookmarks"
-msgstr ""
+msgstr "# Marcadors"
 
 #: en-US/bookmark-list.md:3
 msgid "Bookmarks are where you save the web content you like."
-msgstr ""
+msgstr "Els marcadors son on deses el contingut web que t'agrada."
 
 #: en-US/bookmark-list.md:5
 msgid "## Create a new Bookmark"
-msgstr ""
+msgstr "## Crear un marcador nou"
 
 #: en-US/bookmark-list.md:7
 msgid "Found a web page you like? Great! Copy its link into the text field named **new bookmark** on the [Bookmark List](readeck-instance://bookmarks)."
 msgstr ""
+"Has trobat una pàgina web que t'agrada? Fantàstic! Copia'n l'enllaç al camp "
+"de text anomenat **nou marcador** a la [Llista de marcadors](readeck-"
+"instance://bookmarks)."
 
 #: en-US/bookmark-list.md:9
 msgid "![New Bookmark form](./img/bookmark-new.webp)"
@@ -40,10 +46,14 @@ msgstr ""
 #: en-US/bookmark-list.md:11
 msgid "After a few seconds, your bookmark will be ready. You can then open it to read or watch its content, add labels, highlight text or export an ebook. For more information, please read the [Bookmark View](./bookmark.md) section."
 msgstr ""
+"Al cap d'uns segons, el teu marcador estarà a punt. Aleshores, el podràs "
+"obrir per llegir-ne o veure'n el contingut, afegir-hi etiquetes, ressaltar-"
+"ne text o exportar un llibre electrònic. Per a més informació, llegeix la "
+"secció [Visualització dels marcadors](./bookmark.md)."
 
 #: en-US/bookmark-list.md:13
 msgid "## Bookmark type"
-msgstr ""
+msgstr "## Tipus de marcador"
 
 #: en-US/bookmark-list.md:15
 msgid "Readeck recognizes 3 different types of web content:"
@@ -51,43 +61,55 @@ msgstr ""
 
 #: en-US/bookmark-list.md:17 en-US/bookmark.md:17
 msgid "### Article"
-msgstr ""
+msgstr "### Article"
 
 #: en-US/bookmark-list.md:19 en-US/bookmark.md:19
 msgid "An article is a page from which the text content was extracted. It renders as a readable version of its content."
 msgstr ""
+"Un article és una pàgina de la qual s'ha extret el contingut textual. Es "
+"renderitza com una versió llegible del seu contingut."
 
 #: en-US/bookmark-list.md:21 en-US/bookmark.md:21
 msgid "### Picture"
-msgstr ""
+msgstr "### Imatge"
 
 #: en-US/bookmark-list.md:23 en-US/bookmark.md:23
 msgid "A picture is a page that was recognized as a picture container (ie. a link to Unsplash). It renders the stored picture."
 msgstr ""
+"Una imatge és una pàgina que s'ha reconegut com a contenidor d'imatges (p. "
+"ex. un enllaç a Unsplash). Renderitza la imatge emmagatzemada."
 
 #: en-US/bookmark-list.md:25 en-US/bookmark.md:25
 msgid "### Video"
-msgstr ""
+msgstr "### Vídeo"
 
 #: en-US/bookmark-list.md:27 en-US/bookmark.md:27
 msgid "A video is a page that was identified as a video container (ie. a link to Youtube or Vimeo). It renders a video player. Please note that videos are played from their respective remote servers."
 msgstr ""
+"Un vídeo és una pàgina que s'ha identificat com a contenidor de vídeo (p. "
+"ex. un enllaç a YouTube o Vimeo). Renderitza un reproductor de vídeo. "
+"Tingueu en compte que els vídeos es reprodueixen des dels seus respectius "
+"servidors remots."
 
 #: en-US/bookmark-list.md:30
 msgid "## Bookmark List"
-msgstr ""
+msgstr "## Llista de marcadors"
 
 #: en-US/bookmark-list.md:32
 msgid "The [bookmark list](readeck-instance://bookmarks) is where you'll find all your saved bookmarks."
 msgstr ""
+"La [llista de marcadors](readeck-instance://bookmarks) és on trobaràs tots "
+"els marcadors desats."
 
 #: en-US/bookmark-list.md:34
 msgid "### Navigation"
-msgstr ""
+msgstr "### Navegació"
 
 #: en-US/bookmark-list.md:36
 msgid "On the sidebar, you'll find a search field and links that will take you to filtered bookmark lists."
 msgstr ""
+"A la barra lateral, trobaràs un camp de cerca i enllaços que et portaran a "
+"llistes de marcadors filtrades."
 
 #: en-US/bookmark-list.md:38
 msgid "![Bookmark list sidebar](./img/bookmark-sidebar.webp)"
@@ -110,6 +132,7 @@ msgstr ""
 #: en-US/bookmark-list.md:52
 msgid "Once you start saving pages, you'll see the following additional links:"
 msgstr ""
+"Un cop comencis a desar pàgines, veuràs els següents enllaços addicionals:"
 
 #: en-US/bookmark-list.md:54
 msgid ""
@@ -124,6 +147,8 @@ msgstr ""
 #: en-US/bookmark-list.md:61
 msgid "Finally, you'll see 3 more sections that take you to bookmark related pages:"
 msgstr ""
+"Finalment, veuràs 3 seccions més que et portaran a pàgines relacionades amb "
+"els marcadors:"
 
 #: en-US/bookmark-list.md:63
 msgid ""
@@ -134,6 +159,12 @@ msgid ""
 "- **[Collections](./collections.md)** \\\n"
 "  The list of all your collections"
 msgstr ""
+"- **[Etiquetes](./labels.md)** \\\n"
+"Totes les etiquetes dels marcadors\n"
+"- **Ressaltats** \\\n"
+"Tots els ressaltats creats als marcadors\n"
+"- **[Col·leccions](./collections.md)** \\\n"
+"La llista de totes les col·leccions"
 
 #: en-US/bookmark-list.md:70
 msgid "### Bookmark Cards"
@@ -178,11 +209,14 @@ msgstr ""
 
 #: en-US/bookmark-list.md:94
 msgid "### Compact List"
-msgstr ""
+msgstr "### Llista compacta"
 
 #: en-US/bookmark-list.md:96
 msgid "If you find the bookmark grid view too busy, you can switch to a more compact list with less images. Click on the button next to the title to switch from the grid view to the compact view."
 msgstr ""
+"Si trobes la vista de quadrícula massa carregada, pots canviar a una llista "
+"més compacta amb menys imatges. Fes clic al botó que hi ha al costat del "
+"títol per canviar de la vista de quadrícula a la vista compacta."
 
 #: en-US/bookmark-list.md:98
 msgid ""
@@ -198,6 +232,9 @@ msgstr ""
 #: en-US/bookmark-list.md:103
 msgid "On the bookmark list, you can filter your results based on one or several criteria. Click on the button \"Filter list\" next to the page title to open the filtering form."
 msgstr ""
+"A la llista de marcadors, pots filtrar els resultats segons un o diversos "
+"criteris. Fes clic al botó \"Llista de filtres\" que hi ha al costat del "
+"títol de la pàgina per obrir el formulari de filtratge."
 
 #: en-US/bookmark-list.md:105
 msgid ""
@@ -207,15 +244,15 @@ msgstr ""
 
 #: en-US/bookmark-list.md:108
 msgid "Enter any criteria and click on **Search**."
-msgstr ""
+msgstr "Introdueix qualsevol criteri i fes clic a **Cerca**."
 
 #: en-US/bookmark-list.md:110
 msgid "### Available filters"
-msgstr ""
+msgstr "### Filtres disponibles"
 
 #: en-US/bookmark-list.md:112
 msgid "You can combine the following filters:"
-msgstr ""
+msgstr "Pots combinar els filtres següents:"
 
 #: en-US/bookmark-list.md:114
 msgid ""
@@ -254,10 +291,12 @@ msgstr ""
 #: en-US/bookmark-list.md:139
 msgid "After you performed a search, you can save it into a new [collection](./collections.md) to make it permanent."
 msgstr ""
+"Després de realitzar una cerca, pots desar-la com una nova [col·lecció](./"
+"collections.md) per fer-la permanent."
 
 #: en-US/bookmark-list.md:141
 msgid "## Export and Import Bookmarks"
-msgstr ""
+msgstr "## Exportar i importar marcadors"
 
 #: en-US/bookmark-list.md:143
 msgid ""
@@ -267,7 +306,7 @@ msgstr ""
 
 #: en-US/bookmark-list.md:146
 msgid "### Export bookmarks"
-msgstr ""
+msgstr "### Exportar marcadors"
 
 #: en-US/bookmark-list.md:148
 msgid "The menu button next to the filters button let you download an EPUB file of the current list of bookmarks. It exports one e-book containing all the articles organized in chapters."
@@ -275,15 +314,18 @@ msgstr ""
 
 #: en-US/bookmark-list.md:150
 msgid "### Import bookmarks"
-msgstr ""
+msgstr "### Importar marcadors"
 
 #: en-US/bookmark-list.md:152
 msgid "In the same menu, you'll find a [Import bookmarks](readeck-instance://bookmarks/import) link. It will take you to an import wizard that lets you import your existing bookmarks from various sources."
 msgstr ""
+"Al mateix menú, trobaràs un enllaç [Importa marcadors](readeck-instance://"
+"bookmarks/import). Et portarà a un assistent d'importació que et permet "
+"importar marcadors existents de diverses fonts."
 
 #: en-US/bookmark.md:1
 msgid "# Bookmark View"
-msgstr ""
+msgstr "# Visualització dels marcadors"
 
 #: en-US/bookmark.md:3
 msgid "## The view"
@@ -312,7 +354,7 @@ msgstr ""
 
 #: en-US/bookmark.md:30
 msgid "## Navigation and presentation settings"
-msgstr ""
+msgstr "## Configuració de la navegació i la presentació"
 
 #: en-US/bookmark.md:32
 msgid "On top of the bookmark view, a link takes you back to the previous page."
@@ -336,7 +378,7 @@ msgstr ""
 
 #: en-US/bookmark.md:43
 msgid "## Change the title"
-msgstr ""
+msgstr "## Canviar el títol"
 
 #: en-US/bookmark.md:45
 msgid "The bookmark's title is automatically grabbed when you create it. If, for some reason, you need something else, you can change it by clicking on it and then click the button on the title side."
@@ -344,11 +386,11 @@ msgstr ""
 
 #: en-US/bookmark.md:48
 msgid "## Actions"
-msgstr ""
+msgstr "## Accions"
 
 #: en-US/bookmark.md:50
 msgid "On the bookmark sidebar, you can perform actions."
-msgstr ""
+msgstr "A la barra lateral del marcador hi pots realitzar accions."
 
 #: en-US/bookmark.md:52
 msgid "### Favorite"
@@ -356,27 +398,31 @@ msgstr ""
 
 #: en-US/bookmark.md:54
 msgid "This toggles the favorite status of the bookmark."
-msgstr ""
+msgstr "Això canvia l'estat de preferit del marcador."
 
 #: en-US/bookmark.md:56
 msgid "### Archive"
-msgstr ""
+msgstr "### Arxivats"
 
 #: en-US/bookmark.md:58
 msgid "This moves the bookmark to the archives (or removes it from there)."
-msgstr ""
+msgstr "Això mou el marcador als arxivats (o el treu d'allà)."
 
 #: en-US/bookmark.md:60
 msgid "### Share"
-msgstr ""
+msgstr "### Compartir"
 
 #: en-US/bookmark.md:62
 msgid "The share button opens a menu from which you can create a link if you want to share an article with someone."
 msgstr ""
+"El botó de compartir obre un menú des del qual pots crear un enllaç si vols "
+"compartir un article amb algú."
 
 #: en-US/bookmark.md:64
 msgid "On the same menu, you can export your bookmark (only EPUB for now) to read it on a different device."
 msgstr ""
+"Al mateix menú, pots exportar el teu marcador (només a EPUB de moment) per "
+"llegir-lo en un altre dispositiu."
 
 #: en-US/bookmark.md:67
 msgid "### Delete"
@@ -390,7 +436,7 @@ msgstr ""
 
 #: en-US/bookmark.md:73
 msgid "## Labels"
-msgstr ""
+msgstr "## Etiquetes"
 
 #: en-US/bookmark.md:75
 msgid "You can add as many labels as you want to a bookmark. To do so, enter some text in the label field and click on **Add label**. There is no limit as to what can be a label. You can even add emojis if you like them."
@@ -404,35 +450,42 @@ msgstr ""
 
 #: en-US/bookmark.md:80
 msgid "Please read the [Labels](./labels.md) section for more information."
-msgstr ""
+msgstr "Llegeix la secció [Etiquetes](./labels.md) per obtenir més informació."
 
 #: en-US/bookmark.md:82
 msgid "## Highlights"
-msgstr ""
+msgstr "## Ressaltats"
 
 #: en-US/bookmark.md:84
 msgid ""
 "Found some interesting part in an article? You can highlight it!\\\n"
 "When you select any text in the article, a menu appears that lets you create a new highlight."
 msgstr ""
+"Has trobat alguna part interessant en un article? La pots ressaltar!\\\n"
+"Quan selecciones qualsevol text de l'article, apareixerà un menú que et "
+"permetrà crear un nou ressaltat."
 
 #: en-US/bookmark.md:87
 msgid ""
 "![Bookmark highlight creation](./img/bookmark-highlight.webp)\n"
 "Create a new highlight."
 msgstr ""
+"![Creació d'un ressaltat](./img/bookmark-highlight.webp)\n"
+"Crea un nou ressaltat."
 
 #: en-US/bookmark.md:90
 msgid "Your highlights appear in the sidebar."
-msgstr ""
+msgstr "Els ressaltats apareixen a la barra lateral."
 
 #: en-US/bookmark.md:92
 msgid "When you need to remove an highlight, you can do it from the sidebar or by selecting it in the article."
 msgstr ""
+"Quan necessitis eliminar un ressaltat, pots fer-ho des de la barra lateral o "
+"seleccionant-lo a l'article."
 
 #: en-US/collections.md:1
 msgid "# Collections"
-msgstr ""
+msgstr "# Col·leccions"
 
 #: en-US/collections.md:3
 msgid ""
@@ -453,7 +506,7 @@ msgstr ""
 
 #: en-US/collections.md:14
 msgid "## Create a new collection"
-msgstr ""
+msgstr "## Crear una col·lecció nova"
 
 #: en-US/collections.md:16
 msgid "To create a new collection, go to the [Collection List](readeck-instance://bookmarks/collections) and click on **Create a new collection**."
@@ -475,7 +528,7 @@ msgstr ""
 
 #: en-US/collections.md:25
 msgid "## Export a collection"
-msgstr ""
+msgstr "## Exportar una col·lecció"
 
 #: en-US/collections.md:27
 msgid "On a collection page, you can export the full collection to a file."
@@ -487,7 +540,7 @@ msgstr ""
 
 #: en-US/collections.md:32
 msgid "## Delete a collection"
-msgstr ""
+msgstr "## Eliminar una col·lecció"
 
 #: en-US/collections.md:34
 msgid "On a collection page, open the **Edit** box and click on **Delete**."
@@ -514,7 +567,7 @@ msgstr ""
 
 #: en-US/index.md:13
 msgid "# Readeck Help"
-msgstr ""
+msgstr "# Ajuda del Readeck"
 
 #: en-US/index.md:15
 msgid "Welcome to Readeck! Here you'll find the answers to most of your questions regarding Readeck and some tips to improve your experience even more."
@@ -522,7 +575,7 @@ msgstr ""
 
 #: en-US/index.md:17
 msgid "## Contents"
-msgstr ""
+msgstr "## Contingut"
 
 #: en-US/index.md:19
 msgid ""
@@ -536,7 +589,7 @@ msgstr ""
 
 #: en-US/labels.md:1
 msgid "# Labels"
-msgstr ""
+msgstr "# Etiquetes"
 
 #: en-US/labels.md:3
 msgid ""
@@ -546,7 +599,7 @@ msgstr ""
 
 #: en-US/labels.md:6
 msgid "## Label List"
-msgstr ""
+msgstr "## Llista d'etiquetes"
 
 #: en-US/labels.md:8
 msgid "The [Label List](readeck-instance://bookmarks/labels) shows all the labels in your bookmark collection, with a number indicating how many bookmarks carry a given label."
@@ -558,7 +611,7 @@ msgstr ""
 
 #: en-US/labels.md:12
 msgid "## Rename a label"
-msgstr ""
+msgstr "## Canviar el títol d'una etiqueta"
 
 #: en-US/labels.md:14
 msgid "On a given label page, you can click on the page's title (the label) to change its name."
@@ -663,7 +716,7 @@ msgstr ""
 
 #: en-US/user-profile.md:1
 msgid "# User Profile"
-msgstr ""
+msgstr "# Perfil d'usuari"
 
 #: en-US/user-profile.md:3
 msgid "The [Profile section](readeck-instance://profile) of Readeck lets you change your personal information, you password and some other settings."
@@ -671,7 +724,7 @@ msgstr ""
 
 #: en-US/user-profile.md:5
 msgid "## Edit your profile"
-msgstr ""
+msgstr "## Editar el teu perfil"
 
 #: en-US/user-profile.md:7
 msgid "On the main profile page, you can change your username, your email address and choose the app's language."
@@ -679,7 +732,7 @@ msgstr ""
 
 #: en-US/user-profile.md:9
 msgid "## Change your password"
-msgstr ""
+msgstr "## Canviar la teva contrasenya"
 
 #: en-US/user-profile.md:11
 msgid "On the [Password](readeck-instance://profile/password) page, you can change the password you use to connect to Readeck."
@@ -687,7 +740,7 @@ msgstr ""
 
 #: en-US/user-profile.md:13
 msgid "## API Tokens"
-msgstr ""
+msgstr "## Testimonis d'API"
 
 #: en-US/user-profile.md:15
 msgid "An API Token lets you access and use the [Readeck API](readeck-instance://docs/api) for anything you'd like to build. You can create and manage tokens on the [API Tokens](readeck-instance://profile/tokens) section of your user profile."
