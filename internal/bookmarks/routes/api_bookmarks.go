@@ -1097,10 +1097,12 @@ func (bi bookmarkItem) getArticle() (*strings.Reader, error) {
 	ctx := context.Background()
 
 	// Set resource URL replacer, for images
-	ctx = converter.WithURLReplacer(ctx,
-		"./_resources/",
-		bi.mediaURL.String()+"/_resources/",
-	)
+	ctx = converter.WithURLReplacer(ctx, func(_ *bookmarks.Bookmark) func(name string) string {
+		return func(name string) string {
+			return bi.mediaURL.JoinPath(name).String()
+		}
+	})
+
 	// Set annotation tag and callback
 	ctx = converter.WithAnnotationTag(ctx, bi.annotationTag, bi.annotationCallback)
 
