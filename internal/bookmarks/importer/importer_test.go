@@ -251,6 +251,56 @@ func TestFileAdapters(t *testing.T) {
 			},
 		},
 		{
+			importer.LoadAdapter("readwise"),
+			func() []byte {
+				return []byte(
+					`Title,URL,ID,Document tags,Saved date,Reading progress,Location,Seen` + "\n" +
+						`,https://www.startpage.com/,,,2025-01-20 22:13:02.447000+00:00,,archive,` + "\n" +
+						`"Some Title",https://www.linuxserver.io/,,"[""don't"", 'favorite', 'peanut, butter']",2022-12-05 12:42:10+00:00,,,` + "\n",
+				)
+			},
+			func(test *adapterTest, require *require.Assertions, f forms.Binder, data []byte) {
+				require.True(f.IsValid())
+				adapter := test.adapter.(importer.ImportWorker)
+				err := adapter.LoadData(data)
+				require.NoError(err)
+
+				type bookmarkItem struct {
+					Link       string
+					Title      string
+					Created    time.Time
+					Labels     types.Strings
+					IsArchived bool
+					IsFavorite bool
+				}
+				items := []bookmarkItem{}
+				for {
+					item, err := adapter.Next()
+					if err == io.EOF {
+						break
+					}
+					require.NoError(err)
+					bi := bookmarkItem{Link: item.URL()}
+					meta, err := item.(importer.BookmarkEnhancer).Meta()
+					require.NoError(err)
+
+					bi.Title = meta.Title
+					bi.Created = meta.Created
+					bi.IsArchived = meta.IsArchived
+					bi.IsFavorite = meta.IsMarked
+					bi.Labels = meta.Labels
+
+					items = append(items, bi)
+				}
+
+				expected := []bookmarkItem{
+					{"https://www.linuxserver.io/", "Some Title", time.Date(2022, time.December, 5, 12, 42, 10, 0, time.UTC), types.Strings{"don't", "peanut, butter"}, false, true},
+					{"https://www.startpage.com/", "", time.Date(2025, time.January, 20, 22, 13, 02, 447000000, time.UTC), nil, true, false},
+				}
+				require.Equal(expected, items)
+			},
+		},
+		{
 			importer.LoadAdapter("goodlinks"),
 			func() []byte {
 				return []byte("  ")

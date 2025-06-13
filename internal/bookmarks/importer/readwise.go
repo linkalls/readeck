@@ -1,0 +1,210 @@
+// SPDX-FileCopyrightText: © 2025 Olivier Meunier <olivier@neokraft.net>
+//
+// SPDX-License-Identifier: AGPL-3.0-only
+
+package importer
+
+import (
+	"bufio"
+	"context"
+	"encoding/csv"
+	"encoding/json"
+	"errors"
+	"fmt"
+	"io"
+	"slices"
+	"strings"
+	"time"
+
+	"codeberg.org/readeck/readeck/internal/db/types"
+	"codeberg.org/readeck/readeck/pkg/forms"
+)
+
+type readwiseAdapter struct {
+	idx   int
+	Items []readwiseBookmarkItem `json:"items"`
+}
+
+type readwiseBookmarkItem struct {
+	Link       string        `json:"url"`
+	Title      string        `json:"title"`
+	Created    time.Time     `json:"created"`
+	Labels     types.Strings `json:"labels"`
+	IsArchived bool          `json:"is_archived"`
+	IsFavorite bool          `json:"is_favorite"`
+}
+
+const (
+	// Readwise Reader exported CSV headers are:
+	// Title,URL,ID,Document tags,Saved date,Reading progress,Location,Seen
+	readwiseHeaderTitle    = 0
+	readwiseHeaderURL      = 1
+	readwiseHeaderTags     = 3
+	readwiseHeaderCreated  = 4
+	readwiseHeaderLocation = 6
+
+	// Basically time.RFC3339, but with space character instead of "T"
+	readwiseTimeFormat = "2006-01-02 15:04:05-07:00"
+)
+
+func newReadwiseBookmarkItem(record []string) (readwiseBookmarkItem, error) {
+	res := readwiseBookmarkItem{}
+	if len(record) < readwiseHeaderLocation {
+		return res, errors.New("not enough columns in CSV")
+	}
+	res.Link = record[readwiseHeaderURL]
+	res.Title = strings.TrimSpace(record[readwiseHeaderTitle])
+
+	if record[readwiseHeaderCreated] != "" {
+		if createdTime, err := time.Parse(readwiseTimeFormat, record[readwiseHeaderCreated]); err == nil {
+			res.Created = createdTime
+		} else {
+			return res, fmt.Errorf("error parsing created timestamp: %w", err)
+		}
+	}
+
+	if record[readwiseHeaderTags] != "" {
+		labels, err := parseReadwiseTags(record[readwiseHeaderTags])
+		if err != nil {
+			return res, fmt.Errorf("error parsing Readwise labels: %w", err)
+		}
+		res.Labels = labels
+	}
+
+	if slices.Contains(res.Labels, "favorite") {
+		res.IsFavorite = true
+		res.Labels = slices.DeleteFunc(res.Labels, func(label string) bool {
+			return label == "favorite"
+		})
+	}
+
+	if strings.ToLower(record[readwiseHeaderLocation]) == "archive" {
+		res.IsArchived = true
+	}
+
+	return res, nil
+}
+
+func (bi *readwiseBookmarkItem) URL() string {
+	return bi.Link
+}
+
+func (bi *readwiseBookmarkItem) Meta() (*BookmarkMeta, error) {
+	return &BookmarkMeta{
+		Title:      bi.Title,
+		Created:    bi.Created,
+		Labels:     bi.Labels,
+		IsArchived: bi.IsArchived,
+		IsMarked:   bi.IsFavorite,
+	}, nil
+}
+
+func (adapter *readwiseAdapter) Name(tr forms.Translator) string {
+	return tr.Gettext("Readwise Reader CSV")
+}
+
+func (adapter *readwiseAdapter) Form() forms.Binder {
+	return forms.Must(
+		context.Background(),
+		forms.NewFileField("data", forms.Required),
+	)
+}
+
+func (adapter *readwiseAdapter) Params(form forms.Binder) ([]byte, error) {
+	if !form.IsValid() {
+		return nil, errors.New("form is not valid")
+		// return nil, nil
+	}
+
+	reader, err := form.Get("data").(*forms.FileField).V().Open()
+	if err != nil {
+		return nil, err
+	}
+	defer reader.Close() //nolint:errcheck
+
+	r := csv.NewReader(reader)
+	// discard the header row
+	if _, err := r.Read(); err != nil {
+		form.AddErrors("data", forms.Gettext("Empty or invalid import file"))
+		return nil, errors.New("error reading header row")
+		// return nil, nil
+	}
+
+	for {
+		record, err := r.Read()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			form.AddErrors("data", forms.Gettext("Empty or invalid import file"))
+			return nil, errors.New("error reading row")
+			// return nil, nil
+		}
+		item, err := newReadwiseBookmarkItem(record)
+		if err != nil {
+			form.AddErrors("data", forms.Gettext("Empty or invalid import file"))
+			return nil, fmt.Errorf("newReadwiseBookmarkItem: %w", err)
+			// return nil, nil
+		}
+		_ = item
+
+		adapter.Items = append(adapter.Items, item)
+	}
+
+	if len(adapter.Items) == 0 {
+		form.AddErrors("data", forms.Gettext("Empty or invalid import file"))
+		return nil, errors.New("no items found")
+		// return nil, nil
+	}
+
+	slices.Reverse(adapter.Items)
+	return json.Marshal(adapter)
+}
+
+func (adapter *readwiseAdapter) LoadData(data []byte) error {
+	return json.Unmarshal(data, adapter)
+}
+
+func (adapter *readwiseAdapter) Next() (BookmarkImporter, error) {
+	if adapter.idx+1 > len(adapter.Items) {
+		return nil, io.EOF
+	}
+
+	adapter.idx++
+	return &adapter.Items[adapter.idx-1], nil
+}
+
+// Readwise Reader CSV export encodes document tags as a JSON-like array, but it's not valid JSON
+// due to single quotes used. Since Readwise does not allow double quotes nor backslashes in tag
+// values, we can get away with a straightforward parser.
+func parseReadwiseTags(field string) ([]string, error) {
+	var labels []string
+
+	r := bufio.NewReader(strings.NewReader(field))
+	if delim, err := r.ReadByte(); err != nil {
+		return labels, err
+	} else if delim != '[' {
+		return labels, errors.New("invalid label format")
+	}
+
+	for {
+		char, err := r.ReadByte()
+		if err != nil {
+			return labels, err
+		}
+
+		if char == ']' {
+			break
+		}
+
+		if char == '\'' || char == '"' {
+			label, err := r.ReadString(char)
+			if err != nil {
+				return labels, err
+			}
+			labels = append(labels, label[:len(label)-1])
+		}
+	}
+
+	return labels, nil
+}
