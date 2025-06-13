@@ -112,8 +112,7 @@ func (adapter *readwiseAdapter) Form() forms.Binder {
 
 func (adapter *readwiseAdapter) Params(form forms.Binder) ([]byte, error) {
 	if !form.IsValid() {
-		return nil, errors.New("form is not valid")
-		// return nil, nil
+		return nil, nil
 	}
 
 	reader, err := form.Get("data").(*forms.FileField).V().Open()
@@ -126,8 +125,7 @@ func (adapter *readwiseAdapter) Params(form forms.Binder) ([]byte, error) {
 	// discard the header row
 	if _, err := r.Read(); err != nil {
 		form.AddErrors("data", forms.Gettext("Empty or invalid import file"))
-		return nil, errors.New("error reading header row")
-		// return nil, nil
+		return nil, nil
 	}
 
 	for {
@@ -137,14 +135,12 @@ func (adapter *readwiseAdapter) Params(form forms.Binder) ([]byte, error) {
 		}
 		if err != nil {
 			form.AddErrors("data", forms.Gettext("Empty or invalid import file"))
-			return nil, errors.New("error reading row")
-			// return nil, nil
+			return nil, nil
 		}
 		item, err := newReadwiseBookmarkItem(record)
 		if err != nil {
 			form.AddErrors("data", forms.Gettext("Empty or invalid import file"))
-			return nil, fmt.Errorf("newReadwiseBookmarkItem: %w", err)
-			// return nil, nil
+			return nil, nil
 		}
 		_ = item
 
@@ -153,8 +149,7 @@ func (adapter *readwiseAdapter) Params(form forms.Binder) ([]byte, error) {
 
 	if len(adapter.Items) == 0 {
 		form.AddErrors("data", forms.Gettext("Empty or invalid import file"))
-		return nil, errors.New("no items found")
-		// return nil, nil
+		return nil, nil
 	}
 
 	slices.Reverse(adapter.Items)
