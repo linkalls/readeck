@@ -365,6 +365,7 @@ type filterForm struct {
 	*forms.Form
 	title        int
 	noPagination bool
+	fixedLimit   uint
 	sq           searchstring.SearchQuery
 }
 

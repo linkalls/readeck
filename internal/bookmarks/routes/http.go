@@ -93,6 +93,11 @@ func newAPIRouter(s *server.Server) *apiRouter {
 
 		r.With(api.srv.WithPermission("api:bookmarks", "export")).Group(func(r chi.Router) {
 			r.With(
+				api.withFixedLimit(25),
+				api.withCollectionFilters,
+				api.withBookmarkList,
+			).Get("/feed", api.bookmarkListFeed)
+			r.With(
 				api.withoutPagination,
 				api.withBookmarkOrdering,
 				api.withCollectionFilters,
