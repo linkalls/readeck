@@ -4,5 +4,6 @@
   "o-goodlink":     "node_modules/boxicons/svg/solid/bxs-star.svg",
   "o-omnivore":     "media/img/logo-omnivore.svg",
   "o-pocket":       "node_modules/boxicons/svg/logos/bxl-pocket.svg",
-  "o-wallabag":     "media/img/logo-wallabag.svg"
+  "o-wallabag":     "media/img/logo-wallabag.svg",
+  "o-readwise":     "media/img/logo-readwise.svg"
 }

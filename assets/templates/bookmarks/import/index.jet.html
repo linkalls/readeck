@@ -31,6 +31,10 @@ SPDX-License-Identifier: AGPL-3.0-only
       {{ yield icon(name="o-file", class="text-gray-600", svgClass="inline-block h-6 w-6") }}
       {{ gettext("Import Links from a Text File") }}
     </a>
+    <a class="flex items-center gap-2 p-4 link hf:bg-gray-100" href="{{ urlFor(`/bookmarks/import/readwise`) }}">
+      {{ yield icon(src="img/logos.svg", name="o-readwise", class="text-gray-600", svgClass="inline-block h-6 w-6") }}
+      {{ gettext("Import your Readwise Reader Library") }}
+    </a>
     <a class="flex items-center gap-2 p-4 link hf:bg-gray-100" href="{{ urlFor(`/bookmarks/import/browser`) }}">
       {{ yield icon(src="img/logos.svg", name="o-bookmarks", class="text-gray-600", svgClass="inline-block h-6 w-6") }}
       {{ gettext("Import your Browser's Bookmarks, Pinboard, Instapaper") }}
