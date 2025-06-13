@@ -12,6 +12,7 @@ import (
 	"path"
 
 	"codeberg.org/readeck/readeck/configs"
+	"codeberg.org/readeck/readeck/internal/auth"
 	"codeberg.org/readeck/readeck/internal/sessions"
 	"codeberg.org/readeck/readeck/pkg/http/securecookie"
 )
@@ -41,6 +42,12 @@ func (s *Server) InitSession() (err error) {
 func (s *Server) WithSession() func(next http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			// Ignore non session requests
+			if _, ok := auth.GetRequestProvider(r).(*auth.SessionAuthProvider); !ok {
+				next.ServeHTTP(w, r)
+				return
+			}
+
 			// Store session
 			session, err := sessions.New(sessionHandler, r)
 			if err != nil && !errors.Is(err, http.ErrNoCookie) {
