@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Readeck 1.0.0\n"
 "Report-Msgid-Bugs-To: translate@readeck.com\n"
 "POT-Creation-Date: 2025-05-25 07:29+0000\n"
-"PO-Revision-Date: 2025-06-13 15:58+0000\n"
+"PO-Revision-Date: 2025-06-13 21:26+0000\n"
 "Last-Translator: 0alai <0alai@noreply.codeberg.org>\n"
 "Language-Team: Catalan <https://translate.codeberg.org/projects/readeck/"
 "application/ca/>\n"
@@ -340,11 +340,11 @@ msgstr "Ves a la pàgina d'entrada"
 
 #: assets/templates/bookmarks/annotation_list.jet.html:8
 msgid "Bookmark Highlights"
-msgstr "Destacats als marcadors"
+msgstr "Ressaltats dels marcadors"
 
 #: assets/templates/bookmarks/annotation_list.jet.html:17
 msgid "You don't have any highlights yet."
-msgstr "Encara no tens cap destacat."
+msgstr "Encara no tens cap ressaltat."
 
 #: assets/templates/bookmarks/annotation_list.jet.html:18
 msgid ""
@@ -354,14 +354,17 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"        Quan comencis a destacar parts dels teus articles, apareixeran en aquesta pàgina\n"
-"        perquè els puguis trobar fàcilment.\n"
+"        Quan comencis a ressaltar parts dels teus articles, apareixeran en "
+"aquesta pàgina\n"
+"        perquè les puguis trobar fàcilment.\n"
 "      "
 
 #: assets/templates/bookmarks/annotation_list.jet.html:23
 #, python-format
 msgid "Read more about highlights in the <a class=\"%s\" href=\"%s\">documentation</a>."
-msgstr "Llegeix més sobre els destacats a la <a class=\"%s\" href=\"%s\">documentació</a>."
+msgstr ""
+"Llegeix més sobre els ressaltats a la <a class=\"%s\" href=\"%s\""
+">documentació</a>."
 
 #: assets/templates/bookmarks/base.jet.html:13
 #: assets/templates/bookmarks/bookmark.jet.html:15
@@ -408,7 +411,7 @@ msgstr "Etiquetes"
 #: assets/templates/bookmarks/base.jet.html:70
 #: assets/templates/bookmarks/components/sidebar.jet.html:96
 msgid "Highlights"
-msgstr "Destacats"
+msgstr "Ressaltats"
 
 #: assets/templates/bookmarks/base.jet.html:72
 #: assets/templates/bookmarks/collection.jet.html:11
@@ -707,7 +710,7 @@ msgstr[1] "%d min"
 
 #: assets/templates/bookmarks/components/content_block.jet.html:1
 msgid "Remove Highlight(s)"
-msgstr "Treure destacat/s"
+msgstr "Treure ressaltat(s)"
 
 #: assets/templates/bookmarks/components/content_block.jet.html:47
 msgid "Yellow"
@@ -727,7 +730,7 @@ msgstr "Verd"
 
 #: assets/templates/bookmarks/components/content_block.jet.html:54
 msgid "Highlight"
-msgstr "Destacar"
+msgstr "Ressaltar"
 
 #: assets/templates/bookmarks/components/filters.jet.html:9
 msgid "Search"
@@ -937,7 +940,7 @@ msgstr[1] "Lectura de %d minuts aprox."
 
 #: assets/templates/bookmarks/components/sidebar.jet.html:99
 msgid "Start selecting text in the article to create a new highlight."
-msgstr "Comença a seleccionar text de l'article per crear un nou destacat."
+msgstr "Comença a seleccionar text de l'article per crear un nou ressaltat."
 
 #: assets/templates/bookmarks/components/sidebar.jet.html:130
 msgid "Links"
