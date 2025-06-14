@@ -5,8 +5,10 @@ SPDX-License-Identifier: AGPL-3.0-only
 *}
 {{ extends "/_layouts/sidemenu" }}
 
+{{- block extraHead() -}}{{- end -}}
 {{- block head() -}}
   <meta name="turbo-refresh-scroll" content="preserve">
+  {{- yield extraHead() -}}
 {{- end -}}
 
 {{- block sideMenu() -}}

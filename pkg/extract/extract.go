@@ -223,7 +223,7 @@ func New(src string, options ...func(e *Extractor)) (*Extractor, error) {
 	URL.Fragment = ""
 
 	id := make([]byte, 4)
-	rand.Read(id) //nolint:errcheck
+	rand.Read(id)
 
 	res := &Extractor{
 		URL:             URL,

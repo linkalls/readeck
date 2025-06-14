@@ -10,6 +10,11 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 {{ block title() }}{{ .PageTitle }}{{ end }}
 
+{{- block extraHead() }}
+  <link rel="alternate" href="{{ urlFor(`/api/bookmarks/feed`) }}?{{ .Filters.GetQueryString() }}"
+   type="application/atom+xml" title="Atom Feed">
+{{- end -}}
+
 {{ block mainContent() -}}
 
 <turbo-frame id="bookmark-list"
@@ -131,8 +136,8 @@ SPDX-License-Identifier: AGPL-3.0-only
         </form>
 
         {{- if hasPermission("api:bookmarks", "export") && hasPermission("api:bookmarks:import", "write") -}}
-          {{ sortParam := isset(.CurrentOrder) ? `&sort=` + .CurrentOrder : "" }}
-          {{- yield export_menu(url=urlFor(`/api/bookmarks/export.epub`) + `?` + .Filters.GetQueryString() + sortParam) content -}}
+          {{ sortParam := isset(.CurrentOrder) ? .CurrentOrder : "" }}
+          {{- yield export_menu(params=`?` + .Filters.GetQueryString(), sortParam=sortParam) content -}}
             <li><a class="link" href="{{ urlFor(`/bookmarks/import`) }}">
               {{- yield icon(name="o-import") }} {{ gettext("Import bookmarks") }}</a></li>
           {{- end -}}

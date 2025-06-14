@@ -22,6 +22,7 @@
   "o-error":        "node_modules/boxicons/svg/solid/bxs-bolt-circle.svg",
   "o-favorite-off": "node_modules/boxicons/svg/regular/bx-heart.svg",
   "o-favorite-on":  "node_modules/boxicons/svg/solid/bxs-heart.svg",
+  "o-feed":         "node_modules/boxicons/svg/regular/bx-rss.svg",
   "o-file":         "node_modules/boxicons/svg/regular/bx-file.svg",
   "o-filter":       "node_modules/boxicons/svg/regular/bx-filter-alt.svg",
   "o-font":         "node_modules/boxicons/svg/regular/bx-font.svg",

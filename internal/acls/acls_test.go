@@ -84,7 +84,7 @@ func TestGetPermissions(t *testing.T) {
 		},
 		{
 			[]string{"scoped_bookmarks_r"},
-			[]string{"api:bookmarks:collections:read", "api:bookmarks:export", "api:bookmarks:read", "api:opds:read", "api:profile:read", "api:profile:tokens:delete"},
+			[]string{"api:bookmarks:collections:read", "api:bookmarks:export", "api:bookmarks:read", "api:opds:read", "api:profile:read", "api:profile:tokens:delete", "bookmarks:read"},
 		},
 		{
 			[]string{"scoped_bookmarks_w"},

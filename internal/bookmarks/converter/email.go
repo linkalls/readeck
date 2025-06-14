@@ -120,7 +120,11 @@ func (e HTMLEmailExporter) Export(ctx context.Context, _ io.Writer, _ *http.Requ
 }
 
 func (e HTMLEmailExporter) getTemplateContext(ctx context.Context, b *bookmarks.Bookmark) (map[string]any, error) {
-	ctx = WithURLReplacer(ctx, "./_resources/", "cid:"+e.cidPrefix+".")
+	ctx = WithURLReplacer(ctx, func(_ *bookmarks.Bookmark) func(name string) string {
+		return func(name string) string {
+			return "cid:" + e.cidPrefix + "." + path.Base(name)
+		}
+	})
 	html, err := e.GetArticle(ctx, b)
 	if err != nil {
 		return nil, err

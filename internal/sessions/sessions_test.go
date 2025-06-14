@@ -6,7 +6,6 @@ package sessions_test
 
 import (
 	"crypto/rand"
-	"io"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -19,7 +18,7 @@ import (
 
 func TestSession(t *testing.T) {
 	k := make([]byte, 32)
-	_, _ = io.ReadFull(rand.Reader, k)
+	rand.Read(k)
 	h := securecookie.NewHandler(securecookie.Key(k))
 
 	t.Run("new session", func(t *testing.T) {

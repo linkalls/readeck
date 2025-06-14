@@ -58,6 +58,7 @@ linters:
         - (*strings.Replacer).WriteString(*bytes.Buffer)
         - fmt.Fprint(os.Stdout)
         - fmt.Fprintln(os.Stdout)
+        - crypto/rand.Read
         - golang.org/x/net/html.Render(*bytes.Buffer)
         - (*github.com/fatih/color.Color).Fprint(*bytes.Buffer)
         - (*github.com/fatih/color.Color).Fprintf(*bytes.Buffer)

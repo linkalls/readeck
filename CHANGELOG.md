@@ -4,11 +4,14 @@
 ### Added
 - share by link and email API documentation
 - extract fediverse:creator metadata as author
+- feeds for any bookmark list
 
 ### Fixed
 - scoped_admin_r scope was missing the system:read permission
 - consider the `<base>` element when present for page's URL resolution
 - YouTube video embeds are now preserved as a thumbnail that links to the original video, by [@mislav](https://codeberg.org/mislav)
+- HTTP cache couldn't work with an API token
+- timezone related tests would fail with a TZ env var, by [@mislav](https://codeberg.org/mislav)
 
 ### Improved
 - documentation extracted to gettext
@@ -17,6 +20,7 @@
 - removed autocapitalization on label form
 - headers sent when fetching
 - send a `referer` header when fetching favicon or a page's image
+- hide bookmark description when it exists at the begining of the article
 
 ## [0.19.2] - 2025-05-29
 ### Fixed

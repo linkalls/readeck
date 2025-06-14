@@ -15,7 +15,6 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"io"
 	"net/http"
 	"time"
 
@@ -68,9 +67,7 @@ type Option func(h *Handler)
 // encode encoded the given data using the store's key.
 func (s *store) encode(data []byte) ([]byte, error) {
 	nonce := make([]byte, nonceSize, len(data)+overhead+nonceSize)
-	if _, err := io.ReadFull(rand.Reader, nonce); err != nil {
-		return nil, err
-	}
+	rand.Read(nonce)
 
 	aead, err := chacha20poly1305.NewX(s.key[:])
 	if err != nil {

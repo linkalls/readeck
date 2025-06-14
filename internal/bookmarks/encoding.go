@@ -9,7 +9,6 @@ import (
 	"crypto/subtle"
 	"encoding/binary"
 	"errors"
-	"io"
 	"time"
 
 	"golang.org/x/crypto/blake2b"
@@ -41,9 +40,7 @@ func EncodeID(id uint64, expires time.Time) (string, error) {
 	binary.LittleEndian.PutUint32(msg[16:], uint32(expires.Round(time.Minute).Unix()/60))
 
 	salt := make([]byte, 4)
-	if _, err := io.ReadFull(rand.Reader, salt); err != nil {
-		return "", err
-	}
+	rand.Read(salt)
 
 	k, err := configs.Keys.Expand("bookmark_share_"+string(salt), 32)
 	if err != nil {
