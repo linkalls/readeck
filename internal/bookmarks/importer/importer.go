@@ -28,6 +28,7 @@ import (
 const (
 	importText       = "text"
 	importCSV        = "csv"
+	importReadwise   = "readwise"
 	importBrowser    = "browser"
 	importGoodLinks  = "goodlinks"
 	importOmnivore   = "omnivore"
@@ -133,6 +134,8 @@ func LoadAdapter(name string) ImportLoader {
 		return &textAdapter{}
 	case importCSV:
 		return &csvAdapter{}
+	case importReadwise:
+		return &readwiseAdapter{}
 	case importBrowser:
 		return &browserAdapter{}
 	case importGoodLinks:
