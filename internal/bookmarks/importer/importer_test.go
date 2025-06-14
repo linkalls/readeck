@@ -295,7 +295,7 @@ func TestFileAdapters(t *testing.T) {
 
 				expected := []bookmarkItem{
 					{"https://www.linuxserver.io/", "Some Title", time.Date(2022, time.December, 5, 12, 42, 10, 0, time.UTC), types.Strings{"don't", "peanut, butter"}, false, true},
-					{"https://www.startpage.com/", "", time.Date(2025, time.January, 20, 22, 13, 02, 447000000, time.UTC), nil, true, false},
+					{"https://www.startpage.com/", "", time.Date(2025, time.January, 20, 22, 13, 2, 447000000, time.UTC), nil, true, false},
 				}
 				require.Equal(expected, items)
 			},
