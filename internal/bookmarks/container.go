@@ -8,7 +8,6 @@ import (
 	"archive/zip"
 	"io"
 	"os"
-	"path"
 	"regexp"
 	"strings"
 )
@@ -89,13 +88,10 @@ func (c *BookmarkContainer) LoadArticle() error {
 }
 
 // ReplaceLinks replaces all the link to _resources/* in the article content.
-func (c *BookmarkContainer) ReplaceLinks(orig, repl string) (err error) {
+func (c *BookmarkContainer) ReplaceLinks(fn func(name string) string) (err error) {
 	args := []string{}
 	for _, x := range c.ListResources() {
-		args = append(args,
-			orig+path.Base(x.Name),
-			repl+path.Base(x.Name),
-		)
+		args = append(args, "./"+x.Name, fn("./"+x.Name))
 	}
 
 	replacer := strings.NewReplacer(args...)

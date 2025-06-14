@@ -11,6 +11,12 @@ SPDX-License-Identifier: AGPL-3.0-only
     {{ .Item.Name }} - {{ gettext("Collections") }}
 {{- end -}}
 
+{{- block extraHead() }}
+  {{ filterParams := `collection=` + .Item.ID }}
+  <link rel="alternate" href="{{ urlFor(`/api/bookmarks/feed`) }}?{{ filterParams }}"
+   type="application/atom+xml" title="Atom Feed">
+{{- end -}}
+
 {{- block mainContent() -}}
 {{- if .Item.IsDeleted -}}
   <h1 class="title text-h2">{{ gettext("Collection %s", .Item.Name) }}</h1>
@@ -44,8 +50,8 @@ SPDX-License-Identifier: AGPL-3.0-only
         </form>
 
         {{- if hasPermission("api:bookmarks", "export") -}}
-          {{ sortParam := isset(.CurrentOrder) ? `&sort=` + .CurrentOrder : "" }}
-          {{- yield export_menu(url=urlFor(`/api/bookmarks/export.epub`) + `?collection=` + .Item.ID + sortParam) -}}
+          {{ sortParam := isset(.CurrentOrder) ? .CurrentOrder : "" }}
+          {{- yield export_menu(params=`?collection=` + .Item.ID, sortParam=sortParam) -}}
         {{- end -}}
       {{- end -}}
     </div>

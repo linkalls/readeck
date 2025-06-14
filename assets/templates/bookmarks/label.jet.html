@@ -7,7 +7,14 @@ SPDX-License-Identifier: AGPL-3.0-only
 {{- import "/_libs/pagination" -}}
 {{- import "./components/list_actions"}}
 
+
 {{ block title() }}{{ gettext("Label") }} - {{ .Label }}{{ end }}
+
+{{- block extraHead() }}
+  {{ filterParams := `labels="` + url(.Label) + `"` }}
+  <link rel="alternate" href="{{ urlFor(`/api/bookmarks/feed`) }}?{{ filterParams }}"
+   type="application/atom+xml" title="Atom Feed">
+{{- end -}}
 
 {{ block mainContent() -}}
 <form action="" method="post" class="flex flex-wrap items-center gap-2"
@@ -37,8 +44,8 @@ SPDX-License-Identifier: AGPL-3.0-only
       >{{ yield icon(name="o-trash") }} {{ gettext("Delete") }}</button>
 
       {{- if hasPermission("api:bookmarks", "export") -}}
-        {{ sortParam := isset(.CurrentOrder) ? `&sort=` + .CurrentOrder : "" }}
-        {{- yield export_menu(url=urlFor(`/api/bookmarks/export.epub`) + `?labels="` + url(.Label) + `"` + sortParam) -}}
+        {{ sortParam := isset(.CurrentOrder) ? .CurrentOrder : "" }}
+        {{- yield export_menu(params=`?labels="` + url(.Label) + `"`, sortParam=sortParam) -}}
       {{- end -}}
     {{- end -}}
   {{- end -}}

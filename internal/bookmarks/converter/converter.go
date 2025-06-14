@@ -18,7 +18,7 @@ type contextKey struct {
 }
 
 var (
-	ctxURLReplaceKey         = &contextKey{"baseURL"}
+	ctxURLReplaceKey         = &contextKey{"urlReplacer"}
 	ctxAnnotationTagKey      = &contextKey{"annotationTag"}
 	ctxAnnotationCallbackKey = &contextKey{"annotationCallback"}
 )
@@ -28,14 +28,18 @@ type Exporter interface {
 	Export(ctx context.Context, w io.Writer, r *http.Request, bookmarks []*bookmarks.Bookmark) error
 }
 
+// URLReplacerFunc is a function that returns a URL replacement function.
+// The returned function receives a name that always starts with "./_resources/".
+type URLReplacerFunc func(b *bookmarks.Bookmark) func(name string) string
+
 // WithURLReplacer adds to context the URL replacment values for image sources.
-func WithURLReplacer(ctx context.Context, orig, repl string) context.Context {
-	return context.WithValue(ctx, ctxURLReplaceKey, [2]string{orig, repl})
+func WithURLReplacer(ctx context.Context, fn URLReplacerFunc) context.Context {
+	return context.WithValue(ctx, ctxURLReplaceKey, fn)
 }
 
-func getURLReplacer(ctx context.Context) (orig, repl string, ok bool) {
-	s, ok := ctx.Value(ctxURLReplaceKey).([2]string)
-	return s[0], s[1], ok
+func getURLReplacer(ctx context.Context) (fn URLReplacerFunc, ok bool) {
+	fn, ok = ctx.Value(ctxURLReplaceKey).(URLReplacerFunc)
+	return
 }
 
 // WithAnnotationTag adds to context the annotation tag and callback function.

@@ -127,6 +127,20 @@ func (api *apiRouter) bookmarkArticle(w http.ResponseWriter, r *http.Request) {
 	io.Copy(w, buf)
 }
 
+func (api *apiRouter) bookmarkListFeed(w http.ResponseWriter, r *http.Request) {
+	bl := r.Context().Value(ctxBookmarkListKey{}).(bookmarkList)
+
+	ctx := converter.WithURLReplacer(context.Background(), func(b *bookmarks.Bookmark) func(name string) string {
+		return func(name string) string {
+			return api.srv.AbsoluteURL(r, "/bm", b.FilePath, name).String()
+		}
+	})
+
+	if err := converter.NewAtomExporter(api.srv).Export(ctx, w, r, bl.items); err != nil {
+		api.srv.Error(w, r, err)
+	}
+}
+
 // bookmarkExport renders a list of bookmarks in the requested export format.
 func (api *apiRouter) bookmarkExport(w http.ResponseWriter, r *http.Request) {
 	var exporter converter.Exporter
@@ -580,6 +594,16 @@ func (api *apiRouter) withoutPagination(next http.Handler) http.Handler {
 	})
 }
 
+func (api *apiRouter) withFixedLimit(limit uint) func(next http.Handler) http.Handler {
+	return func(next http.Handler) http.Handler {
+		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			f := newContextFilterForm(r.Context(), api.srv.Locale(r))
+			f.fixedLimit = limit
+			next.ServeHTTP(w, r.WithContext(f.saveContext(r.Context())))
+		})
+	}
+}
+
 func (api *apiRouter) withCollectionFilters(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		var c *bookmarks.Collection
@@ -705,6 +729,11 @@ func (api *apiRouter) withBookmarkList(next http.Handler) http.Handler {
 		// If pagination is disabled, remove all limits.
 		if filterForm.noPagination {
 			ds = ds.ClearLimit().ClearOffset()
+		}
+
+		// If fixed limit is set, override limit and offset
+		if filterForm.fixedLimit > 0 {
+			ds = ds.Limit(uint(filterForm.fixedLimit)).Offset(0)
 		}
 
 		var count int64
@@ -1097,10 +1126,12 @@ func (bi bookmarkItem) getArticle() (*strings.Reader, error) {
 	ctx := context.Background()
 
 	// Set resource URL replacer, for images
-	ctx = converter.WithURLReplacer(ctx,
-		"./_resources/",
-		bi.mediaURL.String()+"/_resources/",
-	)
+	ctx = converter.WithURLReplacer(ctx, func(_ *bookmarks.Bookmark) func(name string) string {
+		return func(name string) string {
+			return bi.mediaURL.JoinPath(name).String()
+		}
+	})
+
 	// Set annotation tag and callback
 	ctx = converter.WithAnnotationTag(ctx, bi.annotationTag, bi.annotationCallback)
 

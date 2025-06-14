@@ -45,8 +45,8 @@ func (c HTMLConverter) GetArticle(ctx context.Context, b *bookmarks.Bookmark) (*
 		return strings.NewReader(""), err
 	}
 
-	if orig, repl, ok := getURLReplacer(ctx); ok {
-		if err = bc.ReplaceLinks(orig, repl); err != nil {
+	if fn, ok := getURLReplacer(ctx); ok {
+		if err = bc.ReplaceLinks(fn(b)); err != nil {
 			return strings.NewReader(""), err
 		}
 	}
