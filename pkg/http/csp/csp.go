@@ -9,7 +9,6 @@ import (
 	"crypto/rand"
 	"encoding/hex"
 	"fmt"
-	"io"
 	"net/http"
 	"slices"
 	"strings"
@@ -78,9 +77,6 @@ func (p Policy) Write(h http.Header) {
 // It's an hex encoded 128-bit random value.
 func MakeNonce() string {
 	n := make([]byte, 16)
-	_, err := io.ReadFull(rand.Reader, n)
-	if err != nil {
-		panic(err)
-	}
+	rand.Read(n)
 	return hex.EncodeToString(n)
 }

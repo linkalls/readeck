@@ -10,7 +10,6 @@ import (
 	"encoding/base32"
 	"encoding/hex"
 	"errors"
-	"io"
 	"math/big"
 	"strconv"
 	"testing"
@@ -41,7 +40,7 @@ func FuzzDecode(f *testing.F) {
 		l, _ := rand.Int(rand.Reader, big.NewInt(48))
 		l = l.Add(l, big.NewInt(1))
 		data := make([]byte, l.Int64())
-		_, _ = io.ReadFull(rand.Reader, data)
+		rand.Read(data)
 		f.Add(data)
 	}
 

@@ -15,7 +15,6 @@ import (
 	"encoding/base64"
 	"errors"
 	"fmt"
-	"io"
 	"net/http"
 	"net/url"
 	"slices"
@@ -171,9 +170,7 @@ func (h *Handler) Protect(next http.Handler) http.Handler {
 // Renew generates a new token and saves it in the storage (usually a cookie).
 func (h *Handler) Renew(w http.ResponseWriter, r *http.Request) ([]byte, error) {
 	token := make([]byte, tokenLength)
-	if _, err := io.ReadFull(rand.Reader, token); err != nil {
-		return nil, err
-	}
+	rand.Read(token)
 
 	// Save the new token
 	if err := h.store.Save(w, r, token); err != nil {

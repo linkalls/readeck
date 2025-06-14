@@ -7,7 +7,6 @@ package securecookie
 import (
 	"crypto/rand"
 	"encoding/base64"
-	"io"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -20,7 +19,7 @@ func TestStore(t *testing.T) {
 	t.Run("encode-decode", func(t *testing.T) {
 		assert := require.New(t)
 		k := make([]byte, 32)
-		_, _ = io.ReadFull(rand.Reader, k)
+		rand.Read(k)
 
 		s := store{
 			key: Key(k),
@@ -37,7 +36,7 @@ func TestStore(t *testing.T) {
 	t.Run("tampered message", func(t *testing.T) {
 		assert := require.New(t)
 		k := make([]byte, 32)
-		_, _ = io.ReadFull(rand.Reader, k)
+		rand.Read(k)
 
 		s := store{
 			key: Key(k),
@@ -55,7 +54,7 @@ func TestStore(t *testing.T) {
 	t.Run("decode error", func(t *testing.T) {
 		assert := require.New(t)
 		k := make([]byte, 32)
-		_, _ = io.ReadFull(rand.Reader, k)
+		rand.Read(k)
 
 		s := store{
 			key: Key(k),
@@ -70,7 +69,7 @@ func TestStore(t *testing.T) {
 
 func TestHandler(t *testing.T) {
 	k := make([]byte, 32)
-	_, _ = io.ReadFull(rand.Reader, k)
+	rand.Read(k)
 
 	h := NewHandler(Key(k))
 

@@ -49,9 +49,7 @@ func WriteConfig(filename string) error {
 func GenerateKey() string {
 	// 48 bytes = 384 bits
 	d := make([]byte, 48)
-	if _, err := rand.Read(d); err != nil {
-		panic(err)
-	}
+	rand.Read(d)
 
 	// 384/6 = 64 base64 characters
 	return base64.StdEncoding.EncodeToString(d)
