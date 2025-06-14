@@ -256,6 +256,7 @@ func TestFileAdapters(t *testing.T) {
 				return []byte(
 					`Title,URL,ID,Document tags,Saved date,Reading progress,Location,Seen` + "\n" +
 						`,https://www.startpage.com/,,,2025-01-20 22:13:02.447000+00:00,,archive,` + "\n" +
+						`,mailto:reader-forwarded-email/7346231d78e747bf19a52a9da1585e71,,,,,feed,` + "\n" +
 						`"Some Title",https://www.linuxserver.io/,,"[""don't"", 'favorite', 'peanut, butter']",2022-12-05 12:42:10+00:00,,,` + "\n",
 				)
 			},

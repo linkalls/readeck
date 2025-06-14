@@ -47,10 +47,16 @@ const (
 	readwiseTimeFormat = "2006-01-02 15:04:05-07:00"
 )
 
+var readwiseBookmarkSkipErr = errors.New("bookmark skip")
+
 func newReadwiseBookmarkItem(record []string) (readwiseBookmarkItem, error) {
 	res := readwiseBookmarkItem{}
 	if len(record) < readwiseHeaderLocation {
 		return res, errors.New("not enough columns in CSV")
+	}
+	// Skip items added to Reader via email forward rather than a URL
+	if strings.HasPrefix(record[readwiseHeaderURL], "mailto:") {
+		return res, readwiseBookmarkSkipErr
 	}
 	res.Link = record[readwiseHeaderURL]
 	res.Title = strings.TrimSpace(record[readwiseHeaderTitle])
@@ -138,11 +144,12 @@ func (adapter *readwiseAdapter) Params(form forms.Binder) ([]byte, error) {
 			return nil, nil
 		}
 		item, err := newReadwiseBookmarkItem(record)
-		if err != nil {
+		if errors.Is(err, readwiseBookmarkSkipErr) {
+			continue
+		} else if err != nil {
 			form.AddErrors("data", forms.Gettext("Empty or invalid import file"))
 			return nil, nil
 		}
-		_ = item
 
 		adapter.Items = append(adapter.Items, item)
 	}
