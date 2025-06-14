@@ -36,16 +36,19 @@ SPDX-License-Identifier: AGPL-3.0-only
   </p>
 </form>
 
-<h2 class="mt-8 title text-h3">CSV Format</h2>
+<h2 class="mt-8 title text-h3">{{ gettext("Which information is imported") }}</h2>
 <div class="prose">
-  <p>{{ gettext(`
-    Readwise Reader CSV export has the following fields: <code>%s</code>.
-  `, "Title, URL, ID, Document tags, Saved date, Reading progress, Location, Seen") | raw }}</p>
-  <p>{{ gettext("The import will be performed as follows:") }}</p>
   <ul>
-    <li>{{ gettext(`"%s" are saved as Readeck labels,`, "Document tags") }}</li>
-    <li>{{ gettext(`If a document tag contains "%s", the bookmark will be added to Readeck Favorites,`, "favorite") }}</li>
-    <li>{{ gettext(`If the "%s" is "%s", the bookmark will be archived.`, "Location", "archive") }}</li>
+    <li>{{ gettext("Article title, URL, and when it was first saved,") }}</li>
+    <li>{{ gettext("The archived state of an article,") }}</li>
+    <li>{{ gettext(`"%s" as Readeck labels,`, "Document tags") }}</li>
+    <li>{{ gettext(`When a document tag contains "%s", the bookmark will be added to Readeck Favorites.`, "favorite") }}</li>
+  </ul>
+  <p>{{ gettext("What is not imported:") }}</p>
+  <ul>
+    <li>{{ gettext("Article reading progress and seen status,") }}</li>
+    <li>{{ gettext("Articles forwarded to Readwise Reader by email,") }}</li>
+    <li>{{ gettext("Uploaded documents such as PDFs or EPUB.") }}</li>
   </ul>
 </div>
 
