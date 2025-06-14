@@ -35,42 +35,31 @@ type readwiseBookmarkItem struct {
 }
 
 const (
-	// Readwise Reader exported CSV headers are:
-	// Title, URL, ID, Document tags, Saved date, Reading progress, Location, Seen.
-	readwiseHeaderTitle    = 0
-	readwiseHeaderURL      = 1
-	readwiseHeaderTags     = 3
-	readwiseHeaderCreated  = 4
-	readwiseHeaderLocation = 6
-
 	// Basically time.RFC3339, but with space character instead of "T".
 	readwiseTimeFormat = "2006-01-02 15:04:05-07:00"
 )
 
 var readwiseBookmarkSkipErr = errors.New("bookmark skip")
 
-func newReadwiseBookmarkItem(record []string) (readwiseBookmarkItem, error) {
+func newReadwiseBookmarkItem(headerMap readwiseHeaderMap, record []string) (readwiseBookmarkItem, error) {
 	res := readwiseBookmarkItem{}
-	if len(record) < readwiseHeaderLocation {
-		return res, errors.New("not enough columns in CSV")
-	}
+	res.Link = record[headerMap.url]
 	// Skip items added to Reader via email forward rather than a URL
-	if strings.HasPrefix(record[readwiseHeaderURL], "mailto:") {
+	if strings.HasPrefix(res.Link, "mailto:") {
 		return res, readwiseBookmarkSkipErr
 	}
-	res.Link = record[readwiseHeaderURL]
-	res.Title = strings.TrimSpace(record[readwiseHeaderTitle])
+	res.Title = strings.TrimSpace(record[headerMap.title])
 
-	if record[readwiseHeaderCreated] != "" {
-		if createdTime, err := time.Parse(readwiseTimeFormat, record[readwiseHeaderCreated]); err == nil {
+	if record[headerMap.saved] != "" {
+		if createdTime, err := time.Parse(readwiseTimeFormat, record[headerMap.saved]); err == nil {
 			res.Created = createdTime
 		} else {
 			return res, fmt.Errorf("error parsing created timestamp: %w", err)
 		}
 	}
 
-	if record[readwiseHeaderTags] != "" {
-		tags, err := parseReadwiseTags(record[readwiseHeaderTags])
+	if record[headerMap.tags] != "" {
+		tags, err := parseReadwiseTags(record[headerMap.tags])
 		if err != nil {
 			return res, fmt.Errorf("error parsing tags: %w", err)
 		}
@@ -84,7 +73,7 @@ func newReadwiseBookmarkItem(record []string) (readwiseBookmarkItem, error) {
 		}
 	}
 
-	if strings.ToLower(record[readwiseHeaderLocation]) == "archive" {
+	if strings.ToLower(record[headerMap.location]) == "archive" {
 		res.IsArchived = true
 	}
 
@@ -103,6 +92,41 @@ func (bi *readwiseBookmarkItem) Meta() (*BookmarkMeta, error) {
 		IsArchived: bi.IsArchived,
 		IsMarked:   bi.IsFavorite,
 	}, nil
+}
+
+type readwiseHeaderMap struct {
+	url      int
+	title    int
+	location int
+	saved    int
+	tags     int
+}
+
+// Readwise Reader exported CSV headers are:
+// Title, URL, ID, Document tags, Saved date, Reading progress, Location, Seen.
+func newReadwiseHeaderMap(record []string) readwiseHeaderMap {
+	res := readwiseHeaderMap{
+		url:      -1,
+		title:    -1,
+		location: -1,
+		saved:    -1,
+		tags:     -1,
+	}
+	for i, x := range record {
+		switch strings.ToLower(x) {
+		case "url":
+			res.url = i
+		case "title":
+			res.title = i
+		case "location":
+			res.location = i
+		case "saved date":
+			res.saved = i
+		case "document tags":
+			res.tags = i
+		}
+	}
+	return res
 }
 
 func (adapter *readwiseAdapter) Name(tr forms.Translator) string {
@@ -128,11 +152,12 @@ func (adapter *readwiseAdapter) Params(form forms.Binder) ([]byte, error) {
 	defer reader.Close() //nolint:errcheck
 
 	r := csv.NewReader(reader)
-	// discard the header row
-	if _, err := r.Read(); err != nil {
+	headerRow, err := r.Read()
+	if err != nil {
 		form.AddErrors("data", forms.Gettext("Empty or invalid import file"))
 		return nil, nil
 	}
+	headerMap := newReadwiseHeaderMap(headerRow)
 
 	for {
 		record, err := r.Read()
@@ -143,7 +168,7 @@ func (adapter *readwiseAdapter) Params(form forms.Binder) ([]byte, error) {
 			form.AddErrors("data", forms.Gettext("Empty or invalid import file"))
 			return nil, nil
 		}
-		item, err := newReadwiseBookmarkItem(record)
+		item, err := newReadwiseBookmarkItem(headerMap, record)
 		if errors.Is(err, readwiseBookmarkSkipErr) {
 			continue
 		} else if err != nil {
