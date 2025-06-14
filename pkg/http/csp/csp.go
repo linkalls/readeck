@@ -9,6 +9,7 @@ import (
 	"crypto/rand"
 	"encoding/hex"
 	"fmt"
+	"maps"
 	"net/http"
 	"slices"
 	"strings"
@@ -46,11 +47,7 @@ func (p Policy) Set(name string, values ...string) {
 
 // Clone returns a copy of the policy.
 func (p Policy) Clone() Policy {
-	res := Policy{}
-	for k, v := range p {
-		res[k] = v
-	}
-	return res
+	return maps.Clone(p)
 }
 
 // String returns the policy suitable for an http.Header value.
