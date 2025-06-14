@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Readeck 1.0.0\n"
 "Report-Msgid-Bugs-To: translate@readeck.com\n"
 "POT-Creation-Date: 2025-05-25 07:29+0000\n"
-"PO-Revision-Date: 2025-06-05 16:11+0000\n"
+"PO-Revision-Date: 2025-06-13 21:26+0000\n"
 "Last-Translator: 0alai <0alai@noreply.codeberg.org>\n"
 "Language-Team: Catalan <https://translate.codeberg.org/projects/readeck/"
 "application/ca/>\n"
@@ -87,7 +87,7 @@ msgstr "o"
 
 #: assets/templates/_libs/forms.jet.html:256
 msgid "Select or drop file"
-msgstr "Seleccioneu o deixeu anar un arxiu"
+msgstr "Selecciona o deixa anar un arxiu"
 
 #: assets/templates/_libs/forms.jet.html:260
 msgid "remove"
@@ -237,7 +237,7 @@ msgstr "Heu oblidat la contrasenya?"
 #: assets/templates/auth/onboarding.jet.html:9
 #: assets/templates/bookmarks/index.jet.html:71
 msgid "Welcome to Readeck!"
-msgstr "Us donem la benvinguda al Readeck!"
+msgstr "Et donem la benvinguda al Readeck!"
 
 #: assets/templates/auth/onboarding.jet.html:15
 msgid "We're delighted to have you on board; one more step and you're good to go."
@@ -340,11 +340,11 @@ msgstr "Ves a la pàgina d'entrada"
 
 #: assets/templates/bookmarks/annotation_list.jet.html:8
 msgid "Bookmark Highlights"
-msgstr "Destacats dels marcadors"
+msgstr "Ressaltats dels marcadors"
 
 #: assets/templates/bookmarks/annotation_list.jet.html:17
 msgid "You don't have any highlights yet."
-msgstr "Encara no tens cap destacat."
+msgstr "Encara no tens cap ressaltat."
 
 #: assets/templates/bookmarks/annotation_list.jet.html:18
 msgid ""
@@ -354,14 +354,17 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"        Quan comencis a destacar parts dels teus articles, apareixeran en aquesta pàgina\n"
-"        perquè els puguis trobar fàcilment.\n"
+"        Quan comencis a ressaltar parts dels teus articles, apareixeran en "
+"aquesta pàgina\n"
+"        perquè les puguis trobar fàcilment.\n"
 "      "
 
 #: assets/templates/bookmarks/annotation_list.jet.html:23
 #, python-format
 msgid "Read more about highlights in the <a class=\"%s\" href=\"%s\">documentation</a>."
-msgstr "Llegeix més sobre els destacats a la <a class=\"%s\" href=\"%s\">documentació</a>."
+msgstr ""
+"Llegeix més sobre els ressaltats a la <a class=\"%s\" href=\"%s\""
+">documentació</a>."
 
 #: assets/templates/bookmarks/base.jet.html:13
 #: assets/templates/bookmarks/bookmark.jet.html:15
@@ -371,7 +374,7 @@ msgstr "Marcadors"
 
 #: assets/templates/bookmarks/base.jet.html:29
 msgid "All"
-msgstr "Tot"
+msgstr "Tots"
 
 #: assets/templates/bookmarks/base.jet.html:32
 msgid "Unread"
@@ -379,7 +382,7 @@ msgstr "No llegits"
 
 #: assets/templates/bookmarks/base.jet.html:35
 msgid "Archive"
-msgstr "Arxiu"
+msgstr "Arxivats"
 
 #: assets/templates/bookmarks/base.jet.html:38
 msgid "Favorites"
@@ -408,7 +411,7 @@ msgstr "Etiquetes"
 #: assets/templates/bookmarks/base.jet.html:70
 #: assets/templates/bookmarks/components/sidebar.jet.html:96
 msgid "Highlights"
-msgstr "Destacats"
+msgstr "Ressaltats"
 
 #: assets/templates/bookmarks/base.jet.html:72
 #: assets/templates/bookmarks/collection.jet.html:11
@@ -428,9 +431,9 @@ msgid ""
 "            directly from your browser!"
 msgstr ""
 "\n"
-"            Amb l'extensió del navegador, podeu desar pàgines, imatges i "
+"            Amb l'extensió del navegador, pots desar pàgines, imatges i "
 "seleccions\n"
-"            directament des del vostre navegador!"
+"            directament des del teu navegador!"
 
 #: assets/templates/bookmarks/base.jet.html:96
 #: assets/templates/bookmarks/index.jet.html:94
@@ -573,7 +576,7 @@ msgstr "Col·leccions de marcadors"
 
 #: assets/templates/bookmarks/collection_list.jet.html:15
 msgid "Create a new collection"
-msgstr "Crear una nova col·lecció"
+msgstr "Crea una nova col·lecció"
 
 #: assets/templates/bookmarks/collection_list.jet.html:24
 msgid ""
@@ -586,10 +589,12 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"          Les col·leccions et permeten organitzar i exportar els marcadors\n"
-"          fàcilment guardant cerques escollides per tu.\n"
-"          Quan crees un marcador que coincideix amb el criteri d'una\n"
-"          col·lecció, apareixerà inmediatament.\n"
+"          Les col·leccions et permeten organitzar i exportar els teus "
+"marcadors\n"
+"          fàcilment desant les sol·licituds de cerca que triïs.\n"
+"          Quan creïs un marcador que coincideixi amb els criteris d'una "
+"col·lecció,\n"
+"          hi apareixerà inmediatament.\n"
 "          Heus aquí alguns exemples:\n"
 "        "
 
@@ -603,7 +608,7 @@ msgstr "Els articles arxivats de \"wikipedia.org\""
 
 #: assets/templates/bookmarks/collection_list.jet.html:35
 msgid "The pictures with the label \"cat\""
-msgstr "Les fotografies amb etiqueta \"gat\""
+msgstr "Les fotografies amb l'etiqueta \"gat\""
 
 #: assets/templates/bookmarks/collection_list.jet.html:36
 msgid "The articles that contain \"shelter\" in their title"
@@ -635,13 +640,13 @@ msgstr "Marca com a llegit"
 #: assets/templates/bookmarks/components/bottom_actions.jet.html:7
 #: assets/templates/bookmarks/components/card.jet.html:9
 msgid "Remove from archive"
-msgstr "Eliminar de l'arxiu"
+msgstr "Eliminar dels arxivats"
 
 #: assets/templates/bookmarks/components/actions.jet.html:8
 #: assets/templates/bookmarks/components/bottom_actions.jet.html:7
 #: assets/templates/bookmarks/components/card.jet.html:9
 msgid "Move to archive"
-msgstr "Moure a l'arxiu"
+msgstr "Moure als arxivats"
 
 #: assets/templates/bookmarks/components/actions.jet.html:9
 #: assets/templates/bookmarks/components/bottom_actions.jet.html:8
@@ -667,7 +672,7 @@ msgstr "Desfer"
 #: assets/templates/bookmarks/components/actions.jet.html:58
 #: assets/templates/bookmarks/components/list_actions.jet.html:79
 msgid "Download EPUB"
-msgstr "Descarrega EPUB"
+msgstr "Descarrega un EPUB"
 
 #: assets/templates/bookmarks/components/actions.jet.html:61
 msgid "Share by Link"
@@ -705,7 +710,7 @@ msgstr[1] "%d min"
 
 #: assets/templates/bookmarks/components/content_block.jet.html:1
 msgid "Remove Highlight(s)"
-msgstr "Treure destacat/s"
+msgstr "Treure ressaltat(s)"
 
 #: assets/templates/bookmarks/components/content_block.jet.html:47
 msgid "Yellow"
@@ -725,7 +730,7 @@ msgstr "Verd"
 
 #: assets/templates/bookmarks/components/content_block.jet.html:54
 msgid "Highlight"
-msgstr "Destacar"
+msgstr "Ressaltar"
 
 #: assets/templates/bookmarks/components/filters.jet.html:9
 msgid "Search"
@@ -930,12 +935,12 @@ msgstr "S'han produït errors durant l'extracció."
 #, python-format
 msgid "About %d minute read"
 msgid_plural "About %d minutes read"
-msgstr[0] "Lectura d' %d minut aprox."
-msgstr[1] "Lectura de  %d minuts aprox."
+msgstr[0] "Lectura d'%d minut aprox."
+msgstr[1] "Lectura de %d minuts aprox."
 
 #: assets/templates/bookmarks/components/sidebar.jet.html:99
 msgid "Start selecting text in the article to create a new highlight."
-msgstr "Comença a seleccionar text de l'article per crear un nou destacat."
+msgstr "Comença a seleccionar text de l'article per crear un nou ressaltat."
 
 #: assets/templates/bookmarks/components/sidebar.jet.html:130
 msgid "Links"
@@ -992,7 +997,7 @@ msgstr "Afegeix una etiqueta als enllaços, basada en el títol de la seva secci
 #: assets/templates/bookmarks/import/form-text.jet.html:35
 #: assets/templates/bookmarks/import/form-wallabag.jet.html:69
 msgid "Import Bookmarks"
-msgstr "Importa adreces d'interès"
+msgstr "Importa marcadors"
 
 #: assets/templates/bookmarks/import/form-csv.jet.html:9
 msgid "Import Links from a CSV File"
@@ -1096,8 +1101,8 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"    Per importar els vostres articles des d'Omnivore, primer heu de crear "
-"una clau API\n"
+"    Per importar els teus articles des d'Omnivore, primer has de crear una "
+"clau d'API\n"
 "    a la configuració de l'Omnivore i introduir-la al formulari següent.\n"
 "  "
 
@@ -1127,7 +1132,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"    Podeu exportar els vostres articles a Pocket visitant:<br>\n"
+"    Pots exportar els teus articles a Pocket visitant:<br>\n"
 "    <a class=\"%s\" href=\"%s\">%s</a>.\n"
 "  "
 
@@ -1160,7 +1165,7 @@ msgstr ""
 
 #: assets/templates/bookmarks/import/form-pocket-file.jet.html:44
 msgid "Note: upload the ZIP file directly, not its contents"
-msgstr "Nota: pengeu l'arxiu ZIP directament, no el seu contingut"
+msgstr "Nota: puja l'arxiu ZIP directament, no el seu contingut"
 
 #: assets/templates/bookmarks/import/form-text.jet.html:9
 #: assets/templates/bookmarks/import/index.jet.html:32
@@ -1177,7 +1182,7 @@ msgstr ""
 "\n"
 "    Puja un arxiu de text que contingui un enllaç per línia i el Readeck els "
 "buscarà tots\n"
-"\ti els desarà a la teva llista de marcadors.\n"
+"    i els desarà a la teva llista de marcadors.\n"
 "  "
 
 #: assets/templates/bookmarks/import/form-wallabag.jet.html:9
@@ -1194,9 +1199,9 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"    Per importar els vostres articles des de Wallabag, primer heu de crear "
+"    Per importar els vostres articles des de Wallabag, primer has de crear "
 "un client API\n"
-"    al menú de <strong>gestió de clients API</strong> de Wallabag. Això us "
+"    al menú de <strong>gestió de clients API</strong> de Wallabag. Això et "
 "proporcionarà\n"
 "    un <strong>ID de client</strong> i un <strong>secret de client</strong>."
 "\n"
@@ -1275,7 +1280,7 @@ msgstr "Arxivar tots els enllaços"
 
 #: assets/templates/bookmarks/import/options.jet.html:23
 msgid "Moves all links to archive, regardless of their original status"
-msgstr "Mou tots els enllaços a l'arxiu, al marge del seu estatus original"
+msgstr "Mou tots els enllaços als arxivats, al marge del seu estatus original"
 
 #: assets/templates/bookmarks/import/options.jet.html:27
 msgid "Mark all links as read"
@@ -1311,8 +1316,8 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"      Els vostres marcadors ja estan disponibles a la vostra <a class=\"%s\" "
-"href=\"%s\">llista de marcadors</a>.\n"
+"      Els teus marcadors ja estan disponibles a la teva <a class=\"%s\" href="
+"\"%s\">llista de marcadors</a>.\n"
 "      "
 
 # | msgid "Bookmark Highlights"
@@ -1327,7 +1332,7 @@ msgstr "Guarda un enllaç nou"
 #: assets/templates/bookmarks/index.jet.html:40
 msgctxt "button"
 msgid "Save link"
-msgstr "Guardar l'enllaç"
+msgstr "Guarda l'enllaç"
 
 #: assets/templates/bookmarks/index.jet.html:49
 #, python-format
@@ -1344,7 +1349,7 @@ msgstr ""
 #, python-format
 msgid "Read more about bookmarks in the <a class=\"%s\" href=\"%s\">documentation</a>."
 msgstr ""
-"Llegiu més informació sobre els marcadors a la <a class=\"%s\" href=\"%s\""
+"Llegeix més informació sobre els marcadors a la <a class=\"%s\" href=\"%s\""
 ">documentació</a>."
 
 #: assets/templates/bookmarks/index.jet.html:85
@@ -1354,7 +1359,7 @@ msgstr "Extensió del Readeck pel navegador"
 # | msgid "Import bookmarks"
 #: assets/templates/bookmarks/index.jet.html:101
 msgid "Import existing bookmarks"
-msgstr "Importa adreces d'interès existents"
+msgstr "Importa marcadors existents"
 
 #: assets/templates/bookmarks/index.jet.html:103
 msgid ""
@@ -1364,9 +1369,9 @@ msgid ""
 "            "
 msgstr ""
 "\n"
-"              Voleu importar des d'una eina similar o des d'un arxiu amb "
+"              Vols importar des d'una eina similar o des d'un arxiu amb "
 "marcadors existents?\n"
-"              Proveu l'eina d'importació del Readeck.\n"
+"              Prova l'eina d'importació del Readeck.\n"
 "            "
 
 #: assets/templates/bookmarks/index.jet.html:110
@@ -1375,7 +1380,7 @@ msgstr "Importa enllaços i articles"
 
 #: assets/templates/bookmarks/index.jet.html:137
 msgid "Import bookmarks"
-msgstr "Importa adreces d'interès"
+msgstr "Importa marcadors"
 
 #: assets/templates/bookmarks/index.jet.html:146
 msgid "Your search query yielded <strong>no results</strong>."
@@ -1395,7 +1400,7 @@ msgstr "Cerca"
 
 #: assets/templates/bookmarks/index.jet.html:181
 msgid "Reset search"
-msgstr "Reinicialitza la cerca"
+msgstr "Reinicia la cerca"
 
 #: assets/templates/bookmarks/index.jet.html:184
 msgid "Create a collection"
@@ -1421,7 +1426,7 @@ msgid ""
 msgstr ""
 "\n"
 "  Les etiquetes et permeten organitzar els teus marcadors com vulguis.\n"
-"Pots definir qualsevol cosa com una etiqueta, inclosos els emojis!\n"
+"Pots definir qualsevol cosa com una etiqueta, fins i tot emojis!\n"
 
 #: assets/templates/docs/about.jet.html:8
 #: assets/templates/docs/base.jet.html:27 docs/http.go:258
@@ -1443,8 +1448,8 @@ msgstr "Informació del sistema"
 #: assets/templates/docs/about.jet.html:20
 msgid "Here are your current system information. Please include them if you report a bug."
 msgstr ""
-"Aquí teniu la informació actual del vostre sistema. Si us plau, incloeu-la "
-"si informeu d'un error."
+"Aquí tens la informació actual del teu sistema. Si us plau, inclou-la si "
+"informes d'un error."
 
 #: assets/templates/docs/about.jet.html:33
 msgid "Project"
@@ -1481,7 +1486,7 @@ msgstr "El Readeck es distribueix sota els termes de la llicència \"%s\""
 
 #: assets/templates/docs/about.jet.html:49
 msgid "Here's a short summary of the license conditions:"
-msgstr "Aquí teniu un breu resum de les condicions de la llicència:"
+msgstr "Aquí tens un breu resum de les condicions de la llicència:"
 
 #: assets/templates/docs/about.jet.html:54
 msgid "Permissions"
@@ -1575,7 +1580,7 @@ msgstr ""
 "\n"
 "Hola!\n"
 "\n"
-"Aquí teniu el vostre llibre electrònic per a: **%s**\n"
+"Aquí tens el teu llibre electrònic per a: **%s**\n"
 
 #: assets/templates/emails/recover.jet.md:7
 #, python-format
@@ -1742,10 +1747,10 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"        Si teniu previst enviar llibres electrònics a un dispositiu Kindle, "
-"heu d'aprovar\n"
-"        la següent adreça de correu electrònic dins del vostre compte de "
-"Kindle:\n"
+"        Si tens previst enviar llibres electrònics a un dispositiu Kindle, "
+"has d'aprovar\n"
+"        la següent adreça de correu electrònic dins del teu compte de Kindle:"
+"\n"
 "        "
 
 #: assets/templates/profile/password.jet.html:9
@@ -1890,7 +1895,7 @@ msgstr ""
 #, python-format
 msgid "Please read the <a href=\"%s\">API Documentation</a> if you plan to use it."
 msgstr ""
-"Si teniu previst utilitzar-la, llegiu la <a href=\"%s\">documentació de "
+"Si tens previst utilitzar-la, llegeix la <a href=\"%s\">documentació de "
 "l'API</a>."
 
 #: assets/templates/profile/token_list.jet.html:26
@@ -2104,7 +2109,7 @@ msgstr "Cerca de marcadors"
 
 #: internal/bookmarks/routes/views_bookmarks.go:109 internal/opds/http.go:58
 msgid "Unread Bookmarks"
-msgstr "Marcadors sense llegir"
+msgstr "Marcadors no llegits"
 
 #: internal/bookmarks/routes/views_bookmarks.go:111 internal/opds/http.go:62
 msgid "Archived Bookmarks"
