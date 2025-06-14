@@ -36,14 +36,14 @@ type readwiseBookmarkItem struct {
 
 const (
 	// Readwise Reader exported CSV headers are:
-	// Title,URL,ID,Document tags,Saved date,Reading progress,Location,Seen
+	// Title, URL, ID, Document tags, Saved date, Reading progress, Location, Seen.
 	readwiseHeaderTitle    = 0
 	readwiseHeaderURL      = 1
 	readwiseHeaderTags     = 3
 	readwiseHeaderCreated  = 4
 	readwiseHeaderLocation = 6
 
-	// Basically time.RFC3339, but with space character instead of "T"
+	// Basically time.RFC3339, but with space character instead of "T".
 	readwiseTimeFormat = "2006-01-02 15:04:05-07:00"
 )
 
