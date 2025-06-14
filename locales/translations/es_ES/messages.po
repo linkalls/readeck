@@ -6,17 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Readeck 1.0.0\n"
 "Report-Msgid-Bugs-To: translate@readeck.com\n"
-"POT-Creation-Date: 2025-05-25 07:29+0000\n"
+"POT-Creation-Date: 2025-06-14 12:52+0200\n"
 "PO-Revision-Date: 2025-05-26 05:49+0000\n"
 "Last-Translator: elmau <elmau@noreply.codeberg.org>\n"
-"Language-Team: Spanish <https://translate.codeberg.org/projects/readeck/"
-"application/es/>\n"
 "Language: es_ES\n"
+"Language-Team: Spanish <https://translate.codeberg.org/projects/readeck/application/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.11.4\n"
 "Generated-By: Babel 2.17.0\n"
 
 #: assets/templates/_layouts/sidemenu.jet.html:29
@@ -129,16 +127,17 @@ msgstr "El usuario será eliminado en unos segundos"
 
 #: assets/templates/admin/user.jet.html:20
 #: assets/templates/admin/user_list.jet.html:44
-#: assets/templates/bookmarks/collection.jet.html:22
+#: assets/templates/bookmarks/collection.jet.html:28
 #: assets/templates/bookmarks/components/card.jet.html:101
 #: assets/templates/bookmarks/import/form-browser.jet.html:49
 #: assets/templates/bookmarks/import/form-csv.jet.html:35
 #: assets/templates/bookmarks/import/form-goodlinks.jet.html:35
 #: assets/templates/bookmarks/import/form-omnivore.jet.html:44
 #: assets/templates/bookmarks/import/form-pocket-file.jet.html:51
+#: assets/templates/bookmarks/import/form-readwise.jet.html:35
 #: assets/templates/bookmarks/import/form-text.jet.html:36
 #: assets/templates/bookmarks/import/form-wallabag.jet.html:70
-#: assets/templates/bookmarks/label.jet.html:52
+#: assets/templates/bookmarks/label.jet.html:59
 #: assets/templates/profile/token.jet.html:20
 #: assets/templates/profile/token_list.jet.html:68
 msgid "Cancel"
@@ -178,9 +177,9 @@ msgid "will not change if empty"
 msgstr "no cambiará si está vacío"
 
 #: assets/templates/admin/user.jet.html:52
-#: assets/templates/bookmarks/collection.jet.html:78
+#: assets/templates/bookmarks/collection.jet.html:84
 #: assets/templates/bookmarks/collection_create.jet.html:30
-#: assets/templates/profile/index.jet.html:80
+#: assets/templates/profile/index.jet.html:84
 #: assets/templates/profile/password.jet.html:36
 #: assets/templates/profile/token.jet.html:75
 msgid "Save"
@@ -235,7 +234,7 @@ msgid "Forgot your password?"
 msgstr "¿Olvidó su contraseña?"
 
 #: assets/templates/auth/onboarding.jet.html:9
-#: assets/templates/bookmarks/index.jet.html:71
+#: assets/templates/bookmarks/index.jet.html:76
 msgid "Welcome to Readeck!"
 msgstr "Le damos la bienvenida a Readeck."
 
@@ -363,65 +362,65 @@ msgstr ""
 msgid "Read more about highlights in the <a class=\"%s\" href=\"%s\">documentation</a>."
 msgstr "Obtenga más información sobre los aspectos destacados en la <a class=\"%s\" href=\"%s\">documentación</a>."
 
-#: assets/templates/bookmarks/base.jet.html:13
+#: assets/templates/bookmarks/base.jet.html:15
 #: assets/templates/bookmarks/bookmark.jet.html:15
 #: assets/templates/menu.jet.html:20
 msgid "Bookmarks"
 msgstr "Marcadores"
 
-#: assets/templates/bookmarks/base.jet.html:29
+#: assets/templates/bookmarks/base.jet.html:31
 msgid "All"
 msgstr "Todo"
 
-#: assets/templates/bookmarks/base.jet.html:32
+#: assets/templates/bookmarks/base.jet.html:34
 msgid "Unread"
 msgstr "No leído"
 
-#: assets/templates/bookmarks/base.jet.html:35
+#: assets/templates/bookmarks/base.jet.html:37
 msgid "Archive"
 msgstr "Archivo"
 
-#: assets/templates/bookmarks/base.jet.html:38
+#: assets/templates/bookmarks/base.jet.html:40
 msgid "Favorites"
 msgstr "Favoritos"
 
-#: assets/templates/bookmarks/base.jet.html:46
+#: assets/templates/bookmarks/base.jet.html:48
 #: internal/bookmarks/routes/views_bookmarks.go:115
 msgid "Articles"
 msgstr "Artículos"
 
-#: assets/templates/bookmarks/base.jet.html:52
+#: assets/templates/bookmarks/base.jet.html:54
 #: internal/bookmarks/routes/views_bookmarks.go:119
 msgid "Videos"
 msgstr "Videos"
 
-#: assets/templates/bookmarks/base.jet.html:58
+#: assets/templates/bookmarks/base.jet.html:60
 #: internal/bookmarks/routes/views_bookmarks.go:117
 msgid "Pictures"
 msgstr "Imágenes"
 
-#: assets/templates/bookmarks/base.jet.html:68
+#: assets/templates/bookmarks/base.jet.html:70
 #: assets/templates/bookmarks/components/sidebar.jet.html:91
 msgid "Labels"
 msgstr "Etiquetas"
 
-#: assets/templates/bookmarks/base.jet.html:70
+#: assets/templates/bookmarks/base.jet.html:72
 #: assets/templates/bookmarks/components/sidebar.jet.html:96
 msgid "Highlights"
 msgstr "Resaltados"
 
-#: assets/templates/bookmarks/base.jet.html:72
+#: assets/templates/bookmarks/base.jet.html:74
 #: assets/templates/bookmarks/collection.jet.html:11
-#: assets/templates/bookmarks/collection.jet.html:33
+#: assets/templates/bookmarks/collection.jet.html:39
 msgid "Collections"
 msgstr "Colecciones"
 
-#: assets/templates/bookmarks/base.jet.html:88
+#: assets/templates/bookmarks/base.jet.html:90
 msgid "Did you know?"
 msgstr "¿Lo sabía?"
 
-#: assets/templates/bookmarks/base.jet.html:89
-#: assets/templates/bookmarks/index.jet.html:87
+#: assets/templates/bookmarks/base.jet.html:91
+#: assets/templates/bookmarks/index.jet.html:92
 msgid ""
 "\n"
 "            With the Browser Extension, you can save pages, images and selections\n"
@@ -431,12 +430,12 @@ msgstr ""
 "            Con la extensión, puede guardar páginas, imágenes y selecciones\n"
 "            directamente desde el navegador."
 
-#: assets/templates/bookmarks/base.jet.html:96
-#: assets/templates/bookmarks/index.jet.html:94
+#: assets/templates/bookmarks/base.jet.html:98
+#: assets/templates/bookmarks/index.jet.html:99
 msgid "Learn more"
 msgstr "Más información"
 
-#: assets/templates/bookmarks/base.jet.html:105
+#: assets/templates/bookmarks/base.jet.html:107
 msgid "Don't remind me"
 msgstr "No recordármelo"
 
@@ -458,6 +457,43 @@ msgstr "Carga de marcadores"
 msgid "Bookmark is loading"
 msgstr "El marcador se está cargando"
 
+#: assets/templates/bookmarks/bookmark_atom.jet.html:7
+#: assets/templates/bookmarks/components/sidebar.jet.html:1
+#: assets/templates/bookmarks/components/sidebar.jet.html:49
+#: assets/templates/emails/bookmark.jet.html:16
+#: assets/templates/epub/bookmark.jet.html:34
+msgid "no site name"
+msgstr "sin nombre del sitio"
+
+#: assets/templates/bookmarks/bookmark_atom.jet.html:9
+#: assets/templates/bookmarks/bookmark_public.jet.html:78
+#: assets/templates/bookmarks/components/sidebar.jet.html:56
+#: assets/templates/emails/bookmark.jet.html:20
+#: assets/templates/epub/bookmark.jet.html:37
+#, python-format
+msgid "Published on %s"
+msgstr "Publicado en %s"
+
+#: assets/templates/bookmarks/bookmark_atom.jet.html:12
+#: assets/templates/bookmarks/bookmark_public.jet.html:83
+#: assets/templates/bookmarks/components/sidebar.jet.html:61
+#: assets/templates/emails/bookmark.jet.html:23
+#: assets/templates/epub/bookmark.jet.html:40
+#, python-format
+msgid "By %s"
+msgstr "Por %s"
+
+# | msgid "About %d min read"
+#: assets/templates/bookmarks/bookmark_atom.jet.html:17
+#: assets/templates/bookmarks/components/sidebar.jet.html:69
+#: assets/templates/emails/bookmark.jet.html:27
+#: assets/templates/epub/bookmark.jet.html:45
+#, python-format
+msgid "About %d minute read"
+msgid_plural "About %d minutes read"
+msgstr[0] "Un %d minuto de lectura"
+msgstr[1] "Unos %d minutos de lectura"
+
 #: assets/templates/bookmarks/bookmark_missing.jet.html:9
 #: assets/templates/bookmarks/bookmark_missing.jet.html:14
 msgid "Bookmark not found"
@@ -474,22 +510,6 @@ msgstr "Página no encontrada"
 #: assets/templates/bookmarks/bookmark_public.jet.html:56
 msgid "Page has expired"
 msgstr "La página ha caducado"
-
-#: assets/templates/bookmarks/bookmark_public.jet.html:78
-#: assets/templates/bookmarks/components/sidebar.jet.html:56
-#: assets/templates/emails/bookmark.jet.html:20
-#: assets/templates/epub/bookmark.jet.html:37
-#, python-format
-msgid "Published on %s"
-msgstr "Publicado en %s"
-
-#: assets/templates/bookmarks/bookmark_public.jet.html:83
-#: assets/templates/bookmarks/components/sidebar.jet.html:61
-#: assets/templates/emails/bookmark.jet.html:23
-#: assets/templates/epub/bookmark.jet.html:40
-#, python-format
-msgid "By %s"
-msgstr "Por %s"
 
 #: assets/templates/bookmarks/bookmark_public.jet.html:91
 #, python-format
@@ -522,40 +542,40 @@ msgstr "Compartir: %s"
 msgid "Share link"
 msgstr "Compartir enlace"
 
-#: assets/templates/bookmarks/collection.jet.html:16
+#: assets/templates/bookmarks/collection.jet.html:22
 #, python-format
 msgid "Collection %s"
 msgstr "Colección %s"
 
-#: assets/templates/bookmarks/collection.jet.html:21
+#: assets/templates/bookmarks/collection.jet.html:27
 msgid "Collection will be removed in a few seconds."
 msgstr "La colección se eliminará en unos segundos."
 
-#: assets/templates/bookmarks/collection.jet.html:42
-#: assets/templates/bookmarks/collection.jet.html:55
+#: assets/templates/bookmarks/collection.jet.html:48
+#: assets/templates/bookmarks/collection.jet.html:61
 msgid "Edit"
 msgstr "Editar"
 
-#: assets/templates/bookmarks/collection.jet.html:57
-#: assets/templates/bookmarks/index.jet.html:129
-#: assets/templates/bookmarks/index.jet.html:163
-#: assets/templates/bookmarks/index.jet.html:166
+#: assets/templates/bookmarks/collection.jet.html:63
+#: assets/templates/bookmarks/index.jet.html:134
+#: assets/templates/bookmarks/index.jet.html:168
+#: assets/templates/bookmarks/index.jet.html:171
 msgid "Filters"
 msgstr "Filtros"
 
-#: assets/templates/bookmarks/collection.jet.html:60
-#: assets/templates/bookmarks/index.jet.html:169
+#: assets/templates/bookmarks/collection.jet.html:66
+#: assets/templates/bookmarks/index.jet.html:174
 #: assets/templates/menu.jet.html:43 docs/http.go:178 docs/http.go:257
 #: docs/http.go:295
 msgid "Documentation"
 msgstr "Documentación"
 
-#: assets/templates/bookmarks/collection.jet.html:68
+#: assets/templates/bookmarks/collection.jet.html:74
 #: assets/templates/bookmarks/collection_create.jet.html:23
 msgid "Name"
 msgstr "Nombre"
 
-#: assets/templates/bookmarks/collection.jet.html:80
+#: assets/templates/bookmarks/collection.jet.html:86
 msgid "Delete collection"
 msgstr "Eliminar colección"
 
@@ -742,7 +762,7 @@ msgstr "Sitio"
 
 #: assets/templates/bookmarks/components/filters.jet.html:29
 #: assets/templates/bookmarks/import/options.jet.html:10
-#: assets/templates/bookmarks/label.jet.html:10
+#: assets/templates/bookmarks/label.jet.html:11
 msgid "Label"
 msgstr "Etiqueta"
 
@@ -811,7 +831,7 @@ msgstr "Quitar etiqueta"
 msgid "Add a label"
 msgstr "Añadir etiqueta"
 
-#: assets/templates/bookmarks/components/labels_form.jet.html:35
+#: assets/templates/bookmarks/components/labels_form.jet.html:36
 msgid "Add label"
 msgstr "Agregar etiqueta"
 
@@ -842,6 +862,10 @@ msgstr "Opciones de ordenación"
 #: assets/templates/bookmarks/components/list_actions.jet.html:1
 msgid "Import and export"
 msgstr "Importar y exportar"
+
+#: assets/templates/bookmarks/components/list_actions.jet.html:80
+msgid "Atom Feed"
+msgstr ""
 
 #: assets/templates/bookmarks/components/reader_control.jet.html:24
 msgid "Font"
@@ -912,26 +936,9 @@ msgstr "Caduca el %s"
 msgid "Copy the link"
 msgstr "Copiar el enlace"
 
-#: assets/templates/bookmarks/components/sidebar.jet.html:1
-#: assets/templates/bookmarks/components/sidebar.jet.html:49
-#: assets/templates/emails/bookmark.jet.html:16
-#: assets/templates/epub/bookmark.jet.html:34
-msgid "no site name"
-msgstr "sin nombre del sitio"
-
 #: assets/templates/bookmarks/components/sidebar.jet.html:13
 msgid "Errors occurred during extraction."
 msgstr "Se han producido errores durante la extracción."
-
-# | msgid "About %d min read"
-#: assets/templates/bookmarks/components/sidebar.jet.html:69
-#: assets/templates/emails/bookmark.jet.html:27
-#: assets/templates/epub/bookmark.jet.html:45
-#, python-format
-msgid "About %d minute read"
-msgid_plural "About %d minutes read"
-msgstr[0] "Un %d minuto de lectura"
-msgstr[1] "Unos %d minutos de lectura"
 
 #: assets/templates/bookmarks/components/sidebar.jet.html:99
 msgid "Start selecting text in the article to create a new highlight."
@@ -971,6 +978,7 @@ msgstr "Instrucciones para Chrome"
 #: assets/templates/bookmarks/import/form-csv.jet.html:27
 #: assets/templates/bookmarks/import/form-goodlinks.jet.html:27
 #: assets/templates/bookmarks/import/form-pocket-file.jet.html:42
+#: assets/templates/bookmarks/import/form-readwise.jet.html:27
 #: assets/templates/bookmarks/import/form-text.jet.html:28
 msgid "File"
 msgstr "Archivo"
@@ -988,6 +996,7 @@ msgstr "Añade una etiqueta a los enlaces en función del título de sección"
 #: assets/templates/bookmarks/import/form-goodlinks.jet.html:34
 #: assets/templates/bookmarks/import/form-omnivore.jet.html:43
 #: assets/templates/bookmarks/import/form-pocket-file.jet.html:50
+#: assets/templates/bookmarks/import/form-readwise.jet.html:34
 #: assets/templates/bookmarks/import/form-text.jet.html:35
 #: assets/templates/bookmarks/import/form-wallabag.jet.html:69
 msgid "Import Bookmarks"
@@ -1008,8 +1017,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"    Cargue un archivo CSV de Instapaper o cualquier archivo CSV que coincida "
-"con el formato especificado a continuación.\n"
+"    Cargue un archivo CSV de Instapaper o cualquier archivo CSV que coincida con el formato especificado a continuación.\n"
 "  "
 
 #: assets/templates/bookmarks/import/form-csv.jet.html:41
@@ -1086,7 +1094,7 @@ msgstr ""
 "  "
 
 #: assets/templates/bookmarks/import/form-omnivore.jet.html:9
-#: assets/templates/bookmarks/import/index.jet.html:47
+#: assets/templates/bookmarks/import/index.jet.html:51
 msgid "Import your Omnivore Articles"
 msgstr "Importar sus artículos de Omnivore"
 
@@ -1115,7 +1123,7 @@ msgid "API Key"
 msgstr "Clave de API"
 
 #: assets/templates/bookmarks/import/form-pocket-file.jet.html:9
-#: assets/templates/bookmarks/import/index.jet.html:50
+#: assets/templates/bookmarks/import/index.jet.html:54
 msgid "Import your Pocket Articles"
 msgstr "Importar sus artículos de Pocket"
 
@@ -1162,6 +1170,64 @@ msgstr ""
 msgid "Note: upload the ZIP file directly, not its contents"
 msgstr "Nota: cargue el archivo ZIP directamente, no su contenido"
 
+# | msgid "Import Links from a Text File"
+#: assets/templates/bookmarks/import/form-readwise.jet.html:9
+#, fuzzy
+#| msgid "Import Links from a CSV File"
+msgid "Import Links from Readwise Reader CSV export"
+msgstr "Importar enlaces desde un archivo CSV"
+
+#: assets/templates/bookmarks/import/form-readwise.jet.html:15
+#, fuzzy
+#| msgid "" "\n" "    Upload a JSON file obtained from your GoodLinks app.\n" "
+#| "
+msgid ""
+"\n"
+"    Upload a CSV file exported from your Readwise Reader account below.\n"
+"  "
+msgstr ""
+"\n"
+"    Cargue un archivo JSON obtenido de su aplicación de GoodLinks.\n"
+"  "
+
+#: assets/templates/bookmarks/import/form-readwise.jet.html:39
+msgid "Which information is imported"
+msgstr ""
+
+#: assets/templates/bookmarks/import/form-readwise.jet.html:42
+msgid "Article title, URL, and when it was first saved,"
+msgstr ""
+
+#: assets/templates/bookmarks/import/form-readwise.jet.html:43
+msgid "The archived state of an article,"
+msgstr ""
+
+#: assets/templates/bookmarks/import/form-readwise.jet.html:44
+#, python-format
+msgid "\"%s\" as Readeck labels,"
+msgstr ""
+
+#: assets/templates/bookmarks/import/form-readwise.jet.html:45
+#, python-format
+msgid "When a document tag contains \"%s\", the bookmark will be added to Readeck Favorites."
+msgstr ""
+
+#: assets/templates/bookmarks/import/form-readwise.jet.html:47
+msgid "What is not imported:"
+msgstr ""
+
+#: assets/templates/bookmarks/import/form-readwise.jet.html:49
+msgid "Article reading progress and seen status,"
+msgstr ""
+
+#: assets/templates/bookmarks/import/form-readwise.jet.html:50
+msgid "Articles forwarded to Readwise Reader by email,"
+msgstr ""
+
+#: assets/templates/bookmarks/import/form-readwise.jet.html:51
+msgid "Uploaded documents such as PDFs or EPUB."
+msgstr ""
+
 #: assets/templates/bookmarks/import/form-text.jet.html:9
 #: assets/templates/bookmarks/import/index.jet.html:32
 msgid "Import Links from a Text File"
@@ -1180,7 +1246,7 @@ msgstr ""
 "  "
 
 #: assets/templates/bookmarks/import/form-wallabag.jet.html:9
-#: assets/templates/bookmarks/import/index.jet.html:53
+#: assets/templates/bookmarks/import/index.jet.html:57
 msgid "Import your Wallabag Articles"
 msgstr "Importa tus artículos de Wallabag"
 
@@ -1239,15 +1305,19 @@ msgstr ""
 "  "
 
 #: assets/templates/bookmarks/import/index.jet.html:36
+msgid "Import your Readwise Reader Library"
+msgstr ""
+
+#: assets/templates/bookmarks/import/index.jet.html:40
 msgid "Import your Browser's Bookmarks, Pinboard, Instapaper"
 msgstr "Importa tus marcadores del navegador, Pinboard, Instapaper"
 
 # | msgid "Import Links from a Text File"
-#: assets/templates/bookmarks/import/index.jet.html:40
+#: assets/templates/bookmarks/import/index.jet.html:44
 msgid "Import Links from a CSV File and Instapaper"
 msgstr "Importar enlaces desde un archivo CSV e Instapaper"
 
-#: assets/templates/bookmarks/import/index.jet.html:44
+#: assets/templates/bookmarks/import/index.jet.html:48
 msgid "Import your GoodLinks Articles"
 msgstr "Importar sus artículos de GoodLinks"
 
@@ -1312,43 +1382,43 @@ msgstr ""
 msgid "Bookmark filters"
 msgstr "Filtros de marcadores"
 
-#: assets/templates/bookmarks/index.jet.html:27
+#: assets/templates/bookmarks/index.jet.html:32
 msgid "Save a new link"
 msgstr "Guardar un nuevo enlace"
 
-#: assets/templates/bookmarks/index.jet.html:40
+#: assets/templates/bookmarks/index.jet.html:45
 msgctxt "button"
 msgid "Save link"
 msgstr "Guardar enlace"
 
-#: assets/templates/bookmarks/index.jet.html:49
+#: assets/templates/bookmarks/index.jet.html:54
 #, python-format
 msgid "\"%s\" is not a valid address. Did you mean to search your bookmarks for %s?"
 msgstr "«%s» no es una dirección válida. ¿Quería buscar %s en sus marcadores?"
 
-#: assets/templates/bookmarks/index.jet.html:73
+#: assets/templates/bookmarks/index.jet.html:78
 msgid "You don't have any bookmarks yet.<br> Copy a link in the field above and start saving."
 msgstr "Todavía no tienes ningún marcador.<br> Copie un enlace en el campo de arriba y comience a ahorrar."
 
-#: assets/templates/bookmarks/index.jet.html:75
+#: assets/templates/bookmarks/index.jet.html:80
 #, python-format
 msgid "Read more about bookmarks in the <a class=\"%s\" href=\"%s\">documentation</a>."
 msgstr "Conozca más sobre los marcadores en la <a class=\"%s\" href=\"%s\">documentación</a>."
 
 # | msgid "Readeck Bookmark Collections"
-#: assets/templates/bookmarks/index.jet.html:85
+#: assets/templates/bookmarks/index.jet.html:90
 msgid "Readeck Browser Extension"
 msgstr "Extensión Readeck para el navegador"
 
 # | msgid "Import bookmarks"
-#: assets/templates/bookmarks/index.jet.html:101
+#: assets/templates/bookmarks/index.jet.html:106
 msgid "Import existing bookmarks"
 msgstr "Importar favoritos existentes"
 
 # | msgid "" "\n" "          Would you like to import from a similar tool or
 # | from a file with existing bookmarks?\n" "          Try Readeck's import
 # | tool.\n" "        "
-#: assets/templates/bookmarks/index.jet.html:103
+#: assets/templates/bookmarks/index.jet.html:108
 msgid ""
 "\n"
 "              Would you like to import from a similar tool or from a file with existing bookmarks?\n"
@@ -1360,43 +1430,43 @@ msgstr ""
 "              Pruebe la herramienta de importación de Readeck.\n"
 "            "
 
-#: assets/templates/bookmarks/index.jet.html:110
+#: assets/templates/bookmarks/index.jet.html:115
 msgid "Import links and articles"
 msgstr "Importar enlaces y artículos"
 
-#: assets/templates/bookmarks/index.jet.html:137
+#: assets/templates/bookmarks/index.jet.html:142
 msgid "Import bookmarks"
 msgstr "Importar marcadores"
 
-#: assets/templates/bookmarks/index.jet.html:146
+#: assets/templates/bookmarks/index.jet.html:151
 msgid "Your search query yielded <strong>no results</strong>."
 msgstr "Su consulta de búsqueda no arrojó <strong>ningún resultado</strong>."
 
-#: assets/templates/bookmarks/index.jet.html:148
+#: assets/templates/bookmarks/index.jet.html:153
 #, python-format
 msgid "Your search query yielded <strong>%d result</strong>."
 msgid_plural "Your search query yielded <strong>%d results</strong>."
 msgstr[0] "Su búsqueda ha dado <strong>%d resultado</strong>."
 msgstr[1] "Su búsqueda ha dado <strong>%d resultados</strong>."
 
-#: assets/templates/bookmarks/index.jet.html:179
+#: assets/templates/bookmarks/index.jet.html:184
 msgctxt "action"
 msgid "Search"
 msgstr "Buscar"
 
-#: assets/templates/bookmarks/index.jet.html:181
+#: assets/templates/bookmarks/index.jet.html:186
 msgid "Reset search"
 msgstr "Restablecer búsqueda"
 
-#: assets/templates/bookmarks/index.jet.html:184
+#: assets/templates/bookmarks/index.jet.html:189
 msgid "Create a collection"
 msgstr "Crear una colección"
 
-#: assets/templates/bookmarks/label.jet.html:37
+#: assets/templates/bookmarks/label.jet.html:44
 msgid "Delete"
 msgstr "Borrar"
 
-#: assets/templates/bookmarks/label.jet.html:51
+#: assets/templates/bookmarks/label.jet.html:58
 msgid "Label will be removed in a few seconds."
 msgstr "La etiqueta se eliminará en unos segundos."
 
@@ -1689,11 +1759,11 @@ msgid "Language"
 msgstr "Idioma"
 
 # | msgid "Settings"
-#: assets/templates/profile/index.jet.html:48
+#: assets/templates/profile/index.jet.html:50
 msgid "Email settings"
 msgstr "Configuración del correo electrónico"
 
-#: assets/templates/profile/index.jet.html:49
+#: assets/templates/profile/index.jet.html:51
 msgid ""
 "\n"
 "    These, optional, parameters are used when Readeck sends emails.\n"
@@ -1703,28 +1773,32 @@ msgstr ""
 "    Estos parámetros opcionales, se utilizan cuando Readeck envía correos electrónicos.\n"
 "    "
 
-#: assets/templates/profile/index.jet.html:55
+#: assets/templates/profile/index.jet.html:57
 msgid "Reply To"
 msgstr "Responder a"
 
-#: assets/templates/profile/index.jet.html:56
+#: assets/templates/profile/index.jet.html:58
 msgid "Add this email address in your outgoing emails so recipients can reply."
 msgstr "Añada esta dirección de correo electrónico en sus mensajes salientes para que los destinatarios puedan responder."
 
-#: assets/templates/profile/index.jet.html:61
+#: assets/templates/profile/index.jet.html:63
 msgid "Send EPUB to"
 msgstr "Enviar EPUB a"
 
-#: assets/templates/profile/index.jet.html:62
+#: assets/templates/profile/index.jet.html:64
 msgid "This address is used to prefill the recipient when you send an e-book by email."
 msgstr "Esta dirección se utiliza para rellenar previamente el destinatario cuando se envía un libro electrónico por correo electrónico."
 
-#: assets/templates/profile/index.jet.html:69
+#: assets/templates/profile/index.jet.html:72
+#, fuzzy
+#| msgid "" "\n" "        If you plan to send e-books to a Kindle device, you
+#| must approve the\n" "        following email address within your Kindle
+#| Account:\n" "        "
 msgid ""
 "\n"
-"        If you plan to send e-books to a Kindle device, you must approve the\n"
-"        following email address within your Kindle Account:\n"
-"        "
+"          If you plan to send e-books to a Kindle device, you must approve the\n"
+"          following email address within your Kindle Account:\n"
+"          "
 msgstr ""
 "\n"
 "        Si tiene previsto enviar libros electrónicos a un dispositivo Kindle, debe aprobar\n"
@@ -1837,19 +1911,15 @@ msgstr "Como contraseña"
 
 #: assets/templates/profile/token.jet.html:115
 msgid "Alternatively, you can use this token as a password for HTTP Basic Authentication."
-msgstr ""
-"Alternativamente, puede utilizar este token como contraseña para la "
-"autenticación básica HTTP."
+msgstr "Alternativamente, puede utilizar este token como contraseña para la autenticación básica HTTP."
 
 #: assets/templates/profile/token.jet.html:116
 msgid ""
 "For example, if an application only accepts a username and password, you can provide this token as a password.\n"
 "  The username is ignored and can be anything, including an empty value."
 msgstr ""
-"Por ejemplo, si una aplicación sólo acepta un nombre de usuario y una "
-"contraseña, puede proporcionar este token como contraseña..\n"
-"  El nombre de usuario es ignorado y puede ser cualquier cosa, incluso un "
-"valor vacío."
+"Por ejemplo, si una aplicación sólo acepta un nombre de usuario y una contraseña, puede proporcionar este token como contraseña..\n"
+"  El nombre de usuario es ignorado y puede ser cualquier cosa, incluso un valor vacío."
 
 #: assets/templates/profile/token_list.jet.html:10
 msgid "My API Tokens"
@@ -1935,7 +2005,11 @@ msgstr "No se puede leer el contenido HTML"
 #: internal/bookmarks/importer/csv.go:153
 #: internal/bookmarks/importer/csv.go:158
 #: internal/bookmarks/importer/csv.go:167
-#: internal/bookmarks/importer/importer.go:45
+#: internal/bookmarks/importer/importer.go:46
+#: internal/bookmarks/importer/readwise.go:157
+#: internal/bookmarks/importer/readwise.go:168
+#: internal/bookmarks/importer/readwise.go:175
+#: internal/bookmarks/importer/readwise.go:183
 msgid "Empty or invalid import file"
 msgstr "Archivo de importación vacío o no válido"
 
@@ -1951,6 +2025,10 @@ msgstr "Archivo de exportación de GoodLinks"
 #: internal/bookmarks/importer/omnivore.go:247
 msgid "Invalid API Key"
 msgstr "Clave de API no válida"
+
+#: internal/bookmarks/importer/readwise.go:133
+msgid "Readwise Reader CSV"
+msgstr ""
 
 #: internal/bookmarks/importer/text.go:24
 msgid "Text File"
@@ -1968,83 +2046,83 @@ msgstr "Credenciales no válidas"
 msgid "No access token found"
 msgstr "No se encontró ningún token de acceso"
 
-#: internal/bookmarks/routes/forms_bookmarks.go:139
+#: internal/bookmarks/routes/forms_bookmarks.go:140
 msgid "Unable to process input data"
 msgstr "No se pueden procesar los datos de entrada"
 
-#: internal/bookmarks/routes/forms_bookmarks.go:380
+#: internal/bookmarks/routes/forms_bookmarks.go:382
 msgid "Article"
 msgstr "Artículo"
 
-#: internal/bookmarks/routes/forms_bookmarks.go:381
+#: internal/bookmarks/routes/forms_bookmarks.go:383
 msgid "Picture"
 msgstr "Foto"
 
-#: internal/bookmarks/routes/forms_bookmarks.go:382
+#: internal/bookmarks/routes/forms_bookmarks.go:384
 msgid "Video"
 msgstr "Video"
 
-#: internal/bookmarks/routes/forms_bookmarks.go:389
+#: internal/bookmarks/routes/forms_bookmarks.go:391
 msgctxt "status"
 msgid "Unviewed"
 msgstr "Sin leer"
 
-#: internal/bookmarks/routes/forms_bookmarks.go:390
+#: internal/bookmarks/routes/forms_bookmarks.go:392
 msgctxt "status"
 msgid "In-Progress"
 msgstr "En curso"
 
-#: internal/bookmarks/routes/forms_bookmarks.go:391
+#: internal/bookmarks/routes/forms_bookmarks.go:393
 msgctxt "status"
 msgid "Completed"
 msgstr "Leídos"
 
-#: internal/bookmarks/routes/forms_bookmarks.go:625
+#: internal/bookmarks/routes/forms_bookmarks.go:626
 msgctxt "sort"
 msgid "Added, most recent first"
 msgstr "Añadido, el más reciente primero"
 
-#: internal/bookmarks/routes/forms_bookmarks.go:626
+#: internal/bookmarks/routes/forms_bookmarks.go:627
 msgctxt "sort"
 msgid "Added, oldest first"
 msgstr "Añadido, primero el más antiguo"
 
-#: internal/bookmarks/routes/forms_bookmarks.go:627
+#: internal/bookmarks/routes/forms_bookmarks.go:628
 msgctxt "sort"
 msgid "Published, most recent first"
 msgstr "Publicado, primero el más reciente"
 
-#: internal/bookmarks/routes/forms_bookmarks.go:628
+#: internal/bookmarks/routes/forms_bookmarks.go:629
 msgctxt "sort"
 msgid "Published, oldest first"
 msgstr "Publicado, primero el más antiguo"
 
-#: internal/bookmarks/routes/forms_bookmarks.go:629
+#: internal/bookmarks/routes/forms_bookmarks.go:630
 msgctxt "sort"
 msgid "Title, A to Z"
 msgstr "Título, de la A a la Z"
 
-#: internal/bookmarks/routes/forms_bookmarks.go:630
+#: internal/bookmarks/routes/forms_bookmarks.go:631
 msgctxt "sort"
 msgid "Title, Z to A"
 msgstr "Título, de la Z a la A"
 
-#: internal/bookmarks/routes/forms_bookmarks.go:631
+#: internal/bookmarks/routes/forms_bookmarks.go:632
 msgctxt "sort"
 msgid "Site Name, A to Z"
 msgstr "Nombre del sitio, de la A a la Z"
 
-#: internal/bookmarks/routes/forms_bookmarks.go:632
+#: internal/bookmarks/routes/forms_bookmarks.go:633
 msgctxt "sort"
 msgid "Site Name, Z to A"
 msgstr "Nombre del sitio, de la Z a la A"
 
-#: internal/bookmarks/routes/forms_bookmarks.go:633
+#: internal/bookmarks/routes/forms_bookmarks.go:634
 msgctxt "sort"
 msgid "Duration, shortest first"
 msgstr "Duración, primero la más corta"
 
-#: internal/bookmarks/routes/forms_bookmarks.go:634
+#: internal/bookmarks/routes/forms_bookmarks.go:635
 msgctxt "sort"
 msgid "Duration, longest first"
 msgstr "Duración, primero la más larga"
@@ -2503,3 +2581,4 @@ msgstr "%H:%M:%S"
 
 #~ msgid "Password was updated."
 #~ msgstr "Se actualizó la contraseña."
+
