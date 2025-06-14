@@ -39,14 +39,14 @@ const (
 	readwiseTimeFormat = "2006-01-02 15:04:05-07:00"
 )
 
-var readwiseBookmarkSkipErr = errors.New("bookmark skip")
+var errReadwiseSkipItem = errors.New("skip item")
 
 func newReadwiseBookmarkItem(headerMap readwiseHeaderMap, record []string) (readwiseBookmarkItem, error) {
 	res := readwiseBookmarkItem{}
 	res.Link = record[headerMap.url]
 	// Skip items added to Reader via email forward rather than a URL
 	if strings.HasPrefix(res.Link, "mailto:") {
-		return res, readwiseBookmarkSkipErr
+		return res, errReadwiseSkipItem
 	}
 	res.Title = strings.TrimSpace(record[headerMap.title])
 
@@ -169,7 +169,7 @@ func (adapter *readwiseAdapter) Params(form forms.Binder) ([]byte, error) {
 			return nil, nil
 		}
 		item, err := newReadwiseBookmarkItem(headerMap, record)
-		if errors.Is(err, readwiseBookmarkSkipErr) {
+		if errors.Is(err, errReadwiseSkipItem) {
 			continue
 		} else if err != nil {
 			form.AddErrors("data", forms.Gettext("Empty or invalid import file"))
