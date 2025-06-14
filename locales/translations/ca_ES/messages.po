@@ -1169,17 +1169,11 @@ msgid "Import Links from Readwise Reader CSV export"
 msgstr "Importa enllaços des d'un arxiu CSV"
 
 #: assets/templates/bookmarks/import/form-readwise.jet.html:15
-#, fuzzy
-#| msgid "" "\n" "    Upload a JSON file obtained from your GoodLinks app.\n" "
-#| "
 msgid ""
 "\n"
 "    Upload a CSV file exported from your Readwise Reader account below.\n"
 "  "
 msgstr ""
-"\n"
-"    Puja un arxiu JSON obtingut de la teva aplicació GoodLinks.\n"
-"  "
 
 #: assets/templates/bookmarks/import/form-readwise.jet.html:39
 msgid "Which information is imported"
@@ -1774,10 +1768,6 @@ msgid "This address is used to prefill the recipient when you send an e-book by 
 msgstr "Aquesta adreça s'utilitza per omplir prèviament el destinatari quan envieu un llibre electrònic per correu."
 
 #: assets/templates/profile/index.jet.html:72
-#, fuzzy
-#| msgid "" "\n" "        If you plan to send e-books to a Kindle device, you
-#| must approve the\n" "        following email address within your Kindle
-#| Account:\n" "        "
 msgid ""
 "\n"
 "          If you plan to send e-books to a Kindle device, you must approve the\n"
@@ -2560,4 +2550,3 @@ msgstr "%H:%M:%S"
 
 #~ msgid "Password was updated."
 #~ msgstr ""
-

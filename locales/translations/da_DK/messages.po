@@ -1173,17 +1173,11 @@ msgid "Import Links from Readwise Reader CSV export"
 msgstr "Importér links fra en tekst fil"
 
 #: assets/templates/bookmarks/import/form-readwise.jet.html:15
-#, fuzzy
-#| msgid "" "\n" "    Upload a JSON file obtained from your GoodLinks app.\n" "
-#| "
 msgid ""
 "\n"
 "    Upload a CSV file exported from your Readwise Reader account below.\n"
 "  "
 msgstr ""
-"\n"
-"    Upload en JSON fil fra din GoodLinks app.\n"
-"  "
 
 #: assets/templates/bookmarks/import/form-readwise.jet.html:39
 msgid "Which information is imported"
@@ -2534,4 +2528,3 @@ msgstr ""
 #~ "        following email address within your Kindle Account:\n"
 #~ "        "
 #~ msgstr ""
-
