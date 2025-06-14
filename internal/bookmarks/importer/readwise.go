@@ -64,18 +64,18 @@ func newReadwiseBookmarkItem(record []string) (readwiseBookmarkItem, error) {
 	}
 
 	if record[readwiseHeaderTags] != "" {
-		labels, err := parseReadwiseTags(record[readwiseHeaderTags])
+		tags, err := parseReadwiseTags(record[readwiseHeaderTags])
 		if err != nil {
-			return res, fmt.Errorf("error parsing Readwise labels: %w", err)
+			return res, fmt.Errorf("error parsing tags: %w", err)
 		}
-		res.Labels = labels
-	}
-
-	if slices.Contains(res.Labels, "favorite") {
-		res.IsFavorite = true
-		res.Labels = slices.DeleteFunc(res.Labels, func(label string) bool {
-			return label == "favorite"
-		})
+		if slices.Contains(tags, "favorite") {
+			res.IsFavorite = true
+			res.Labels = slices.DeleteFunc(tags, func(tag string) bool {
+				return tag == "favorite"
+			})
+		} else {
+			res.Labels = tags
+		}
 	}
 
 	if strings.ToLower(record[readwiseHeaderLocation]) == "archive" {
@@ -173,19 +173,19 @@ func (adapter *readwiseAdapter) Next() (BookmarkImporter, error) {
 // due to single quotes used. Since Readwise does not allow double quotes nor backslashes in tag
 // values, we can get away with a straightforward parser.
 func parseReadwiseTags(field string) ([]string, error) {
-	var labels []string
+	var tags []string
 
 	r := bufio.NewReader(strings.NewReader(field))
 	if delim, err := r.ReadByte(); err != nil {
-		return labels, err
+		return tags, err
 	} else if delim != '[' {
-		return labels, errors.New("invalid label format")
+		return tags, errors.New("invalid label format")
 	}
 
 	for {
 		char, err := r.ReadByte()
 		if err != nil {
-			return labels, err
+			return tags, err
 		}
 
 		if char == ']' {
@@ -193,13 +193,13 @@ func parseReadwiseTags(field string) ([]string, error) {
 		}
 
 		if char == '\'' || char == '"' {
-			label, err := r.ReadString(char)
+			tagValue, err := r.ReadString(char)
 			if err != nil {
-				return labels, err
+				return tags, err
 			}
-			labels = append(labels, label[:len(label)-1])
+			tags = append(tags, tagValue[:len(tagValue)-1])
 		}
 	}
 
-	return labels, nil
+	return tags, nil
 }
