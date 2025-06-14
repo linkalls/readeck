@@ -1155,16 +1155,11 @@ msgstr "CSV dosyasındaki bağlantıları içeri aktar"
 
 #: assets/templates/bookmarks/import/form-readwise.jet.html:15
 #, fuzzy
-#| msgid "" "\n" "    Upload a JSON file obtained from your GoodLinks app.\n" "
-#| "
 msgid ""
 "\n"
 "    Upload a CSV file exported from your Readwise Reader account below.\n"
 "  "
 msgstr ""
-"\n"
-"    GoodLinks uygulamanızdan aldığınız bir JSON dosyası yükleyin.\n"
-"  "
 
 #: assets/templates/bookmarks/import/form-readwise.jet.html:39
 msgid "Which information is imported"
@@ -2521,4 +2516,3 @@ msgstr ""
 #~ "        following email address within your Kindle Account:\n"
 #~ "        "
 #~ msgstr ""
-
