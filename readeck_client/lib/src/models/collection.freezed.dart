@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CollectionSummary {
 
- DateTime? get updated; String? get name;@JsonKey(name: 'is_pinned') bool? get isPinned;@JsonKey(name: 'is_deleted') bool? get isDeleted; String? get search; String? get title; String? get author; String? get site; List<String>? get type; List<String>? get labels;@JsonKey(name: 'read_status') List<String>? get readStatus;@JsonKey(name: 'is_marked') bool? get isMarked;@JsonKey(name: 'is_archived') bool? get isArchived;@JsonKey(name: 'range_start') String? get rangeStart;@JsonKey(name: 'range_end') String? get rangeEnd;
+@override DateTime? get updated;@override String? get name;@override@JsonKey(name: 'is_pinned') bool? get isPinned;@override@JsonKey(name: 'is_deleted') bool? get isDeleted;@override String? get search;@override String? get title;@override String? get author;@override String? get site;@override List<String>? get type;@override List<String>? get labels;@override@JsonKey(name: 'read_status') List<String>? get readStatus;@override@JsonKey(name: 'is_marked') bool? get isMarked;@override@JsonKey(name: 'is_archived') bool? get isArchived;@override@JsonKey(name: 'range_start') String? get rangeStart;@override@JsonKey(name: 'range_end') String? get rangeEnd;
 /// Create a copy of CollectionSummary
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -49,7 +49,7 @@ abstract mixin class $CollectionSummaryCopyWith<$Res>  {
   factory $CollectionSummaryCopyWith(CollectionSummary value, $Res Function(CollectionSummary) _then) = _$CollectionSummaryCopyWithImpl;
 @useResult
 $Res call({
- DateTime? updated, String? name,@JsonKey(name: 'is_pinned') bool? isPinned,@JsonKey(name: 'is_deleted') bool? isDeleted, String? search, String? title, String? author, String? site, List<String>? type, List<String>? labels,@JsonKey(name: 'read_status') List<String>? readStatus,@JsonKey(name: 'is_marked') bool? isMarked,@JsonKey(name: 'is_archived') bool? isArchived,@JsonKey(name: 'range_start') String? rangeStart,@JsonKey(name: 'range_end') String? rangeEnd
+@override DateTime? updated,@override String? name,@override@JsonKey(name: 'is_pinned') bool? isPinned,@override@JsonKey(name: 'is_deleted') bool? isDeleted,@override String? search,@override String? title,@override String? author,@override String? site,@override List<String>? type,@override List<String>? labels,@override@JsonKey(name: 'read_status') List<String>? readStatus,@override@JsonKey(name: 'is_marked') bool? isMarked,@override@JsonKey(name: 'is_archived') bool? isArchived,@override@JsonKey(name: 'range_start') String? rangeStart,@override@JsonKey(name: 'range_end') String? rangeEnd
 });
 
 
@@ -94,19 +94,19 @@ as String?,
 @JsonSerializable()
 
 class _CollectionSummary implements CollectionSummary {
-  const _CollectionSummary({this.updated, this.name, @JsonKey(name: 'is_pinned') this.isPinned, @JsonKey(name: 'is_deleted') this.isDeleted, this.search, this.title, this.author, this.site, final  List<String>? type, final  List<String>? labels, @JsonKey(name: 'read_status') final  List<String>? readStatus, @JsonKey(name: 'is_marked') this.isMarked, @JsonKey(name: 'is_archived') this.isArchived, @JsonKey(name: 'range_start') this.rangeStart, @JsonKey(name: 'range_end') this.rangeEnd}): _type = type,_labels = labels,_readStatus = readStatus;
+  const _CollectionSummary({@override this.updated, @override this.name, @override@JsonKey(name: 'is_pinned') this.isPinned, @override@JsonKey(name: 'is_deleted') this.isDeleted, @override this.search, @override this.title, @override this.author, @override this.site, @override final  List<String>? type, @override final  List<String>? labels, @override@JsonKey(name: 'read_status') final  List<String>? readStatus, @override@JsonKey(name: 'is_marked') this.isMarked, @override@JsonKey(name: 'is_archived') this.isArchived, @override@JsonKey(name: 'range_start') this.rangeStart, @override@JsonKey(name: 'range_end') this.rangeEnd}): _type = type,_labels = labels,_readStatus = readStatus;
   factory _CollectionSummary.fromJson(Map<String, dynamic> json) => _$CollectionSummaryFromJson(json);
 
-@override final  DateTime? updated;
-@override final  String? name;
-@override@JsonKey(name: 'is_pinned') final  bool? isPinned;
-@override@JsonKey(name: 'is_deleted') final  bool? isDeleted;
-@override final  String? search;
-@override final  String? title;
-@override final  String? author;
-@override final  String? site;
+@override@override final  DateTime? updated;
+@override@override final  String? name;
+@override@override@JsonKey(name: 'is_pinned') final  bool? isPinned;
+@override@override@JsonKey(name: 'is_deleted') final  bool? isDeleted;
+@override@override final  String? search;
+@override@override final  String? title;
+@override@override final  String? author;
+@override@override final  String? site;
  final  List<String>? _type;
-@override List<String>? get type {
+@override@override List<String>? get type {
   final value = _type;
   if (value == null) return null;
   if (_type is EqualUnmodifiableListView) return _type;
@@ -115,7 +115,7 @@ class _CollectionSummary implements CollectionSummary {
 }
 
  final  List<String>? _labels;
-@override List<String>? get labels {
+@override@override List<String>? get labels {
   final value = _labels;
   if (value == null) return null;
   if (_labels is EqualUnmodifiableListView) return _labels;
@@ -124,7 +124,7 @@ class _CollectionSummary implements CollectionSummary {
 }
 
  final  List<String>? _readStatus;
-@override@JsonKey(name: 'read_status') List<String>? get readStatus {
+@override@override@JsonKey(name: 'read_status') List<String>? get readStatus {
   final value = _readStatus;
   if (value == null) return null;
   if (_readStatus is EqualUnmodifiableListView) return _readStatus;
@@ -132,10 +132,10 @@ class _CollectionSummary implements CollectionSummary {
   return EqualUnmodifiableListView(value);
 }
 
-@override@JsonKey(name: 'is_marked') final  bool? isMarked;
-@override@JsonKey(name: 'is_archived') final  bool? isArchived;
-@override@JsonKey(name: 'range_start') final  String? rangeStart;
-@override@JsonKey(name: 'range_end') final  String? rangeEnd;
+@override@override@JsonKey(name: 'is_marked') final  bool? isMarked;
+@override@override@JsonKey(name: 'is_archived') final  bool? isArchived;
+@override@override@JsonKey(name: 'range_start') final  String? rangeStart;
+@override@override@JsonKey(name: 'range_end') final  String? rangeEnd;
 
 /// Create a copy of CollectionSummary
 /// with the given fields replaced by the non-null parameter values.
@@ -170,7 +170,7 @@ abstract mixin class _$CollectionSummaryCopyWith<$Res> implements $CollectionSum
   factory _$CollectionSummaryCopyWith(_CollectionSummary value, $Res Function(_CollectionSummary) _then) = __$CollectionSummaryCopyWithImpl;
 @override @useResult
 $Res call({
- DateTime? updated, String? name,@JsonKey(name: 'is_pinned') bool? isPinned,@JsonKey(name: 'is_deleted') bool? isDeleted, String? search, String? title, String? author, String? site, List<String>? type, List<String>? labels,@JsonKey(name: 'read_status') List<String>? readStatus,@JsonKey(name: 'is_marked') bool? isMarked,@JsonKey(name: 'is_archived') bool? isArchived,@JsonKey(name: 'range_start') String? rangeStart,@JsonKey(name: 'range_end') String? rangeEnd
+@override DateTime? updated,@override String? name,@override@JsonKey(name: 'is_pinned') bool? isPinned,@override@JsonKey(name: 'is_deleted') bool? isDeleted,@override String? search,@override String? title,@override String? author,@override String? site,@override List<String>? type,@override List<String>? labels,@override@JsonKey(name: 'read_status') List<String>? readStatus,@override@JsonKey(name: 'is_marked') bool? isMarked,@override@JsonKey(name: 'is_archived') bool? isArchived,@override@JsonKey(name: 'range_start') String? rangeStart,@override@JsonKey(name: 'range_end') String? rangeEnd
 });
 
 
@@ -215,7 +215,9 @@ as String?,
 /// @nodoc
 mixin _$CollectionInfo {
 
- DateTime? get updated; String? get name;@JsonKey(name: 'is_pinned') bool? get isPinned;@JsonKey(name: 'is_deleted') bool? get isDeleted; String? get search; String? get title; String? get author; String? get site; List<String>? get type; List<String>? get labels;@JsonKey(name: 'read_status') List<String>? get readStatus;@JsonKey(name: 'is_marked') bool? get isMarked;@JsonKey(name: 'is_archived') bool? get isArchived;@JsonKey(name: 'range_start') String? get rangeStart;@JsonKey(name: 'range_end') String? get rangeEnd; String? get id; String? get href; DateTime? get created;
+// Fields from ICollectionSummary
+@override DateTime? get updated;@override String? get name;@override@JsonKey(name: 'is_pinned') bool? get isPinned;@override@JsonKey(name: 'is_deleted') bool? get isDeleted;@override String? get search;@override String? get title;@override String? get author;@override String? get site;@override List<String>? get type;@override List<String>? get labels;@override@JsonKey(name: 'read_status') List<String>? get readStatus;@override@JsonKey(name: 'is_marked') bool? get isMarked;@override@JsonKey(name: 'is_archived') bool? get isArchived;@override@JsonKey(name: 'range_start') String? get rangeStart;@override@JsonKey(name: 'range_end') String? get rangeEnd;// CollectionInfo specific fields
+ String? get id; String? get href; DateTime? get created;
 /// Create a copy of CollectionInfo
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -248,7 +250,7 @@ abstract mixin class $CollectionInfoCopyWith<$Res>  {
   factory $CollectionInfoCopyWith(CollectionInfo value, $Res Function(CollectionInfo) _then) = _$CollectionInfoCopyWithImpl;
 @useResult
 $Res call({
- DateTime? updated, String? name,@JsonKey(name: 'is_pinned') bool? isPinned,@JsonKey(name: 'is_deleted') bool? isDeleted, String? search, String? title, String? author, String? site, List<String>? type, List<String>? labels,@JsonKey(name: 'read_status') List<String>? readStatus,@JsonKey(name: 'is_marked') bool? isMarked,@JsonKey(name: 'is_archived') bool? isArchived,@JsonKey(name: 'range_start') String? rangeStart,@JsonKey(name: 'range_end') String? rangeEnd, String? id, String? href, DateTime? created
+@override DateTime? updated,@override String? name,@override@JsonKey(name: 'is_pinned') bool? isPinned,@override@JsonKey(name: 'is_deleted') bool? isDeleted,@override String? search,@override String? title,@override String? author,@override String? site,@override List<String>? type,@override List<String>? labels,@override@JsonKey(name: 'read_status') List<String>? readStatus,@override@JsonKey(name: 'is_marked') bool? isMarked,@override@JsonKey(name: 'is_archived') bool? isArchived,@override@JsonKey(name: 'range_start') String? rangeStart,@override@JsonKey(name: 'range_end') String? rangeEnd, String? id, String? href, DateTime? created
 });
 
 
@@ -296,19 +298,20 @@ as DateTime?,
 @JsonSerializable()
 
 class _CollectionInfo implements CollectionInfo {
-  const _CollectionInfo({this.updated, this.name, @JsonKey(name: 'is_pinned') this.isPinned, @JsonKey(name: 'is_deleted') this.isDeleted, this.search, this.title, this.author, this.site, final  List<String>? type, final  List<String>? labels, @JsonKey(name: 'read_status') final  List<String>? readStatus, @JsonKey(name: 'is_marked') this.isMarked, @JsonKey(name: 'is_archived') this.isArchived, @JsonKey(name: 'range_start') this.rangeStart, @JsonKey(name: 'range_end') this.rangeEnd, this.id, this.href, this.created}): _type = type,_labels = labels,_readStatus = readStatus;
+  const _CollectionInfo({@override this.updated, @override this.name, @override@JsonKey(name: 'is_pinned') this.isPinned, @override@JsonKey(name: 'is_deleted') this.isDeleted, @override this.search, @override this.title, @override this.author, @override this.site, @override final  List<String>? type, @override final  List<String>? labels, @override@JsonKey(name: 'read_status') final  List<String>? readStatus, @override@JsonKey(name: 'is_marked') this.isMarked, @override@JsonKey(name: 'is_archived') this.isArchived, @override@JsonKey(name: 'range_start') this.rangeStart, @override@JsonKey(name: 'range_end') this.rangeEnd, this.id, this.href, this.created}): _type = type,_labels = labels,_readStatus = readStatus;
   factory _CollectionInfo.fromJson(Map<String, dynamic> json) => _$CollectionInfoFromJson(json);
 
-@override final  DateTime? updated;
-@override final  String? name;
-@override@JsonKey(name: 'is_pinned') final  bool? isPinned;
-@override@JsonKey(name: 'is_deleted') final  bool? isDeleted;
-@override final  String? search;
-@override final  String? title;
-@override final  String? author;
-@override final  String? site;
+// Fields from ICollectionSummary
+@override@override final  DateTime? updated;
+@override@override final  String? name;
+@override@override@JsonKey(name: 'is_pinned') final  bool? isPinned;
+@override@override@JsonKey(name: 'is_deleted') final  bool? isDeleted;
+@override@override final  String? search;
+@override@override final  String? title;
+@override@override final  String? author;
+@override@override final  String? site;
  final  List<String>? _type;
-@override List<String>? get type {
+@override@override List<String>? get type {
   final value = _type;
   if (value == null) return null;
   if (_type is EqualUnmodifiableListView) return _type;
@@ -317,7 +320,7 @@ class _CollectionInfo implements CollectionInfo {
 }
 
  final  List<String>? _labels;
-@override List<String>? get labels {
+@override@override List<String>? get labels {
   final value = _labels;
   if (value == null) return null;
   if (_labels is EqualUnmodifiableListView) return _labels;
@@ -326,7 +329,7 @@ class _CollectionInfo implements CollectionInfo {
 }
 
  final  List<String>? _readStatus;
-@override@JsonKey(name: 'read_status') List<String>? get readStatus {
+@override@override@JsonKey(name: 'read_status') List<String>? get readStatus {
   final value = _readStatus;
   if (value == null) return null;
   if (_readStatus is EqualUnmodifiableListView) return _readStatus;
@@ -334,10 +337,11 @@ class _CollectionInfo implements CollectionInfo {
   return EqualUnmodifiableListView(value);
 }
 
-@override@JsonKey(name: 'is_marked') final  bool? isMarked;
-@override@JsonKey(name: 'is_archived') final  bool? isArchived;
-@override@JsonKey(name: 'range_start') final  String? rangeStart;
-@override@JsonKey(name: 'range_end') final  String? rangeEnd;
+@override@override@JsonKey(name: 'is_marked') final  bool? isMarked;
+@override@override@JsonKey(name: 'is_archived') final  bool? isArchived;
+@override@override@JsonKey(name: 'range_start') final  String? rangeStart;
+@override@override@JsonKey(name: 'range_end') final  String? rangeEnd;
+// CollectionInfo specific fields
 @override final  String? id;
 @override final  String? href;
 @override final  DateTime? created;
@@ -375,7 +379,7 @@ abstract mixin class _$CollectionInfoCopyWith<$Res> implements $CollectionInfoCo
   factory _$CollectionInfoCopyWith(_CollectionInfo value, $Res Function(_CollectionInfo) _then) = __$CollectionInfoCopyWithImpl;
 @override @useResult
 $Res call({
- DateTime? updated, String? name,@JsonKey(name: 'is_pinned') bool? isPinned,@JsonKey(name: 'is_deleted') bool? isDeleted, String? search, String? title, String? author, String? site, List<String>? type, List<String>? labels,@JsonKey(name: 'read_status') List<String>? readStatus,@JsonKey(name: 'is_marked') bool? isMarked,@JsonKey(name: 'is_archived') bool? isArchived,@JsonKey(name: 'range_start') String? rangeStart,@JsonKey(name: 'range_end') String? rangeEnd, String? id, String? href, DateTime? created
+@override DateTime? updated,@override String? name,@override@JsonKey(name: 'is_pinned') bool? isPinned,@override@JsonKey(name: 'is_deleted') bool? isDeleted,@override String? search,@override String? title,@override String? author,@override String? site,@override List<String>? type,@override List<String>? labels,@override@JsonKey(name: 'read_status') List<String>? readStatus,@override@JsonKey(name: 'is_marked') bool? isMarked,@override@JsonKey(name: 'is_archived') bool? isArchived,@override@JsonKey(name: 'range_start') String? rangeStart,@override@JsonKey(name: 'range_end') String? rangeEnd, String? id, String? href, DateTime? created
 });
 
 

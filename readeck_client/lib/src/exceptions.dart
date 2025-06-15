@@ -1,8 +1,11 @@
-// Base class for all API related exceptions
+/// Base class for all exceptions thrown by the Readeck API client.
 class ApiException implements Exception {
+  /// A message describing the error.
   final String message;
+  /// The HTTP status code, if available.
   final int? statusCode;
-  final dynamic responseBody; // Can hold decoded JSON or raw string
+  /// The decoded response body, if available. Can be a Map, List, or String.
+  final dynamic responseBody;
 
   ApiException(this.message, {this.statusCode, this.responseBody});
 
@@ -12,24 +15,30 @@ class ApiException implements Exception {
   }
 }
 
+/// Exception thrown when an API request results in a 401 Unauthorized error.
 class UnauthorizedException extends ApiException {
   UnauthorizedException(String message, {dynamic responseBody})
       : super(message, statusCode: 401, responseBody: responseBody);
 }
 
+/// Exception thrown when an API request results in a 403 Forbidden error.
 class ForbiddenException extends ApiException {
   ForbiddenException(String message, {dynamic responseBody})
       : super(message, statusCode: 403, responseBody: responseBody);
 }
 
+/// Exception thrown when an API request results in a 404 Not Found error.
 class NotFoundException extends ApiException {
   NotFoundException(String message, {dynamic responseBody})
       : super(message, statusCode: 404, responseBody: responseBody);
 }
 
+/// Exception thrown when an API request results in a 422 Unprocessable Entity error,
+/// typically indicating validation errors.
 class ValidationException extends ApiException {
-  // TODO: Consider adding a field for structured error details (e.g., Map<String, List<String>>)
-  final Map<String, dynamic>? errors; // To hold structured validation errors
+  /// A map containing structured validation errors, where keys are field names
+  /// and values are lists of error messages for that field.
+  final Map<String, List<String>>? errors;
 
   ValidationException(String message, {this.errors, dynamic responseBody})
       : super(message, statusCode: 422, responseBody: responseBody);
@@ -40,7 +49,8 @@ class ValidationException extends ApiException {
   }
 }
 
+/// Exception thrown when an API request results in a 5xx Internal Server Error.
 class InternalServerErrorException extends ApiException {
   InternalServerErrorException(String message, {dynamic responseBody})
-      : super(message, statusCode: 500, responseBody: responseBody);
+      : super(message, statusCode: 500, responseBody: responseBody); // Or a generic 5xx range
 }

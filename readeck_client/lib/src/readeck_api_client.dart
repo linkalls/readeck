@@ -3,38 +3,52 @@ import 'dart:io'; // For HttpHeaders
 import 'dart:typed_data'; // For Uint8List
 
 import 'package:http/http.dart' as http;
+// Required for MultipartRequest and MultipartFile
+import 'package:http_parser/http_parser.dart' show MediaType;
 
-// Models
-import 'models/auth.dart';
-import 'models/profile.dart';
-import 'models/common.dart';
-import 'models/bookmark.dart';
-import 'models/label.dart';
-import 'models/annotation.dart';
-import 'models/collection.dart';
-import 'models/import_models.dart'; // Added Import models
+// Models are now imported via the barrel file
+import 'models/models.dart';
 import 'exceptions.dart';
 
+/// A Dart client for interacting with the Readeck API.
+///
+/// Provides methods to access various Readeck functionalities including
+/// authentication, bookmark management, label organization, annotations,
+/// collections, and data import.
 class ReadeckApiClient {
+  /// The base URL of the Readeck API instance.
   final String baseUrl;
   String? _token;
   http.Client _httpClient;
 
+  /// Creates a new instance of [ReadeckApiClient].
+  ///
+  /// [baseUrl] is the base URL of the Readeck API.
+  /// [token] is an optional initial authentication token.
+  /// [httpClient] is an optional HTTP client for testing purposes.
   ReadeckApiClient({required this.baseUrl, String? token, http.Client? httpClient})
       : _token = token,
         _httpClient = httpClient ?? http.Client();
 
+  /// Sets the authentication token for subsequent API requests.
   void setToken(String token) {
     _token = token;
   }
 
+  /// Clears the authentication token.
   void clearToken() {
     _token = null;
   }
 
-  Map<String, String> _getHeaders({String contentType = 'application/json; charset=utf-8', String accept = 'application/json'}) {
+  /// Prepares the HTTP headers for an API request.
+  ///
+  /// Includes common headers like Content-Type and Accept.
+  /// If an authentication token is set, it adds the Authorization header.
+  /// [contentType] defaults to 'application/json; charset=utf-8'. Can be null for multipart.
+  /// [accept] defaults to 'application/json'.
+  Map<String, String> _getHeaders({String? contentType = 'application/json; charset=utf-8', String accept = 'application/json'}) {
     final headers = <String, String>{
-      HttpHeaders.contentTypeHeader: contentType,
+      if (contentType != null) HttpHeaders.contentTypeHeader: contentType, // Only add if specified
       HttpHeaders.acceptHeader: accept,
     };
     if (_token != null) {
@@ -43,6 +57,12 @@ class ReadeckApiClient {
     return headers;
   }
 
+  /// Decodes the HTTP response body.
+  ///
+  /// If [expectJson] is true, attempts to decode as JSON. If decoding fails,
+  /// an [ApiException] is thrown as the expectation was not met.
+  /// Otherwise, decodes based on Content-Type header (HTML, Markdown as string, EPUB as Uint8List)
+  /// or defaults to UTF-8 string.
   dynamic _decodeResponse(http.Response response, {bool expectJson = true}) {
     if (response.bodyBytes.isEmpty) {
       return null;
@@ -51,45 +71,52 @@ class ReadeckApiClient {
       try {
         return jsonDecode(utf8.decode(response.bodyBytes));
       } catch (e) {
-        // Return raw body for further diagnostics in _handleResponse if JSON parse fails
-        return utf8.decode(response.bodyBytes);
+        // If JSON was expected and parsing failed, it's an issue.
+        throw ApiException(
+            'Expected JSON response but failed to decode. Body: ${utf8.decode(response.bodyBytes)}',
+            statusCode: response.statusCode,
+            responseBody: utf8.decode(response.bodyBytes)
+        );
       }
     }
+    // Handling for non-JSON expected responses
     final contentTypeHeader = response.headers[HttpHeaders.contentTypeHeader];
-    if (contentTypeHeader != null && (contentTypeHeader.contains('text/html') || contentTypeHeader.contains('text/markdown'))) {
-        return utf8.decode(response.bodyBytes);
+    if (contentTypeHeader != null) {
+      if (contentTypeHeader.contains('text/html') || contentTypeHeader.contains('text/markdown')) {
+          return utf8.decode(response.bodyBytes);
+      } else if (contentTypeHeader.contains('application/epub+zip')) {
+          return response.bodyBytes; // Return as Uint8List
+      }
     }
-    if (contentTypeHeader != null && contentTypeHeader.contains('application/epub+zip')) {
-        return response.bodyBytes;
-    }
+    // Default for non-JSON and unspecified/unhandled content type
     return utf8.decode(response.bodyBytes);
   }
 
+  /// Handles the HTTP response, checking for errors and decoding the body.
+  ///
+  /// Throws an appropriate [ApiException] or its subclass if an error occurs.
+  /// Returns the decoded body on success.
+  /// [expectJson] indicates if the successful response body is expected to be JSON.
   Future<dynamic> _handleResponse(http.Response response, {bool expectJson = true}) async {
-    dynamic decodedBody;
-
+    // Handle successful non-JSON responses first
     if (response.statusCode >= 200 && response.statusCode < 300 && !expectJson) {
         return _decodeResponse(response, expectJson: false);
     }
 
-    // For JSON success responses or all error responses (which are typically JSON)
-    // Attempt to decode as JSON first.
-    decodedBody = _decodeResponse(response, expectJson: true);
-    if (decodedBody is String && expectJson && !(response.statusCode >= 200 && response.statusCode < 300) ) {
-      // If JSON was expected, but decoding returned a string (meaning parsing failed),
-      // and it's an error status, wrap it in a generic message for the exception.
-      // For success status with expectJson=true, if it's a string, it's an API contract violation.
-       throw ApiException(
-            'Expected JSON response but received non-JSON. Body: $decodedBody',
-            statusCode: response.statusCode,
-            responseBody: decodedBody
-        );
+    dynamic decodedBody;
+    // Errors (4xx, 5xx) and expected JSON responses are decoded as JSON.
+    // If expectJson is true, or if it's an error status, attempt to decode as JSON.
+    if (expectJson || (response.statusCode >= 400 && response.statusCode < 600)) {
+        decodedBody = _decodeResponse(response, expectJson: true);
+    } else {
+        decodedBody = _decodeResponse(response, expectJson: false);
     }
-
 
     if (response.statusCode >= 200 && response.statusCode < 300) {
       return decodedBody;
-    } else if (response.statusCode == 401) {
+    }
+    // Error handling from here (decodedBody here is from expectJson=true attempt for errors)
+    else if (response.statusCode == 401) {
       throw UnauthorizedException(
         decodedBody is Map ? decodedBody['message'] ?? 'Unauthorized' : decodedBody.toString(),
         responseBody: decodedBody
@@ -105,7 +132,9 @@ class ReadeckApiClient {
         responseBody: decodedBody
       );
     } else if (response.statusCode == 422) {
-      final apiError = decodedBody is Map ? ApiError.fromJson(decodedBody.cast<String,dynamic>()) : null;
+      final apiError = decodedBody is Map && decodedBody.containsKey('isValid')
+                       ? ApiError.fromJson(decodedBody.cast<String,dynamic>())
+                       : null;
       throw ValidationException(
         apiError?.message ?? (decodedBody is Map ? decodedBody['message'] ?? 'Validation Error' : decodedBody.toString()),
         errors: apiError?.fields?.map((key, value) => MapEntry(key, value.errors ?? [])),
@@ -126,6 +155,11 @@ class ReadeckApiClient {
     }
   }
 
+  /// Generic helper method to make an API request.
+  ///
+  /// [requestFunction] is a function that returns a `Future<http.Response>`.
+  /// [fromBody] is a function that converts the decoded response body to type [T].
+  /// [expectJsonResponse] indicates if the successful response body should be JSON.
   Future<T> _makeRequest<T>(
     Future<http.Response> Function() requestFunction,
     T Function(dynamic body) fromBody, {bool expectJsonResponse = true}
@@ -133,34 +167,65 @@ class ReadeckApiClient {
     final response = await requestFunction();
     final dynamic body = await _handleResponse(response, expectJson: expectJsonResponse);
     if (body == null && null is! T && expectJsonResponse) {
-        throw ApiException('Expected response body for ${T.toString()}, but received null', statusCode: response.statusCode);
+        throw ApiException('Expected non-null JSON response for ${T.toString()}, but received null body', statusCode: response.statusCode);
     }
     return fromBody(body);
   }
 
+  /// Helper method for requests that need the raw `http.Response` object,
+  /// typically to access headers (e.g., for 202 Location). It still performs error checking.
   Future<http.Response> _makeRawRequest(
     Future<http.Response> Function() requestFunction,
   ) async {
     final response = await requestFunction();
-    // Perform basic error checking without trying to fully parse/decode body yet
-    // This ensures that we don't try to access headers on a completely failed request too early.
     if (response.statusCode >= 400) {
-        await _handleResponse(response, expectJson: true); // Will throw appropriate exception
+        await _handleResponse(response, expectJson: true);
     }
-    return response; // Return raw response for caller to process body and headers
+    return response;
   }
 
-  Future<void> _makeRequestVoidReturn( // Changed from _makeRequestNoResponse
+  /// Helper method for requests that do not return a meaningful body on success (e.g., 204 No Content).
+  Future<void> _makeRequestVoidReturn(
     Future<http.Response> Function() requestFunction,
   ) async {
     final response = await requestFunction();
-    await _handleResponse(response, expectJson: false);
+    await _handleResponse(response, expectJson: response.statusCode >= 400);
   }
 
+  /// Helper for multipart file uploads.
+  Future<http.Response> _makeMultipartRequest(
+    String path,
+    List<int> fileBytes,
+    String fieldName,
+    String filename,
+    {MediaType? contentType}
+  ) async {
+    final uri = Uri.parse('$baseUrl$path'); // Corrected: Ensure path starts with / if it's a segment
+    final request = http.MultipartRequest('POST', uri);
+
+    final commonHeaders = _getHeaders(contentType: null);
+    request.headers.addAll(commonHeaders);
+
+    final multipartFile = http.MultipartFile.fromBytes(
+      fieldName,
+      fileBytes,
+      filename: filename,
+      contentType: contentType,
+    );
+    request.files.add(multipartFile);
+
+    final streamedResponse = await _httpClient.send(request);
+    return http.Response.fromStream(streamedResponse);
+  }
+
+
+  /// Builds a map of query parameters for HTTP requests.
+  /// Null values are removed, except for the 'labels' key where null is converted to an empty string.
+  /// List values are joined by commas.
   Map<String, String> _buildQueryParameters(Map<String, dynamic> params) {
     return params.entries
         .where((entry) {
-          if (entry.key == 'labels') return true;
+          if (entry.key == 'labels' && entry.value == null) return true;
           return entry.value != null;
         })
         .map((entry) {
@@ -170,14 +235,20 @@ class ReadeckApiClient {
           return MapEntry(entry.key, entry.value?.toString() ?? '');
         })
         .fold<Map<String, String>>({}, (map, entry) {
-          map[entry.key] = entry.value;
+          if (entry.value.isNotEmpty || entry.key == 'labels') {
+             map[entry.key] = entry.value;
+          }
           return map;
         });
   }
 
   // --- Auth Endpoints ---
+
+  /// Authenticates the user and retrieves an API token.
+  /// If successful, the token is automatically stored in the client instance.
+  /// Corresponds to `POST /auth`.
   Future<AuthResponse> login(AuthRequest authRequest) async {
-    return _makeRequest(
+    final authResponse = await _makeRequest(
       () => _httpClient.post(
         Uri.parse('$baseUrl/auth'),
         headers: _getHeaders(),
@@ -185,8 +256,15 @@ class ReadeckApiClient {
       ),
       (json) => AuthResponse.fromJson(json as Map<String, dynamic>),
     );
+
+    if (authResponse.token != null) {
+      setToken(authResponse.token!);
+    }
+    return authResponse;
   }
 
+  /// Retrieves the current user's profile information.
+  /// Corresponds to `GET /profile`.
   Future<UserProfile> getProfile() async {
     return _makeRequest(
       () => _httpClient.get(
@@ -197,8 +275,10 @@ class ReadeckApiClient {
     );
   }
 
+  /// Logs out the current user by invalidating the session/token on the server.
+  /// Corresponds to `DELETE /auth`.
   Future<void> logout() async {
-    return _makeRequestVoidReturn(
+    await _makeRequestVoidReturn(
       () => _httpClient.delete(
         Uri.parse('$baseUrl/auth'),
         headers: _getHeaders(),
@@ -245,8 +325,6 @@ class ReadeckApiClient {
   }
 
   Future<BookmarkInfo> createBookmark(BookmarkCreate bookmarkCreate) async {
-    // This method expects 202 Accepted, with Location and Bookmark-Id headers.
-    // The body of 202 is typically an ApiMessage.
     final response = await _makeRawRequest(
       () => _httpClient.post(
         Uri.parse('$baseUrl/bookmarks'),
@@ -254,33 +332,27 @@ class ReadeckApiClient {
         body: jsonEncode(bookmarkCreate.toJson()),
       ),
     );
-    // _makeRawRequest already called _handleResponse for status >= 400
-    // Now check status code for 202 specific logic
+
     if (response.statusCode == 202) {
         final bookmarkId = response.headers['bookmark-id'];
-        // final location = response.headers['location']; // Available if needed
-        final apiMessageBody = _decodeResponse(response, expectJson: true); // Decode the ApiMessage body
-
         if (bookmarkId != null) {
-            // Successfully initiated, now fetch the actual bookmark
             return getBookmark(bookmarkId);
         } else {
+            final dynamic body = _decodeResponse(response, expectJson: true);
             throw ApiException(
                 "Bookmark creation initiated (202), but 'bookmark-id' header was missing.",
                 statusCode: response.statusCode,
-                responseBody: apiMessageBody);
+                responseBody: body);
         }
-    } else {
-        // If not 202, but still 2xx (e.g. 201 if API behavior changes)
-        final dynamic body = _decodeResponse(response, expectJson: true);
-        if (body is Map<String,dynamic>) {
-             return BookmarkInfo.fromJson(body);
-        }
-        throw ApiException(
-            "Unexpected success status code: ${response.statusCode} after creating bookmark.",
-            statusCode: response.statusCode,
-            responseBody: body);
     }
+    final dynamic body = _decodeResponse(response, expectJson: true);
+    if (body is Map<String, dynamic>) {
+        return BookmarkInfo.fromJson(body);
+    }
+    throw ApiException(
+        "Unexpected response after creating bookmark. Status: ${response.statusCode}, Body: $body",
+        statusCode: response.statusCode,
+        responseBody: body);
   }
 
   Future<BookmarkInfo> getBookmark(String id) async {
@@ -530,6 +602,46 @@ class ReadeckApiClient {
   }
 
   // --- Import Endpoints ---
+  Future<ApiMessageWithLocation> _importMultipartFile(
+      String pathSegment, List<int> fileBytes, String filename, {MediaType? fileContentType}) async {
+    final response = await _makeMultipartRequest(
+      '/bookmarks/import/$pathSegment', // Path segment for specific import type
+      fileBytes,
+      'data', // field name expected by the server for the file
+      filename,
+      contentType: fileContentType,
+    );
+    // Assuming 202 Accepted with Location header and ApiMessage body
+    final dynamic jsonBody = _decodeResponse(response, expectJson: true);
+    final location = response.headers['location'];
+    if (location == null) {
+      throw ApiException("Import task accepted (202) but Location header missing.", statusCode: response.statusCode, responseBody: jsonBody);
+    }
+    return ApiMessageWithLocation(
+      message: ApiMessage.fromJson(jsonBody as Map<String, dynamic>),
+      location: location,
+    );
+  }
+
+  /// Imports bookmarks from a browser export file (HTML).
+  /// [fileBytes] are the raw bytes of the HTML file.
+  /// [filename] is the name of the file (e.g., "bookmarks.html").
+  /// Returns an [ApiMessageWithLocation] containing the API message and the Location header of the import task.
+  Future<ApiMessageWithLocation> importBrowserBookmarks(List<int> fileBytes, String filename) async {
+    return _importMultipartFile('browser', fileBytes, filename, fileContentType: MediaType('text', 'html'));
+  }
+
+  /// Imports bookmarks from a Pocket export file (HTML).
+  /// [fileBytes] are the raw bytes of the HTML file.
+  /// [filename] is the name of the file (e.g., "ril_export.html").
+  /// Returns an [ApiMessageWithLocation] containing the API message and the Location header of the import task.
+  Future<ApiMessageWithLocation> importPocketFile(List<int> fileBytes, String filename) async {
+    return _importMultipartFile('pocket-file', fileBytes, filename, fileContentType: MediaType('text', 'html'));
+  }
+
+  /// Imports bookmarks from a text file content.
+  /// Corresponds to `POST /bookmarks/import/text`.
+  /// Returns an [ApiMessageWithLocation] containing the API message and the Location header.
   Future<ApiMessageWithLocation> importTextFile(String textContent) async {
     final response = await _makeRawRequest(
       () => _httpClient.post(
@@ -538,39 +650,52 @@ class ReadeckApiClient {
         body: textContent,
       ),
     );
-    // _makeRawRequest has already checked for >=400 status codes.
     final dynamic jsonBody = _decodeResponse(response, expectJson: true);
     final location = response.headers['location'];
+     if (location == null) {
+      throw ApiException("Import task accepted (202) but Location header missing.", statusCode: response.statusCode, responseBody: jsonBody);
+    }
     return ApiMessageWithLocation(
       message: ApiMessage.fromJson(jsonBody as Map<String, dynamic>),
       location: location,
     );
   }
 
+  /// Imports bookmarks from a Wallabag instance.
+  /// Corresponds to `POST /bookmarks/import/wallabag`.
+  /// Returns an [ApiMessageWithLocation] containing the API message and the Location header.
   Future<ApiMessageWithLocation> importWallabag(WallabagImport wallabagImportData) async {
      final response = await _makeRawRequest(
       () => _httpClient.post(
         Uri.parse('$baseUrl/bookmarks/import/wallabag'),
-        headers: _getHeaders(), // Default Content-Type: application/json, Accept: application/json
+        headers: _getHeaders(),
         body: jsonEncode(wallabagImportData.toJson()),
       ),
     );
     final dynamic jsonBody = _decodeResponse(response, expectJson: true);
     final location = response.headers['location'];
+     if (location == null) {
+      throw ApiException("Import task accepted (202) but Location header missing.", statusCode: response.statusCode, responseBody: jsonBody);
+    }
     return ApiMessageWithLocation(
       message: ApiMessage.fromJson(jsonBody as Map<String, dynamic>),
       location: location,
     );
   }
 
+  /// Closes the underlying HTTP client.
+  /// This should be called when the API client is no longer needed.
   void dispose() {
     _httpClient.close();
   }
 }
 
-// Helper class for responses that include a Location header along with ApiMessage
+/// Helper class to encapsulate an [ApiMessage] and an optional [location] URL,
+/// typically from a 'Location' header in 201 or 202 responses.
 class ApiMessageWithLocation {
+  /// The API message.
   final ApiMessage message;
+  /// The URL from the 'Location' header, if present.
   final String? location;
 
   ApiMessageWithLocation({required this.message, this.location});
