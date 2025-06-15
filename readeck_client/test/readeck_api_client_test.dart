@@ -37,7 +37,7 @@ void main() {
         application: 'TestApp',
       );
       final requestBody = jsonEncode(authRequest.toJson());
-      final expectedUri = Uri.parse('$baseUrl/auth');
+      final expectedUri = Uri.parse('$baseUrl/api/auth');
 
       test('returns AuthResponse on successful login (200 OK) and sets token', () async {
         final mockAuthResponse = AuthResponse(id: 'token-id', token: 'sample-token');
@@ -51,7 +51,7 @@ void main() {
         )).thenAnswer((_) async => http.Response(responseBody, 200));
 
         // For verifying internal token setting
-        final profileUri = Uri.parse('$baseUrl/profile');
+        final profileUri = Uri.parse('$baseUrl/api/profile');
         final mockUserProfile = UserProfile(user: UserInfo(username: "test"));
         when(() => mockHttpClient.get(profileUri, headers: any(named: 'headers')))
             .thenAnswer((_) async => http.Response(jsonEncode(mockUserProfile.toJson()), 200));
