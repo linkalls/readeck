@@ -9,7 +9,10 @@ import 'models/auth.dart';
 import 'models/profile.dart';
 import 'models/common.dart';
 import 'models/bookmark.dart';
-import 'models/label.dart'; // Added Label models
+import 'models/label.dart';
+import 'models/annotation.dart';
+import 'models/collection.dart';
+import 'models/import_models.dart'; // Added Import models
 import 'exceptions.dart';
 
 class ReadeckApiClient {
@@ -29,9 +32,9 @@ class ReadeckApiClient {
     _token = null;
   }
 
-  Map<String, String> _getHeaders({String accept = 'application/json'}) {
+  Map<String, String> _getHeaders({String contentType = 'application/json; charset=utf-8', String accept = 'application/json'}) {
     final headers = <String, String>{
-      HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8',
+      HttpHeaders.contentTypeHeader: contentType,
       HttpHeaders.acceptHeader: accept,
     };
     if (_token != null) {
@@ -48,62 +51,75 @@ class ReadeckApiClient {
       try {
         return jsonDecode(utf8.decode(response.bodyBytes));
       } catch (e) {
-        throw ApiException(
-            'Expected JSON response but failed to decode. Body: ${utf8.decode(response.bodyBytes)}',
-            statusCode: response.statusCode,
-            responseBody: utf8.decode(response.bodyBytes)
-        );
+        // Return raw body for further diagnostics in _handleResponse if JSON parse fails
+        return utf8.decode(response.bodyBytes);
       }
     }
-    final contentType = response.headers[HttpHeaders.contentTypeHeader];
-    if (contentType != null && (contentType.contains('text/html') || contentType.contains('text/markdown'))) {
+    final contentTypeHeader = response.headers[HttpHeaders.contentTypeHeader];
+    if (contentTypeHeader != null && (contentTypeHeader.contains('text/html') || contentTypeHeader.contains('text/markdown'))) {
         return utf8.decode(response.bodyBytes);
     }
-    if (contentType != null && contentType.contains('application/epub+zip')) {
+    if (contentTypeHeader != null && contentTypeHeader.contains('application/epub+zip')) {
         return response.bodyBytes;
     }
     return utf8.decode(response.bodyBytes);
   }
 
   Future<dynamic> _handleResponse(http.Response response, {bool expectJson = true}) async {
+    dynamic decodedBody;
+
     if (response.statusCode >= 200 && response.statusCode < 300 && !expectJson) {
         return _decodeResponse(response, expectJson: false);
     }
-    final dynamic decodedBody = _decodeResponse(response, expectJson: true); // Errors are usually JSON
+
+    // For JSON success responses or all error responses (which are typically JSON)
+    // Attempt to decode as JSON first.
+    decodedBody = _decodeResponse(response, expectJson: true);
+    if (decodedBody is String && expectJson && !(response.statusCode >= 200 && response.statusCode < 300) ) {
+      // If JSON was expected, but decoding returned a string (meaning parsing failed),
+      // and it's an error status, wrap it in a generic message for the exception.
+      // For success status with expectJson=true, if it's a string, it's an API contract violation.
+       throw ApiException(
+            'Expected JSON response but received non-JSON. Body: $decodedBody',
+            statusCode: response.statusCode,
+            responseBody: decodedBody
+        );
+    }
+
 
     if (response.statusCode >= 200 && response.statusCode < 300) {
-      return decodedBody; // This path is now only for expectJson = true
+      return decodedBody;
     } else if (response.statusCode == 401) {
       throw UnauthorizedException(
-        decodedBody is Map ? decodedBody['message'] ?? 'Unauthorized' : decodedBody?.toString() ?? 'Unauthorized',
+        decodedBody is Map ? decodedBody['message'] ?? 'Unauthorized' : decodedBody.toString(),
         responseBody: decodedBody
       );
     } else if (response.statusCode == 403) {
       throw ForbiddenException(
-        decodedBody is Map ? decodedBody['message'] ?? 'Forbidden' : decodedBody?.toString() ?? 'Forbidden',
+        decodedBody is Map ? decodedBody['message'] ?? 'Forbidden' : decodedBody.toString(),
         responseBody: decodedBody
       );
     } else if (response.statusCode == 404) {
       throw NotFoundException(
-        decodedBody is Map ? decodedBody['message'] ?? 'Not Found' : decodedBody?.toString() ?? 'Not Found',
+        decodedBody is Map ? decodedBody['message'] ?? 'Not Found' : decodedBody.toString(),
         responseBody: decodedBody
       );
     } else if (response.statusCode == 422) {
-      final apiError = decodedBody is Map && decodedBody.containsKey('isValid') ? ApiError.fromJson(decodedBody.cast<String,dynamic>()) : null;
+      final apiError = decodedBody is Map ? ApiError.fromJson(decodedBody.cast<String,dynamic>()) : null;
       throw ValidationException(
-        apiError?.message ?? (decodedBody is Map ? decodedBody['message'] ?? 'Validation Error' : decodedBody?.toString() ?? 'Validation Error'),
+        apiError?.message ?? (decodedBody is Map ? decodedBody['message'] ?? 'Validation Error' : decodedBody.toString()),
         errors: apiError?.fields?.map((key, value) => MapEntry(key, value.errors ?? [])),
         responseBody: decodedBody
       );
     } else if (response.statusCode >= 500 && response.statusCode < 600) {
       throw InternalServerErrorException(
-        decodedBody is Map ? decodedBody['message'] ?? 'Internal Server Error' : decodedBody?.toString() ?? 'Internal Server Error',
+        decodedBody is Map ? decodedBody['message'] ?? 'Internal Server Error' : decodedBody.toString(),
         responseBody: decodedBody
       );
     }
      else {
       throw ApiException(
-        decodedBody is Map ? decodedBody['message'] ?? 'API Error' : decodedBody?.toString() ?? 'API Error: ${response.statusCode}',
+        decodedBody is Map ? decodedBody['message'] ?? 'API Error' : decodedBody.toString(),
         statusCode: response.statusCode,
         responseBody: decodedBody
       );
@@ -116,33 +132,45 @@ class ReadeckApiClient {
   ) async {
     final response = await requestFunction();
     final dynamic body = await _handleResponse(response, expectJson: expectJsonResponse);
-    if (body == null && null is! T && expectJsonResponse) { // check if T is non-nullable
-        throw ApiException('Expected JSON response for ${T.toString()}, but received null body', statusCode: response.statusCode);
+    if (body == null && null is! T && expectJsonResponse) {
+        throw ApiException('Expected response body for ${T.toString()}, but received null', statusCode: response.statusCode);
     }
     return fromBody(body);
   }
 
-  Future<void> _makeRequestVoidReturn( // Renamed from _makeRequestNoResponse for clarity
+  Future<http.Response> _makeRawRequest(
     Future<http.Response> Function() requestFunction,
   ) async {
     final response = await requestFunction();
-    await _handleResponse(response); // Errors will be thrown, 204 will result in null and complete.
+    // Perform basic error checking without trying to fully parse/decode body yet
+    // This ensures that we don't try to access headers on a completely failed request too early.
+    if (response.statusCode >= 400) {
+        await _handleResponse(response, expectJson: true); // Will throw appropriate exception
+    }
+    return response; // Return raw response for caller to process body and headers
+  }
+
+  Future<void> _makeRequestVoidReturn( // Changed from _makeRequestNoResponse
+    Future<http.Response> Function() requestFunction,
+  ) async {
+    final response = await requestFunction();
+    await _handleResponse(response, expectJson: false);
   }
 
   Map<String, String> _buildQueryParameters(Map<String, dynamic> params) {
     return params.entries
-        .where((entry) => entry.value != null)
+        .where((entry) {
+          if (entry.key == 'labels') return true;
+          return entry.value != null;
+        })
         .map((entry) {
           if (entry.value is List) {
-            if ((entry.value as List).isEmpty) return MapEntry(entry.key, '');
             return MapEntry(entry.key, (entry.value as List).join(','));
           }
-          return MapEntry(entry.key, entry.value.toString());
+          return MapEntry(entry.key, entry.value?.toString() ?? '');
         })
         .fold<Map<String, String>>({}, (map, entry) {
-           if (entry.value.isNotEmpty || entry.key == 'labels') { // Allow 'labels=' for empty label list
-            map[entry.key] = entry.value;
-          }
+          map[entry.key] = entry.value;
           return map;
         });
   }
@@ -217,34 +245,42 @@ class ReadeckApiClient {
   }
 
   Future<BookmarkInfo> createBookmark(BookmarkCreate bookmarkCreate) async {
-    final response = await _httpClient.post(
-      Uri.parse('$baseUrl/bookmarks'),
-      headers: _getHeaders(),
-      body: jsonEncode(bookmarkCreate.toJson()),
+    // This method expects 202 Accepted, with Location and Bookmark-Id headers.
+    // The body of 202 is typically an ApiMessage.
+    final response = await _makeRawRequest(
+      () => _httpClient.post(
+        Uri.parse('$baseUrl/bookmarks'),
+        headers: _getHeaders(),
+        body: jsonEncode(bookmarkCreate.toJson()),
+      ),
     );
-    final dynamic responseBody = await _handleResponse(response, expectJson: true);
-
+    // _makeRawRequest already called _handleResponse for status >= 400
+    // Now check status code for 202 specific logic
     if (response.statusCode == 202) {
-      final bookmarkId = response.headers['bookmark-id'];
-      if (bookmarkId != null) {
-        return getBookmark(bookmarkId);
-      } else {
-        if (responseBody is Map && responseBody['message'] != null) {
-             throw ApiException(
-                "Bookmark creation initiated (202), 'bookmark-id' header missing. Message: ${responseBody['message']}",
-                statusCode: response.statusCode, responseBody: responseBody);
+        final bookmarkId = response.headers['bookmark-id'];
+        // final location = response.headers['location']; // Available if needed
+        final apiMessageBody = _decodeResponse(response, expectJson: true); // Decode the ApiMessage body
+
+        if (bookmarkId != null) {
+            // Successfully initiated, now fetch the actual bookmark
+            return getBookmark(bookmarkId);
+        } else {
+            throw ApiException(
+                "Bookmark creation initiated (202), but 'bookmark-id' header was missing.",
+                statusCode: response.statusCode,
+                responseBody: apiMessageBody);
+        }
+    } else {
+        // If not 202, but still 2xx (e.g. 201 if API behavior changes)
+        final dynamic body = _decodeResponse(response, expectJson: true);
+        if (body is Map<String,dynamic>) {
+             return BookmarkInfo.fromJson(body);
         }
         throw ApiException(
-            "Bookmark creation initiated (202), but no 'bookmark-id' header found and body is not a standard message.",
-            statusCode: response.statusCode, responseBody: responseBody);
-      }
+            "Unexpected success status code: ${response.statusCode} after creating bookmark.",
+            statusCode: response.statusCode,
+            responseBody: body);
     }
-    if (responseBody is Map<String, dynamic>) {
-        return BookmarkInfo.fromJson(responseBody);
-    }
-    throw ApiException(
-        "Unexpected response after creating bookmark. Status: ${response.statusCode}",
-        statusCode: response.statusCode, responseBody: responseBody);
   }
 
   Future<BookmarkInfo> getBookmark(String id) async {
@@ -355,7 +391,7 @@ class ReadeckApiClient {
         Uri.parse('$baseUrl/bookmarks/labels/${Uri.encodeComponent(name)}'),
         headers: _getHeaders(),
       ),
-      (json) => (json as List) // Assuming API returns a list even for a single named label info
+      (json) => (json as List)
           .map((item) => LabelInfo.fromJson(item as Map<String, dynamic>))
           .toList()
     );
@@ -381,7 +417,161 @@ class ReadeckApiClient {
     );
   }
 
+  // --- Annotation (Highlight) Endpoints ---
+  Future<List<AnnotationSummary>> listAnnotations({int? limit, int? offset}) async {
+    final queryParams = _buildQueryParameters({'limit': limit, 'offset': offset});
+    return _makeRequest(
+      () => _httpClient.get(
+        Uri.parse('$baseUrl/bookmarks/annotations').replace(queryParameters: queryParams.isEmpty ? null : queryParams),
+        headers: _getHeaders(),
+      ),
+      (json) => (json as List)
+          .map((item) => AnnotationSummary.fromJson(item as Map<String, dynamic>))
+          .toList()
+    );
+  }
+
+  Future<List<AnnotationInfo>> listBookmarkAnnotations(String bookmarkId) async {
+    return _makeRequest(
+      () => _httpClient.get(
+        Uri.parse('$baseUrl/bookmarks/$bookmarkId/annotations'),
+        headers: _getHeaders(),
+      ),
+      (json) => (json as List)
+          .map((item) => AnnotationInfo.fromJson(item as Map<String, dynamic>))
+          .toList()
+    );
+  }
+
+  Future<AnnotationInfo> createBookmarkAnnotation(String bookmarkId, AnnotationCreate annotationCreate) async {
+    return _makeRequest(
+      () => _httpClient.post(
+        Uri.parse('$baseUrl/bookmarks/$bookmarkId/annotations'),
+        headers: _getHeaders(),
+        body: jsonEncode(annotationCreate.toJson()),
+      ),
+      (json) => AnnotationInfo.fromJson(json as Map<String, dynamic>),
+    );
+  }
+
+  Future<AnnotationUpdateResponse> updateBookmarkAnnotation(String bookmarkId, String annotationId, AnnotationUpdate annotationUpdate) async {
+    return _makeRequest(
+      () => _httpClient.patch(
+        Uri.parse('$baseUrl/bookmarks/$bookmarkId/annotations/$annotationId'),
+        headers: _getHeaders(),
+        body: jsonEncode(annotationUpdate.toJson()),
+      ),
+      (json) => AnnotationUpdateResponse.fromJson(json as Map<String, dynamic>),
+    );
+  }
+
+  Future<void> deleteBookmarkAnnotation(String bookmarkId, String annotationId) async {
+    await _makeRequestVoidReturn(
+      () => _httpClient.delete(
+        Uri.parse('$baseUrl/bookmarks/$bookmarkId/annotations/$annotationId'),
+        headers: _getHeaders(),
+      ),
+    );
+  }
+
+  // --- Collection Endpoints ---
+  Future<List<CollectionInfo>> listCollections({int? limit, int? offset}) async {
+    final queryParams = _buildQueryParameters({'limit': limit, 'offset': offset});
+    return _makeRequest(
+      () => _httpClient.get(
+        Uri.parse('$baseUrl/bookmarks/collections').replace(queryParameters: queryParams.isEmpty ? null : queryParams),
+        headers: _getHeaders(),
+      ),
+      (json) => (json as List)
+          .map((item) => CollectionInfo.fromJson(item as Map<String, dynamic>))
+          .toList()
+    );
+  }
+
+  Future<CollectionInfo> createCollection(CollectionCreateOrUpdate collectionCreate) async {
+    return _makeRequest(
+      () => _httpClient.post(
+        Uri.parse('$baseUrl/bookmarks/collections'),
+        headers: _getHeaders(),
+        body: jsonEncode(collectionCreate.toJson()),
+      ),
+      (json) => CollectionInfo.fromJson(json as Map<String, dynamic>),
+    );
+  }
+
+  Future<CollectionInfo> getCollectionInfo(String id) async {
+    return _makeRequest(
+      () => _httpClient.get(
+        Uri.parse('$baseUrl/bookmarks/collections/$id'),
+        headers: _getHeaders(),
+      ),
+      (json) => CollectionInfo.fromJson(json as Map<String, dynamic>),
+    );
+  }
+
+  Future<CollectionSummary> updateCollection(String id, CollectionCreateOrUpdate collectionUpdate) async {
+    return _makeRequest(
+      () => _httpClient.patch(
+        Uri.parse('$baseUrl/bookmarks/collections/$id'),
+        headers: _getHeaders(),
+        body: jsonEncode(collectionUpdate.toJson()),
+      ),
+      (json) => CollectionSummary.fromJson(json as Map<String, dynamic>),
+    );
+  }
+
+  Future<void> deleteCollection(String id) async {
+    await _makeRequestVoidReturn(
+      () => _httpClient.delete(
+        Uri.parse('$baseUrl/bookmarks/collections/$id'),
+        headers: _getHeaders(),
+      ),
+    );
+  }
+
+  // --- Import Endpoints ---
+  Future<ApiMessageWithLocation> importTextFile(String textContent) async {
+    final response = await _makeRawRequest(
+      () => _httpClient.post(
+        Uri.parse('$baseUrl/bookmarks/import/text'),
+        headers: _getHeaders(contentType: 'text/plain; charset=utf-8', accept: 'application/json'),
+        body: textContent,
+      ),
+    );
+    // _makeRawRequest has already checked for >=400 status codes.
+    final dynamic jsonBody = _decodeResponse(response, expectJson: true);
+    final location = response.headers['location'];
+    return ApiMessageWithLocation(
+      message: ApiMessage.fromJson(jsonBody as Map<String, dynamic>),
+      location: location,
+    );
+  }
+
+  Future<ApiMessageWithLocation> importWallabag(WallabagImport wallabagImportData) async {
+     final response = await _makeRawRequest(
+      () => _httpClient.post(
+        Uri.parse('$baseUrl/bookmarks/import/wallabag'),
+        headers: _getHeaders(), // Default Content-Type: application/json, Accept: application/json
+        body: jsonEncode(wallabagImportData.toJson()),
+      ),
+    );
+    final dynamic jsonBody = _decodeResponse(response, expectJson: true);
+    final location = response.headers['location'];
+    return ApiMessageWithLocation(
+      message: ApiMessage.fromJson(jsonBody as Map<String, dynamic>),
+      location: location,
+    );
+  }
+
   void dispose() {
     _httpClient.close();
   }
+}
+
+// Helper class for responses that include a Location header along with ApiMessage
+class ApiMessageWithLocation {
+  final ApiMessage message;
+  final String? location;
+
+  ApiMessageWithLocation({required this.message, this.location});
 }
