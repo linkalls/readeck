@@ -3,6 +3,45 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'bookmark.freezed.dart';
 part 'bookmark.g.dart';
 
+abstract class IBookmarkSummary {
+  String? get id;
+  String? get href;
+  DateTime? get created;
+  DateTime? get updated;
+  int? get state;
+  bool? get loaded;
+  String? get url;
+  String? get title;
+  @JsonKey(name: 'site_name')
+  String? get siteName;
+  String? get site;
+  DateTime? get published;
+  List<String>? get authors;
+  String? get lang;
+  @JsonKey(name: 'text_direction')
+  String? get textDirection;
+  @JsonKey(name: 'document_type')
+  String? get documentType;
+  String? get type;
+  @JsonKey(name: 'has_article')
+  bool? get hasArticle;
+  String? get description;
+  @JsonKey(name: 'is_deleted')
+  bool? get isDeleted;
+  @JsonKey(name: 'is_marked')
+  bool? get isMarked;
+  @JsonKey(name: 'is_archived')
+  bool? get isArchived;
+  @JsonKey(name: 'read_progress')
+  int? get readProgress;
+  List<String>? get labels;
+  @JsonKey(name: 'word_count')
+  int? get wordCount;
+  @JsonKey(name: 'reading_time')
+  int? get readingTime;
+  BookmarkResources? get resources;
+}
+
 @freezed
 class BookmarkResource with _$BookmarkResource {
   const factory BookmarkResource({
@@ -41,34 +80,34 @@ class BookmarkResources with _$BookmarkResources {
 }
 
 @freezed
-class BookmarkSummary with _$BookmarkSummary {
+class BookmarkSummary with _$BookmarkSummary implements IBookmarkSummary {
   const factory BookmarkSummary({
-    String? id,
-    String? href,
-    DateTime? created,
-    DateTime? updated,
-    int? state,
-    bool? loaded,
-    String? url,
-    String? title,
-    @JsonKey(name: 'site_name') String? siteName,
-    String? site,
-    DateTime? published,
-    List<String>? authors,
-    String? lang,
-    @JsonKey(name: 'text_direction') String? textDirection,
-    @JsonKey(name: 'document_type') String? documentType,
-    String? type,
-    @JsonKey(name: 'has_article') bool? hasArticle,
-    String? description,
-    @JsonKey(name: 'is_deleted') bool? isDeleted,
-    @JsonKey(name: 'is_marked') bool? isMarked,
-    @JsonKey(name: 'is_archived') bool? isArchived,
-    @JsonKey(name: 'read_progress') int? readProgress,
-    List<String>? labels,
-    @JsonKey(name: 'word_count') int? wordCount,
-    @JsonKey(name: 'reading_time') int? readingTime,
-    BookmarkResources? resources,
+    @override String? id,
+    @override String? href,
+    @override DateTime? created,
+    @override DateTime? updated,
+    @override int? state,
+    @override bool? loaded,
+    @override String? url,
+    @override String? title,
+    @override @JsonKey(name: 'site_name') String? siteName,
+    @override String? site,
+    @override DateTime? published,
+    @override List<String>? authors,
+    @override String? lang,
+    @override @JsonKey(name: 'text_direction') String? textDirection,
+    @override @JsonKey(name: 'document_type') String? documentType,
+    @override String? type,
+    @override @JsonKey(name: 'has_article') bool? hasArticle,
+    @override String? description,
+    @override @JsonKey(name: 'is_deleted') bool? isDeleted,
+    @override @JsonKey(name: 'is_marked') bool? isMarked,
+    @override @JsonKey(name: 'is_archived') bool? isArchived,
+    @override @JsonKey(name: 'read_progress') int? readProgress,
+    @override List<String>? labels,
+    @override @JsonKey(name: 'word_count') int? wordCount,
+    @override @JsonKey(name: 'reading_time') int? readingTime,
+    @override BookmarkResources? resources,
   }) = _BookmarkSummary;
 
   factory BookmarkSummary.fromJson(Map<String, dynamic> json) =>
@@ -90,34 +129,36 @@ class BookmarkLink with _$BookmarkLink {
 }
 
 @freezed
-class BookmarkInfo with _$BookmarkInfo {
+class BookmarkInfo with _$BookmarkInfo implements IBookmarkSummary {
   const factory BookmarkInfo({
-    String? id,
-    String? href,
-    DateTime? created,
-    DateTime? updated,
-    int? state,
-    bool? loaded,
-    String? url,
-    String? title,
-    @JsonKey(name: 'site_name') String? siteName,
-    String? site,
-    DateTime? published,
-    List<String>? authors,
-    String? lang,
-    @JsonKey(name: 'text_direction') String? textDirection,
-    @JsonKey(name: 'document_type') String? documentType,
-    String? type,
-    @JsonKey(name: 'has_article') bool? hasArticle,
-    String? description,
-    @JsonKey(name: 'is_deleted') bool? isDeleted,
-    @JsonKey(name: 'is_marked') bool? isMarked,
-    @JsonKey(name: 'is_archived') bool? isArchived,
-    @JsonKey(name: 'read_progress') int? readProgress,
-    List<String>? labels,
-    @JsonKey(name: 'word_count') int? wordCount,
-    @JsonKey(name: 'reading_time') int? readingTime,
-    BookmarkResources? resources,
+    // Fields from IBookmarkSummary
+    @override String? id,
+    @override String? href,
+    @override DateTime? created,
+    @override DateTime? updated,
+    @override int? state,
+    @override bool? loaded,
+    @override String? url,
+    @override String? title,
+    @override @JsonKey(name: 'site_name') String? siteName,
+    @override String? site,
+    @override DateTime? published,
+    @override List<String>? authors,
+    @override String? lang,
+    @override @JsonKey(name: 'text_direction') String? textDirection,
+    @override @JsonKey(name: 'document_type') String? documentType,
+    @override String? type,
+    @override @JsonKey(name: 'has_article') bool? hasArticle,
+    @override String? description,
+    @override @JsonKey(name: 'is_deleted') bool? isDeleted,
+    @override @JsonKey(name: 'is_marked') bool? isMarked,
+    @override @JsonKey(name: 'is_archived') bool? isArchived,
+    @override @JsonKey(name: 'read_progress') int? readProgress,
+    @override List<String>? labels,
+    @override @JsonKey(name: 'word_count') int? wordCount,
+    @override @JsonKey(name: 'reading_time') int? readingTime,
+    @override BookmarkResources? resources,
+    // BookmarkInfo specific fields
     @JsonKey(name: 'omit_description') bool? omitDescription,
     @JsonKey(name: 'read_anchor') String? readAnchor,
     List<BookmarkLink>? links,

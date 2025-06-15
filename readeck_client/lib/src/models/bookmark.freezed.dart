@@ -580,7 +580,7 @@ $BookmarkResourceCopyWith<$Res>? get props {
 /// @nodoc
 mixin _$BookmarkSummary {
 
- String? get id; String? get href; DateTime? get created; DateTime? get updated; int? get state; bool? get loaded; String? get url; String? get title;@JsonKey(name: 'site_name') String? get siteName; String? get site; DateTime? get published; List<String>? get authors; String? get lang;@JsonKey(name: 'text_direction') String? get textDirection;@JsonKey(name: 'document_type') String? get documentType; String? get type;@JsonKey(name: 'has_article') bool? get hasArticle; String? get description;@JsonKey(name: 'is_deleted') bool? get isDeleted;@JsonKey(name: 'is_marked') bool? get isMarked;@JsonKey(name: 'is_archived') bool? get isArchived;@JsonKey(name: 'read_progress') int? get readProgress; List<String>? get labels;@JsonKey(name: 'word_count') int? get wordCount;@JsonKey(name: 'reading_time') int? get readingTime; BookmarkResources? get resources;
+@override String? get id;@override String? get href;@override DateTime? get created;@override DateTime? get updated;@override int? get state;@override bool? get loaded;@override String? get url;@override String? get title;@override@JsonKey(name: 'site_name') String? get siteName;@override String? get site;@override DateTime? get published;@override List<String>? get authors;@override String? get lang;@override@JsonKey(name: 'text_direction') String? get textDirection;@override@JsonKey(name: 'document_type') String? get documentType;@override String? get type;@override@JsonKey(name: 'has_article') bool? get hasArticle;@override String? get description;@override@JsonKey(name: 'is_deleted') bool? get isDeleted;@override@JsonKey(name: 'is_marked') bool? get isMarked;@override@JsonKey(name: 'is_archived') bool? get isArchived;@override@JsonKey(name: 'read_progress') int? get readProgress;@override List<String>? get labels;@override@JsonKey(name: 'word_count') int? get wordCount;@override@JsonKey(name: 'reading_time') int? get readingTime;@override BookmarkResources? get resources;
 /// Create a copy of BookmarkSummary
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -613,7 +613,7 @@ abstract mixin class $BookmarkSummaryCopyWith<$Res>  {
   factory $BookmarkSummaryCopyWith(BookmarkSummary value, $Res Function(BookmarkSummary) _then) = _$BookmarkSummaryCopyWithImpl;
 @useResult
 $Res call({
- String? id, String? href, DateTime? created, DateTime? updated, int? state, bool? loaded, String? url, String? title,@JsonKey(name: 'site_name') String? siteName, String? site, DateTime? published, List<String>? authors, String? lang,@JsonKey(name: 'text_direction') String? textDirection,@JsonKey(name: 'document_type') String? documentType, String? type,@JsonKey(name: 'has_article') bool? hasArticle, String? description,@JsonKey(name: 'is_deleted') bool? isDeleted,@JsonKey(name: 'is_marked') bool? isMarked,@JsonKey(name: 'is_archived') bool? isArchived,@JsonKey(name: 'read_progress') int? readProgress, List<String>? labels,@JsonKey(name: 'word_count') int? wordCount,@JsonKey(name: 'reading_time') int? readingTime, BookmarkResources? resources
+@override String? id,@override String? href,@override DateTime? created,@override DateTime? updated,@override int? state,@override bool? loaded,@override String? url,@override String? title,@override@JsonKey(name: 'site_name') String? siteName,@override String? site,@override DateTime? published,@override List<String>? authors,@override String? lang,@override@JsonKey(name: 'text_direction') String? textDirection,@override@JsonKey(name: 'document_type') String? documentType,@override String? type,@override@JsonKey(name: 'has_article') bool? hasArticle,@override String? description,@override@JsonKey(name: 'is_deleted') bool? isDeleted,@override@JsonKey(name: 'is_marked') bool? isMarked,@override@JsonKey(name: 'is_archived') bool? isArchived,@override@JsonKey(name: 'read_progress') int? readProgress,@override List<String>? labels,@override@JsonKey(name: 'word_count') int? wordCount,@override@JsonKey(name: 'reading_time') int? readingTime,@override BookmarkResources? resources
 });
 
 
@@ -681,22 +681,22 @@ $BookmarkResourcesCopyWith<$Res>? get resources {
 @JsonSerializable()
 
 class _BookmarkSummary implements BookmarkSummary {
-  const _BookmarkSummary({this.id, this.href, this.created, this.updated, this.state, this.loaded, this.url, this.title, @JsonKey(name: 'site_name') this.siteName, this.site, this.published, final  List<String>? authors, this.lang, @JsonKey(name: 'text_direction') this.textDirection, @JsonKey(name: 'document_type') this.documentType, this.type, @JsonKey(name: 'has_article') this.hasArticle, this.description, @JsonKey(name: 'is_deleted') this.isDeleted, @JsonKey(name: 'is_marked') this.isMarked, @JsonKey(name: 'is_archived') this.isArchived, @JsonKey(name: 'read_progress') this.readProgress, final  List<String>? labels, @JsonKey(name: 'word_count') this.wordCount, @JsonKey(name: 'reading_time') this.readingTime, this.resources}): _authors = authors,_labels = labels;
+  const _BookmarkSummary({@override this.id, @override this.href, @override this.created, @override this.updated, @override this.state, @override this.loaded, @override this.url, @override this.title, @override@JsonKey(name: 'site_name') this.siteName, @override this.site, @override this.published, @override final  List<String>? authors, @override this.lang, @override@JsonKey(name: 'text_direction') this.textDirection, @override@JsonKey(name: 'document_type') this.documentType, @override this.type, @override@JsonKey(name: 'has_article') this.hasArticle, @override this.description, @override@JsonKey(name: 'is_deleted') this.isDeleted, @override@JsonKey(name: 'is_marked') this.isMarked, @override@JsonKey(name: 'is_archived') this.isArchived, @override@JsonKey(name: 'read_progress') this.readProgress, @override final  List<String>? labels, @override@JsonKey(name: 'word_count') this.wordCount, @override@JsonKey(name: 'reading_time') this.readingTime, @override this.resources}): _authors = authors,_labels = labels;
   factory _BookmarkSummary.fromJson(Map<String, dynamic> json) => _$BookmarkSummaryFromJson(json);
 
-@override final  String? id;
-@override final  String? href;
-@override final  DateTime? created;
-@override final  DateTime? updated;
-@override final  int? state;
-@override final  bool? loaded;
-@override final  String? url;
-@override final  String? title;
-@override@JsonKey(name: 'site_name') final  String? siteName;
-@override final  String? site;
-@override final  DateTime? published;
+@override@override final  String? id;
+@override@override final  String? href;
+@override@override final  DateTime? created;
+@override@override final  DateTime? updated;
+@override@override final  int? state;
+@override@override final  bool? loaded;
+@override@override final  String? url;
+@override@override final  String? title;
+@override@override@JsonKey(name: 'site_name') final  String? siteName;
+@override@override final  String? site;
+@override@override final  DateTime? published;
  final  List<String>? _authors;
-@override List<String>? get authors {
+@override@override List<String>? get authors {
   final value = _authors;
   if (value == null) return null;
   if (_authors is EqualUnmodifiableListView) return _authors;
@@ -704,18 +704,18 @@ class _BookmarkSummary implements BookmarkSummary {
   return EqualUnmodifiableListView(value);
 }
 
-@override final  String? lang;
-@override@JsonKey(name: 'text_direction') final  String? textDirection;
-@override@JsonKey(name: 'document_type') final  String? documentType;
-@override final  String? type;
-@override@JsonKey(name: 'has_article') final  bool? hasArticle;
-@override final  String? description;
-@override@JsonKey(name: 'is_deleted') final  bool? isDeleted;
-@override@JsonKey(name: 'is_marked') final  bool? isMarked;
-@override@JsonKey(name: 'is_archived') final  bool? isArchived;
-@override@JsonKey(name: 'read_progress') final  int? readProgress;
+@override@override final  String? lang;
+@override@override@JsonKey(name: 'text_direction') final  String? textDirection;
+@override@override@JsonKey(name: 'document_type') final  String? documentType;
+@override@override final  String? type;
+@override@override@JsonKey(name: 'has_article') final  bool? hasArticle;
+@override@override final  String? description;
+@override@override@JsonKey(name: 'is_deleted') final  bool? isDeleted;
+@override@override@JsonKey(name: 'is_marked') final  bool? isMarked;
+@override@override@JsonKey(name: 'is_archived') final  bool? isArchived;
+@override@override@JsonKey(name: 'read_progress') final  int? readProgress;
  final  List<String>? _labels;
-@override List<String>? get labels {
+@override@override List<String>? get labels {
   final value = _labels;
   if (value == null) return null;
   if (_labels is EqualUnmodifiableListView) return _labels;
@@ -723,9 +723,9 @@ class _BookmarkSummary implements BookmarkSummary {
   return EqualUnmodifiableListView(value);
 }
 
-@override@JsonKey(name: 'word_count') final  int? wordCount;
-@override@JsonKey(name: 'reading_time') final  int? readingTime;
-@override final  BookmarkResources? resources;
+@override@override@JsonKey(name: 'word_count') final  int? wordCount;
+@override@override@JsonKey(name: 'reading_time') final  int? readingTime;
+@override@override final  BookmarkResources? resources;
 
 /// Create a copy of BookmarkSummary
 /// with the given fields replaced by the non-null parameter values.
@@ -760,7 +760,7 @@ abstract mixin class _$BookmarkSummaryCopyWith<$Res> implements $BookmarkSummary
   factory _$BookmarkSummaryCopyWith(_BookmarkSummary value, $Res Function(_BookmarkSummary) _then) = __$BookmarkSummaryCopyWithImpl;
 @override @useResult
 $Res call({
- String? id, String? href, DateTime? created, DateTime? updated, int? state, bool? loaded, String? url, String? title,@JsonKey(name: 'site_name') String? siteName, String? site, DateTime? published, List<String>? authors, String? lang,@JsonKey(name: 'text_direction') String? textDirection,@JsonKey(name: 'document_type') String? documentType, String? type,@JsonKey(name: 'has_article') bool? hasArticle, String? description,@JsonKey(name: 'is_deleted') bool? isDeleted,@JsonKey(name: 'is_marked') bool? isMarked,@JsonKey(name: 'is_archived') bool? isArchived,@JsonKey(name: 'read_progress') int? readProgress, List<String>? labels,@JsonKey(name: 'word_count') int? wordCount,@JsonKey(name: 'reading_time') int? readingTime, BookmarkResources? resources
+@override String? id,@override String? href,@override DateTime? created,@override DateTime? updated,@override int? state,@override bool? loaded,@override String? url,@override String? title,@override@JsonKey(name: 'site_name') String? siteName,@override String? site,@override DateTime? published,@override List<String>? authors,@override String? lang,@override@JsonKey(name: 'text_direction') String? textDirection,@override@JsonKey(name: 'document_type') String? documentType,@override String? type,@override@JsonKey(name: 'has_article') bool? hasArticle,@override String? description,@override@JsonKey(name: 'is_deleted') bool? isDeleted,@override@JsonKey(name: 'is_marked') bool? isMarked,@override@JsonKey(name: 'is_archived') bool? isArchived,@override@JsonKey(name: 'read_progress') int? readProgress,@override List<String>? labels,@override@JsonKey(name: 'word_count') int? wordCount,@override@JsonKey(name: 'reading_time') int? readingTime,@override BookmarkResources? resources
 });
 
 
@@ -973,7 +973,9 @@ as String?,
 /// @nodoc
 mixin _$BookmarkInfo {
 
- String? get id; String? get href; DateTime? get created; DateTime? get updated; int? get state; bool? get loaded; String? get url; String? get title;@JsonKey(name: 'site_name') String? get siteName; String? get site; DateTime? get published; List<String>? get authors; String? get lang;@JsonKey(name: 'text_direction') String? get textDirection;@JsonKey(name: 'document_type') String? get documentType; String? get type;@JsonKey(name: 'has_article') bool? get hasArticle; String? get description;@JsonKey(name: 'is_deleted') bool? get isDeleted;@JsonKey(name: 'is_marked') bool? get isMarked;@JsonKey(name: 'is_archived') bool? get isArchived;@JsonKey(name: 'read_progress') int? get readProgress; List<String>? get labels;@JsonKey(name: 'word_count') int? get wordCount;@JsonKey(name: 'reading_time') int? get readingTime; BookmarkResources? get resources;@JsonKey(name: 'omit_description') bool? get omitDescription;@JsonKey(name: 'read_anchor') String? get readAnchor; List<BookmarkLink>? get links;
+// Fields from IBookmarkSummary
+@override String? get id;@override String? get href;@override DateTime? get created;@override DateTime? get updated;@override int? get state;@override bool? get loaded;@override String? get url;@override String? get title;@override@JsonKey(name: 'site_name') String? get siteName;@override String? get site;@override DateTime? get published;@override List<String>? get authors;@override String? get lang;@override@JsonKey(name: 'text_direction') String? get textDirection;@override@JsonKey(name: 'document_type') String? get documentType;@override String? get type;@override@JsonKey(name: 'has_article') bool? get hasArticle;@override String? get description;@override@JsonKey(name: 'is_deleted') bool? get isDeleted;@override@JsonKey(name: 'is_marked') bool? get isMarked;@override@JsonKey(name: 'is_archived') bool? get isArchived;@override@JsonKey(name: 'read_progress') int? get readProgress;@override List<String>? get labels;@override@JsonKey(name: 'word_count') int? get wordCount;@override@JsonKey(name: 'reading_time') int? get readingTime;@override BookmarkResources? get resources;// BookmarkInfo specific fields
+@JsonKey(name: 'omit_description') bool? get omitDescription;@JsonKey(name: 'read_anchor') String? get readAnchor; List<BookmarkLink>? get links;
 /// Create a copy of BookmarkInfo
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1006,7 +1008,7 @@ abstract mixin class $BookmarkInfoCopyWith<$Res>  {
   factory $BookmarkInfoCopyWith(BookmarkInfo value, $Res Function(BookmarkInfo) _then) = _$BookmarkInfoCopyWithImpl;
 @useResult
 $Res call({
- String? id, String? href, DateTime? created, DateTime? updated, int? state, bool? loaded, String? url, String? title,@JsonKey(name: 'site_name') String? siteName, String? site, DateTime? published, List<String>? authors, String? lang,@JsonKey(name: 'text_direction') String? textDirection,@JsonKey(name: 'document_type') String? documentType, String? type,@JsonKey(name: 'has_article') bool? hasArticle, String? description,@JsonKey(name: 'is_deleted') bool? isDeleted,@JsonKey(name: 'is_marked') bool? isMarked,@JsonKey(name: 'is_archived') bool? isArchived,@JsonKey(name: 'read_progress') int? readProgress, List<String>? labels,@JsonKey(name: 'word_count') int? wordCount,@JsonKey(name: 'reading_time') int? readingTime, BookmarkResources? resources,@JsonKey(name: 'omit_description') bool? omitDescription,@JsonKey(name: 'read_anchor') String? readAnchor, List<BookmarkLink>? links
+@override String? id,@override String? href,@override DateTime? created,@override DateTime? updated,@override int? state,@override bool? loaded,@override String? url,@override String? title,@override@JsonKey(name: 'site_name') String? siteName,@override String? site,@override DateTime? published,@override List<String>? authors,@override String? lang,@override@JsonKey(name: 'text_direction') String? textDirection,@override@JsonKey(name: 'document_type') String? documentType,@override String? type,@override@JsonKey(name: 'has_article') bool? hasArticle,@override String? description,@override@JsonKey(name: 'is_deleted') bool? isDeleted,@override@JsonKey(name: 'is_marked') bool? isMarked,@override@JsonKey(name: 'is_archived') bool? isArchived,@override@JsonKey(name: 'read_progress') int? readProgress,@override List<String>? labels,@override@JsonKey(name: 'word_count') int? wordCount,@override@JsonKey(name: 'reading_time') int? readingTime,@override BookmarkResources? resources,@JsonKey(name: 'omit_description') bool? omitDescription,@JsonKey(name: 'read_anchor') String? readAnchor, List<BookmarkLink>? links
 });
 
 
@@ -1077,22 +1079,23 @@ $BookmarkResourcesCopyWith<$Res>? get resources {
 @JsonSerializable()
 
 class _BookmarkInfo implements BookmarkInfo {
-  const _BookmarkInfo({this.id, this.href, this.created, this.updated, this.state, this.loaded, this.url, this.title, @JsonKey(name: 'site_name') this.siteName, this.site, this.published, final  List<String>? authors, this.lang, @JsonKey(name: 'text_direction') this.textDirection, @JsonKey(name: 'document_type') this.documentType, this.type, @JsonKey(name: 'has_article') this.hasArticle, this.description, @JsonKey(name: 'is_deleted') this.isDeleted, @JsonKey(name: 'is_marked') this.isMarked, @JsonKey(name: 'is_archived') this.isArchived, @JsonKey(name: 'read_progress') this.readProgress, final  List<String>? labels, @JsonKey(name: 'word_count') this.wordCount, @JsonKey(name: 'reading_time') this.readingTime, this.resources, @JsonKey(name: 'omit_description') this.omitDescription, @JsonKey(name: 'read_anchor') this.readAnchor, final  List<BookmarkLink>? links}): _authors = authors,_labels = labels,_links = links;
+  const _BookmarkInfo({@override this.id, @override this.href, @override this.created, @override this.updated, @override this.state, @override this.loaded, @override this.url, @override this.title, @override@JsonKey(name: 'site_name') this.siteName, @override this.site, @override this.published, @override final  List<String>? authors, @override this.lang, @override@JsonKey(name: 'text_direction') this.textDirection, @override@JsonKey(name: 'document_type') this.documentType, @override this.type, @override@JsonKey(name: 'has_article') this.hasArticle, @override this.description, @override@JsonKey(name: 'is_deleted') this.isDeleted, @override@JsonKey(name: 'is_marked') this.isMarked, @override@JsonKey(name: 'is_archived') this.isArchived, @override@JsonKey(name: 'read_progress') this.readProgress, @override final  List<String>? labels, @override@JsonKey(name: 'word_count') this.wordCount, @override@JsonKey(name: 'reading_time') this.readingTime, @override this.resources, @JsonKey(name: 'omit_description') this.omitDescription, @JsonKey(name: 'read_anchor') this.readAnchor, final  List<BookmarkLink>? links}): _authors = authors,_labels = labels,_links = links;
   factory _BookmarkInfo.fromJson(Map<String, dynamic> json) => _$BookmarkInfoFromJson(json);
 
-@override final  String? id;
-@override final  String? href;
-@override final  DateTime? created;
-@override final  DateTime? updated;
-@override final  int? state;
-@override final  bool? loaded;
-@override final  String? url;
-@override final  String? title;
-@override@JsonKey(name: 'site_name') final  String? siteName;
-@override final  String? site;
-@override final  DateTime? published;
+// Fields from IBookmarkSummary
+@override@override final  String? id;
+@override@override final  String? href;
+@override@override final  DateTime? created;
+@override@override final  DateTime? updated;
+@override@override final  int? state;
+@override@override final  bool? loaded;
+@override@override final  String? url;
+@override@override final  String? title;
+@override@override@JsonKey(name: 'site_name') final  String? siteName;
+@override@override final  String? site;
+@override@override final  DateTime? published;
  final  List<String>? _authors;
-@override List<String>? get authors {
+@override@override List<String>? get authors {
   final value = _authors;
   if (value == null) return null;
   if (_authors is EqualUnmodifiableListView) return _authors;
@@ -1100,18 +1103,18 @@ class _BookmarkInfo implements BookmarkInfo {
   return EqualUnmodifiableListView(value);
 }
 
-@override final  String? lang;
-@override@JsonKey(name: 'text_direction') final  String? textDirection;
-@override@JsonKey(name: 'document_type') final  String? documentType;
-@override final  String? type;
-@override@JsonKey(name: 'has_article') final  bool? hasArticle;
-@override final  String? description;
-@override@JsonKey(name: 'is_deleted') final  bool? isDeleted;
-@override@JsonKey(name: 'is_marked') final  bool? isMarked;
-@override@JsonKey(name: 'is_archived') final  bool? isArchived;
-@override@JsonKey(name: 'read_progress') final  int? readProgress;
+@override@override final  String? lang;
+@override@override@JsonKey(name: 'text_direction') final  String? textDirection;
+@override@override@JsonKey(name: 'document_type') final  String? documentType;
+@override@override final  String? type;
+@override@override@JsonKey(name: 'has_article') final  bool? hasArticle;
+@override@override final  String? description;
+@override@override@JsonKey(name: 'is_deleted') final  bool? isDeleted;
+@override@override@JsonKey(name: 'is_marked') final  bool? isMarked;
+@override@override@JsonKey(name: 'is_archived') final  bool? isArchived;
+@override@override@JsonKey(name: 'read_progress') final  int? readProgress;
  final  List<String>? _labels;
-@override List<String>? get labels {
+@override@override List<String>? get labels {
   final value = _labels;
   if (value == null) return null;
   if (_labels is EqualUnmodifiableListView) return _labels;
@@ -1119,9 +1122,10 @@ class _BookmarkInfo implements BookmarkInfo {
   return EqualUnmodifiableListView(value);
 }
 
-@override@JsonKey(name: 'word_count') final  int? wordCount;
-@override@JsonKey(name: 'reading_time') final  int? readingTime;
-@override final  BookmarkResources? resources;
+@override@override@JsonKey(name: 'word_count') final  int? wordCount;
+@override@override@JsonKey(name: 'reading_time') final  int? readingTime;
+@override@override final  BookmarkResources? resources;
+// BookmarkInfo specific fields
 @override@JsonKey(name: 'omit_description') final  bool? omitDescription;
 @override@JsonKey(name: 'read_anchor') final  String? readAnchor;
  final  List<BookmarkLink>? _links;
@@ -1167,7 +1171,7 @@ abstract mixin class _$BookmarkInfoCopyWith<$Res> implements $BookmarkInfoCopyWi
   factory _$BookmarkInfoCopyWith(_BookmarkInfo value, $Res Function(_BookmarkInfo) _then) = __$BookmarkInfoCopyWithImpl;
 @override @useResult
 $Res call({
- String? id, String? href, DateTime? created, DateTime? updated, int? state, bool? loaded, String? url, String? title,@JsonKey(name: 'site_name') String? siteName, String? site, DateTime? published, List<String>? authors, String? lang,@JsonKey(name: 'text_direction') String? textDirection,@JsonKey(name: 'document_type') String? documentType, String? type,@JsonKey(name: 'has_article') bool? hasArticle, String? description,@JsonKey(name: 'is_deleted') bool? isDeleted,@JsonKey(name: 'is_marked') bool? isMarked,@JsonKey(name: 'is_archived') bool? isArchived,@JsonKey(name: 'read_progress') int? readProgress, List<String>? labels,@JsonKey(name: 'word_count') int? wordCount,@JsonKey(name: 'reading_time') int? readingTime, BookmarkResources? resources,@JsonKey(name: 'omit_description') bool? omitDescription,@JsonKey(name: 'read_anchor') String? readAnchor, List<BookmarkLink>? links
+@override String? id,@override String? href,@override DateTime? created,@override DateTime? updated,@override int? state,@override bool? loaded,@override String? url,@override String? title,@override@JsonKey(name: 'site_name') String? siteName,@override String? site,@override DateTime? published,@override List<String>? authors,@override String? lang,@override@JsonKey(name: 'text_direction') String? textDirection,@override@JsonKey(name: 'document_type') String? documentType,@override String? type,@override@JsonKey(name: 'has_article') bool? hasArticle,@override String? description,@override@JsonKey(name: 'is_deleted') bool? isDeleted,@override@JsonKey(name: 'is_marked') bool? isMarked,@override@JsonKey(name: 'is_archived') bool? isArchived,@override@JsonKey(name: 'read_progress') int? readProgress,@override List<String>? labels,@override@JsonKey(name: 'word_count') int? wordCount,@override@JsonKey(name: 'reading_time') int? readingTime,@override BookmarkResources? resources,@JsonKey(name: 'omit_description') bool? omitDescription,@JsonKey(name: 'read_anchor') String? readAnchor, List<BookmarkLink>? links
 });
 
 
