@@ -13,9 +13,10 @@
     *   アノテーション (ハイライト) (CRUD、一覧)
     *   コレクション (CRUD、一覧)
     *   インポート (テキスト、Wallabag、ブラウザHTML、Pocket HTML)
+    *   Cookbook/開発ツール (`/cookbook/extract`)
 *   **エラーハンドリング:** APIのエラータイプに応じたカスタム例外を提供します。
 *   **Multipartファイルアップロード:** `multipart/form-data` によるファイルインポートをサポートします。
-*   **非JSONレスポンス対応:** 特定のエンドポイント（記事本文、EPUBエクスポートなど）におけるHTMLやバイナリレスポンスをサポートします。
+*   **非JSONレスポンス対応:** 特定のエンドポイント（記事本文、EPUBエクスポート、Cookbook抽出HTMLなど）におけるHTMLやバイナリレスポンスをサポートします。
 
 ## はじめに
 
@@ -71,36 +72,22 @@ void main() async {
     final authResponse = await apiClient.login(authRequest);
     print('ログイン成功! トークン: ${authResponse.token}');
 
-    final userProfile = await apiClient.getProfile();
-    print('ユーザープロファイル: ${userProfile.user?.username}');
+    // ... 他の例 ...
 
-    final bookmarks = await apiClient.listBookmarks(limit: 10);
-    print('${bookmarks.length}件のブックマークを取得しました。');
-    for (var bookmark in bookmarks) {
-      print('- ${bookmark.title} (${bookmark.url})');
-    }
-
-    // ファイルインポートの例 (概念的なもので、実際のファイル読み込みに置き換えてください)
-    // Uint8List fileBytes と String filename があると仮定します:
-    //
-    // ブラウザブックマークの例:
+    // extractLink の例 (管理者のみ)
     // try {
-    //   Uint8List browserFileBytes = await File('path/to/your/bookmarks.html').readAsBytes();
-    //   String browserFilename = 'bookmarks.html';
-    //   ApiMessageWithLocation importResult = await apiClient.importBrowserBookmarks(browserFileBytes, browserFilename);
-    //   print('ブラウザブックマークのインポートが開始されました。ステータス: ${importResult.message.message}, 場所: ${importResult.location}');
-    // } on ApiException catch (e) {
-    //   print('ブラウザブックマークのインポートに失敗しました: ${e.message}');
-    // }
+    //   // ユーザーが認証済みで管理者権限を持っていると仮定
+    //   final dynamic extractionResultJson = await apiClient.extractLink('https://example.com/article');
+    //   if (extractionResultJson is ExtractionResult) {
+    //      print('抽出タイトル (JSON): ${extractionResultJson.title}');
+    //   }
     //
-    // Pocketブックマークの例:
-    // try {
-    //   Uint8List pocketFileBytes = await File('path/to/your/pocket_export.html').readAsBytes();
-    //   String pocketFilename = 'ril_export.html';
-    //   ApiMessageWithLocation pocketImportResult = await apiClient.importPocketFile(pocketFileBytes, pocketFilename);
-    //   print('Pocketブックマークのインポートが開始されました。ステータス: ${pocketImportResult.message.message}, 場所: ${pocketImportResult.location}');
+    //   final dynamic extractionResultHtml = await apiClient.extractLink('https://example.com/article', acceptType: 'text/html');
+    //   if (extractionResultHtml is String) {
+    //      print('抽出HTML長: ${extractionResultHtml.length}');
+    //   }
     // } on ApiException catch (e) {
-    //   print('Pocketブックマークのインポートに失敗しました: ${e.message}');
+    //   print('リンク抽出失敗: ${e.message}');
     // }
 
   } on UnauthorizedException catch (e) {
@@ -159,11 +146,13 @@ void main() async {
     *   `POST /bookmarks/import/text`: プレーンテキストファイルの内容からブックマークをインポートします。
     *   `POST /bookmarks/import/wallabag`: Wallabagインスタンスからブックマークをインポートします。
     *   `POST /bookmarks/import/browser`: ブラウザブックマーク（HTMLファイル、multipart/form-data経由）をインポートします。
-    *   `POST /bookmarks/import/pocket-file`: Pocketエクスポート（HTMLファイル、multipart/form-data経Я経由）をインポートします。
+    *   `POST /bookmarks/import/pocket-file`: Pocketエクスポート（HTMLファイル、multipart/form-data経由）をインポートします。
+*   **Cookbook (開発ツール - 管理者のみ):**
+    *   `GET /cookbook/extract`: URLからコンテンツとメタデータを抽出します。JSON ([ExtractionResult]) またはHTML ([String]) を返します。
 
 ## 今後の作業
 
-*   残りのAPIエンドポイントの実装（もしあれば、例: `/cookbook/extract`のような管理者ツール）。
+*   残りのAPIエンドポイントの実装（もしあれば）。
 *   包括的なユニットテストと統合テストの追加。
 *   pub.devへの公開。
 *   さらなるAPIテストに基づくエラーハンドリングとモデル詳細の改良。

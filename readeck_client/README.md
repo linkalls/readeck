@@ -13,9 +13,10 @@ A Dart client library for interacting with the [Readeck API](https://github.com/
     *   Annotations (Highlights) (CRUD, list)
     *   Collections (CRUD, list)
     *   Imports (Text, Wallabag, Browser HTML, Pocket HTML)
+    *   Cookbook/Dev Tools (`/cookbook/extract`)
 *   **Error Handling:** Custom exceptions for different API error types.
 *   **Multipart File Uploads:** Support for importing files via `multipart/form-data`.
-*   **Non-JSON Response Handling:** Supports HTML and binary responses for specific endpoints (e.g., article content, EPUB export).
+*   **Non-JSON Response Handling:** Supports HTML and binary responses for specific endpoints (e.g., article content, EPUB export, cookbook extract HTML).
 
 ## Getting Started
 
@@ -31,8 +32,8 @@ Add the following to your `pubspec.yaml` file:
 ```yaml
 dependencies:
   http: ^1.0.0 # or any compatible version
-  freezed_annotation: ^any # use appropriate version
-  json_annotation: ^any # use appropriate version
+  freezed_annotation: any # use appropriate version
+  json_annotation: any # use appropriate version
   http_parser: ^0.8.0 # Recommended for MediaType when using multipart requests
 
   # If using this client from a local path:
@@ -71,36 +72,22 @@ void main() async {
     final authResponse = await apiClient.login(authRequest);
     print('Login successful! Token: ${authResponse.token}');
 
-    final userProfile = await apiClient.getProfile();
-    print('User Profile: ${userProfile.user?.username}');
+    // ... other examples ...
 
-    final bookmarks = await apiClient.listBookmarks(limit: 10);
-    print('Fetched ${bookmarks.length} bookmarks.');
-    for (var bookmark in bookmarks) {
-      print('- ${bookmark.title} (${bookmark.url})');
-    }
-
-    // Example for file import (conceptual, replace with actual file reading)
-    // Assuming you have Uint8List fileBytes and String filename:
-    //
-    // Example for browser bookmarks:
+    // Example for extractLink (Admin only)
     // try {
-    //   Uint8List browserFileBytes = await File('path/to/your/bookmarks.html').readAsBytes();
-    //   String browserFilename = 'bookmarks.html';
-    //   ApiMessageWithLocation importResult = await apiClient.importBrowserBookmarks(browserFileBytes, browserFilename);
-    //   print('Browser bookmarks import initiated. Status: ${importResult.message.message}, Location: ${importResult.location}');
-    // } on ApiException catch (e) {
-    //   print('Browser bookmark import failed: ${e.message}');
-    // }
+    //   // Assuming the user is authenticated and has admin privileges
+    //   final dynamic extractionResultJson = await apiClient.extractLink('https://example.com/article');
+    //   if (extractionResultJson is ExtractionResult) {
+    //      print('Extracted Title (JSON): ${extractionResultJson.title}');
+    //   }
     //
-    // Example for Pocket bookmarks:
-    // try {
-    //   Uint8List pocketFileBytes = await File('path/to/your/pocket_export.html').readAsBytes();
-    //   String pocketFilename = 'ril_export.html';
-    //   ApiMessageWithLocation pocketImportResult = await apiClient.importPocketFile(pocketFileBytes, pocketFilename);
-    //   print('Pocket bookmarks import initiated. Status: ${pocketImportResult.message.message}, Location: ${pocketImportResult.location}');
+    //   final dynamic extractionResultHtml = await apiClient.extractLink('https://example.com/article', acceptType: 'text/html');
+    //   if (extractionResultHtml is String) {
+    //      print('Extracted HTML length: ${extractionResultHtml.length}');
+    //   }
     // } on ApiException catch (e) {
-    //   print('Pocket bookmark import failed: ${e.message}');
+    //   print('Link extraction failed: ${e.message}');
     // }
 
   } on UnauthorizedException catch (e) {
@@ -160,10 +147,12 @@ So far, the following categories of endpoints are implemented:
     *   `POST /bookmarks/import/wallabag`: Import bookmarks from a Wallabag instance.
     *   `POST /bookmarks/import/browser`: Import browser bookmarks (HTML file via multipart/form-data).
     *   `POST /bookmarks/import/pocket-file`: Import Pocket export (HTML file via multipart/form-data).
+*   **Cookbook (Dev Tools - Admin Only):**
+    *   `GET /cookbook/extract`: Extracts content and metadata from a URL. Returns JSON ([ExtractionResult]) or HTML ([String]).
 
 ## Future Work
 
-*   Implement remaining API endpoints (if any, e.g., admin tools like `/cookbook/extract`).
+*   Implement remaining API endpoints (if any).
 *   Add comprehensive unit and integration tests.
 *   Publish to pub.dev.
 *   Refine error handling and model details based on further API testing.
