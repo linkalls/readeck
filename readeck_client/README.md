@@ -5,12 +5,16 @@ A Dart client library for interacting with the [Readeck API](https://github.com/
 ## Features
 
 *   **Type-Safe API Calls:** Generated data models using Freezed ensure type safety and reduce runtime errors.
-*   **Authentication:** Easy way to set and clear authentication tokens.
-*   **Implemented Endpoints (so far):**
+*   **Authentication:** Easy way to set and clear authentication tokens. Login method automatically stores the token.
+*   **Implemented Endpoints:**
     *   Authentication (`/auth`, `/profile`)
     *   Bookmarks (CRUD, list, sync, article export, sharing)
     *   Labels (CRUD, list)
+    *   Annotations (Highlights) (CRUD, list)
+    *   Collections (CRUD, list)
+    *   Imports (Text, Wallabag, Browser HTML, Pocket HTML)
 *   **Error Handling:** Custom exceptions for different API error types.
+*   **Multipart File Uploads:** Support for importing files via `multipart/form-data`.
 *   **Non-JSON Response Handling:** Supports HTML and binary responses for specific endpoints (e.g., article content, EPUB export).
 
 ## Getting Started
@@ -22,19 +26,25 @@ A Dart client library for interacting with the [Readeck API](https://github.com/
 
 ### Installation
 
-Add the following to your `pubspec.yaml` file (once published or if using as a path/git dependency):
+Add the following to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  readeck_api_client: ^0.1.0 # Replace with actual version or dependency type
-```
+  http: ^1.0.0 # or any compatible version
+  freezed_annotation: ^any # use appropriate version
+  json_annotation: ^any # use appropriate version
+  http_parser: ^0.8.0 # Recommended for MediaType when using multipart requests
 
-For now, as it's being developed, you might use it as a local path dependency if you have the code locally:
+  # If using this client from a local path:
+  # readeck_api_client:
+  #   path: path/to/readeck_client
 
-```yaml
-dependencies:
-  readeck_api_client:
-    path: path/to/readeck_client
+  # If it gets published to pub.dev:
+  # readeck_api_client: ^0.1.0
+dev_dependencies:
+  build_runner: ^any
+  freezed: ^any
+  json_serializable: ^any
 ```
 
 Then run `dart pub get` or `flutter pub get`.
@@ -42,45 +52,57 @@ Then run `dart pub get` or `flutter pub get`.
 ### Basic Usage
 
 ```dart
-import 'package:readeck_client/readeck_api_client.dart'; // Adjust import path as needed
-// You might also need to import specific models:
-// import 'package:readeck_client/models.dart'; // Assuming a barrel file for models
+import 'dart:io'; // For File operations if reading from disk
+import 'dart:typed_data'; // For Uint8List
+import 'package:readeck_client/readeck_api_client.dart';
+import 'package:readeck_client/models.dart';
+// import 'package:http_parser/http_parser.dart'; // For MediaType if constructing it manually
 
 void main() async {
-  // Initialize the client
   final apiClient = ReadeckApiClient(baseUrl: 'YOUR_READECK_BASE_URL');
 
   try {
-    // 1. Authenticate (Login)
     final authRequest = AuthRequest(
       username: 'your_username',
       password: 'your_password',
       application: 'MyDartApp',
     );
+    // Login automatically sets the token in the client
     final authResponse = await apiClient.login(authRequest);
+    print('Login successful! Token: ${authResponse.token}');
 
-    if (authResponse.token != null) {
-      apiClient.setToken(authResponse.token!);
-      print('Login successful! Token: ${authResponse.token}');
+    final userProfile = await apiClient.getProfile();
+    print('User Profile: ${userProfile.user?.username}');
 
-      // 2. Get User Profile
-      final userProfile = await apiClient.getProfile();
-      print('User Profile: ${userProfile.user?.username}');
-
-      // 3. List Bookmarks
-      final bookmarks = await apiClient.listBookmarks(limit: 10);
-      print('Fetched ${bookmarks.length} bookmarks.');
-      for (var bookmark in bookmarks) {
-        print('- ${bookmark.title} (${bookmark.url})');
-      }
-
-      // Example: Create a bookmark (ensure URL is valid)
-      // final newBookmark = await apiClient.createBookmark(
-      //   BookmarkCreate(url: 'https_example.com_article', title: 'My New Bookmark')
-      // );
-      // print('Created bookmark: ${newBookmark.title}');
-
+    final bookmarks = await apiClient.listBookmarks(limit: 10);
+    print('Fetched ${bookmarks.length} bookmarks.');
+    for (var bookmark in bookmarks) {
+      print('- ${bookmark.title} (${bookmark.url})');
     }
+
+    // Example for file import (conceptual, replace with actual file reading)
+    // Assuming you have Uint8List fileBytes and String filename:
+    //
+    // Example for browser bookmarks:
+    // try {
+    //   Uint8List browserFileBytes = await File('path/to/your/bookmarks.html').readAsBytes();
+    //   String browserFilename = 'bookmarks.html';
+    //   ApiMessageWithLocation importResult = await apiClient.importBrowserBookmarks(browserFileBytes, browserFilename);
+    //   print('Browser bookmarks import initiated. Status: ${importResult.message.message}, Location: ${importResult.location}');
+    // } on ApiException catch (e) {
+    //   print('Browser bookmark import failed: ${e.message}');
+    // }
+    //
+    // Example for Pocket bookmarks:
+    // try {
+    //   Uint8List pocketFileBytes = await File('path/to/your/pocket_export.html').readAsBytes();
+    //   String pocketFilename = 'ril_export.html';
+    //   ApiMessageWithLocation pocketImportResult = await apiClient.importPocketFile(pocketFileBytes, pocketFilename);
+    //   print('Pocket bookmarks import initiated. Status: ${pocketImportResult.message.message}, Location: ${pocketImportResult.location}');
+    // } on ApiException catch (e) {
+    //   print('Pocket bookmark import failed: ${e.message}');
+    // }
+
   } on UnauthorizedException catch (e) {
     print('Authentication failed: ${e.message}');
   } on ValidationException catch (e) {
@@ -90,12 +112,10 @@ void main() async {
     });
   } on ApiException catch (e) {
     print('An API error occurred: ${e.message}');
-    print('Status Code: ${e.statusCode}');
-    print('Response Body: ${e.responseBody}');
   } catch (e) {
     print('An unexpected error occurred: $e');
   } finally {
-    apiClient.dispose(); // Close the http client
+    apiClient.dispose();
   }
 }
 ```
@@ -105,7 +125,7 @@ void main() async {
 So far, the following categories of endpoints are implemented:
 
 *   **Authentication:**
-    *   `POST /auth`: Login and get an API token.
+    *   `POST /auth`: Login and get an API token. Token is auto-set in client.
     *   `GET /profile`: Get the current user's profile.
 *   **Bookmarks:**
     *   `GET /bookmarks`: List bookmarks with filtering and pagination.
@@ -123,20 +143,34 @@ So far, the following categories of endpoints are implemented:
     *   `GET /bookmarks/labels/{name}`: Get information about a specific label.
     *   `PATCH /bookmarks/labels/{name}`: Update a label's name.
     *   `DELETE /bookmarks/labels/{name}`: Delete a label.
+*   **Annotations (Highlights):**
+    *   `GET /bookmarks/annotations`: List all annotations for the current user.
+    *   `GET /bookmarks/{bookmarkId}/annotations`: List annotations for a specific bookmark.
+    *   `POST /bookmarks/{bookmarkId}/annotations`: Create an annotation.
+    *   `PATCH /bookmarks/{bookmarkId}/annotations/{annotationId}`: Update an annotation.
+    *   `DELETE /bookmarks/{bookmarkId}/annotations/{annotationId}`: Delete an annotation.
+*   **Collections:**
+    *   `GET /bookmarks/collections`: List all collections.
+    *   `POST /bookmarks/collections`: Create a new collection.
+    *   `GET /bookmarks/collections/{id}`: Get details of a specific collection.
+    *   `PATCH /bookmarks/collections/{id}`: Update a collection.
+    *   `DELETE /bookmarks/collections/{id}`: Delete a collection.
+*   **Imports:**
+    *   `POST /bookmarks/import/text`: Import bookmarks from a plain text file content.
+    *   `POST /bookmarks/import/wallabag`: Import bookmarks from a Wallabag instance.
+    *   `POST /bookmarks/import/browser`: Import browser bookmarks (HTML file via multipart/form-data).
+    *   `POST /bookmarks/import/pocket-file`: Import Pocket export (HTML file via multipart/form-data).
 
 ## Future Work
 
-*   Implement remaining API endpoints:
-    *   Annotations (Highlights)
-    *   Collections
-    *   Imports (Text, Wallabag, etc.)
+*   Implement remaining API endpoints (if any, e.g., admin tools like `/cookbook/extract`).
 *   Add comprehensive unit and integration tests.
 *   Publish to pub.dev.
 *   Refine error handling and model details based on further API testing.
 
 ## Contributing
 
-Contributions are welcome! Please feel free to open an issue or submit a pull request. (Standard contribution guidelines would apply).
+Contributions are welcome! Please feel free to open an issue or submit a pull request.
 
 ---
 
