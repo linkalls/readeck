@@ -169,7 +169,7 @@ class ReadeckApiClient {
     String filename,
     {MediaType? contentType}
   ) async {
-    final uri = Uri.parse('$baseUrl$path');
+    final uri = Uri.parse('$baseUrl/api$path');
     final request = http.MultipartRequest('POST', uri);
 
     final commonHeaders = _getHeaders(contentType: null);
@@ -212,7 +212,7 @@ class ReadeckApiClient {
   Future<AuthResponse> login(AuthRequest authRequest) async {
     final authResponse = await _makeRequest(
       () => _httpClient.post(
-        Uri.parse('$baseUrl/auth'),
+        Uri.parse('$baseUrl/api/auth'),
         headers: _getHeaders(),
         body: jsonEncode(authRequest.toJson()),
       ),
@@ -228,7 +228,7 @@ class ReadeckApiClient {
   Future<UserProfile> getProfile() async {
     return _makeRequest(
       () => _httpClient.get(
-        Uri.parse('$baseUrl/profile'),
+        Uri.parse('$baseUrl/api/profile'),
         headers: _getHeaders(),
       ),
       (json) => UserProfile.fromJson(json as Map<String, dynamic>),
@@ -238,7 +238,7 @@ class ReadeckApiClient {
   Future<void> logout() async {
     await _makeRequestVoidReturn(
       () => _httpClient.delete(
-        Uri.parse('$baseUrl/auth'),
+        Uri.parse('$baseUrl/api/auth'),
         headers: _getHeaders(),
       ),
     );
@@ -261,7 +261,7 @@ class ReadeckApiClient {
     });
     return _makeRequest(
       () => _httpClient.get(
-        Uri.parse('$baseUrl/bookmarks').replace(queryParameters: queryParams.isEmpty ? null : queryParams),
+        Uri.parse('$baseUrl/api/bookmarks').replace(queryParameters: queryParams.isEmpty ? null : queryParams),
         headers: _getHeaders(),
       ),
       (json) => (json as List)
@@ -273,7 +273,7 @@ class ReadeckApiClient {
   Future<List<BookmarkSync>> syncBookmarks() async {
     return _makeRequest(
       () => _httpClient.get(
-        Uri.parse('$baseUrl/bookmarks/sync'),
+        Uri.parse('$baseUrl/api/bookmarks/sync'),
         headers: _getHeaders(),
       ),
       (json) => (json as List)
@@ -285,7 +285,7 @@ class ReadeckApiClient {
   Future<BookmarkInfo> createBookmark(BookmarkCreate bookmarkCreate) async {
     final response = await _makeRawRequest(
       () => _httpClient.post(
-        Uri.parse('$baseUrl/bookmarks'),
+        Uri.parse('$baseUrl/api/bookmarks'),
         headers: _getHeaders(),
         body: jsonEncode(bookmarkCreate.toJson()),
       ),
@@ -315,7 +315,7 @@ class ReadeckApiClient {
   Future<BookmarkInfo> getBookmark(String id) async {
     return _makeRequest(
       () => _httpClient.get(
-        Uri.parse('$baseUrl/bookmarks/$id'),
+        Uri.parse('$baseUrl/api/bookmarks/$id'),
         headers: _getHeaders(),
       ),
       (json) => BookmarkInfo.fromJson(json as Map<String, dynamic>),
@@ -325,7 +325,7 @@ class ReadeckApiClient {
   Future<BookmarkUpdated> updateBookmark(String id, BookmarkUpdate bookmarkUpdate) async {
     return _makeRequest(
       () => _httpClient.patch(
-        Uri.parse('$baseUrl/bookmarks/$id'),
+        Uri.parse('$baseUrl/api/bookmarks/$id'),
         headers: _getHeaders(),
         body: jsonEncode(bookmarkUpdate.toJson()),
       ),
@@ -336,7 +336,7 @@ class ReadeckApiClient {
   Future<void> deleteBookmark(String id) async {
     await _makeRequestVoidReturn(
       () => _httpClient.delete(
-        Uri.parse('$baseUrl/bookmarks/$id'),
+        Uri.parse('$baseUrl/api/bookmarks/$id'),
         headers: _getHeaders(),
       ),
     );
@@ -345,7 +345,7 @@ class ReadeckApiClient {
   Future<String> getBookmarkArticle(String id) async {
     return _makeRequest(
       () => _httpClient.get(
-        Uri.parse('$baseUrl/bookmarks/$id/article'),
+        Uri.parse('$baseUrl/api/bookmarks/$id/article'),
         headers: _getHeaders(accept: 'text/html; charset=utf-8'),
       ),
       (body) => body as String,
@@ -365,7 +365,7 @@ class ReadeckApiClient {
 
     return _makeRequest(
       () => _httpClient.get(
-        Uri.parse('$baseUrl/bookmarks/$id/article.$format'),
+        Uri.parse('$baseUrl/api/bookmarks/$id/article.$format'),
         headers: _getHeaders(accept: acceptHeader),
       ),
       (body) {
@@ -383,7 +383,7 @@ class ReadeckApiClient {
   Future<BookmarkShareLink> shareBookmarkLink(String id) async {
     return _makeRequest(
       () => _httpClient.get(
-        Uri.parse('$baseUrl/bookmarks/$id/share/link'),
+        Uri.parse('$baseUrl/api/bookmarks/$id/share/link'),
         headers: _getHeaders(),
       ),
       (json) => BookmarkShareLink.fromJson(json as Map<String, dynamic>),
@@ -393,7 +393,7 @@ class ReadeckApiClient {
   Future<ApiMessage> shareBookmarkEmail(String id, BookmarkShareEmail shareEmailData) async {
     return _makeRequest(
       () => _httpClient.post(
-        Uri.parse('$baseUrl/bookmarks/$id/share/email'),
+        Uri.parse('$baseUrl/api/bookmarks/$id/share/email'),
         headers: _getHeaders(),
         body: jsonEncode(shareEmailData.toJson()),
       ),
@@ -405,7 +405,7 @@ class ReadeckApiClient {
   Future<List<LabelInfo>> listLabels() async {
     return _makeRequest(
       () => _httpClient.get(
-        Uri.parse('$baseUrl/bookmarks/labels'),
+        Uri.parse('$baseUrl/api/bookmarks/labels'),
         headers: _getHeaders(),
       ),
       (json) => (json as List)
@@ -417,7 +417,7 @@ class ReadeckApiClient {
   Future<List<LabelInfo>> getLabelInfo(String name) async {
     return _makeRequest(
       () => _httpClient.get(
-        Uri.parse('$baseUrl/bookmarks/labels/${Uri.encodeComponent(name)}'),
+        Uri.parse('$baseUrl/api/bookmarks/labels/${Uri.encodeComponent(name)}'),
         headers: _getHeaders(),
       ),
       (json) => (json as List)
@@ -429,7 +429,7 @@ class ReadeckApiClient {
   Future<ApiMessage> updateLabel(String name, LabelUpdate labelUpdate) async {
     return _makeRequest(
       () => _httpClient.patch(
-        Uri.parse('$baseUrl/bookmarks/labels/${Uri.encodeComponent(name)}'),
+        Uri.parse('$baseUrl/api/bookmarks/labels/${Uri.encodeComponent(name)}'),
         headers: _getHeaders(),
         body: jsonEncode(labelUpdate.toJson()),
       ),
@@ -440,7 +440,7 @@ class ReadeckApiClient {
   Future<void> deleteLabel(String name) async {
     await _makeRequestVoidReturn(
       () => _httpClient.delete(
-        Uri.parse('$baseUrl/bookmarks/labels/${Uri.encodeComponent(name)}'),
+        Uri.parse('$baseUrl/api/bookmarks/labels/${Uri.encodeComponent(name)}'),
         headers: _getHeaders(),
       ),
     );
@@ -451,7 +451,7 @@ class ReadeckApiClient {
     final queryParams = _buildQueryParameters({'limit': limit, 'offset': offset});
     return _makeRequest(
       () => _httpClient.get(
-        Uri.parse('$baseUrl/bookmarks/annotations').replace(queryParameters: queryParams.isEmpty ? null : queryParams),
+        Uri.parse('$baseUrl/api/bookmarks/annotations').replace(queryParameters: queryParams.isEmpty ? null : queryParams),
         headers: _getHeaders(),
       ),
       (json) => (json as List)
@@ -463,7 +463,7 @@ class ReadeckApiClient {
   Future<List<AnnotationInfo>> listBookmarkAnnotations(String bookmarkId) async {
     return _makeRequest(
       () => _httpClient.get(
-        Uri.parse('$baseUrl/bookmarks/$bookmarkId/annotations'),
+        Uri.parse('$baseUrl/api/bookmarks/$bookmarkId/annotations'),
         headers: _getHeaders(),
       ),
       (json) => (json as List)
@@ -475,7 +475,7 @@ class ReadeckApiClient {
   Future<AnnotationInfo> createBookmarkAnnotation(String bookmarkId, AnnotationCreate annotationCreate) async {
     return _makeRequest(
       () => _httpClient.post(
-        Uri.parse('$baseUrl/bookmarks/$bookmarkId/annotations'),
+        Uri.parse('$baseUrl/api/bookmarks/$bookmarkId/annotations'),
         headers: _getHeaders(),
         body: jsonEncode(annotationCreate.toJson()),
       ),
@@ -486,7 +486,7 @@ class ReadeckApiClient {
   Future<AnnotationUpdateResponse> updateBookmarkAnnotation(String bookmarkId, String annotationId, AnnotationUpdate annotationUpdate) async {
     return _makeRequest(
       () => _httpClient.patch(
-        Uri.parse('$baseUrl/bookmarks/$bookmarkId/annotations/$annotationId'),
+        Uri.parse('$baseUrl/api/bookmarks/$bookmarkId/annotations/$annotationId'),
         headers: _getHeaders(),
         body: jsonEncode(annotationUpdate.toJson()),
       ),
@@ -497,7 +497,7 @@ class ReadeckApiClient {
   Future<void> deleteBookmarkAnnotation(String bookmarkId, String annotationId) async {
     await _makeRequestVoidReturn(
       () => _httpClient.delete(
-        Uri.parse('$baseUrl/bookmarks/$bookmarkId/annotations/$annotationId'),
+        Uri.parse('$baseUrl/api/bookmarks/$bookmarkId/annotations/$annotationId'),
         headers: _getHeaders(),
       ),
     );
@@ -508,7 +508,7 @@ class ReadeckApiClient {
     final queryParams = _buildQueryParameters({'limit': limit, 'offset': offset});
     return _makeRequest(
       () => _httpClient.get(
-        Uri.parse('$baseUrl/bookmarks/collections').replace(queryParameters: queryParams.isEmpty ? null : queryParams),
+        Uri.parse('$baseUrl/api/bookmarks/collections').replace(queryParameters: queryParams.isEmpty ? null : queryParams),
         headers: _getHeaders(),
       ),
       (json) => (json as List)
@@ -520,7 +520,7 @@ class ReadeckApiClient {
   Future<CollectionInfo> createCollection(CollectionCreateOrUpdate collectionCreate) async {
     return _makeRequest(
       () => _httpClient.post(
-        Uri.parse('$baseUrl/bookmarks/collections'),
+        Uri.parse('$baseUrl/api/bookmarks/collections'),
         headers: _getHeaders(),
         body: jsonEncode(collectionCreate.toJson()),
       ),
@@ -531,7 +531,7 @@ class ReadeckApiClient {
   Future<CollectionInfo> getCollectionInfo(String id) async {
     return _makeRequest(
       () => _httpClient.get(
-        Uri.parse('$baseUrl/bookmarks/collections/$id'),
+        Uri.parse('$baseUrl/api/bookmarks/collections/$id'),
         headers: _getHeaders(),
       ),
       (json) => CollectionInfo.fromJson(json as Map<String, dynamic>),
@@ -541,7 +541,7 @@ class ReadeckApiClient {
   Future<CollectionSummary> updateCollection(String id, CollectionCreateOrUpdate collectionUpdate) async {
     return _makeRequest(
       () => _httpClient.patch(
-        Uri.parse('$baseUrl/bookmarks/collections/$id'),
+        Uri.parse('$baseUrl/api/bookmarks/collections/$id'),
         headers: _getHeaders(),
         body: jsonEncode(collectionUpdate.toJson()),
       ),
@@ -552,7 +552,7 @@ class ReadeckApiClient {
   Future<void> deleteCollection(String id) async {
     await _makeRequestVoidReturn(
       () => _httpClient.delete(
-        Uri.parse('$baseUrl/bookmarks/collections/$id'),
+        Uri.parse('$baseUrl/api/bookmarks/collections/$id'),
         headers: _getHeaders(),
       ),
     );
@@ -601,7 +601,7 @@ class ReadeckApiClient {
   Future<ApiMessageWithLocation> importTextFile(String textContent) async {
     final response = await _makeRawRequest(
       () => _httpClient.post(
-        Uri.parse('$baseUrl/bookmarks/import/text'),
+        Uri.parse('$baseUrl/api/bookmarks/import/text'),
         headers: _getHeaders(contentType: 'text/plain; charset=utf-8', accept: 'application/json'),
         body: textContent,
       ),
@@ -623,7 +623,7 @@ class ReadeckApiClient {
   Future<ApiMessageWithLocation> importWallabag(WallabagImport wallabagImportData) async {
      final response = await _makeRawRequest(
       () => _httpClient.post(
-        Uri.parse('$baseUrl/bookmarks/import/wallabag'),
+        Uri.parse('$baseUrl/api/bookmarks/import/wallabag'),
         headers: _getHeaders(),
         body: jsonEncode(wallabagImportData.toJson()),
       ),
@@ -652,7 +652,7 @@ class ReadeckApiClient {
 
     return _makeRequest(
       () => _httpClient.get(
-        Uri.parse('$baseUrl/cookbook/extract').replace(queryParameters: queryParams),
+        Uri.parse('$baseUrl/api/cookbook/extract').replace(queryParameters: queryParams),
         headers: _getHeaders(accept: acceptType),
       ),
       (body) {
